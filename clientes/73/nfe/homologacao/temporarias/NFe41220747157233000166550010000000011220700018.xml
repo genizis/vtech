@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41220747157233000166550010000000011220700018" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>22070001</cNF>
+      <natOp>Venda dentro do estado</natOp>
+      <mod>55</mod>
+      <serie>1</serie>
+      <nNF>1</nNF>
+      <dhEmi>2022-07-21T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4105805</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>8</cDV>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>0</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>47157233000166</CNPJ>
+      <xNome>PAPELARIA GOIAS LTDA</xNome>
+      <xFant>PAPELARIA GOIAS</xFant>
+      <enderEmit>
+        <xLgr>Avenida Argentina</xLgr>
+        <nro>147</nro>
+        <xCpl>Loja 1</xCpl>
+        <xBairro>Rio Verde</xBairro>
+        <cMun>4105805</cMun>
+        <xMun>Colombo</xMun>
+        <UF>PR</UF>
+        <CEP>83405420</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderEmit>
+      <IE>9095574456</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CNPJ>35954996000159</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>Rua Brigadeiro Arthur Carlos Peralta</xLgr>
+        <nro>1934</nro>
+        <xCpl>CASA 03 COND AMON-RA CD</xCpl>
+        <xBairro>Boa Vista</xBairro>
+        <cMun>4106902</cMun>
+        <xMun>Curitiba</xMun>
+        <UF>PR</UF>
+        <CEP>82560030</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>10</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>lápis jumbo faber castell</xProd>
+        <NCM>96091000</NCM>
+        <CEST>0802100</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>10.0000</qCom>
+        <vUnCom>2.0000000000</vUnCom>
+        <vProd>20.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>10.0000</qTrib>
+        <vUnTrib>2.0000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>49</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>20.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>20.00</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>1</modFrete>
+      <vol>
+        <qVol>10</qVol>
+        <esp>VOLUMES</esp>
+        <nVol>1</nVol>
+        <pesoL>0.050</pesoL>
+        <pesoB>0.050</pesoB>
+      </vol>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic/>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>HNT79p0vze7RPkMn/DsH/l6sboM=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

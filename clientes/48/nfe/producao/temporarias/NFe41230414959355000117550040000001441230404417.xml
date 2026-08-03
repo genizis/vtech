@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41230414959355000117550040000001441230404417" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>23040441</cNF>
+      <natOp>REMESSA EM BONIFICAÇÃO, DOAÇÃO OU BRINDE</natOp>
+      <mod>55</mod>
+      <serie>4</serie>
+      <nNF>144</nNF>
+      <dhEmi>2023-04-24T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>2</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>7</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>14959355000117</CNPJ>
+      <xNome>TRIBAL PEPPER CO. LTDA</xNome>
+      <xFant>TRIBAL PEPPER</xFant>
+      <enderEmit>
+        <xLgr>Rua Capitão Rocha</xLgr>
+        <nro>612 A</nro>
+        <xBairro>Trianon</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85012255</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4230352738</fone>
+      </enderEmit>
+      <IE>9074271534</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>18278774803</CPF>
+      <xNome>EDUARDO AUGUSTO IMBERIO</xNome>
+      <enderDest>
+        <xLgr>Rua dos Jacintos</xLgr>
+        <nro>37</nro>
+        <xBairro>Vila Luzita</xBairro>
+        <cMun>3547809</cMun>
+        <xMun>Santo André</xMun>
+        <UF>SP</UF>
+        <CEP>09170800</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>0001_000010</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY X HOT 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.0000</qCom>
+        <vUnCom>11.0500000000</vUnCom>
+        <vProd>22.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.0000</qTrib>
+        <vUnTrib>11.0500000000</vUnTrib>
+        <vDesc>21.25</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>0001_000012</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY FORTE 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.0000</qCom>
+        <vUnCom>11.0500000000</vUnCom>
+        <vProd>22.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.0000</qTrib>
+        <vUnTrib>11.0500000000</vUnTrib>
+        <vDesc>21.25</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>0001_000032</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL KETCHUP TOMATOES &amp; BASIL 350 G</xProd>
+        <NCM>21032010</NCM>
+        <CEST>1703400</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.0000</qCom>
+        <vUnCom>11.7000000000</vUnCom>
+        <vProd>23.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.0000</qTrib>
+        <vUnTrib>11.7000000000</vUnTrib>
+        <vDesc>22.50</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="4">
+      <prod>
+        <cProd>0001_000034</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL MUSTARD SAFFRON 315 G</xProd>
+        <NCM>21033021</NCM>
+        <CEST>1703800</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.0000</qCom>
+        <vUnCom>11.7000000000</vUnCom>
+        <vProd>23.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.0000</qTrib>
+        <vUnTrib>11.7000000000</vUnTrib>
+        <vDesc>22.50</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="5">
+      <prod>
+        <cProd>0001_000030</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>BARBECUE OLD BRANDY 350 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>3.0000</qCom>
+        <vUnCom>13.0000000000</vUnCom>
+        <vProd>39.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>3.0000</qTrib>
+        <vUnTrib>13.0000000000</vUnTrib>
+        <vDesc>37.50</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="6">
+      <prod>
+        <cProd>0000036</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO SWEET CHILI CHILLIBOY 360G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>13.0000000000</vUnCom>
+        <vProd>13.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>13.0000000000</vUnTrib>
+        <vDesc>12.50</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="7">
+      <prod>
+        <cProd>0000037</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>KETCHUP COM CURRY TRIBAL 340G</xProd>
+        <NCM>21032010</NCM>
+        <CEST>1703400</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>6910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>13.0000000000</vUnCom>
+        <vProd>13.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>13.0000000000</vUnTrib>
+        <vDesc>12.50</vDesc>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>156.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>150.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>6.00</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>1</modFrete>
+      <transporta>
+        <CNPJ>07462406000135</CNPJ>
+        <xNome>LUNKES PRESTADORA DE SERVICOS LTDA</xNome>
+        <IE>9066149797</IE>
+        <xEnder>Rua Portugal</xEnder>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+      </transporta>
+      <vol>
+        <qVol>1</qVol>
+        <esp>CAIXA</esp>
+        <nVol>1</nVol>
+        <pesoL>3.680</pesoL>
+        <pesoB>3.680</pesoB>
+      </vol>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic>
+      <infCpl>Voce pagou aproximadamente: R$ 0,00 de tributos federais R$ 0,00 de tributos estaduais R$ 0,00 pelos produtos Fonte: IBPT |</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>a/WSY2PCrgjUtk9+wULQ769F9w0=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

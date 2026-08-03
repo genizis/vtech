@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41230446729948000183550010000000281230400820" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>23040082</cNF>
+      <natOp>Venda para dentro do estado</natOp>
+      <mod>55</mod>
+      <serie>1</serie>
+      <nNF>28</nNF>
+      <dhEmi>2023-04-18T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>0</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>0</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>46729948000183</CNPJ>
+      <xNome>HASTEL IMPLEMENTOS AGRICOLAS LTDA</xNome>
+      <xFant>HASTEL IMPLEMENTOS AGRICOLAS</xFant>
+      <enderEmit>
+        <xLgr>Avenida Bento Munhoz da Rocha Neto</xLgr>
+        <nro>830</nro>
+        <xCpl>Sala 02</xCpl>
+        <xBairro>Primavera</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85050150</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4236296000</fone>
+      </enderEmit>
+      <IE>9095020396</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CNPJ>03430928000102</CNPJ>
+      <xNome>Guaratu Indústria e Comércio de Madeiras e Compensados LTD</xNome>
+      <enderDest>
+        <xLgr>Rua Vereador Sebastião de C. Ribas</xLgr>
+        <nro>420</nro>
+        <xCpl>Empresa</xCpl>
+        <xBairro>Industrial</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85045796</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4236241277</fone>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+      <IE>9019485266</IE>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>SERV</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PATAMAR E ESCADAS</xProd>
+        <NCM>73239400</NCM>
+        <CEST>0102100</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>48987.1900000000</vUnCom>
+        <vProd>48987.19</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>48987.1900000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>48987.19</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>48987.19</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>0</modFrete>
+      <vol>
+        <nVol>1</nVol>
+        <pesoL>0.000</pesoL>
+        <pesoB>0.000</pesoB>
+      </vol>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>000028</nFat>
+        <vOrig>48987.19</vOrig>
+        <vLiq>48987.19</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-04-18</dVenc>
+        <vDup>48987.19</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic>
+      <infCpl>Voce pagou aproximadamente: R$ 7.338,28 de tributos federais R$ 8.817,69 de tributos estaduais R$ 48.987,19 pelos produtos Fonte: IBPT | Inf. Contribuinte: Empresa optante pelo Simples Nacional.;</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>lWGk2sLkdHBUiNHWqpyGxYROzN4=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

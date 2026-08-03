@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41221028612949000161550200000000161221000614" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>22100061</cNF>
+      <natOp>Venda de Mercadoria</natOp>
+      <mod>55</mod>
+      <serie>20</serie>
+      <nNF>16</nNF>
+      <dhEmi>2022-10-02T00:00:00+02:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>4</cDV>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>0</indFinal>
+      <indPres>0</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28612949000161</CNPJ>
+      <xNome>CONGELOVE ALIMENTOS LTDA</xNome>
+      <xFant>CONGELOVE ALIMENTOS LTDA</xFant>
+      <enderEmit>
+        <xLgr>Rua Pedro Alves</xLgr>
+        <nro>1084</nro>
+        <xCpl>SALA 02</xCpl>
+        <xBairro>Centro</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85010080</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4299339923</fone>
+      </enderEmit>
+      <IE>9091135636</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CNPJ>03165679000167</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>Rua Benjamin Constant</xLgr>
+        <nro>2000</nro>
+        <xCpl>SALA 01</xCpl>
+        <xBairro>Centro</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85010190</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4230356431</fone>
+      </enderDest>
+      <indIEDest>2</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>002</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>arroz integral comum</xProd>
+        <NCM>19022000</NCM>
+        <CEST>1704800</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5102</CFOP>
+        <uCom>GR</uCom>
+        <qCom>10.0000</qCom>
+        <vUnCom>3.5000000000</vUnCom>
+        <vProd>35.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>GR</uTrib>
+        <qTrib>10.0000</qTrib>
+        <vUnTrib>3.5000000000</vUnTrib>
+        <vFrete>10.00</vFrete>
+        <vSeg>3.13</vSeg>
+        <vDesc>0.70</vDesc>
+        <vOutro>2.81</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>154</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>arroz branco comum</xProd>
+        <NCM>21069090</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>3.5000000000</vUnCom>
+        <vProd>21.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>6.0000</qTrib>
+        <vUnTrib>3.5000000000</vUnTrib>
+        <vFrete>6.00</vFrete>
+        <vSeg>1.87</vSeg>
+        <vDesc>0.42</vDesc>
+        <vOutro>1.69</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>56.00</vProd>
+        <vFrete>16.00</vFrete>
+        <vSeg>5.00</vSeg>
+        <vDesc>1.12</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>4.50</vOutro>
+        <vNF>80.38</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>1</modFrete>
+      <transporta>
+        <CNPJ>00428307000864</CNPJ>
+        <xNome>EXPRESSO SAO MIGUEL S/A</xNome>
+        <xEnder>Rua Bernardino José de Oliveira</xEnder>
+        <xMun>Blumenau</xMun>
+        <UF>SC</UF>
+      </transporta>
+      <vol>
+        <nVol>1</nVol>
+        <pesoL>0.000</pesoL>
+        <pesoB>0.000</pesoB>
+      </vol>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic/>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>VYG3hiy9/9RnGDQbA7wcqlNL0Tw=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

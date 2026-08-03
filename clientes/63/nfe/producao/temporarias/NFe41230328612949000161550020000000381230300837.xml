@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41230328612949000161550020000000381230300837" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>23030083</cNF>
+      <natOp>5101 - Venda de Mercadoria</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>38</nNF>
+      <dhEmi>2023-03-09T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>7</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>0</indFinal>
+      <indPres>0</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28612949000161</CNPJ>
+      <xNome>CONGELOVE ALIMENTOS LTDA</xNome>
+      <xFant>CONGELOVE ALIMENTOS LTDA</xFant>
+      <enderEmit>
+        <xLgr>Rua Pedro Alves</xLgr>
+        <nro>1084</nro>
+        <xCpl>SALA 02</xCpl>
+        <xBairro>Centro</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85010080</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderEmit>
+      <IE>9091135636</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CNPJ>77000065000161</CNPJ>
+      <xNome>ZAGO &amp; ZAGO SUPERMERCADO LTDA</xNome>
+      <enderDest>
+        <xLgr>Rua Vicente Machado</xLgr>
+        <nro>725</nro>
+        <xCpl>PREDIO</xCpl>
+        <xBairro>Trianon</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85015540</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>1</indIEDest>
+      <IE>4010346504</IE>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>0009</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Pizza sem glúten e sem lactose (4 queijos) - 260g</xProd>
+        <NCM>19023000</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>24.6200000000</vUnCom>
+        <vProd>123.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>24.6200000000</vUnTrib>
+        <vFrete>0.72</vFrete>
+        <vOutro>0.50</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>350</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Pizza sem gluten e sem lactose (Marguerita) - 260g</xProd>
+        <NCM>19023000</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>24.6200000000</vUnCom>
+        <vProd>123.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>24.6200000000</vUnTrib>
+        <vFrete>0.72</vFrete>
+        <vOutro>0.50</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>182</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Escondidinho de camarão com purê de mandioca 250g</xProd>
+        <NCM>21069090</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>17.2000000000</vUnCom>
+        <vProd>86.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>17.2000000000</vUnTrib>
+        <vFrete>0.50</vFrete>
+        <vOutro>0.35</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="4">
+      <prod>
+        <cProd>134</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Escondidinho de carne seca com purê de mandioca 420g</xProd>
+        <NCM>21069090</NCM>
+        <CEST>2806200</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>3.0000</qCom>
+        <vUnCom>26.7000000000</vUnCom>
+        <vProd>80.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>3.0000</qTrib>
+        <vUnTrib>26.7000000000</vUnTrib>
+        <vFrete>0.47</vFrete>
+        <vOutro>0.33</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="5">
+      <prod>
+        <cProd>203</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Canja de Galinha 420g</xProd>
+        <NCM>21041019</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>12.0000000000</vUnCom>
+        <vProd>60.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>12.0000000000</vUnTrib>
+        <vFrete>0.35</vFrete>
+        <vOutro>0.25</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="6">
+      <prod>
+        <cProd>205</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Sopa Eslava (Batata e Carne Bovina Desfiada) 420g</xProd>
+        <NCM>21069090</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>13.0000000000</vUnCom>
+        <vProd>65.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>13.0000000000</vUnTrib>
+        <vFrete>0.38</vFrete>
+        <vOutro>0.27</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="7">
+      <prod>
+        <cProd>219</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>Sopa de abobora com carne seca desfiada</xProd>
+        <NCM>21041019</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>13.0000000000</vUnCom>
+        <vProd>65.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>13.0000000000</vUnTrib>
+        <vFrete>0.38</vFrete>
+        <vOutro>0.27</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="8">
+      <prod>
+        <cProd>557</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Lasanha a Bolonhesa (Sem Gluten)</xProd>
+        <NCM>19022000</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>26.0000000000</vUnCom>
+        <vProd>130.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>26.0000000000</vUnTrib>
+        <vFrete>0.76</vFrete>
+        <vOutro>0.53</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="9">
+      <prod>
+        <cProd>233</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>PA - Pizza sem gluten e sem lactose (Calabresa) - 260g</xProd>
+        <NCM>19023000</NCM>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>5.0000</qCom>
+        <vUnCom>24.6200000000</vUnCom>
+        <vProd>123.10</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>5.0000</qTrib>
+        <vUnTrib>24.6200000000</vUnTrib>
+        <vFrete>0.72</vFrete>
+        <vOutro>0.50</vOutro>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPINT>
+            <CST>53</CST>
+          </IPINT>
+        </IPI>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <qBCProd>0.0000</qBCProd>
+            <vAliqProd>0.0000</vAliqProd>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>855.40</vProd>
+        <vFrete>5.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>3.50</vOutro>
+        <vNF>863.90</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>1</modFrete>
+      <vol>
+        <nVol>1</nVol>
+        <pesoL>13.510</pesoL>
+        <pesoB>8.900</pesoB>
+      </vol>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>000038</nFat>
+        <vOrig>863.90</vOrig>
+        <vLiq>863.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-03-24</dVenc>
+        <vDup>863.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic>
+      <infCpl>Voce pagou aproximadamente: R$ 0,00 de tributos federais R$ 0,00 de tributos estaduais R$ 0,00 pelos produtos Fonte: IBPT |</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>+hE4mEz/iEACOJjVy7aC36cQ8jY=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

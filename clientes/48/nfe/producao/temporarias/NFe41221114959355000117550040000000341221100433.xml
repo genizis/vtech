@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41221114959355000117550040000000341221100433" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>22110043</cNF>
+      <natOp>BONIFICAÇÃO</natOp>
+      <mod>55</mod>
+      <serie>4</serie>
+      <nNF>34</nNF>
+      <dhEmi>2022-11-28T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>3</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>0</indFinal>
+      <indPres>0</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>14959355000117</CNPJ>
+      <xNome>TRIBAL PEPPER CO. LTDA</xNome>
+      <xFant>TRIBAL PEPPER</xFant>
+      <enderEmit>
+        <xLgr>Rua Capitão Rocha</xLgr>
+        <nro>612 A</nro>
+        <xBairro>Trianon</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85012255</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4230352738</fone>
+      </enderEmit>
+      <IE>9074271534</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>69661316953</CPF>
+      <xNome>DEMETRIUS SOKOLOWSKEI</xNome>
+      <enderDest>
+        <xLgr>Rua Genebra, Barracão 6</xLgr>
+        <nro>181</nro>
+        <xCpl>lateral da BR BLF GASTRONOMIA</xCpl>
+        <xBairro>Atuba</xBairro>
+        <cMun>4105805</cMun>
+        <xMun>Colombo</xMun>
+        <UF>PR</UF>
+        <CEP>83413340</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>2</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1643998704672</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA CEBOLA 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.5000000000</vUnCom>
+        <vProd>12.50</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.5000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>1643998825170</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA BANANA 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.5000000000</vUnCom>
+        <vProd>12.50</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.5000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>1643999408196</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA AMENDOIM 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.6000000000</vUnCom>
+        <vProd>11.60</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.6000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="4">
+      <prod>
+        <cProd>1643999522150</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA PIMENTA 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.6000000000</vUnCom>
+        <vProd>11.60</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.6000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="5">
+      <prod>
+        <cProd>0001_000030</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>BARBECUUE OLD BRANDY 350 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.9000000000</vUnCom>
+        <vProd>12.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.9000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="6">
+      <prod>
+        <cProd>1592414699638</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MAIONESE TRIBAL 300 G</xProd>
+        <NCM>21039011</NCM>
+        <CEST>1703900</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.9000000000</vUnCom>
+        <vProd>12.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.9000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="7">
+      <prod>
+        <cProd>0001_000034</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL MUSTARD PAPRIKA SAFFRON 315 G</xProd>
+        <NCM>21033021</NCM>
+        <CEST>1703800</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>11.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.2000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="8">
+      <prod>
+        <cProd>0001_000032</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL KETCHUP TOMATOES &amp; BASIL 350 G</xProd>
+        <NCM>21032010</NCM>
+        <CEST>1703400</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>11.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.2000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="9">
+      <prod>
+        <cProd>1636485834776</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA SMOKED SWEET LENHADOR 365G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.9000000000</vUnCom>
+        <vProd>12.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.9000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="10">
+      <prod>
+        <cProd>1639572261580</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO KETCHUP CURRY SUABIA 350G</xProd>
+        <NCM>21032010</NCM>
+        <CEST>1703400</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.9000000000</vUnCom>
+        <vProd>12.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.9000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="11">
+      <prod>
+        <cProd>1636141049324</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE ERVA MATE TRIBAL PEPPER 310 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>12.9000000000</vUnCom>
+        <vProd>12.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>12.9000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="12">
+      <prod>
+        <cProd>0001_000011</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY MEDIA 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>11.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.2000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="13">
+      <prod>
+        <cProd>0001_000012</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY FORTE 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>11.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.2000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="14">
+      <prod>
+        <cProd>0001_000010</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY X HOT 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>11.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>11.2000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="15">
+      <prod>
+        <cProd>0001_000007</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA TRIBAL BBQ CHOCOLATE MEDIA 120ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5910</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.0000</qCom>
+        <vUnCom>9.7500000000</vUnCom>
+        <vProd>9.75</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.0000</qTrib>
+        <vUnTrib>9.7500000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>400</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>178.45</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>178.45</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>0</modFrete>
+      <transporta>
+        <CNPJ>00428307000430</CNPJ>
+        <xNome>EXPRESSO SAO MIGUEL S/A</xNome>
+        <IE>4101483903</IE>
+        <xEnder>Rodovia BR-277 - do km 595,001 ao km 604,000</xEnder>
+        <xMun>Cascavel</xMun>
+        <UF>PR</UF>
+      </transporta>
+      <vol>
+        <qVol>2</qVol>
+        <esp>CAIXAS</esp>
+        <nVol>1</nVol>
+        <pesoL>4.030</pesoL>
+        <pesoB>4.030</pesoB>
+      </vol>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>000034</nFat>
+        <vOrig>178.45</vOrig>
+        <vLiq>178.45</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-11-28</dVenc>
+        <vDup>178.45</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic>
+      <infCpl>Voce pagou aproximadamente: R$ 0,00 de tributos federais R$ 0,00 de tributos estaduais R$ 0,00 pelos produtos Fonte: IBPT |</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>YmD2YkmipP2sfwstP39d4drp6Bw=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>

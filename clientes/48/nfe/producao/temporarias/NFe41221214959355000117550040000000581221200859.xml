@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe41221214959355000117550040000000581221200859" versao="4.00">
+    <ide>
+      <cUF>41</cUF>
+      <cNF>22120085</cNF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>4</serie>
+      <nNF>58</nNF>
+      <dhEmi>2022-12-19T00:00:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>4109401</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>9</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>0</indFinal>
+      <indPres>1</indPres>
+      <indIntermed>0</indIntermed>
+      <procEmi>0</procEmi>
+      <verProc>1.0.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>14959355000117</CNPJ>
+      <xNome>TRIBAL PEPPER CO. LTDA</xNome>
+      <xFant>TRIBAL PEPPER</xFant>
+      <enderEmit>
+        <xLgr>Rua Capitão Rocha</xLgr>
+        <nro>612 A</nro>
+        <xBairro>Trianon</xBairro>
+        <cMun>4109401</cMun>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+        <CEP>85012255</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4230352738</fone>
+      </enderEmit>
+      <IE>9074271534</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CNPJ>43962038000158</CNPJ>
+      <xNome>JAQUELINE SOUZA DE ALMEIDA 10514137967</xNome>
+      <enderDest>
+        <xLgr>Rua das Camelias</xLgr>
+        <nro>21</nro>
+        <xBairro>BELA VISTA</xBairro>
+        <cMun>4125704</cMun>
+        <xMun>São Miguel do Iguaçu</xMun>
+        <UF>PR</UF>
+        <CEP>85877000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+        <fone>4599218467</fone>
+      </enderDest>
+      <indIEDest>2</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1622486680780</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL TEMPERADO DRY RUP 270G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>11.2000000000</vUnCom>
+        <vProd>67.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>1.6200</qTrib>
+        <vUnTrib>41.4814814815</vUnTrib>
+        <vFrete>1.48</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>1622486326204</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL PARRILLA CHIMICHURRI 450 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>8.4000000000</vUnCom>
+        <vProd>50.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>2.7000</qTrib>
+        <vUnTrib>18.6666666667</vUnTrib>
+        <vFrete>1.11</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>1622486787334</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL PARRILLA SALSA CRIOLLA 470 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>8.4000000000</vUnCom>
+        <vProd>50.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>2.8200</qTrib>
+        <vUnTrib>17.8723404255</vUnTrib>
+        <vFrete>1.11</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="4">
+      <prod>
+        <cProd>1622486265680</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL PARRILLA ALHO E CEBOLA 480G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>8.4000000000</vUnCom>
+        <vProd>50.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>2.8800</qTrib>
+        <vUnTrib>17.5000000000</vUnTrib>
+        <vFrete>1.11</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="5">
+      <prod>
+        <cProd>1622486618638</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL PARRILLA PIMENTA DO REINO 470G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>8.4000000000</vUnCom>
+        <vProd>50.40</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>2.8200</qTrib>
+        <vUnTrib>17.8723404255</vUnTrib>
+        <vFrete>1.11</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="6">
+      <prod>
+        <cProd>1622484471277</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>SAL PARRILLA TRADICIONAL 500 G</xProd>
+        <NCM>25010090</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>6.0000</qCom>
+        <vUnCom>6.2000000000</vUnCom>
+        <vProd>37.20</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>3.0000</qTrib>
+        <vUnTrib>12.4000000000</vUnTrib>
+        <vFrete>0.82</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="7">
+      <prod>
+        <cProd>1643998704672</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA CEBOLA 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>18.0000</qCom>
+        <vUnCom>10.0000000000</vUnCom>
+        <vProd>180.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>5.0400</qTrib>
+        <vUnTrib>35.7142857143</vUnTrib>
+        <vFrete>3.96</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="8">
+      <prod>
+        <cProd>1643999522150</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>FAROFA PIMENTA 280G</xProd>
+        <NCM>19019090</NCM>
+        <CEST>1704600</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>18.0000</qCom>
+        <vUnCom>10.0000000000</vUnCom>
+        <vProd>180.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>5.0400</qTrib>
+        <vUnTrib>35.7142857143</vUnTrib>
+        <vFrete>3.96</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="9">
+      <prod>
+        <cProd>0001_000030</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>BARBECUUE OLD BRANDY 350 G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>120.0000</qCom>
+        <vUnCom>8.1000000000</vUnCom>
+        <vProd>972.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>120.0000</qTrib>
+        <vUnTrib>8.1000000000</vUnTrib>
+        <vFrete>21.38</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="10">
+      <prod>
+        <cProd>1592414699638</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MAIONESE TRIBAL 300 G</xProd>
+        <NCM>21039011</NCM>
+        <CEST>1703900</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>120.0000</qCom>
+        <vUnCom>8.1000000000</vUnCom>
+        <vProd>972.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>36.0000</qTrib>
+        <vUnTrib>27.0000000000</vUnTrib>
+        <vFrete>21.38</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="11">
+      <prod>
+        <cProd>0001_000034</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL MUSTARD PAPRIKA SAFFRON 315 G</xProd>
+        <NCM>21033021</NCM>
+        <CEST>1703800</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>120.0000</qCom>
+        <vUnCom>8.0000000000</vUnCom>
+        <vProd>960.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>37.8000</qTrib>
+        <vUnTrib>25.3968253968</vUnTrib>
+        <vFrete>21.12</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="12">
+      <prod>
+        <cProd>0001_000032</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>TRIBAL KETCHUP TOMATOES &amp; BASIL 350 G</xProd>
+        <NCM>21032010</NCM>
+        <CEST>1703400</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>60.0000</qCom>
+        <vUnCom>8.0000000000</vUnCom>
+        <vProd>480.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>21.0000</qTrib>
+        <vUnTrib>22.8571428571</vUnTrib>
+        <vFrete>10.56</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="13">
+      <prod>
+        <cProd>1636485834776</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA SMOKED SWEET LENHADOR 365G</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>360.0000</qCom>
+        <vUnCom>8.1000000000</vUnCom>
+        <vProd>2916.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>360.0000</qTrib>
+        <vUnTrib>8.1000000000</vUnTrib>
+        <vFrete>64.14</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="14">
+      <prod>
+        <cProd>0001_000011</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY MEDIA 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>120.0000</qCom>
+        <vUnCom>7.8000000000</vUnCom>
+        <vProd>936.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>18.0000</qTrib>
+        <vUnTrib>52.0000000000</vUnTrib>
+        <vFrete>20.59</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="15">
+      <prod>
+        <cProd>0001_000012</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>MOLHO DE PIMENTA CHILLIBOY FORTE 150 ML</xProd>
+        <NCM>21039021</NCM>
+        <CEST>1703500</CEST>
+        <cBenef>SEM CBENEF</cBenef>
+        <CFOP>5101</CFOP>
+        <uCom>UN</uCom>
+        <qCom>120.0000</qCom>
+        <vUnCom>7.8000000000</vUnCom>
+        <vProd>936.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>KG</uTrib>
+        <qTrib>18.0000</qTrib>
+        <vUnTrib>52.0000000000</vUnTrib>
+        <vFrete>20.57</vFrete>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>103</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <IPI>
+          <cEnq>999</cEnq>
+          <IPITrib>
+            <CST>99</CST>
+            <qUnid>0.0000</qUnid>
+            <vUnid>0.0000</vUnid>
+            <vIPI>0.00</vIPI>
+          </IPITrib>
+        </IPI>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>8838.00</vProd>
+        <vFrete>194.40</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>9032.40</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>0</modFrete>
+      <transporta>
+        <CNPJ>07462406000135</CNPJ>
+        <xNome>LUNKES PRESTADORA DE SERVICOS LTDA</xNome>
+        <IE>9066149797</IE>
+        <xEnder>Rua Portugal</xEnder>
+        <xMun>Guarapuava</xMun>
+        <UF>PR</UF>
+      </transporta>
+      <vol>
+        <qVol>99</qVol>
+        <esp>CAIXAS</esp>
+        <nVol>1</nVol>
+        <pesoL>330.120</pesoL>
+        <pesoB>330.120</pesoB>
+      </vol>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>000058</nFat>
+        <vOrig>9032.40</vOrig>
+        <vLiq>9032.40</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-01-05</dVenc>
+        <vDup>4516.20</vDup>
+      </dup>
+      <dup>
+        <nDup>002</nDup>
+        <dVenc>2023-01-19</dVenc>
+        <vDup>4516.20</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>90</tPag>
+        <vPag>0.00</vPag>
+      </detPag>
+    </pag>
+    <infAdic>
+      <infCpl>Voce pagou aproximadamente: R$ 0,00 de tributos federais R$ 0,00 de tributos estaduais R$ 0,00 pelos produtos Fonte: IBPT | EMPRESA OPTANTE PELO SIMPLES NACIONAL Na legislação do Estado do PR não há umarelação de produtos. No entanto, o Convênio ICMS n° 52/2017 trata em sua Cláusula vigésima terceira dos bens e mercadoriasfabricados em escala industrial não relevante. Nos termos desta cláusula, os produtos relacionados no Anexo XXVII serão considerados fabricados em escala industrial não relevante. NCM 2103.90.21, 2103.90.11, 2103.20.10, 2103.30.21</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>38597741000174</CNPJ>
+      <xContato>Genizis Vinicius Gonçalves Meneghel</xContato>
+      <email>genizis@shopfloor.com.br</email>
+      <fone>41996668250</fone>
+      <idCSRT>01</idCSRT>
+      <hashCSRT>TWgtDC0Z3vo52GDs3NeNH4znIZw=</hashCSRT>
+    </infRespTec>
+  </infNFe>
+</NFe>
