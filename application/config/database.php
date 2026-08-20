@@ -73,12 +73,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$db_host = getenv('DB_HOST');
+$db_port = getenv('DB_PORT');
+$db_user = getenv('DB_USERNAME');
+$db_password = getenv('DB_PASSWORD');
+$db_name = getenv('DB_DATABASE');
+
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'shopfloor',
+	'hostname' => $db_host !== FALSE && $db_host !== '' ? $db_host : '127.0.0.1',
+	'port' => $db_port !== FALSE && $db_port !== '' ? (int) $db_port : 3306,
+	'username' => $db_user !== FALSE && $db_user !== '' ? $db_user : 'root',
+	'password' => $db_password !== FALSE ? $db_password : '',
+	'database' => $db_name !== FALSE && $db_name !== '' ? $db_name : 'vtech',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,25 +101,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-/*$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'shopfl06_shopfl0',
-	'password' => 'code153200',
-	'database' => 'shopfl06_omicron',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => FALSE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);*/

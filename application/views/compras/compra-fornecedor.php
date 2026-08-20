@@ -344,7 +344,7 @@ $("#btnExportFornecedorResumido").click(function(e) {
     var table_div = document.getElementById('downloadXLSResumido');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Compra Por Fornecedor (Resumido).xls';
+    a.download = 'VTech - Compra Por Fornecedor (Resumido).xls';
     a.click();
     e.preventDefault();
 });
@@ -355,7 +355,7 @@ $("#btnExportFornecedorDetalhado").click(function(e) {
     var table_div = document.getElementById('downloadXLSDetalhado');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Compra Por Fornecedor (Detalhado).xls';
+    a.download = 'VTech - Compra Por Fornecedor (Detalhado).xls';
     a.click();
     e.preventDefault();
 });

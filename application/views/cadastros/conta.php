@@ -60,6 +60,7 @@
                                                     <th scope="col" class="text-center"><i
                                                                     class="fa-solid fa-check"></i></th>
                                                     <th scope="col">Conta</th>
+                                                    <th scope="col">Estabelecimento</th>
                                                     <th scope="col" class="text-center">Situação</th>
                                                 </tr>
                                             </thead>
@@ -75,6 +76,9 @@
                                                     </td>
                                                     <td scope="row"><a class="text-dark link-load"
                                                             href="<?= base_url("conta/editar-conta/{$conta->cod_conta}") ?>"><?= $conta->cod_conta ?> - <?= $conta->nome_conta ?></a>
+                                                    </td>
+                                                    <td><?= html_escape($conta->nome_estabelecimento) ?>
+                                                        <span class="text-muted">(<?= (int)$conta->tipo_estabelecimento === 1 ? 'Matriz' : 'Filial' ?>)</span>
                                                     </td>
                                                     <td class="text-center">
                                                         <?php if($conta->ativo == 1) {

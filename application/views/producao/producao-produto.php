@@ -334,7 +334,7 @@
         var table_div = document.getElementById('downloadXLSDetalhado');
         var table_html = table_div.outerHTML.replace(/ /g, '%20');
         a.href = data_type + ', ' + table_html;
-        a.download = 'ShopFloor - Venda Por Produto.xls';
+        a.download = 'VTech - Venda Por Produto.xls';
         a.click();
         e.preventDefault();
     });

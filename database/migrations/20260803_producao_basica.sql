@@ -1,0 +1,71 @@
+-- Estruturas reconstruídas a partir dos models do CodeIgniter.
+-- O dump recebido termina antes destas tabelas.
+CREATE TABLE IF NOT EXISTS `produto` (
+  `id_empresa` int(11) NOT NULL,
+  `cod_produto` varchar(15) NOT NULL,
+  `nome_produto` varchar(100) NOT NULL,
+  `desc_produto` varchar(300) DEFAULT NULL,
+  `faturavel` tinyint(1) NOT NULL DEFAULT '0',
+  `tipo_controle` tinyint(1) NOT NULL DEFAULT '1',
+  `cod_tipo_produto` int(11) NOT NULL,
+  `cod_unidade_medida` varchar(10) NOT NULL,
+  `quant_estoq` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `custo_medio` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `preco_venda` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `cod_unidade_medida_fat` varchar(10) DEFAULT NULL,
+  `quant_faturamento` decimal(15,4) NOT NULL DEFAULT '1.0000',
+  `estoq_min` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `saldo_negativo` tinyint(1) NOT NULL DEFAULT '0',
+  `dias_vencimento` int(11) NOT NULL DEFAULT '0',
+  `tempo_abastecimento` int(11) NOT NULL DEFAULT '0',
+  `cod_ncm` varchar(10) DEFAULT NULL,
+  `cod_origem` tinyint(2) DEFAULT NULL,
+  `cod_barras` varchar(60) DEFAULT NULL,
+  `cod_gtin` varchar(20) DEFAULT NULL,
+  `cod_cest` varchar(10) DEFAULT NULL,
+  `peso_liq` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `peso_bruto` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `caminho_desenho` varchar(255) DEFAULT NULL,
+  `caminho_foto` varchar(255) DEFAULT NULL,
+  `id_conta_azul` varchar(100) DEFAULT NULL,
+  `cod_vendas_externas` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_empresa`, `cod_produto`),
+  KEY `idx_produto_codigo` (`cod_produto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ordem_producao` (
+  `num_ordem_producao` int(11) NOT NULL AUTO_INCREMENT,
+  `id_empresa` int(11) NOT NULL,
+  `cod_produto` varchar(15) NOT NULL,
+  `num_pedido_venda` int(11) DEFAULT NULL,
+  `cod_calculo_necessidade` int(11) DEFAULT NULL,
+  `data_emissao` date NOT NULL,
+  `data_fim` date NOT NULL,
+  `quant_planejada` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `quant_produzida` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `observacoes` varchar(500) DEFAULT NULL,
+  `usuario` varchar(60) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`num_ordem_producao`),
+  KEY `idx_ordem_producao_empresa_status_data` (`id_empresa`, `status`, `data_fim`),
+  KEY `idx_ordem_producao_produto` (`id_empresa`, `cod_produto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `reporte_producao` (
+  `cod_reporte_producao` int(11) NOT NULL AUTO_INCREMENT,
+  `num_ordem_producao` int(11) NOT NULL,
+  `data_reporte` date NOT NULL,
+  `quant_reportada` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `quant_perdida` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fim` time DEFAULT NULL,
+  `horas_trabalhadas` decimal(10,4) NOT NULL DEFAULT '0.0000',
+  `custo_producao` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `custo_mob` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `observacoes` varchar(500) DEFAULT NULL,
+  `usuario` varchar(60) DEFAULT NULL,
+  `estornado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`cod_reporte_producao`),
+  KEY `idx_reporte_ordem` (`num_ordem_producao`),
+  KEY `idx_reporte_data_estornado` (`data_reporte`, `estornado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

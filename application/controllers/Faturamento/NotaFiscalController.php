@@ -1653,7 +1653,7 @@ class NotaFiscalController extends CI_Controller
             $danfe->setDefaultFont($font = 'times');
             $danfe->setDefaultDecimalPlaces(4);
             $danfe->debugMode(false);
-            $danfe->creditsIntegratorFooter('Emitido por ShopFloor');
+            $danfe->creditsIntegratorFooter('Emitido por VTech');
             $pdf = $danfe->render($logo);
             return $pdf;
 
@@ -1957,7 +1957,7 @@ class NotaFiscalController extends CI_Controller
             $danfe->setDefaultFont($font = 'times');
             $danfe->setDefaultDecimalPlaces(4);
             $danfe->debugMode(false);
-            $danfe->creditsIntegratorFooter('Emitido por ShopFloor');
+            $danfe->creditsIntegratorFooter('Emitido por VTech');
             $pdf = $danfe->render($logo);
             return $pdf;
 
@@ -2003,7 +2003,7 @@ class NotaFiscalController extends CI_Controller
             //$danfce->setPrintResume(true); //ativa ou desativa a impressao apenas do resumo
             //$danfce->setViaEstabelecimento(); //altera a via do consumidor para a via do estabelecimento, quando a NFCe for emitida em contingência OFFLINE
             //$danfce->setAsCanceled(); //força marcar nfce como cancelada 
-            $danfce->creditsIntegratorFooter('ShopFloor - https://www.shopfloor.com.br');
+            $danfce->creditsIntegratorFooter('VTech - https://www.shopfloor.com.br');
             $pdf = $danfce->render($logo);
             header('Content-Type: application/pdf');
             return $pdf;

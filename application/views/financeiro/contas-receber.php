@@ -89,7 +89,8 @@
                                             <?php foreach ($lista_conta as $key_conta_resumida => $conta) if ($conta->entrada_proj_total > 0) { { ?>
                                                     <tr>
                                                         <td class="text-left limit-text-30">
-                                                            <?= $conta->nome_conta ?>
+                                                            <?= $conta->nome_conta ?><br>
+                                                            <small class="text-muted"><?= html_escape($conta->nome_estabelecimento) ?></small>
                                                         </td>
                                                         <td class="text-right <?php if ($conta->entrada_proj_total > 0) echo "text-teal"; ?>">
                                                             R$ <?= number_format($conta->entrada_proj_total, 2, ',', '.') ?>
@@ -109,6 +110,17 @@
                         <form action="<?= base_url("financeiro/contas-receber/{$mes}/{$ano}") ?>" method="get" class="mb-0 needs-validation" novalidate>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
+                                    <select class="selectpicker show-tick form-control" multiple data-live-search="true" data-actions-box="true" title="Estabelecimento" name="EstabelecimentoFiltro[]" data-style="btn-input-primary">
+                                        <?php foreach ($lista_estabelecimento as $estabelecimento) { ?>
+                                            <option value="<?= $estabelecimento->id_estabelecimento ?>" <?= is_array($estabelecimentoFiltro) && in_array($estabelecimento->id_estabelecimento, $estabelecimentoFiltro) ? 'selected' : '' ?>>
+                                                <?= html_escape($estabelecimento->nome_estabelecimento) ?> (<?= (int)$estabelecimento->tipo_estabelecimento === 1 ? 'Matriz' : 'Filial' ?>)
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
                                     <select class="selectpicker show-tick form-control" multiple data-live-search="true" data-actions-box="true" title="Conta Financeira" name="ContaFinanceiraFiltro[]" data-style="btn-input-primary">
                                         <?php $chave_conta = 0;
                                         foreach ($lista_conta as $key_conta => $conta) { ?>
@@ -120,7 +132,7 @@
                                                                                                 echo "selected";
                                                                                             }
                                                                                         } ?>>
-                                                <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?>
+                                                <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?> - <?= html_escape($conta->nome_estabelecimento) ?>
                                             </option>
                                         <?php } ?>
                                     </select>
@@ -310,7 +322,10 @@
                                                         </td>
                                                         <td class="limit-text-50 align-middle" data-toggle="tooltip" data-placement="bottom" title="<?= $contas_receber->desc_movimento ?>">
                                                             <a href="#" data-toggle="modal" class="text-dark" data-target="#editar-titulo<?= $contas_receber->cod_movimento_conta ?>"><?= $contas_receber->desc_movimento ?></a><br>
+                                                            <span class="badge bg-secondary-light"><?= html_escape($contas_receber->nome_estabelecimento) ?></span>
+                                                            <?php if ($contas_receber->nome_conta != null) { ?>
                                                             <span class="badge bg-info-light"><?= $contas_receber->nome_conta ?></span>
+                                                            <?php } ?>
                                                             <?php if ($contas_receber->nome_cliente != null) { ?>
                                                                 <span class="badge font-italic text-muted"><?= $contas_receber->nome_cliente ?>
                                                                 </span>
@@ -417,7 +432,28 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-3">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputEstabelecimento">Estabelecimento <span class="text-danger">*</span></label>
+                                                            <select id="inputEstabelecimento" class="selectpicker show-tick form-control" data-live-search="true" data-style="btn-input-primary" title="Selecione" name="IdEstabelecimento" required>
+                                                                <?php foreach ($lista_estabelecimento as $estabelecimento) { ?>
+                                                                    <option value="<?= $estabelecimento->id_estabelecimento ?>" <?= set_select('IdEstabelecimento', $estabelecimento->id_estabelecimento) ?>>
+                                                                        <?= html_escape($estabelecimento->nome_estabelecimento) ?> (<?= (int)$estabelecimento->tipo_estabelecimento === 1 ? 'Matriz' : 'Filial' ?>)
+                                                                    </option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputCliente">Pagador</label>
+                                                            <select id="inputCliente" class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " data-style="btn-input-primary" name="CodCliente">
+                                                                <?php foreach ($lista_cliente as $key_cliente => $cliente) { ?>
+                                                                    <option value="<?= $cliente->cod_cliente ?>" <?php if ($cliente->cod_cliente == set_value('CodCliente')) echo "selected"; ?>>
+                                                                        <?= $cliente->cod_cliente ?> - <?= $cliente->nome_cliente ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
                                                             <label for="inputDataCompetencia">Data de Competência <span class="text-danger">*</span></label>
                                                             <input type="text" class="form-control" id="inputDataCompetencia" name="DataCompetencia" value="<?php if (set_value('DataCompetencia') == "") {
                                                                                                                                                                 echo str_replace('-', '/', date("d-m-Y"));
@@ -425,7 +461,7 @@
                                                                                                                                                                 echo set_value('DataCompetencia');
                                                                                                                                                             } ?>" required>
                                                         </div>
-                                                        <div class="form-group col-md-3">
+                                                        <div class="form-group col-md-6">
                                                             <label class="control-label" for="inputValorTitulo">Valor do
                                                                 Título <span class="text-danger">*</span></label>
                                                             <div class="input-group">
@@ -434,16 +470,6 @@
                                                                 </div>
                                                                 <input type="text" class="form-control" class="form-control" id="inputValorTitulo" type="text" name="ValorTitulo" data-mask="#.##0,00" data-mask-reverse="true" value="<?= set_value('ValorTitulo'); ?>" required>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputCliente">Pagador</label>
-                                                            <select id="inputCliente" class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " data-style="btn-input-primary" name="CodCliente">
-                                                                <?php foreach ($lista_cliente as $key_cliente => $cliente) { ?>
-                                                                    <option value="<?= $cliente->cod_cliente ?>" <?php if ($cliente->cod_cliente == set_value('CodCliente')) echo "selected"; ?>>
-                                                                        <?= $cliente->cod_cliente ?> -
-                                                                        <?= $cliente->nome_cliente ?></option>
-                                                                <?php } ?>
-                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
@@ -510,6 +536,18 @@
                                         <div class="tab-pane fade" id="financeiro">
                                             <div class="row">
                                                 <div class="col-md-12">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                            <label for="inputContaTitulo">Conta Financeira <small class="text-muted">(obrigatória ao confirmar)</small></label>
+                                                            <select id="inputContaTitulo" class="selectpicker show-tick form-control" data-live-search="true" data-style="btn-input-primary" title="Selecione uma Conta" name="CodConta">
+                                                                <?php foreach ($lista_conta as $conta) { ?>
+                                                                    <option value="<?= $conta->cod_conta ?>" data-estabelecimento="<?= $conta->id_estabelecimento ?>" <?= set_select('CodConta', $conta->cod_conta) ?>>
+                                                                        <?= $conta->cod_conta ?> - <?= html_escape($conta->nome_conta) ?> - <?= html_escape($conta->nome_estabelecimento) ?>
+                                                                    </option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-row">
@@ -742,15 +780,29 @@
                                         <div class="col-md-12">
                                             <form class="mb-0 needs-validation" novalidate action="<?= base_url("financeiro/contas-receber/editar-titulo/{$contas_receber->cod_movimento_conta}/{$mes}/{$ano}") ?>" method='post' id='formTitulo<?= $contas_receber->cod_movimento_conta ?>'>
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Estabelecimento <span class="text-danger">*</span></label>
+                                                        <select id="inputEstabelecimentoEdit<?= $contas_receber->cod_movimento_conta ?>" class="selectpicker show-tick form-control" data-live-search="true" data-style="btn-input-primary" name="IdEstabelecimento" required>
+                                                            <?php foreach ($lista_estabelecimento as $estabelecimento) { ?>
+                                                                <option value="<?= $estabelecimento->id_estabelecimento ?>" <?= (int)$estabelecimento->id_estabelecimento === (int)$contas_receber->id_estabelecimento ? 'selected' : '' ?>><?= html_escape($estabelecimento->nome_estabelecimento) ?> (<?= (int)$estabelecimento->tipo_estabelecimento === 1 ? 'Matriz' : 'Filial' ?>)</option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Cliente</label>
+                                                        <select class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " data-style="btn-input-primary" name="CodCliente">
+                                                            <?php foreach ($lista_cliente as $key_cliente => $cliente) { ?>
+                                                                <option value="<?= $cliente->cod_cliente ?>" <?php if ($cliente->cod_cliente == $contas_receber->cod_emitente) echo "selected"; ?>><?= $cliente->cod_cliente ?> - <?= $cliente->nome_cliente ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
                                                         <label>Data de Competência <span class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="inputDataCompetenciaEdit<?= $contas_receber->cod_movimento_conta ?>" name="DataCompetencia" value="<?= str_replace('-', '/', date("d-m-Y", strtotime($contas_receber->data_competencia))) ?>" required>
                                                     </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label>Data de Vencimento <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="inputDataVencimentoEdit<?= $contas_receber->cod_movimento_conta ?>" name="DataVencimento" value="<?= str_replace('-', '/', date("d-m-Y", strtotime($contas_receber->data_vencimento))) ?>" required>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-6">
                                                         <label class="control-label">Valor do Título <span class="text-danger">*</span></label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
@@ -762,24 +814,16 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label>Cliente</label>
-                                                        <select class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " data-style="btn-input-primary" name="CodCliente">
-                                                            <?php foreach ($lista_cliente as $key_cliente => $cliente) { ?>
-                                                                <option value="<?= $cliente->cod_cliente ?>" <?php if ($cliente->cod_cliente == $contas_receber->cod_emitente) echo "selected"; ?>>
-                                                                    <?= $cliente->cod_cliente ?> -
-                                                                    <?= $cliente->nome_cliente ?></option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
                                                         <label class="control-label">Descrição Título</label>
                                                         <input class="form-control" type="text" name="Descricao" value="<?= $contas_receber->desc_movimento ?>" required>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Data de Vencimento <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="inputDataVencimentoEdit<?= $contas_receber->cod_movimento_conta ?>" name="DataVencimento" value="<?= str_replace('-', '/', date("d-m-Y", strtotime($contas_receber->data_vencimento))) ?>" required>
+                                                    </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Método de Pagamento</label>
                                                         <select class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " name="CodMetodoPagamento" data-style="btn-input-primary">
@@ -791,12 +835,14 @@
                                                             <?php } ?>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label>Conta Financeira <span class="text-danger">*</span></label>
-                                                        <select class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " name="CodConta" data-style="btn-input-primary" required>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label>Conta Financeira <small class="text-muted">(obrigatória ao confirmar)</small></label>
+                                                        <select id="inputContaEdit<?= $contas_receber->cod_movimento_conta ?>" class="selectpicker show-tick form-control" data-live-search="true" data-actions-box="true" title=" " name="CodConta" data-style="btn-input-primary">
                                                             <?php foreach ($lista_conta as $key_conta => $conta) { ?>
-                                                                <option value="<?= $conta->cod_conta ?>" <?php if ($conta->cod_conta == $contas_receber->cod_conta) echo "selected"; ?>>
-                                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?>
+                                                                <option value="<?= $conta->cod_conta ?>" data-estabelecimento="<?= $conta->id_estabelecimento ?>" <?php if ($conta->cod_conta == $contas_receber->cod_conta) echo "selected"; ?>>
+                                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?> - <?= html_escape($conta->nome_estabelecimento) ?>
                                                                 </option>
                                                             <?php } ?>
                                                         </select>
@@ -899,6 +945,20 @@
 
     $(function() {
         $.applyDataMask();
+        filtrarContasPorEstabelecimento('#inputEstabelecimento', '#inputContaTitulo');
+    });
+
+    function filtrarContasPorEstabelecimento(seletorEstabelecimento, seletorConta) {
+        var idEstabelecimento = $(seletorEstabelecimento).val();
+        $(seletorConta + ' option').each(function() {
+            $(this).prop('disabled', idEstabelecimento && String($(this).data('estabelecimento')) !== String(idEstabelecimento));
+        });
+        if ($(seletorConta + ' option:selected').prop('disabled')) $(seletorConta).selectpicker('val', '');
+        $(seletorConta).selectpicker('refresh');
+    }
+
+    $('#inputEstabelecimento').on('changed.bs.select', function() {
+        filtrarContasPorEstabelecimento('#inputEstabelecimento', '#inputContaTitulo');
     });
 
     function calculaTitulo() {
@@ -973,11 +1033,13 @@
     $("#inputConfirmar").on('change', function() {
 
         if ($("#dataConfirmacao").is(":hidden")) {
+            $("#inputContaTitulo").prop('required', true).selectpicker('refresh');
             $("#inputDataConfirmacao").prop('required', true);
             $("#dataConfirmacao").show(300);
             $("#inputDataConfirmacao").val("<?= str_replace('-', '/', date("d-m-Y")) ?>");
             calcValorReceber();
         } else {
+            $("#inputContaTitulo").prop('required', false).selectpicker('refresh');
             $("#inputDataConfirmacao").prop('required', false);
             $("#dataConfirmacao").hide(300);
             $("#inputDataConfirmacao").val("");
@@ -1021,6 +1083,10 @@
     }
 
     <?php foreach ($lista_contas_receber as $key_contas_receber => $contas_receber) { ?>
+        filtrarContasPorEstabelecimento('#inputEstabelecimentoEdit<?= $contas_receber->cod_movimento_conta ?>', '#inputContaEdit<?= $contas_receber->cod_movimento_conta ?>');
+        $('#inputEstabelecimentoEdit<?= $contas_receber->cod_movimento_conta ?>').on('changed.bs.select', function() {
+            filtrarContasPorEstabelecimento('#inputEstabelecimentoEdit<?= $contas_receber->cod_movimento_conta ?>', '#inputContaEdit<?= $contas_receber->cod_movimento_conta ?>');
+        });
         $('#inputDataVencimentoEdit<?= $contas_receber->cod_movimento_conta ?>').datepicker({
             uiLibrary: 'bootstrap4'
         });
@@ -1036,12 +1102,14 @@
         $("#inputConfirmarEdit<?= $contas_receber->cod_movimento_conta ?>").on('change', function() {
 
             if ($("#dataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").is(":hidden")) {
+                $('#inputContaEdit<?= $contas_receber->cod_movimento_conta ?>').prop('required', true).selectpicker('refresh');
                 $("#inputDataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").prop('required', true);
                 $("#dataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").show(300);
                 $("#inputDataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").val(
                     "<?= str_replace('-', '/', date("d-m-Y")) ?>");
                 calcValorReceberEdit(<?= $contas_receber->cod_movimento_conta ?>);
             } else {
+                $('#inputContaEdit<?= $contas_receber->cod_movimento_conta ?>').prop('required', false).selectpicker('refresh');
                 $("#inputDataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").prop('required', false);
                 $("#dataConfirmacao<?= $contas_receber->cod_movimento_conta ?>").hide(300);
                 $("#inputValorReceber<?= $contas_receber->cod_movimento_conta ?>").val("");

@@ -21,7 +21,7 @@
                             href="<?= base_url('visao-geral') ?>">Visão Geral</a>
                     </li>
                     <?php if(getDadosUsuarioLogado()['producao'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-2">
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-2" hidden>
                         <a class="link-load nav-link <?php if($menu == 'Producao') echo "active"; ?> dropdown-toggle" href="#" onclick="window.location='<?= base_url('producao') ?>'"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Produção</a>
@@ -48,7 +48,7 @@
                     </li>
                     <?php } ?>
                     <?php if(getDadosUsuarioLogado()['vendas'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-3">
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-3" hidden>
                         <a class="link-load nav-link <?php if($menu == 'Vendas') echo "active"; ?> dropdown-toggle" href="#" onclick="window.location='<?= base_url('vendas') ?>'"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendas</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -81,7 +81,7 @@
                     </li>
                     <?php } ?>
                     <?php if(getDadosUsuarioLogado()['compras'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-2">
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-2" hidden>
                         <a class="link-load nav-link <?php if($menu == 'Compras') echo "active"; ?> dropdown-toggle" href="#" onclick="window.location='<?= base_url('compras') ?>'"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Compras</a>
@@ -109,7 +109,7 @@
                     </li>
                     <?php } ?>
                     <?php if(getDadosUsuarioLogado()['estoque'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-2">
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-2" hidden>
                         <a class="link-load nav-link <?php if($menu == 'Estoque') echo "active"; ?> dropdown-toggle" href="#" onclick="window.location='<?= base_url('estoque') ?>'"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Estoque</a>
@@ -132,7 +132,7 @@
                     </li>
                     <?php } ?>
                     <?php if(getDadosUsuarioLogado()['fiscal'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-2">
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-2" hidden>
                         <a class="nav-link <?php if($menu == 'Fiscal') echo "active"; ?> dropdown-toggle" href="#"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Fiscal</a>
@@ -166,6 +166,8 @@
                                         a Receber</a>
                                     <a class="link-load dropdown-item" href="<?= base_url('financeiro/saldo-conta') ?>">Saldo por
                                         Conta</a>
+                                    <a class="link-load dropdown-item" href="<?= base_url('financeiro/conciliacao-bancaria') ?>">Conciliação
+                                        Bancária</a>
                                 </div>
                                 <div class="col-md-6">
                                     <span class="dropdown-label"><strong>Relatórios</strong></span>
@@ -232,6 +234,7 @@
                     </li>
                 </ul>
 
+                <?php $empresasPermitidas = getEmpresasUsuarioLogado(); ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item dropdown dropdown-icon-right show-on-hover margem-direita-10">
                         <a class="nav-link " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
@@ -240,7 +243,7 @@
                             <span class="dropdown-label"><?= getDadosUsuarioLogado()['nome_usuario'] ?></span>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-label text-dark"><?= getDadosUsuarioLogado()['nome_empresa'] ?></span>
-                            <span class="dropdown-label text-dark">ID Cliente:
+                            <span class="dropdown-label text-dark">Empresa:
                                 <?= getDadosUsuarioLogado()['id_empresa'] ?></span>
                             <div class="dropdown-divider"></div>
                             <a class="link-load dropdown-item" href="<?= base_url('meus-dados') ?>">Meus Dados</a>
@@ -252,9 +255,17 @@
                         <a class="nav-link " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false"><i class="fas fa-cog"></i></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                            <a class="link-load dropdown-item" href="<?= base_url('dados-empresa') ?>">Dados da Minha Empresa</a>
-                            <a class="link-load dropdown-item" href="<?= base_url('fiscal/natureza-operacao') ?>">Natureza de Operação</a>
+                            <?php if(count($empresasPermitidas) > 0) { ?>
+                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modalTrocarEmpresa">
+                                Trocar Empresa
+                            </button>
                             <div class="dropdown-divider"></div>
+                            <?php } ?>
+                            <a class="link-load dropdown-item" href="<?= base_url('empresas') ?>">Cadastro de Empresas</a>
+                            <a class="link-load dropdown-item" href="<?= base_url('estabelecimentos') ?>">Cadastro de Estabelecimentos</a>
+                            <a class="link-load dropdown-item" href="<?= base_url('dados-empresa') ?>">Dados da Minha Empresa</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="link-load dropdown-item" href="<?= base_url('fiscal/natureza-operacao') ?>">Natureza de Operação</a>
                             <a class="link-load dropdown-item" href="<?= base_url('usuario') ?>">Usuários da Empresa</a>
                         </div>
                     </li>
@@ -263,6 +274,49 @@
             </div>
         </div>
     </nav>
+
+    <?php if(getDadosUsuarioLogado()['tipo_acesso'] == 1 && count($empresasPermitidas) > 0) { ?>
+    <div class="modal fade" id="modalTrocarEmpresa" tabindex="-1" role="dialog"
+        aria-labelledby="tituloTrocarEmpresa" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="<?= base_url('trocar-empresa') ?>" method="POST" class="mb-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tituloTrocarEmpresa">Trocar Empresa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-0">
+                            <label for="inputTrocarEmpresa">Selecione a Empresa</label>
+                            <select id="inputTrocarEmpresa" name="IdEmpresa"
+                                class="selectpicker show-tick form-control"
+                                data-live-search="true" data-width="100%"
+                                title="Selecione uma Empresa" required>
+                                <?php foreach($empresasPermitidas as $empresaPermitida) { ?>
+                                <option value="<?= (int) $empresaPermitida->id_empresa ?>"
+                                    <?= (int) $empresaPermitida->id_empresa === (int) getDadosUsuarioLogado()['id_empresa'] ? 'selected' : '' ?>>
+                                    <?= (int) $empresaPermitida->id_empresa ?> - <?= html_escape($empresaPermitida->nome_empresa) ?>
+                                </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Trocar Empresa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    $('#inputTrocarEmpresa').selectpicker({
+        style: 'btn-input-primary'
+    });
+    </script>
+    <?php } ?>
 
 	<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1" id="spinner">
 		<div class="modal-dialog modal-sm">

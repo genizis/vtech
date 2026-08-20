@@ -421,7 +421,7 @@ $("#btnExportVendedorResumido").click(function(e) {
     var table_div = document.getElementById('downloadXLSResumido');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Venda Por Vendedor (Resumido).xls';
+    a.download = 'VTech - Venda Por Vendedor (Resumido).xls';
     a.click();
     e.preventDefault();
 });
@@ -432,7 +432,7 @@ $("#btnExportVendedorCliente").click(function(e) {
     var table_div = document.getElementById('downloadXLSCliente');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Venda Por Vendedor (Cliente).xls';
+    a.download = 'VTech - Venda Por Vendedor (Cliente).xls';
     a.click();
     e.preventDefault();
 });
@@ -443,7 +443,7 @@ $("#btnExportVendedorProduto").click(function(e) {
     var table_div = document.getElementById('downloadXLSProduto');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Venda Por Vendedor (Produto).xls';
+    a.download = 'VTech - Venda Por Vendedor (Produto).xls';
     a.click();
     e.preventDefault();
 });

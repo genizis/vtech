@@ -1,11 +1,24 @@
 <?php $this->load->view('gerais/header' , $menu); ?>
 <?php $this->load->view('gerais/menu', $menu); ?>
+<?php
+$titulo_pagina = isset($titulo_pagina) ? $titulo_pagina : 'Dados da Minha Empresa';
+$acao_formulario = isset($acao_formulario) ? $acao_formulario : base_url('dados-empresa');
+$url_cancelar = isset($url_cancelar) ? $url_cancelar : base_url('visao-geral');
+$cadastro_empresa = isset($cadastro_empresa) ? $cadastro_empresa : false;
+$cadastro_estabelecimento = isset($cadastro_estabelecimento) ? $cadastro_estabelecimento : false;
+$url_lista = isset($url_lista) ? $url_lista : base_url('empresas');
+$titulo_lista = isset($titulo_lista) ? $titulo_lista : 'Empresas';
+$id_registro = $cadastro_estabelecimento ? $empresa->id_estabelecimento : $empresa->id_empresa;
+?>
 
 <section>
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url('visao-geral') ?>">Visão Geral</a></li>
-            <li class="breadcrumb-item active">Dados da Minha Empresa</li>
+            <?php if($cadastro_empresa) { ?>
+            <li class="breadcrumb-item"><a href="<?php echo $url_lista ?>"><?php echo $titulo_lista ?></a></li>
+            <?php } ?>
+            <li class="breadcrumb-item active"><?php echo $titulo_pagina ?></li>
         </ol>
     </div>
 </section>
@@ -15,7 +28,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
-                <form action="<?php echo base_url("dados-empresa") ?>" method='post'
+                <form action="<?php echo $acao_formulario ?>" method='post'
                                     enctype="multipart/form-data" id="formEmpresa" class="needs-validation" novalidate>
                     <div class="card  mb-3">
                         <div class="card-body">
@@ -35,23 +48,46 @@
                                     </div>
                                     <?php } $this->session->set_flashdata('sucesso', ''); ?>                                
                                     <div class="form-row">
+                                        <?php if($id_registro !== null) { ?>
                                         <div class="form-group col-md-2">
-                                            <label for="inputIDEmpresa">ID da Empresa</label>
+                                            <label for="inputIDEmpresa"><?php echo $cadastro_estabelecimento ? 'ID do Estabelecimento' : 'ID da Empresa'; ?></label>
                                             <input type="text" class="form-control" id="inputIDEmpresa" name="IDEmpresa"
-                                                value="<?php echo $empresa->id_empresa ?>" readonly>
+                                                value="<?php echo $id_registro ?>" readonly>
                                         </div>
-                                        <div class="form-group col-md-5">
+                                        <?php } ?>
+                                        <div class="form-group <?php echo $id_registro === null ? 'col-md-6' : 'col-md-5'; ?>">
                                             <label for="inputRazaoSocial">Razão Social</label>
                                             <input type="text" class="form-control" id="inputRazaoSocial"
                                                 name="RazaoSocial" value="<?php echo $empresa->razao_social ?>">
                                         </div>
-                                        <div class="form-group col-md-5">
-                                            <label for="inputNomeFantasia">Nome da Empresa <span
+                                        <div class="form-group <?php echo $id_registro === null ? 'col-md-6' : 'col-md-5'; ?>">
+                                            <label for="inputNomeFantasia"><?php echo $cadastro_estabelecimento ? 'Nome do Estabelecimento' : 'Nome da Empresa'; ?> <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="inputNomeFantasia"
                                                 name="NomeEmpresa" value="<?php echo $empresa->nome_empresa ?>">
                                         </div>
                                     </div>
+                                    <?php if($cadastro_estabelecimento) { ?>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Empresa Vinculada</label>
+                                            <input type="text" class="form-control"
+                                                value="<?php echo getDadosUsuarioLogado()['id_empresa'] . ' - ' . html_escape(getDadosUsuarioLogado()['nome_empresa']); ?>" readonly>
+                                            <input type="hidden" name="IdEmpresa" value="<?php echo getDadosUsuarioLogado()['id_empresa']; ?>">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Tipo de Estabelecimento <span class="text-danger">*</span></label>
+                                            <div class="btn-group btn-block" data-toggle="buttons">
+                                                <label class="btn btn-outline-primary <?php if($empresa->tipo_estabelecimento == 1) echo 'active'; ?>">
+                                                    <input type="radio" name="TipoEstabelecimento" value="1" <?php if($empresa->tipo_estabelecimento == 1) echo 'checked'; ?>> Matriz
+                                                </label>
+                                                <label class="btn btn-outline-primary <?php if($empresa->tipo_estabelecimento == 2) echo 'active'; ?>">
+                                                    <input type="radio" name="TipoEstabelecimento" value="2" <?php if($empresa->tipo_estabelecimento == 2) echo 'checked'; ?>> Filial
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +159,7 @@
                                                         value="<?php echo $empresa->insc_estadual ?>">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="inputLogo">Logo da Empresa</label>
+                                                    <label for="inputLogo">Logo <?php echo $cadastro_estabelecimento ? 'do Estabelecimento' : 'da Empresa'; ?></label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
                                                             <input type="file" class="custom-file-input search"
@@ -141,7 +177,7 @@
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="checkIsenta" name="Isenta" value="1"
                                                             <?php if($empresa->isenta_ie == 1) echo "checked"; ?>>
-                                                        <label class="custom-control-label" for="checkIsenta">Empresa
+                                                        <label class="custom-control-label" for="checkIsenta"><?php echo $cadastro_estabelecimento ? 'Estabelecimento' : 'Empresa'; ?>
                                                             Isenta
                                                             de Inscrição Estadual</label>
                                                     </div>
@@ -303,7 +339,8 @@
                                                         <option value="<?php echo $conta->cod_conta ?>"
                                                             <?php if($conta->cod_conta == $empresa->conta_padrao) echo "selected"; ?>>
                                                             <?php echo $conta->cod_conta ?> -
-                                                            <?php echo $conta->nome_conta ?>
+                                                            <?php echo $conta->nome_conta ?> -
+                                                            <?php echo html_escape($conta->nome_estabelecimento) ?>
                                                         </option>
                                                         <?php } ?>
                                                     </select>
@@ -644,7 +681,7 @@
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary" form="formEmpresa"><i
                                                     class="fas fa-save"></i> Salvar</button>
-                                            <a href="<?php echo base_url() ?>visao-geral"
+                                            <a href="<?php echo $url_cancelar ?>"
                                                 class="btn btn-secondary">Cancelar</a>
                                         </div>
                                     </div>

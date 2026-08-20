@@ -16,7 +16,7 @@ class Email extends CI_Model{
         $mail->Password = 'P%UAHYw-!e.r';                    
         $mail->SMTPSecure = 'ssl';                            
         $mail->Port = 465;
-        $mail->setFrom('contato@shopfloor.com.br', 'Contato do ShopFloor');  
+        $mail->setFrom('contato@shopfloor.com.br', 'Contato do VTech');
 
         //$this->setConfigServidor();
         
@@ -265,7 +265,7 @@ class Email extends CI_Model{
         </body></html>';
 
         $mail->isHTML(true);                                  
-        $mail->Subject = 'Bem-vindo ao ShopFloor, ' . $nome;
+        $mail->Subject = 'Bem-vindo ao VTech, ' . $nome;
         $mail->Body    = $texto;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->AddEmbeddedImage('img/logo-branco.png', 'logo');

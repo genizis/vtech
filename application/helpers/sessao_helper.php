@@ -16,6 +16,18 @@ function usuarioLogado()
     return !empty($ci->session->userdata('usuario'));
 }
 
+function getEmpresasUsuarioLogado()
+{
+    $ci =& get_instance();
+    $usuario = getDadosUsuarioLogado();
+
+    if(empty($usuario)){
+        return array();
+    }
+
+    return $ci->empresa->getEmpresasPermitidas($usuario['email'], $usuario['id_empresa']);
+}
+
 //Retornar json Em API
 function responseJson($instance,$dados, $status = 203)
 {

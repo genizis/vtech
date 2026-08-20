@@ -13,7 +13,7 @@
                     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                 </div>
                 <div class="toast-body">
-                    Seu acesso ao ShopFloor expirará em <strong><?= $dias_periodo ?> dia(s)</strong>,
+                    Seu acesso ao VTech expirará em <strong><?= $dias_periodo ?> dia(s)</strong>,
                     entre em contato conosco através do telefone (42) 9 8819 2794 ou pelo e-mail
                     contato@shopfloor.com.br para renovação</a>
                 </div>
@@ -23,7 +23,7 @@
             <?php if($num_produto == 0) { ?>
             <div class="toast" data-autohide="false" id="myToast1">
                 <div class="toast-header">
-                    <strong class="mr-auto"><i class="fas fa-bell text-info"></i> Seja bem-vindo ao ShopFloor!</strong>
+                    <strong class="mr-auto"><i class="fas fa-bell text-info"></i> Seja bem-vindo ao VTech!</strong>
                     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                 </div>
                 <div class="toast-body">
@@ -94,7 +94,7 @@
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="mb-2"><strong>Precisa de ajuda com o ShopFloor?</strong></h5>
+                        <h5 class="mb-2"><strong>Precisa de ajuda com o VTech?</strong></h5>
                         <p class="card-text text-dark">Nós temos um canal específico para isto, entre em contato conosco através do e-mail: <a href="mailto:suporte@shopfloor.com.br" class="text-info">suporte@shopfloor.com.br</a></p>
                         <p class="card-text text-dark">Responderemos o mais breve possível!</p>
                     </div>

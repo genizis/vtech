@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'OmicronController';
+$route['default_controller'] = 'OmicronController/formLogin';
 $route['404_override'] = 'OmicronController/paginaNula';
 $route['translate_uri_dashes'] = FALSE;
 $route['erro-404']['GET'] = 'VisaoGeralController/erro404';
@@ -60,8 +60,6 @@ $route['logout']['GET'] =  'VisaoGeralController/logoutUsuario';
 
 $route['login']['GET'] =  'OmicronController/formLogin';
 $route['login']['POST'] =  'OmicronController/loginUsuario';
-$route['comece-agora']['GET'] =  'OmicronController/formCadastroEmpresa';
-$route['comece-agora']['POST'] =  'OmicronController/inserirEmpresa';
 $route['confirmar-email/(:any)']['GET'] =  'OmicronController/confirmaEmail/$1';
 $route['reenviar-email/(:any)']['GET'] =  'OmicronController/reenviarEmail/$1';
 
@@ -80,8 +78,21 @@ $route['usuario'] = 'UsuariosController/listarUsuario';
 $route['usuario/(:num)'] = 'UsuariosController/listarUsuario';
 
 //Rotas Usuário e Empresa
+$route['empresas']['GET'] = 'EmpresaController/listarEmpresas';
+$route['empresas/(:num)']['GET'] = 'EmpresaController/listarEmpresas';
+$route['empresas/nova-empresa']['GET'] = 'EmpresaController/formEmpresa';
+$route['empresas/nova-empresa']['POST'] = 'EmpresaController/inserirEmpresa';
+$route['empresas/editar-empresa/(:num)']['GET'] = 'EmpresaController/editarCadastroEmpresa/$1';
+$route['empresas/editar-empresa/(:num)']['POST'] = 'EmpresaController/salvarCadastroEmpresa/$1';
+$route['estabelecimentos']['GET'] = 'EstabelecimentoController/listar';
+$route['estabelecimentos/(:num)']['GET'] = 'EstabelecimentoController/listar';
+$route['estabelecimentos/novo-estabelecimento']['GET'] = 'EstabelecimentoController/novo';
+$route['estabelecimentos/novo-estabelecimento']['POST'] = 'EstabelecimentoController/inserir';
+$route['estabelecimentos/editar-estabelecimento/(:num)']['GET'] = 'EstabelecimentoController/editar/$1';
+$route['estabelecimentos/editar-estabelecimento/(:num)']['POST'] = 'EstabelecimentoController/salvar/$1';
 $route['dados-empresa']['GET'] =  'EmpresaController/editarEmpresa';
 $route['dados-empresa']['POST'] =  'EmpresaController/salvarEmpresa';
+$route['trocar-empresa']['POST'] = 'EmpresaController/trocarEmpresa';
 $route['solicita-conexao-conta-azul']['GET'] =  'EmpresaController/solicitaConexaoContaAzul';
 $route['retira-aviso-conta-azul']['GET'] =  'EmpresaController/retiraNotificacaoContaAzul';
 $route['desconecta-conta-azul'] =  'EmpresaController/DesconectaContaAzul';
@@ -189,6 +200,12 @@ $route['relatorios/dre-dfc-gerencial/(:any)']['GET'] = 'FinanceiroController/DRE
 $route['financeiro/saldo-conta']['GET'] = 'FinanceiroController/redirecionaSaldoConta';
 $route['financeiro/saldo-conta/(:any)/(:any)']['GET'] = 'FinanceiroController/listarSaldoConta/$1/$2';
 $route['financeiro/saldo-conta/(:any)/(:any)/(:num)'] = 'FinanceiroController/listarSaldoConta';
+
+$route['financeiro/conciliacao-bancaria']['GET'] = 'FinanceiroController/redirecionaConciliacaoBancaria';
+$route['financeiro/conciliacao-bancaria/(:num)']['GET'] = 'FinanceiroController/conciliacaoBancaria/$1';
+$route['financeiro/conciliacao-bancaria/(:num)/importar']['POST'] = 'FinanceiroController/importarExtratoBancario/$1';
+$route['financeiro/conciliacao-bancaria/(:num)/conciliar']['POST'] = 'FinanceiroController/conciliarMovimento/$1';
+$route['financeiro/conciliacao-bancaria/(:num)/desfazer']['POST'] = 'FinanceiroController/desfazerConciliacao/$1';
 $route['financeiro/saldo-conta/(:any)/(:any)/(:num)'] = 'FinanceiroController/listarSaldoConta';
 
 
@@ -710,8 +727,3 @@ $route['ajax/inserir-cliente']['POST'] = 'AjaxController/inserirCliente';
 $route['ajax/inserir-transportador']['POST'] = 'AjaxController/inserirTransportador';
 $route['ajax/inserir-lote']['POST'] = 'AjaxController/inserirLote';
 $route['ajax/busca-produto-cod-barras']['POST'] = 'AjaxController/getProdutoBarras';
-
-
-
-
-

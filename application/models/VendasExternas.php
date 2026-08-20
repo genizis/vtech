@@ -93,10 +93,10 @@ class VendasExternas extends CI_Model{
             return false;
         }
 
-        // Verificando se há um cadastro de integração do ShopFloor
+        // Verificando se há um cadastro de integração do VTech
         foreach($integracao['REGISTROS'] as $key_integracao => $integ){
 
-            if($integ['DESCRICAO'] == 'ShopFloor'){
+            if($integ['DESCRICAO'] == 'VTech'){
                 return $integ['CODIGO'];
             }
 
@@ -116,7 +116,7 @@ class VendasExternas extends CI_Model{
 
         // Cria dados da integração
         $postIntegracao = array(
-            'descricao' => "ShopFloor"
+            'descricao' => "VTech"
         );
 
         // Realizando conexão
@@ -319,7 +319,7 @@ class VendasExternas extends CI_Model{
 
                 // Se mesmo assim não conseguir cadastrar o cliente, para o processo
                 if($cliente == null){
-                    $this->session->set_flashdata('erro', 'Integração Vendas Externas: Não foi possível cadastrar cliente ' . $atend['CLIENTE']['CODIGO'] . ' - ' . $atend['CLIENTE']['NOME'] . ' no ShopFloor');
+                    $this->session->set_flashdata('erro', 'Integração Vendas Externas: Não foi possível cadastrar cliente ' . $atend['CLIENTE']['CODIGO'] . ' - ' . $atend['CLIENTE']['NOME'] . ' no VTech');
                     return false;
                 }
 
@@ -356,7 +356,7 @@ class VendasExternas extends CI_Model{
 
                 // Se mesmo assim não conseguir cadastrar o vendedor, para o processo
                 if($vendedor == null){
-                    $this->session->set_flashdata('erro', 'Integração Vendas Externas: Não foi possível cadastrar vendedor ' . $atend['VENDEDOR']['CODIGO'] . ' - ' . $atend['VENDEDOR']['NOME'] . ' no ShopFloor');
+                    $this->session->set_flashdata('erro', 'Integração Vendas Externas: Não foi possível cadastrar vendedor ' . $atend['VENDEDOR']['CODIGO'] . ' - ' . $atend['VENDEDOR']['NOME'] . ' no VTech');
                     return false;
                 }
 
@@ -645,7 +645,7 @@ class VendasExternas extends CI_Model{
         // Por todos os produtos
         foreach($produto['REGISTROS'] as $key_produto => $pro){
 
-            // Os itens já cadastrados no ShopFloor deverão ter no Vendas Externas, Acesso Rápido, o código do ShopFloor para criar o vínculo
+            // Os itens já cadastrados no VTech deverão ter no Vendas Externas, Acesso Rápido, o código do VTech para criar o vínculo
             $produtoShop = $this->produto->getProdutoPorCodigo($pro['INFORMACOES_ADICIONAIS']['ACESSO_RAPIDO']);
             if($produtoShop != null){
                 //Atualiza cadastro cliente

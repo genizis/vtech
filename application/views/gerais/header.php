@@ -25,31 +25,31 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ShopFloor - <?= $menu ?></title>
+<title>VTech - <?= $menu ?></title>
 
 <link rel="shortcut icon" href="<?php echo base_url('img/logo-ico.ico') ?>" type="image/x-icon" />
 <link rel="manifest" href="<?= base_url('manifest.json') ?>"></link>
 
 <!-- Bootstrap Core CSS -->
-<link href="<?= base_url('/css/bootstrap.css'); ?>" rel = "stylesheet" type = "text/css" />
-<link href="<?= base_url('/css/bootstrap-select.css'); ?>" rel="stylesheet">
-<link href="<?= base_url('/css/omicron.css'); ?>" rel="stylesheet">        
-<link href="<?= base_url('/css/gijgo.css'); ?>" rel="stylesheet" type="text/css">
+<link href="<?= base_url('css/bootstrap.css?v=vtech-20260803'); ?>" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('css/bootstrap-select.css?v=vtech-20260803'); ?>" rel="stylesheet">
+<link href="<?= base_url('css/omicron.css?v=vtech-20260803'); ?>" rel="stylesheet">
+<link href="<?= base_url('css/gijgo.css?v=vtech-20260803'); ?>" rel="stylesheet" type="text/css">
 <script src="https://kit.fontawesome.com/9546a95941.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
 
 <!-- Scripts -->
-<script src="<?= base_url('/js/jquery-3.4.1.min.js'); ?>" type="text/javascript"></script>
-<script src="<?= base_url('/js/popper.min.js'); ?>" type="text/javascript"></script>
-<script src="<?= base_url('/js/bootstrap.js'); ?>" type="text/javascript"></script>
-<script src="<?= base_url('/js/Chart.js'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/jquery-3.4.1.min.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/popper.min.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/bootstrap.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/Chart.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js" type="text/javascript"></script>
-<script src="<?= base_url('/js/bootstrap-select.js'); ?>" type="text/javascript"></script>  
-<script src="<?= base_url('/js/jquery.mask.js'); ?>" type="text/javascript"></script>  
-<script src="<?= base_url('/js/gijgo.js'); ?>" type="text/javascript"></script> 
+<script src="<?= base_url('js/bootstrap-select.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/jquery.mask.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
+<script src="<?= base_url('js/gijgo.js?v=vtech-20260803'); ?>" type="text/javascript"></script>
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
 
-<script type="text/javascript" src="<?= base_url('/js/jquery-barcode.js'); ?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery-barcode.js?v=vtech-20260803'); ?>"></script>
 
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
 

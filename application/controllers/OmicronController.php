@@ -5,17 +5,13 @@ class OmicronController extends CI_Controller {
 
     function __construct(){
         parent::__construct();
+        $this->load->model('Estabelecimento', 'estabelecimento');
 
         if(usuarioLogado() == true){
 
             redirect(base_url("visao-geral"), "home", "refresh");
 
         }
-    }
-
-    public function index()
-	{
-		$this->load->view('omicron');
     }
 
     public function paginaNula()
@@ -113,14 +109,16 @@ class OmicronController extends CI_Controller {
                 $this->formLogin();
             }else{
 
+                $this->empresa->garantirAcessoEmpresa($usuario->email, $usuario->id_empresa, true);
+                if(!$this->empresa->usuarioPodeAcessarEmpresa($usuario->email, $usuario->id_empresa)){
+                    $this->session->set_flashdata('erro', 'Usuário sem acesso ativo a uma empresa');
+                    redirect(base_url('login'), "home", "refresh");
+                }
                 $empresa = $this->empresa->getEmpresaPorCodigo($usuario->id_empresa);
 
-                if($empresa->data_validade < date('Y-m-d')){
-                    $this->session->set_flashdata('erro', 'Período de acesso finalizado, entre em 
-                                                   contato através do telefone (41) 9 9666 8250 ou pelo email contato@shopfloor.com.br para renovação');
+                if($empresa == null){
+                    $this->session->set_flashdata('erro', 'A empresa padrão do usuário não foi encontrada');
                     redirect(base_url('login'), "home", "refresh");
-                }elseif($empresa->e_mail_confirmado == 0){
-                    redirect(base_url('confirmar-email/' . $usuario->id_empresa), "home", "refresh");
                 }elseif($usuario->ativo == 0){
                     $this->session->set_flashdata('erro', 'Usuário inativo, entre em contato com o administrador da sua empresa');
                     redirect(base_url('login'), "home", "refresh");
@@ -148,7 +146,7 @@ class OmicronController extends CI_Controller {
     }
 
     public function loginUsuarioVendedor(){
-        $this->form_validation->set_rules('IDCliente', 'ID Cliente', 'required',
+        $this->form_validation->set_rules('IDCliente', 'Código da empresa', 'required',
             array('required' => 'Você deve preencher o campo %s'));
         $this->form_validation->set_rules('UsuarioVendedor', 'Usuário Vendedor', 'required',
             array('required' => 'Você deve preencher o campo %s'));
@@ -307,8 +305,21 @@ class OmicronController extends CI_Controller {
 
                 $idEmpresa = $this->empresa->insertEmpresa($dadosEmpresa);
 
+                $idEstabelecimento = $this->estabelecimento->insertEstabelecimento(array(
+                    'id_empresa' => $idEmpresa,
+                    'tipo_estabelecimento' => 1,
+                    'razao_social' => $this->input->post('RazaoSocial'),
+                    'nome_estabelecimento' => $this->input->post('NomeEmpresa'),
+                    'tipo_pessoa' => $this->input->post('TipoPessoa'),
+                    'cnpj_cpf' => $this->input->post('CnpjCpf'),
+                    'tel_fixo' => $this->input->post('TelFixo'),
+                    'tel_cel' => $this->input->post('TelCel'),
+                    'email_contato' => $this->input->post('Email')
+                ));
+
                 $dadosConta = [
                     'id_empresa' => $idEmpresa,
+                    'id_estabelecimento' => $idEstabelecimento,
                     'nome_conta'  => "Carteira",
                     'ativo' => 1
                 ];

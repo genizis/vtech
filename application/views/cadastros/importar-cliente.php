@@ -124,7 +124,7 @@
                                                 <td class="text-center small">CNPJ ou CPF contendo máscara (Ex 00.000.000/0000-00 ou 000.000.000-00)</td>
                                                 <td class="text-center small">Nome do cliente</td>
                                                 <td class="text-center small">Razão Social do cliente</td>
-                                                <td class="text-center small">Nome do segmento conforme opções do ShopFloor</td>
+                                                <td class="text-center small">Nome do segmento conforme opções do VTech</td>
                                                 <td class="text-center small">Telefone fixo contendo máscara (Ex (00) 0000-0000)</td>
                                                 <td class="text-center small">Telefone celular contendo máscara (Ex (00) 0 0000-0000)</td>
                                                 <td class="text-center small">E-mail válido do cliente</td>
@@ -133,7 +133,7 @@
                                                 <td class="text-center small">Número do cliente</td>
                                                 <td class="text-center small">Complemento de endereço do cliente</td>
                                                 <td class="text-center small">Bairro do cliente</td>
-                                                <td class="text-center small">Nome da cidade do cliente conforme opções do ShopFloor</td>
+                                                <td class="text-center small">Nome da cidade do cliente conforme opções do VTech</td>
                                                 <td class="text-center small">Sigla do estado do cliente (Ex PR, SP, SC e etc...)</td>
                                             </tr>                                            
                                             <?php } ?>

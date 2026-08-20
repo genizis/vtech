@@ -3,13 +3,17 @@
 class Financeiro extends CI_Model{
 
     public function insertMovimentoConta($movimentoFinanceiro){
+        if(empty($movimentoFinanceiro['id_estabelecimento']) && !empty($movimentoFinanceiro['cod_conta'])){
+            $contaMovimento = $this->getContaPorCodigo($movimentoFinanceiro['cod_conta']);
+            if($contaMovimento !== null){
+                $movimentoFinanceiro['id_estabelecimento'] = $contaMovimento->id_estabelecimento;
+            }
+        }
         $this->db->insert('movimentos_conta', $movimentoFinanceiro);
         $titulo = $this->db->insert_id();
 
-        // Atualiza saldo da conta
-        $conta = $this->getContaPorCodigo($movimentoFinanceiro['cod_conta']);
-
         if($movimentoFinanceiro['confirmado'] == 1) {
+            $conta = $this->getContaPorCodigo($movimentoFinanceiro['cod_conta']);
 
             if($movimentoFinanceiro['tipo_movimento'] == 1) {
 
@@ -62,6 +66,7 @@ class Financeiro extends CI_Model{
     }
 
     public function updateConta($codConta, $conta){
+        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);
         $this->db->where('cod_conta', $codConta);
         $this->db->update('conta', $conta);
     } 
@@ -103,10 +108,8 @@ class Financeiro extends CI_Model{
         
         $codConta = $movimentoFinanceiro['cod_conta'];
 
-        // Atualiza saldo da conta
-        $conta = $this->getContaPorCodigo($codConta);
-
         if($movimento->confirmado == 0 && $movimentoFinanceiro['confirmado'] == 1) {
+            $conta = $this->getContaPorCodigo($codConta);
 
             if($movimento->tipo_movimento == 1) {
 
@@ -124,6 +127,8 @@ class Financeiro extends CI_Model{
             $this->updateConta($codConta, $dados);
 
         }elseif($movimento->confirmado == 1 && $movimentoFinanceiro['confirmado'] == 0) {
+            $codConta = $movimento->cod_conta;
+            $conta = $this->getContaPorCodigo($codConta);
 
             if($movimento->tipo_movimento == 1) {
 
@@ -337,7 +342,7 @@ class Financeiro extends CI_Model{
     } 
 
     public function getConta($filter = "", $limit = null, $offset = null){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);  
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         if($limit){
             $this->db->limit($limit, $offset);
@@ -345,13 +350,16 @@ class Financeiro extends CI_Model{
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_conta' ,$filter);
-            $this->db->or_like('nome_conta' ,$filter);
+            $this->db->or_like('conta.cod_conta' ,$filter);
+            $this->db->or_like('conta.nome_conta' ,$filter);
+            $this->db->or_like('estabelecimento.nome_estabelecimento' ,$filter);
             $this->db->group_end();
             
         }
 
         $this->db->select('conta.*');
+        $this->db->select('estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->select('(select count(*)
                               from movimentos_conta
                              where movimentos_conta.cod_conta = conta.cod_conta) count_mov');
@@ -376,8 +384,9 @@ class Financeiro extends CI_Model{
             
         }
 
-        $this->db->select('metodo_pagamento.*, conta.nome_conta');
+        $this->db->select('metodo_pagamento.*, conta.nome_conta, conta.id_estabelecimento, estabelecimento.nome_estabelecimento');
         $this->db->join('conta', 'conta.cod_conta = metodo_pagamento.cod_conta', 'left');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa', 'left');
         $this->db->select('(select count(*)
                               from movimentos_conta
                              where movimentos_conta.cod_metodo_pagamento = metodo_pagamento.cod_metodo_pagamento) count_mov');
@@ -564,7 +573,7 @@ class Financeiro extends CI_Model{
     }
 
     public function getContaAtiva($data, $filter = "", $limit = null, $offset = null){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);  
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         if($limit){
             $this->db->limit($limit, $offset);
@@ -574,11 +583,14 @@ class Financeiro extends CI_Model{
             $this->db->group_start();
             $this->db->or_like('cod_conta' ,$filter);
             $this->db->or_like('nome_conta' ,$filter);
+            $this->db->or_like('estabelecimento.nome_estabelecimento' ,$filter);
             $this->db->group_end();
             
         }
 
         $this->db->select('conta.*');
+        $this->db->select('estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->select("(select sum(movimentos_conta.valor_confirmado)
                               from movimentos_conta
                              where movimentos_conta.cod_conta = conta.cod_conta
@@ -609,18 +621,20 @@ class Financeiro extends CI_Model{
     }
 
     public function getContaAtivaRel(){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);  
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
-        $this->db->select('conta.*');
+        $this->db->select('conta.*, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
 
         return $this->db->where('conta.ativo = 1')->get('conta')->result();
         
     }
 
     public function getContaAtivaDestino($idConta){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);  
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
-        $this->db->select('conta.*');
+        $this->db->select('conta.*, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->where('conta.cod_conta != ', $idConta);  
 
         return $this->db->where('conta.ativo = 1')->get('conta')->result();
@@ -628,7 +642,7 @@ class Financeiro extends CI_Model{
     }
 
     public function getSaldoConta($data, $filter = "", $limit = null, $offset = null){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);  
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         if($limit){
             $this->db->limit($limit, $offset);
@@ -638,11 +652,14 @@ class Financeiro extends CI_Model{
             $this->db->group_start();
             $this->db->or_like('conta.cod_conta' ,$filter);
             $this->db->or_like('conta.nome_conta' ,$filter);
+            $this->db->or_like('estabelecimento.nome_estabelecimento' ,$filter);
             $this->db->group_end();
             
         }
 
         $this->db->select('conta.*');
+        $this->db->select('estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->select("(select sum(movimentos_conta.valor_confirmado)
                               from movimentos_conta
                              where movimentos_conta.cod_conta = conta.cod_conta
@@ -673,13 +690,14 @@ class Financeiro extends CI_Model{
     }
     
 
-    public function getContaPagarPendente($data, $fornecedorFiltro = "", $metodoPagamentoFiltro = "", $contaFinanceiraFiltro = "", $centroCustoFiltro = "", $contaContabilFiltro = ""){
-        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+    public function getContaPagarPendente($data, $fornecedorFiltro = "", $metodoPagamentoFiltro = "", $contaFinanceiraFiltro = "", $centroCustoFiltro = "", $contaContabilFiltro = "", $estabelecimentoFiltro = ""){
+        $this->db->where('estabelecimento.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         
-        $this->db->select("movimentos_conta.*, fornecedor.nome_fornecedor, centro_custo.nome_centro_custo, conta_contabil.nome_conta_contabil, conta.nome_conta, conta.ativo");
+        $this->db->select("movimentos_conta.*, fornecedor.nome_fornecedor, centro_custo.nome_centro_custo, conta_contabil.nome_conta_contabil, conta.nome_conta, conta.ativo, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento");
         $this->db->select('usuario.nome_usuario');
         $this->db->from('movimentos_conta');
-        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = movimentos_conta.id_estabelecimento');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta AND conta.id_empresa = estabelecimento.id_empresa', 'left');
         $this->db->join('fornecedor', 'fornecedor.cod_fornecedor = movimentos_conta.cod_emitente', 'left');
         $this->db->join('centro_custo', 'centro_custo.cod_centro_custo = movimentos_conta.cod_centro_custo and centro_custo.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'], 'left');
         $this->db->join('conta_contabil', 'conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil and conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'], 'left'); 
@@ -708,17 +726,37 @@ class Financeiro extends CI_Model{
         if($contaContabilFiltro != ""){
             $this->db->where_in('movimentos_conta.cod_conta_contabil', $contaContabilFiltro);
         }
+
+        if($estabelecimentoFiltro != ""){
+            $this->db->where_in('movimentos_conta.id_estabelecimento', $estabelecimentoFiltro);
+        }
     
         return $this->db->get()->result();
     }
 
-    public function getContaReceberPendente($data, $clienteFiltro = "", $metodoPagamentoFiltro = "", $contaFinanceiraFiltro = "", $centroCustoFiltro = "", $contaContabilFiltro = "", $vendedorFiltro = ""){
-        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+    public function getTotalPagarSemConta($dataFim, $estabelecimentoFiltro = ""){
+        $this->db->select_sum('movimentos_conta.valor_titulo', 'total');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = movimentos_conta.id_estabelecimento');
+        $this->db->where('estabelecimento.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('movimentos_conta.tipo_movimento', 2);
+        $this->db->where('movimentos_conta.confirmado', 0);
+        $this->db->where('movimentos_conta.cod_conta IS NULL', null, false);
+        $this->db->where('movimentos_conta.data_vencimento <=', $dataFim);
+        if($estabelecimentoFiltro != ""){
+            $this->db->where_in('movimentos_conta.id_estabelecimento', $estabelecimentoFiltro);
+        }
+        $resultado = $this->db->get('movimentos_conta')->row();
+        return $resultado !== null ? (float) $resultado->total : 0;
+    }
+
+    public function getContaReceberPendente($data, $clienteFiltro = "", $metodoPagamentoFiltro = "", $contaFinanceiraFiltro = "", $centroCustoFiltro = "", $contaContabilFiltro = "", $vendedorFiltro = "", $estabelecimentoFiltro = ""){
+        $this->db->where('estabelecimento.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         
-        $this->db->select("movimentos_conta.*, cliente.nome_cliente, centro_custo.nome_centro_custo, conta_contabil.nome_conta_contabil, conta.nome_conta, conta.ativo");
+        $this->db->select("movimentos_conta.*, cliente.nome_cliente, centro_custo.nome_centro_custo, conta_contabil.nome_conta_contabil, conta.nome_conta, conta.ativo, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento");
         $this->db->select('usuario.nome_usuario');
         $this->db->from('movimentos_conta');
-        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = movimentos_conta.id_estabelecimento');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta AND conta.id_empresa = estabelecimento.id_empresa', 'left');
         $this->db->join('cliente', 'cliente.cod_cliente = movimentos_conta.cod_emitente', 'left');
         $this->db->join('centro_custo', 'centro_custo.cod_centro_custo = movimentos_conta.cod_centro_custo and centro_custo.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'], 'left');
         $this->db->join('conta_contabil', 'conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil and conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'], 'left'); 
@@ -751,13 +789,33 @@ class Financeiro extends CI_Model{
         if($vendedorFiltro != ""){
             $this->db->where_in('movimentos_conta.cod_vendedor', $vendedorFiltro);
         }
+
+        if($estabelecimentoFiltro != ""){
+            $this->db->where_in('movimentos_conta.id_estabelecimento', $estabelecimentoFiltro);
+        }
     
         return $this->db->get()->result();
     }
 
+    public function getTotalReceberSemConta($dataFim, $estabelecimentoFiltro = ""){
+        $this->db->select_sum('movimentos_conta.valor_titulo', 'total');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = movimentos_conta.id_estabelecimento');
+        $this->db->where('estabelecimento.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('movimentos_conta.tipo_movimento', 1);
+        $this->db->where('movimentos_conta.confirmado', 0);
+        $this->db->where('movimentos_conta.cod_conta IS NULL', null, false);
+        $this->db->where('movimentos_conta.data_vencimento <=', $dataFim);
+        if($estabelecimentoFiltro != ""){
+            $this->db->where_in('movimentos_conta.id_estabelecimento', $estabelecimentoFiltro);
+        }
+        $resultado = $this->db->get('movimentos_conta')->row();
+        return $resultado !== null ? (float) $resultado->total : 0;
+    }
+
     public function getContaPorCodigo($codConta){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']);
-        
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->select('conta.*, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
 
         return $this->db->get_where('conta', array('cod_conta' => $codConta))->row();
     }
@@ -818,7 +876,7 @@ class Financeiro extends CI_Model{
     }
 
     public function getTitulospendentes(){
-        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         $this->db->select('movimentos_conta.*');
         $this->db->from('movimentos_conta');
@@ -873,9 +931,10 @@ class Financeiro extends CI_Model{
     }
 
     public function getSaldoContaPorCodigo($codConta, $dataFim){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
-        $this->db->select('conta.*'); 
+        $this->db->select('conta.*, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->select("(select sum(movimentos_conta.valor_titulo)
                               from movimentos_conta
                              where movimentos_conta.cod_conta = conta.cod_conta
@@ -952,12 +1011,14 @@ class Financeiro extends CI_Model{
     }
 
     public function countAllConta($filter = ""){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_conta' ,$filter);
-            $this->db->or_like('nome_conta' ,$filter);
+            $this->db->or_like('conta.cod_conta' ,$filter);
+            $this->db->or_like('conta.nome_conta' ,$filter);
+            $this->db->or_like('estabelecimento.nome_estabelecimento' ,$filter);
             $this->db->group_end();
             
         }
@@ -1120,7 +1181,7 @@ class Financeiro extends CI_Model{
     public function getContaResumida($dataInicio, $dataFim, $codConta = ""){
         $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']); 
 
-        $this->db->select("conta.*");        
+        $this->db->select("conta.*, estabelecimento.nome_estabelecimento, estabelecimento.tipo_estabelecimento");
         $this->db->select("sum((select sum(movimentos_conta.valor_confirmado)
                               from movimentos_conta
                              where movimentos_conta.cod_conta  = conta.cod_conta 
@@ -1166,6 +1227,7 @@ class Financeiro extends CI_Model{
                                and movimentos_conta.confirmado = 0
                                and movimentos_conta.data_vencimento <= '". $dataFim ."')) entrada_proj_total");
         $this->db->from('conta');
+        $this->db->join('estabelecimento', 'estabelecimento.id_estabelecimento = conta.id_estabelecimento AND estabelecimento.id_empresa = conta.id_empresa');
         $this->db->where('conta.ativo', 1);
         $this->db->group_by('conta.cod_conta');
 
@@ -2241,6 +2303,111 @@ class Financeiro extends CI_Model{
 
         return $query = $this->db->get()->result();  
 
+    }
+
+    public function getImportacaoConciliacaoPorHash($codConta, $hashArquivo){
+        return $this->db->get_where('conciliacao_importacao', array(
+            'id_empresa' => getDadosUsuarioLogado()['id_empresa'],
+            'cod_conta' => $codConta,
+            'hash_arquivo' => $hashArquivo
+        ))->row();
+    }
+
+    public function importarExtratoConciliacao($codConta, $arquivo, $hashArquivo, $transacoes){
+        $this->db->trans_start();
+        $datas = array_column($transacoes, 'data_movimento');
+        $this->db->insert('conciliacao_importacao', array(
+            'id_empresa' => getDadosUsuarioLogado()['id_empresa'],
+            'cod_conta' => $codConta,
+            'nome_arquivo' => $arquivo,
+            'hash_arquivo' => $hashArquivo,
+            'data_inicio' => empty($datas) ? null : min($datas),
+            'data_fim' => empty($datas) ? null : max($datas),
+            'data_importacao' => date('Y-m-d H:i:s'),
+            'usuario_importacao' => getDadosUsuarioLogado()['email']
+        ));
+        $idImportacao = $this->db->insert_id();
+        foreach($transacoes as $transacao){
+            $transacao['id_importacao'] = $idImportacao;
+            $transacao['id_empresa'] = getDadosUsuarioLogado()['id_empresa'];
+            $transacao['cod_conta'] = $codConta;
+            $this->db->insert('conciliacao_extrato', $transacao);
+        }
+        $this->db->trans_complete();
+        return $this->db->trans_status();
+    }
+
+    public function getExtratoConciliacao($codConta, $dataInicio, $dataFim){
+        $this->db->select('e.*, v.id_vinculo, v.cod_movimento_conta, v.valor_conciliado, m.desc_movimento desc_movimento_sistema');
+        $this->db->from('conciliacao_extrato e');
+        $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato', 'left');
+        $this->db->join('movimentos_conta m', 'm.cod_movimento_conta = v.cod_movimento_conta', 'left');
+        $this->db->where('e.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('e.cod_conta', $codConta);
+        $this->db->where('e.data_movimento >=', $dataInicio);
+        $this->db->where('e.data_movimento <=', $dataFim);
+        $this->db->order_by('e.data_movimento', 'desc');
+        $this->db->order_by('e.id_extrato', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function getMovimentosDisponiveisConciliacao($codConta, $dataInicio, $dataFim){
+        $this->db->select('m.cod_movimento_conta, m.data_confirmacao, m.desc_movimento, m.tipo_movimento, m.valor_confirmado');
+        $this->db->from('movimentos_conta m');
+        $this->db->join('conta c', 'c.cod_conta = m.cod_conta');
+        $this->db->join('conciliacao_vinculo v', 'v.cod_movimento_conta = m.cod_movimento_conta', 'left');
+        $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('m.cod_conta', $codConta);
+        $this->db->where('m.confirmado', 1);
+        $this->db->where('v.id_vinculo IS NULL', null, false);
+        $this->db->where('m.data_confirmacao >=', date('Y-m-d', strtotime($dataInicio . ' -3 days')));
+        $this->db->where('m.data_confirmacao <=', date('Y-m-d', strtotime($dataFim . ' +3 days')));
+        $this->db->order_by('m.data_confirmacao', 'desc');
+        return $this->db->get()->result();
+    }
+
+    public function conciliarExtratoMovimento($codConta, $idExtrato, $codMovimento){
+        $this->db->select('e.id_extrato, e.valor, e.status, m.cod_movimento_conta, m.tipo_movimento, m.valor_confirmado');
+        $this->db->from('conciliacao_extrato e');
+        $this->db->join('conta c', 'c.cod_conta = e.cod_conta');
+        $this->db->join('movimentos_conta m', 'm.cod_movimento_conta = ' . $this->db->escape($codMovimento) . ' AND m.cod_conta = e.cod_conta');
+        $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato OR v.cod_movimento_conta = m.cod_movimento_conta', 'left');
+        $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('e.cod_conta', $codConta);
+        $this->db->where('e.id_extrato', $idExtrato);
+        $this->db->where('m.confirmado', 1);
+        $this->db->where('v.id_vinculo IS NULL', null, false);
+        $dados = $this->db->get()->row();
+        if($dados === null) return false;
+        $valorMovimento = $dados->tipo_movimento == 1 ? (float)$dados->valor_confirmado : -(float)$dados->valor_confirmado;
+        if(abs((float)$dados->valor - $valorMovimento) > 0.009) return false;
+
+        $this->db->trans_start();
+        $this->db->insert('conciliacao_vinculo', array(
+            'id_extrato' => $idExtrato,
+            'cod_movimento_conta' => $codMovimento,
+            'valor_conciliado' => abs((float)$dados->valor),
+            'data_conciliacao' => date('Y-m-d H:i:s'),
+            'usuario_conciliacao' => getDadosUsuarioLogado()['email']
+        ));
+        $this->db->where('id_extrato', $idExtrato)->update('conciliacao_extrato', array('status' => 'conciliado'));
+        $this->db->trans_complete();
+        return $this->db->trans_status();
+    }
+
+    public function desfazerConciliacaoExtrato($codConta, $idExtrato){
+        $this->db->select('e.id_extrato');
+        $this->db->from('conciliacao_extrato e');
+        $this->db->join('conta c', 'c.cod_conta = e.cod_conta');
+        $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('e.cod_conta', $codConta);
+        $this->db->where('e.id_extrato', $idExtrato);
+        if($this->db->get()->row() === null) return false;
+        $this->db->trans_start();
+        $this->db->where('id_extrato', $idExtrato)->delete('conciliacao_vinculo');
+        $this->db->where('id_extrato', $idExtrato)->update('conciliacao_extrato', array('status' => 'pendente'));
+        $this->db->trans_complete();
+        return $this->db->trans_status();
     }
 
 }

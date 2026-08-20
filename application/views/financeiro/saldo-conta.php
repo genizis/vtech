@@ -46,7 +46,8 @@
                                         <?php foreach ($lista_conta as $key_conta_resumida => $conta) { ?>
                                             <tr>
                                                 <td colspan="2">
-                                                    <strong><a href="<?= base_url("financeiro/saldo-conta/movimento-conta/{$conta->cod_conta}") ?>" class="link-load text-dark" data-toggle="tooltip" data-placement="bottom" title="<?= $conta->nome_conta ?>"><?= $conta->nome_conta ?></a></strong>
+                                                    <strong><a href="<?= base_url("financeiro/saldo-conta/movimento-conta/{$conta->cod_conta}") ?>" class="link-load text-dark" data-toggle="tooltip" data-placement="bottom" title="<?= $conta->nome_conta ?>"><?= $conta->nome_conta ?></a></strong><br>
+                                                    <small class="text-muted"><?= html_escape($conta->nome_estabelecimento) ?></small>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -56,6 +57,13 @@
                                                 <td class="text-right <?php if ($conta->saldo_conta > 0) echo "text-teal";
                                                                         if ($conta->saldo_conta < 0) echo "text-danger"; ?>">
                                                     R$ <?= number_format($conta->saldo_conta, 2, ',', '.') ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="pt-0">
+                                                    <a href="<?= base_url("financeiro/conciliacao-bancaria/{$conta->cod_conta}") ?>" class="btn btn-outline-primary btn-sm btn-block link-load">
+                                                        <i class="fas fa-random"></i> Conciliar conta
+                                                    </a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

@@ -51,14 +51,9 @@
                                         </div> 
                                     </div>                                    
                                     <button type="submit" form="login" class="btn btn-teal btn-lg btn-block mt-3 mb-3">Entrar</button>    
-                                    <div class="row"> 
-                                        <div class="col-md-6">
-                                            <a class="text-muted" href="<?php echo base_url() ?>comece-agora">Esqueci minha senha</a>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <a class="text-muted" href="<?php echo base_url() ?>comece-agora">Quero me registrar</a>
-                                        </div> 
-                                    </div>                               
+                                    <div class="text-center">
+                                        <span class="text-muted">Acesso interno VTech</span>
+                                    </div>
                                 </fieldset>
                             </form>                            
                         </div>

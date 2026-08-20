@@ -23,8 +23,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'https://shopfloor.com.br/';
-$config['base_url'] = 'http://localhost/shopfloor/';
+$configured_base_url = getenv('APP_BASE_URL');
+
+if ($configured_base_url !== FALSE && $configured_base_url !== '') {
+	$config['base_url'] = rtrim($configured_base_url, '/') . '/';
+} else {
+	$is_https = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
+		|| (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https');
+	$scheme = $is_https ? 'https' : 'http';
+	$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+	$script_dir = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
+	$script_dir = $script_dir === '/' || $script_dir === '.' ? '' : $script_dir;
+	$config['base_url'] = $scheme . '://' . $host . rtrim($script_dir, '/') . '/';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +47,7 @@ $config['base_url'] = 'http://localhost/shopfloor/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

@@ -66,7 +66,7 @@
                                                 <?php foreach($lista_conta as $key_conta => $conta) { ?>
                                                 <option value="<?= $conta->cod_conta ?>"
                                                     <?php if($conta->cod_conta == $metodo_pagamento->cod_conta) echo "selected"; ?>>
-                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?>
+                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?> - <?= html_escape($conta->nome_estabelecimento) ?>
                                                 </option>
                                                 <?php } ?>
                                             </select>

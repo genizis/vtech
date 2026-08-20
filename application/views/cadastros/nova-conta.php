@@ -34,7 +34,21 @@
                                 <?php } $this->session->set_flashdata('sucesso', ''); ?>                                
                                 <form action='nova-conta' method='post' class="needs-validation" novalidate>
                                     <div class="form-row">
-                                        <div class="form-group col-md-9">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputEstabelecimento">Estabelecimento <span class="text-danger">*</span></label>
+                                            <select id="inputEstabelecimento" name="IdEstabelecimento"
+                                                class="selectpicker show-tick form-control" data-live-search="true"
+                                                data-style="btn-input-primary" title="Selecione um Estabelecimento" required>
+                                                <?php foreach($lista_estabelecimento as $estabelecimento) { ?>
+                                                <option value="<?= $estabelecimento->id_estabelecimento ?>"
+                                                    <?= set_select('IdEstabelecimento', $estabelecimento->id_estabelecimento) ?>>
+                                                    <?= $estabelecimento->id_estabelecimento ?> - <?= html_escape($estabelecimento->nome_estabelecimento) ?>
+                                                    (<?= (int)$estabelecimento->tipo_estabelecimento === 1 ? 'Matriz' : 'Filial' ?>)
+                                                </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-5">
                                             <label for="inputNomeConta">Nome da Conta <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="inputNomeConta"
                                                 name='NomeConta' value="<?= set_value('NomeConta'); ?>" required>
@@ -93,6 +107,7 @@
 <script>
 $(function() {
      $.applyDataMask();
+     $('#inputEstabelecimento').selectpicker({style: 'btn-input-primary'});
 });    
 </script>
 

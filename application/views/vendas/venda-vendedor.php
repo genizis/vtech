@@ -540,7 +540,7 @@
         var table_div = document.getElementById('downloadXLSCliente');
         var table_html = table_div.outerHTML.replace(/ /g, '%20');
         a.href = data_type + ', ' + table_html;
-        a.download = 'ShopFloor - Venda Por Vendedor.xls';
+        a.download = 'VTech - Venda Por Vendedor.xls';
         a.click();
         e.preventDefault();
     });

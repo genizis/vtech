@@ -208,7 +208,7 @@ $("#btnExport").click(function(e) {
     var table_div = document.getElementById('downloadXLS');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Notas Fiscais Emitidas.xls';
+    a.download = 'VTech - Notas Fiscais Emitidas.xls';
     a.click();
     e.preventDefault();
 });

@@ -27,6 +27,7 @@
                                         <?= $conta->nome_conta ?>
                                     </strong>
                                 </h5>
+                                <small class="text-muted"><?= html_escape($conta->nome_estabelecimento) ?></small>
                             </div>
                         </div>
                     </div>
@@ -145,6 +146,9 @@
                                                             type="button" class="btn btn-outline-info btn-sm mb-0"><i
                                                                 class="fas fa-plus-circle"></i> Novo
                                                             Lançamento</button>
+                                                        <a href="<?= base_url("financeiro/conciliacao-bancaria/{$conta->cod_conta}") ?>"
+                                                            class="btn btn-outline-primary btn-sm mb-0 link-load"><i
+                                                                class="fas fa-random"></i> Conciliar</a>
                                                         <button data-toggle="modal" data-target="#transferencia"
                                                             type="button" class="btn btn-outline-warning btn-sm"><i
                                                                 class="fas fa-exchange-alt"></i> Nova
@@ -526,7 +530,7 @@
                                                         <?php foreach($lista_conta as $key_conta => $conta) { ?>
                                                         <option value="<?= $conta->cod_conta ?>"
                                                             <?php if($conta->cod_conta == set_value('CodConta')) echo "selected"; ?>>
-                                                            <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?>
+                                                            <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?> - <?= html_escape($conta->nome_estabelecimento) ?>
                                                         </option>
                                                         <?php } ?>
                                                     </select>

@@ -110,14 +110,14 @@
                                             <tr>
                                                 <td class="text-center small">CNPJ ou CPF contendo máscara (Ex 00.000.000/0000-00 ou 000.000.000-00)</td>
                                                 <td class="text-center small">Razão social do fornecedor</td>
-                                                <td class="text-center small">Nome do segmento conforme opções do ShopFloor</td>
+                                                <td class="text-center small">Nome do segmento conforme opções do VTech</td>
                                                 <td class="text-center small">Telefone fixo contendo máscara (Ex (00) 0000-0000)</td>
                                                 <td class="text-center small">Telefone celular contendo máscara (Ex (00) 0 0000-0000)</td>
                                                 <td class="text-center small">E-mail válido do fornecedor</td>
                                                 <td class="text-center small">Endereço do fornecedor</td>
                                                 <td class="text-center small">Bairro do fornecedor</td>
                                                 <td class="text-center small">Sigla do estado do fornecedor (Ex PR, SP, SC e etc...)</td>
-                                                <td class="text-center small">Nome da cidade do fornecedor conforme opções do ShopFloor</td>
+                                                <td class="text-center small">Nome da cidade do fornecedor conforme opções do VTech</td>
                                             </tr>                                            
                                             <?php } ?>
                                         </tbody>

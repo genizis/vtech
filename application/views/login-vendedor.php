@@ -35,7 +35,7 @@
                     <form action="<?= base_url('login-vendedor') ?>" method="POST" id="login" class="mb-0 needs-validation mt-3" novalidate>
                         <div class="form-row">                                 
                             <div class="form-group col-md-12">
-                                <label for="inputIDCliente">ID Cliente <span class="text-danger">*</span></label>
+                                <label for="inputIDCliente">Código da empresa <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="inputIDCliente" name="IDCliente"  inputmode="numeric"
                                     value="<?= set_value('IDCliente') ?>" required>
                             </div>

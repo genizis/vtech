@@ -59,7 +59,7 @@
                                                 name="CodConta" data-style="btn-input-primary">
                                                 <?php foreach($lista_conta as $key_conta => $conta) { ?>
                                                 <option value="<?= $conta->cod_conta ?>">
-                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?>
+                                                    <?= $conta->cod_conta ?> - <?= $conta->nome_conta ?> - <?= html_escape($conta->nome_estabelecimento) ?>
                                                 </option>
                                                 <?php } ?>
                                             </select>

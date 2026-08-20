@@ -360,7 +360,7 @@ $("#btnExportProdutoResumido").click(function(e) {
     var table_div = document.getElementById('downloadXLSResumido');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Consumo Por Produto (Resumido).xls';
+    a.download = 'VTech - Consumo Por Produto (Resumido).xls';
     a.click();
     e.preventDefault();
 });
@@ -371,7 +371,7 @@ $("#btnExportProdutoDetalhado").click(function(e) {
     var table_div = document.getElementById('downloadXLSDetalhado');
     var table_html = table_div.outerHTML.replace(/ /g, '%20');
     a.href = data_type + ', ' + table_html;
-    a.download = 'ShopFloor - Consumo Por Produto (Detalhado).xls';
+    a.download = 'VTech - Consumo Por Produto (Detalhado).xls';
     a.click();
     e.preventDefault();
 });

@@ -152,7 +152,8 @@
                                                                                             }
                                                                                         } ?>>
                                                 <?= $conta->cod_conta ?> -
-                                                <?= $conta->nome_conta ?></option>
+                                                <?= $conta->nome_conta ?> -
+                                                <?= html_escape($conta->nome_estabelecimento) ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

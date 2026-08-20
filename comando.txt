@@ -1,0 +1,13 @@
+APLICAÇÃO
+
+Status aplicação: sudo service apache2 status
+Subir aplicação: sudo service apache2 start
+Parar aplicação: sudo service apache2 stop
+Reiniciar aplicação: sudo service apache2 restart
+
+BANCO DE DADOS
+
+Status banco de dados: sudo service mysql status
+Subir banco de dados: sudo service mysql start
+Parar banco de dados: sudo service mysql stop
+Reiniciar banco de dados: sudo service mysql restart

@@ -5,6 +5,7 @@ class FinanceiroController extends CI_Controller {
 
     function __construct(){
         parent::__construct();
+        $this->load->model('Estabelecimento', 'estabelecimento');
 
         if(usuarioLogado() == false){
 
@@ -29,6 +30,7 @@ class FinanceiroController extends CI_Controller {
     public function formConta(){
 
         $dados = array(
+            'lista_estabelecimento' => $this->estabelecimento->getEstabelecimentosDaEmpresa(),
             'menu' => 'Cadastro'
         );
 
@@ -78,6 +80,7 @@ class FinanceiroController extends CI_Controller {
         }else{            
             $dados = array(
                 'conta' => $conta,
+                'lista_estabelecimento' => $this->estabelecimento->getEstabelecimentosDaEmpresa(),
                 'menu' => 'Cadastro'
             );
         }
@@ -157,6 +160,8 @@ class FinanceiroController extends CI_Controller {
         $this->form_validation->set_rules('NomeConta', 'Nome da Conta', 'required|max_length[100]',
             array('required' => 'Você deve preencher o campo %s',
                   'max_length' => 'O campo %s não deve ter mais que 45 caracteres'));
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_conta_valido',
+            array('required' => 'Você deve preencher o campo %s'));
 
         if($this->form_validation->run() == false){
 
@@ -170,6 +175,7 @@ class FinanceiroController extends CI_Controller {
 
             $data = [
                 'id_empresa' => getDadosUsuarioLogado()['id_empresa'],
+                'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
                 'nome_conta'  => $this->input->post('NomeConta'),
                 'ativo' => $this->input->post('Ativo')
             ];
@@ -526,6 +532,8 @@ class FinanceiroController extends CI_Controller {
         $this->form_validation->set_rules('NomeConta', 'Nome da Conta', 'required|max_length[100]',
             array('required' => 'Você deve preencher o campo %s',
                   'max_length' => 'O campo %s não deve ter mais que 100 caracteres'));
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_conta_valido',
+            array('required' => 'Você deve preencher o campo %s'));
 
         if($this->form_validation->run() == false){
 
@@ -535,6 +543,7 @@ class FinanceiroController extends CI_Controller {
         }else {
 
             $dados = [
+                'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
                 'nome_conta'  => $this->input->post('NomeConta'),
                 'ativo' => $this->input->post('Ativo')
             ];
@@ -643,6 +652,9 @@ class FinanceiroController extends CI_Controller {
             array('required' => 'Você deve preencher o campo %s'));        
         $this->form_validation->set_rules('DataVencimento[]', 'Data de Vencimento', 'required', 
             array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_titulo_valido',
+            array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('CodConta', 'Conta Financeira', 'callback_conta_titulo_valida');
 
         if($this->form_validation->run() == false){
 
@@ -651,28 +663,15 @@ class FinanceiroController extends CI_Controller {
             
         }else {
 
-            $empresa = $this->empresa->getEmpresaPorCodigo(getDadosUsuarioLogado()['id_empresa']);
-
             $numParcela = $this->input->post('Parcelas');
             $dataVencimento = $this->input->post('DataVencimento');
             $valorParcela = $this->input->post('ValorParcela');
             $metodoPagamento = $this->input->post('CodMetodoPagamento'); 
+            $codContaInformada = $this->input->post('CodConta') ?: null;
 
             $valorTotal = floatval(str_replace(",",".",(str_replace(".","",$this->input->post('ValorTitulo')))));
 
             for ($i = 1; $i <= $numParcela; $i++) {   
-
-                $codConta = $empresa->conta_padrao;
-                $pagamento = null;
-
-                if($metodoPagamento[$i] != null) {
-                    $pagamento = $this->financeiro->getMetodoPagamentoPorCodigo($metodoPagamento[$i]);
-                    if($pagamento->cod_conta != null && $pagamento->cod_conta != 0){
-
-                        $codConta = $pagamento->cod_conta;
-
-                    }
-                }
 
                 $usuarioLiquidacao = null;
                 if($this->input->post('Confirmar') == 1){
@@ -682,8 +681,9 @@ class FinanceiroController extends CI_Controller {
                 //Cria título                
                 $dadosMovimento = null;
                 $dadosMovimento = [
-                    'cod_conta' => $codConta,
-                    'cod_metodo_pagamento' => $metodoPagamento[$i],
+                    'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
+                    'cod_conta' => $codContaInformada,
+                    'cod_metodo_pagamento' => isset($metodoPagamento[$i]) && $metodoPagamento[$i] !== '' ? $metodoPagamento[$i] : null,
                     'cod_centro_custo' => $this->input->post('CodCentroCusto'),
                     'cod_conta_contabil' => $this->input->post('CodContaContabil'),
                     'cod_emitente' => $this->input->post('CodFornecedor'),
@@ -772,6 +772,9 @@ class FinanceiroController extends CI_Controller {
             array('required' => 'Você deve preencher o campo %s'));        
         $this->form_validation->set_rules('DataVencimento[]', 'Data de Vencimento', 'required', 
             array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_titulo_valido',
+            array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('CodConta', 'Conta Financeira', 'callback_conta_titulo_valida');
 
         if($this->form_validation->run() == false){
 
@@ -780,28 +783,15 @@ class FinanceiroController extends CI_Controller {
             
         }else {
 
-            $empresa = $this->empresa->getEmpresaPorCodigo(getDadosUsuarioLogado()['id_empresa']);
-
             $numParcela = $this->input->post('Parcelas');
             $dataVencimento = $this->input->post('DataVencimento');
             $valorParcela = $this->input->post('ValorParcela');
             $metodoPagamento = $this->input->post('CodMetodoPagamento'); 
+            $codContaInformada = $this->input->post('CodConta') ?: null;
 
             $valorTotal = floatval(str_replace(",",".",(str_replace(".","",$this->input->post('ValorTitulo')))));
 
             for ($i = 1; $i <= $numParcela; $i++) {
-
-                $codConta = $empresa->conta_padrao;
-                $pagamento = null;
-
-                if($metodoPagamento[$i] != null) {
-                    $pagamento = $this->financeiro->getMetodoPagamentoPorCodigo($metodoPagamento[$i]);
-                    if($pagamento->cod_conta != null && $pagamento->cod_conta != 0){
-
-                        $codConta = $pagamento->cod_conta;
-
-                    }
-                }
 
                 $usuarioLiquidacao = null;
                 if($this->input->post('Confirmar') == 1){
@@ -811,8 +801,9 @@ class FinanceiroController extends CI_Controller {
                 //Criação do título                
                 $dadosMovimento = null;
                 $dadosMovimento = [
-                    'cod_conta' => $codConta,
-                    'cod_metodo_pagamento' => $metodoPagamento[$i],                    
+                    'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
+                    'cod_conta' => $codContaInformada,
+                    'cod_metodo_pagamento' => isset($metodoPagamento[$i]) && $metodoPagamento[$i] !== '' ? $metodoPagamento[$i] : null,
                     'cod_centro_custo' => $this->input->post('CodCentroCusto'),
                     'cod_conta_contabil' => $this->input->post('CodContaContabil'),
                     'cod_emitente' => $this->input->post('CodCliente'),                    
@@ -1012,8 +1003,9 @@ class FinanceiroController extends CI_Controller {
             array('required' => 'Você deve preencher o campo %s'));        
         $this->form_validation->set_rules('DataVencimento', 'Data de Vencimento', 'required', 
             array('required' => 'Você deve preencher o campo %s'));
-        $this->form_validation->set_rules('CodConta', 'Conta', 'required',
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_titulo_valido',
             array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('CodConta', 'Conta Financeira', 'callback_conta_titulo_valida');
 
         if($this->form_validation->run() == false){
 
@@ -1028,7 +1020,8 @@ class FinanceiroController extends CI_Controller {
             }
 
             $dadosMovimento = [
-                'cod_conta' => $this->input->post('CodConta'),
+                'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
+                'cod_conta' => $this->input->post('CodConta') ?: null,
                 'cod_metodo_pagamento' => $this->input->post('CodMetodoPagamento'),
                 'cod_emitente' => $this->input->post('CodFornecedor'),
                 'cod_centro_custo' => $this->input->post('CodCentroCusto'),
@@ -1065,8 +1058,9 @@ class FinanceiroController extends CI_Controller {
             array('required' => 'Você deve preencher o campo %s'));        
         $this->form_validation->set_rules('DataVencimento', 'Data de Vencimento', 'required', 
             array('required' => 'Você deve preencher o campo %s'));
-        $this->form_validation->set_rules('CodConta', 'Conta', 'required',
+        $this->form_validation->set_rules('IdEstabelecimento', 'Estabelecimento', 'required|callback_estabelecimento_titulo_valido',
             array('required' => 'Você deve preencher o campo %s'));
+        $this->form_validation->set_rules('CodConta', 'Conta Financeira', 'callback_conta_titulo_valida');
 
         if($this->form_validation->run() == false){
 
@@ -1081,7 +1075,8 @@ class FinanceiroController extends CI_Controller {
             }
 
             $dadosMovimento = [
-                'cod_conta' => $this->input->post('CodConta'),
+                'id_estabelecimento' => $this->input->post('IdEstabelecimento'),
+                'cod_conta' => $this->input->post('CodConta') ?: null,
                 'cod_metodo_pagamento' => $this->input->post('CodMetodoPagamento'),
                 'cod_emitente' => $this->input->post('CodCliente'),
                 'cod_centro_custo' => $this->input->post('CodCentroCusto'),
@@ -1212,9 +1207,15 @@ class FinanceiroController extends CI_Controller {
 
         }elseif($this->input->post("Acao") == "Confirmar"){
 
+            $titulosSemConta = 0;
             foreach($codMovimento as $titulo){
 
                 $movimento = $this->financeiro->getMovimentoPorCodigo($titulo);
+                $contaMovimento = $movimento->cod_conta !== null ? $this->financeiro->getContaPorCodigo($movimento->cod_conta) : null;
+                if($contaMovimento === null || (int) $contaMovimento->id_estabelecimento !== (int) $movimento->id_estabelecimento){
+                    $titulosSemConta++;
+                    continue;
+                }
 
                 $dadosMovimento = null;
                 $dadosMovimento = [
@@ -1234,7 +1235,11 @@ class FinanceiroController extends CI_Controller {
     
                 $this->financeiro->updateMovimentoConta($titulo, $dadosMovimento);
             }
-            $this->session->set_flashdata('sucesso', 'Registro(s) selecionado(s) confirmado(s)');
+            if($titulosSemConta > 0){
+                $this->session->set_flashdata('erro', 'Defina uma conta financeira nos títulos pendentes antes de confirmá-los');
+            }else{
+                $this->session->set_flashdata('sucesso', 'Registro(s) selecionado(s) confirmado(s)');
+            }
 
         }  
         
@@ -1255,9 +1260,15 @@ class FinanceiroController extends CI_Controller {
 
         }elseif($this->input->post("Acao") == "Confirmar"){
 
+            $titulosSemConta = 0;
             foreach($codMovimento as $titulo){
 
                 $movimento = $this->financeiro->getMovimentoPorCodigo($titulo);
+                $contaMovimento = $movimento->cod_conta !== null ? $this->financeiro->getContaPorCodigo($movimento->cod_conta) : null;
+                if($contaMovimento === null || (int) $contaMovimento->id_estabelecimento !== (int) $movimento->id_estabelecimento){
+                    $titulosSemConta++;
+                    continue;
+                }
 
                 $dadosMovimento = null;
                 $dadosMovimento = [
@@ -1277,7 +1288,11 @@ class FinanceiroController extends CI_Controller {
     
                 $this->financeiro->updateMovimentoConta($titulo, $dadosMovimento);
             }
-            $this->session->set_flashdata('sucesso', 'Registro(s) selecionado(s) confirmado(s)');
+            if($titulosSemConta > 0){
+                $this->session->set_flashdata('erro', 'Defina uma conta financeira nos títulos pendentes antes de confirmá-los');
+            }else{
+                $this->session->set_flashdata('sucesso', 'Registro(s) selecionado(s) confirmado(s)');
+            }
 
         }  
         
@@ -1331,6 +1346,39 @@ class FinanceiroController extends CI_Controller {
 
         $this->load->view('cadastros/conta', $dados);
     } 
+
+    public function estabelecimento_conta_valido($idEstabelecimento){
+        if($this->estabelecimento->buscarPorCodigo((int) $idEstabelecimento) === null){
+            $this->form_validation->set_message('estabelecimento_conta_valido', 'O estabelecimento informado não pertence à empresa ativa');
+            return false;
+        }
+        return true;
+    }
+
+    public function estabelecimento_titulo_valido($idEstabelecimento){
+        if($this->estabelecimento->buscarPorCodigo((int) $idEstabelecimento) === null){
+            $this->form_validation->set_message('estabelecimento_titulo_valido', 'O estabelecimento informado não pertence à empresa ativa');
+            return false;
+        }
+        return true;
+    }
+
+    public function conta_titulo_valida($codConta){
+        if(($codConta === null || $codConta === '') && $this->input->post('Confirmar') != 1){
+            return true;
+        }
+        if($codConta === null || $codConta === ''){
+            $this->form_validation->set_message('conta_titulo_valida', 'Você deve informar a Conta Financeira para confirmar o título');
+            return false;
+        }
+
+        $conta = $this->financeiro->getContaPorCodigo((int) $codConta);
+        if($conta === null || (int) $conta->id_estabelecimento !== (int) $this->input->post('IdEstabelecimento')){
+            $this->form_validation->set_message('conta_titulo_valida', 'A Conta Financeira deve pertencer ao estabelecimento do título');
+            return false;
+        }
+        return true;
+    }
 
     public function listarMetodoPagamento(){ 
         
@@ -1599,13 +1647,17 @@ class FinanceiroController extends CI_Controller {
         $fornecedorFiltro = $this->input->get('fornecedorFiltro'); 
         $metodoPagamentoFiltro = $this->input->get('MetodoPagamentoFiltro');
         $contaFinanceiraFiltro = $this->input->get('ContaFinanceiraFiltro');
+        $estabelecimentoFiltro = $this->input->get('EstabelecimentoFiltro');
         $centroCustoFiltro = $this->input->get('CentroCustoFiltro');
         $contaContabilFiltro = $this->input->get('ContaContabilFiltro');
 
         $listaContaAtiva = $this->financeiro->getContaResumida($dataInicio, $dataFim);
         $listaContaResumida = $this->financeiro->getTotalLancamento($dataInicio, $dataFim, $contaFinanceiraFiltro);
+        if(empty($contaFinanceiraFiltro)){
+            $listaContaResumida->saida_proj += $this->financeiro->getTotalPagarSemConta($dataFim, $estabelecimentoFiltro);
+        }
         $listaMetodoPagamento = $this->financeiro->getMetodoPagamentoAtivo();
-        $listaTitulos = $this->financeiro->getContaPagarPendente($data, $fornecedorFiltro, $metodoPagamentoFiltro, $contaFinanceiraFiltro, $centroCustoFiltro, $contaContabilFiltro);
+        $listaTitulos = $this->financeiro->getContaPagarPendente($data, $fornecedorFiltro, $metodoPagamentoFiltro, $contaFinanceiraFiltro, $centroCustoFiltro, $contaContabilFiltro, $estabelecimentoFiltro);
         $listaFornecedor = $this->fornecedor->getFornecedorAtivo();
         $listaCentroCusto = $this->financeiro->getCentroCustoAtivoDespesa();
         $listaContaContabil = $this->financeiro->getContaContabilAtivoDespesa();
@@ -1616,9 +1668,11 @@ class FinanceiroController extends CI_Controller {
             'fornecedorFiltro' => $fornecedorFiltro,
             'metodoPagamentoFiltro' => $metodoPagamentoFiltro,
             'contaFinanceiraFiltro' => $contaFinanceiraFiltro,
+            'estabelecimentoFiltro' => $estabelecimentoFiltro,
             'centroCustoFiltro' => $centroCustoFiltro,
             'contaContabilFiltro' => $contaContabilFiltro,
             'lista_conta' => $listaContaAtiva,
+            'lista_estabelecimento' => $this->estabelecimento->getEstabelecimentosDaEmpresa(),
             'lista_metodo_pagamento' => $listaMetodoPagamento,
             'lista_contas_pagar' => $listaTitulos,
             'lista_fornecedor' => $listaFornecedor,
@@ -1701,14 +1755,18 @@ class FinanceiroController extends CI_Controller {
         $clienteFiltro = $this->input->get('ClienteFiltro'); 
         $metodoPagamentoFiltro = $this->input->get('MetodoPagamentoFiltro');
         $contaFinanceiraFiltro = $this->input->get('ContaFinanceiraFiltro');
+        $estabelecimentoFiltro = $this->input->get('EstabelecimentoFiltro');
         $centroCustoFiltro = $this->input->get('CentroCustoFiltro');
         $contaContabilFiltro = $this->input->get('ContaContabilFiltro');
         $vendedorFiltro = $this->input->get('VendedorFiltro');
 
         $listaContaAtiva = $this->financeiro->getContaResumida($dataInicio, $dataFim);
         $listaContaResumida = $this->financeiro->getTotalLancamento($dataInicio, $dataFim, $contaFinanceiraFiltro);
+        if(empty($contaFinanceiraFiltro)){
+            $listaContaResumida->entrada_proj += $this->financeiro->getTotalReceberSemConta($dataFim, $estabelecimentoFiltro);
+        }
         $listaMetodoPagamento = $this->financeiro->getMetodoPagamentoAtivo();
-        $listaTitulos = $this->financeiro->getContaReceberPendente($data, $clienteFiltro, $metodoPagamentoFiltro, $contaFinanceiraFiltro, $centroCustoFiltro, $contaContabilFiltro, $vendedorFiltro);
+        $listaTitulos = $this->financeiro->getContaReceberPendente($data, $clienteFiltro, $metodoPagamentoFiltro, $contaFinanceiraFiltro, $centroCustoFiltro, $contaContabilFiltro, $vendedorFiltro, $estabelecimentoFiltro);
         $listaCliente = $this->cliente->getClienteAtivo();
         $listaCentroCusto = $this->financeiro->getCentroCustoAtivoReceita();
         $listaContaContabil = $this->financeiro->getContaContabilAtivoReceita();
@@ -1720,10 +1778,12 @@ class FinanceiroController extends CI_Controller {
             'clienteFiltro' => $clienteFiltro,
             'metodoPagamentoFiltro' => $metodoPagamentoFiltro,
             'contaFinanceiraFiltro' => $contaFinanceiraFiltro,
+            'estabelecimentoFiltro' => $estabelecimentoFiltro,
             'centroCustoFiltro' => $centroCustoFiltro,
             'contaContabilFiltro' => $contaContabilFiltro,
             'vendedorFiltro' => $vendedorFiltro,
             'lista_conta' => $listaContaAtiva,
+            'lista_estabelecimento' => $this->estabelecimento->getEstabelecimentosDaEmpresa(),
             'lista_metodo_pagamento' => $listaMetodoPagamento,
             'lista_contas_receber' => $listaTitulos,
             'lista_cliente' => $listaCliente,
@@ -2090,6 +2150,211 @@ class FinanceiroController extends CI_Controller {
 
         $this->load->view('financeiro/movimento-conta', $dados);
 
+    }
+
+    public function redirecionaConciliacaoBancaria(){
+        $contas = $this->financeiro->getConta();
+        if(empty($contas)){
+            $this->session->set_flashdata('erro', 'Cadastre uma conta financeira antes de iniciar a conciliação.');
+            redirect(base_url('conta'));
+        }
+        redirect(base_url('financeiro/conciliacao-bancaria/' . $contas[0]->cod_conta));
+    }
+
+    public function conciliacaoBancaria($codConta){
+        $conta = $this->financeiro->getContaPorCodigo($codConta);
+        if($conta === null) redirect(base_url('erro-404'));
+
+        $dataInicio = $this->normalizarDataConciliacao($this->input->get('DataInicio'), date('Y-m-01'));
+        $dataFim = $this->normalizarDataConciliacao($this->input->get('DataFim'), date('Y-m-d'));
+        $extrato = $this->financeiro->getExtratoConciliacao($codConta, $dataInicio, $dataFim);
+        $movimentos = $this->financeiro->getMovimentosDisponiveisConciliacao($codConta, $dataInicio, $dataFim);
+
+        foreach($extrato as $item){
+            $item->sugestoes = array();
+            if($item->id_vinculo !== null) continue;
+            foreach($movimentos as $movimento){
+                $valorMovimento = $movimento->tipo_movimento == 1 ? (float)$movimento->valor_confirmado : -(float)$movimento->valor_confirmado;
+                $distanciaDias = abs((strtotime($item->data_movimento) - strtotime($movimento->data_confirmacao)) / 86400);
+                if(abs((float)$item->valor - $valorMovimento) < 0.009 && $distanciaDias <= 3){
+                    $item->sugestoes[] = $movimento;
+                }
+            }
+        }
+
+        $resumo = array('conciliado' => 0, 'pendente' => 0, 'quant_conciliado' => 0, 'quant_pendente' => 0);
+        foreach($extrato as $item){
+            if($item->id_vinculo !== null){
+                $resumo['conciliado'] += abs((float)$item->valor);
+                $resumo['quant_conciliado']++;
+            }else{
+                $resumo['pendente'] += abs((float)$item->valor);
+                $resumo['quant_pendente']++;
+            }
+        }
+
+        $this->load->view('financeiro/conciliacao-bancaria', array(
+            'conta' => $conta,
+            'lista_conta' => $this->financeiro->getConta(),
+            'lista_extrato' => $extrato,
+            'lista_movimentos' => $movimentos,
+            'resumo' => $resumo,
+            'dataInicio' => $dataInicio,
+            'dataFim' => $dataFim,
+            'menu' => 'Financeiro'
+        ));
+    }
+
+    public function importarExtratoBancario($codConta){
+        if($this->financeiro->getContaPorCodigo($codConta) === null) redirect(base_url('erro-404'));
+        if(empty($_FILES['arquivo_extrato']['tmp_name']) || !is_uploaded_file($_FILES['arquivo_extrato']['tmp_name'])){
+            $this->session->set_flashdata('erro', 'Selecione um arquivo OFX ou CSV válido.');
+            redirect(base_url('financeiro/conciliacao-bancaria/' . $codConta));
+        }
+        if((int)$_FILES['arquivo_extrato']['size'] > 5 * 1024 * 1024){
+            $this->session->set_flashdata('erro', 'O arquivo excede o limite de 5 MB.');
+            redirect(base_url('financeiro/conciliacao-bancaria/' . $codConta));
+        }
+        $nome = $_FILES['arquivo_extrato']['name'];
+        $extensao = strtolower(pathinfo($nome, PATHINFO_EXTENSION));
+        if(!in_array($extensao, array('ofx', 'csv'))){
+            $this->session->set_flashdata('erro', 'Formato não suportado. Utilize um arquivo OFX ou CSV.');
+            redirect(base_url('financeiro/conciliacao-bancaria/' . $codConta));
+        }
+        $hash = hash_file('sha256', $_FILES['arquivo_extrato']['tmp_name']);
+        if($this->financeiro->getImportacaoConciliacaoPorHash($codConta, $hash) !== null){
+            $this->session->set_flashdata('erro', 'Este arquivo já foi importado para a conta selecionada.');
+            redirect(base_url('financeiro/conciliacao-bancaria/' . $codConta));
+        }
+        $conteudo = file_get_contents($_FILES['arquivo_extrato']['tmp_name']);
+        $transacoes = $extensao === 'ofx' ? $this->lerOfxConciliacao($conteudo) : $this->lerCsvConciliacao($conteudo);
+        if(empty($transacoes)){
+            $this->session->set_flashdata('erro', 'Nenhuma transação válida foi encontrada no arquivo.');
+        }elseif($this->financeiro->importarExtratoConciliacao($codConta, $nome, $hash, $transacoes)){
+            $this->session->set_flashdata('sucesso', count($transacoes) . ' transações importadas com sucesso.');
+        }else{
+            $this->session->set_flashdata('erro', 'Não foi possível concluir a importação. Verifique se o extrato já foi importado.');
+        }
+        redirect(base_url('financeiro/conciliacao-bancaria/' . $codConta));
+    }
+
+    public function conciliarMovimento($codConta){
+        $idExtrato = (int)$this->input->post('IdExtrato');
+        $codMovimento = (int)$this->input->post('CodMovimento');
+        if($idExtrato > 0 && $codMovimento > 0 && $this->financeiro->conciliarExtratoMovimento($codConta, $idExtrato, $codMovimento)){
+            $this->session->set_flashdata('sucesso', 'Movimento conciliado com sucesso.');
+        }else{
+            $this->session->set_flashdata('erro', 'Os movimentos não puderam ser conciliados. Confira conta, valor e disponibilidade.');
+        }
+        redirect($this->urlConciliacaoComPeriodo($codConta));
+    }
+
+    public function desfazerConciliacao($codConta){
+        if($this->financeiro->desfazerConciliacaoExtrato($codConta, (int)$this->input->post('IdExtrato'))){
+            $this->session->set_flashdata('sucesso', 'Conciliação desfeita com sucesso.');
+        }else{
+            $this->session->set_flashdata('erro', 'Não foi possível desfazer a conciliação.');
+        }
+        redirect($this->urlConciliacaoComPeriodo($codConta));
+    }
+
+    private function normalizarDataConciliacao($data, $padrao){
+        if(empty($data)) return $padrao;
+        $dataNormalizada = DateTime::createFromFormat('d/m/Y', $data);
+        return $dataNormalizada ? $dataNormalizada->format('Y-m-d') : $padrao;
+    }
+
+    private function urlConciliacaoComPeriodo($codConta){
+        $inicio = $this->input->post('DataInicio');
+        $fim = $this->input->post('DataFim');
+        $query = ($inicio && $fim) ? '?DataInicio=' . urlencode($inicio) . '&DataFim=' . urlencode($fim) : '';
+        return base_url('financeiro/conciliacao-bancaria/' . $codConta . $query);
+    }
+
+    private function lerOfxConciliacao($conteudo){
+        $transacoes = array();
+        preg_match_all('/<STMTTRN>(.*?)(?:<\/STMTTRN>|(?=<STMTTRN>|<\/BANKTRANLIST>))/is', $conteudo, $blocos);
+        foreach($blocos[1] as $bloco){
+            $data = $this->valorTagOfx($bloco, 'DTPOSTED');
+            $valor = $this->valorTagOfx($bloco, 'TRNAMT');
+            if(!$data || $valor === null || !preg_match('/^(\d{4})(\d{2})(\d{2})/', $data, $partes)) continue;
+            $descricao = $this->valorTagOfx($bloco, 'MEMO');
+            if(!$descricao) $descricao = $this->valorTagOfx($bloco, 'NAME');
+            if(!$descricao) $descricao = 'Movimento bancário';
+            $fitid = $this->valorTagOfx($bloco, 'FITID');
+            $documento = $this->valorTagOfx($bloco, 'CHECKNUM');
+            $dataMovimento = $partes[1] . '-' . $partes[2] . '-' . $partes[3];
+            $transacoes[] = $this->montarTransacaoConciliacao($dataMovimento, $descricao, $valor, $documento, $fitid);
+        }
+        return $this->diferenciarHashesDuplicados($transacoes);
+    }
+
+    private function valorTagOfx($bloco, $tag){
+        return preg_match('/<' . $tag . '>([^<\r\n]+)/i', $bloco, $valor) ? trim(html_entity_decode($valor[1], ENT_QUOTES, 'UTF-8')) : null;
+    }
+
+    private function lerCsvConciliacao($conteudo){
+        $linhas = preg_split('/\r\n|\n|\r/', trim($conteudo));
+        if(empty($linhas)) return array();
+        $delimitador = substr_count($linhas[0], ';') >= substr_count($linhas[0], ',') ? ';' : ',';
+        $cabecalho = array_map(array($this, 'normalizarCabecalhoCsv'), str_getcsv(array_shift($linhas), $delimitador));
+        $idxData = $this->indiceCabecalhoCsv($cabecalho, array('data', 'date', 'data_movimento'));
+        $idxDescricao = $this->indiceCabecalhoCsv($cabecalho, array('descricao', 'historico', 'memo', 'description'));
+        $idxValor = $this->indiceCabecalhoCsv($cabecalho, array('valor', 'amount', 'valor_lancamento'));
+        if($idxData === false || $idxDescricao === false || $idxValor === false) return array();
+        $transacoes = array();
+        foreach($linhas as $linha){
+            if(trim($linha) === '') continue;
+            $colunas = str_getcsv($linha, $delimitador);
+            if(!isset($colunas[$idxData], $colunas[$idxDescricao], $colunas[$idxValor])) continue;
+            $data = DateTime::createFromFormat('d/m/Y', trim($colunas[$idxData]));
+            if(!$data) $data = DateTime::createFromFormat('Y-m-d', trim($colunas[$idxData]));
+            $valorTexto = preg_replace('/[^0-9,.-]/', '', $colunas[$idxValor]);
+            if(strpos($valorTexto, ',') !== false) $valorTexto = str_replace(',', '.', str_replace('.', '', $valorTexto));
+            if(!$data || !is_numeric($valorTexto)) continue;
+            $transacoes[] = $this->montarTransacaoConciliacao($data->format('Y-m-d'), $colunas[$idxDescricao], $valorTexto, null, null);
+        }
+        return $this->diferenciarHashesDuplicados($transacoes);
+    }
+
+    private function normalizarCabecalhoCsv($valor){
+        $valor = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', trim($valor));
+        return strtolower(str_replace(array(' ', '-'), '_', $valor));
+    }
+
+    private function indiceCabecalhoCsv($cabecalho, $nomes){
+        foreach($nomes as $nome){
+            $indice = array_search($nome, $cabecalho);
+            if($indice !== false) return $indice;
+        }
+        return false;
+    }
+
+    private function montarTransacaoConciliacao($data, $descricao, $valor, $documento, $identificador){
+        $descricao = trim(strip_tags($descricao));
+        $chave = $identificador ? $identificador : $data . '|' . number_format((float)$valor, 2, '.', '') . '|' . $descricao . '|' . $documento;
+        return array(
+            'data_movimento' => $data,
+            'descricao' => mb_substr($descricao, 0, 255),
+            'documento' => $documento ? mb_substr($documento, 0, 100) : null,
+            'identificador_banco' => $identificador ? mb_substr($identificador, 0, 150) : null,
+            'valor' => (float)$valor,
+            'hash_transacao' => hash('sha256', $chave),
+            'status' => 'pendente'
+        );
+    }
+
+    private function diferenciarHashesDuplicados($transacoes){
+        $ocorrencias = array();
+        foreach($transacoes as &$transacao){
+            $hashOriginal = $transacao['hash_transacao'];
+            $ocorrencias[$hashOriginal] = isset($ocorrencias[$hashOriginal]) ? $ocorrencias[$hashOriginal] + 1 : 1;
+            if($ocorrencias[$hashOriginal] > 1){
+                $transacao['hash_transacao'] = hash('sha256', $hashOriginal . '|' . $ocorrencias[$hashOriginal]);
+            }
+        }
+        unset($transacao);
+        return $transacoes;
     }
 
     //Form Validation customizadas
