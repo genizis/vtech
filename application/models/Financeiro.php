@@ -2338,10 +2338,17 @@ class Financeiro extends CI_Model{
     }
 
     public function getExtratoConciliacao($codConta, $dataInicio, $dataFim){
-        $this->db->select('e.*, v.id_vinculo, v.cod_movimento_conta, v.valor_conciliado, m.desc_movimento desc_movimento_sistema');
+        $this->db->select('e.*, v.id_vinculo, v.cod_movimento_conta, v.valor_conciliado');
+        $this->db->select('m.tipo_movimento tipo_movimento_titulo, m.confirmado confirmado_titulo, m.data_competencia, m.data_vencimento, m.data_confirmacao, m.parcela, m.desc_movimento desc_movimento_sistema, m.valor_titulo, m.valor_desc_taxa, m.valor_juros_multa, m.valor_confirmado, m.origem_movimento, m.id_origem');
+        $this->db->select('fornecedor.nome_fornecedor, cliente.nome_cliente, metodo_pagamento.nome_metodo_pagamento, usu_c.nome_usuario usuario_criacao_titulo, usu_l.nome_usuario usuario_liquidacao_titulo');
         $this->db->from('conciliacao_extrato e');
         $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato', 'left');
         $this->db->join('movimentos_conta m', 'm.cod_movimento_conta = v.cod_movimento_conta', 'left');
+        $this->db->join('fornecedor', 'fornecedor.cod_fornecedor = m.cod_emitente AND m.tipo_movimento = 2', 'left');
+        $this->db->join('cliente', 'cliente.cod_cliente = m.cod_emitente AND m.tipo_movimento = 1', 'left');
+        $this->db->join('metodo_pagamento', 'metodo_pagamento.cod_metodo_pagamento = m.cod_metodo_pagamento AND metodo_pagamento.id_empresa = e.id_empresa', 'left');
+        $this->db->join('usuario usu_c', 'usu_c.email = m.usuario_criacao', 'left');
+        $this->db->join('usuario usu_l', 'usu_l.email = m.usuario_liquidacao', 'left');
         $this->db->where('e.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         $this->db->where('e.cod_conta', $codConta);
         $this->db->where('e.data_movimento >=', $dataInicio);
@@ -2352,41 +2359,131 @@ class Financeiro extends CI_Model{
     }
 
     public function getMovimentosDisponiveisConciliacao($codConta, $dataInicio, $dataFim){
-        $this->db->select('m.cod_movimento_conta, m.data_confirmacao, m.desc_movimento, m.tipo_movimento, m.valor_confirmado');
+        $this->db->select('m.*, fornecedor.nome_fornecedor, cliente.nome_cliente, metodo_pagamento.nome_metodo_pagamento');
         $this->db->from('movimentos_conta m');
-        $this->db->join('conta c', 'c.cod_conta = m.cod_conta');
+        $this->db->join('conta c', 'c.cod_conta = ' . $this->db->escape($codConta) . ' AND c.id_estabelecimento = m.id_estabelecimento');
         $this->db->join('conciliacao_vinculo v', 'v.cod_movimento_conta = m.cod_movimento_conta', 'left');
+        $this->db->join('fornecedor', 'fornecedor.cod_fornecedor = m.cod_emitente AND m.tipo_movimento = 2', 'left');
+        $this->db->join('cliente', 'cliente.cod_cliente = m.cod_emitente AND m.tipo_movimento = 1', 'left');
+        $this->db->join('metodo_pagamento', 'metodo_pagamento.cod_metodo_pagamento = m.cod_metodo_pagamento AND metodo_pagamento.id_empresa = c.id_empresa', 'left');
         $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
-        $this->db->where('m.cod_conta', $codConta);
-        $this->db->where('m.confirmado', 1);
         $this->db->where('v.id_vinculo IS NULL', null, false);
-        $this->db->where('m.data_confirmacao >=', date('Y-m-d', strtotime($dataInicio . ' -3 days')));
-        $this->db->where('m.data_confirmacao <=', date('Y-m-d', strtotime($dataFim . ' +3 days')));
-        $this->db->order_by('m.data_confirmacao', 'desc');
+        $this->db->group_start();
+            $this->db->group_start();
+                $this->db->where('m.confirmado', 1);
+                $this->db->where('m.cod_conta', $codConta);
+                $this->db->where('m.data_confirmacao >=', date('Y-m-d', strtotime($dataInicio . ' -90 days')));
+                $this->db->where('m.data_confirmacao <=', date('Y-m-d', strtotime($dataFim . ' +90 days')));
+            $this->db->group_end();
+            $this->db->or_group_start();
+                $this->db->where('m.confirmado', 0);
+                $this->db->group_start();
+                    $this->db->where('m.cod_conta', $codConta);
+                    $this->db->or_where('m.cod_conta IS NULL', null, false);
+                $this->db->group_end();
+                $this->db->where('m.data_vencimento >=', date('Y-m-d', strtotime($dataInicio . ' -90 days')));
+                $this->db->where('m.data_vencimento <=', date('Y-m-d', strtotime($dataFim . ' +90 days')));
+            $this->db->group_end();
+        $this->db->group_end();
+        $this->db->order_by('m.confirmado', 'asc');
+        $this->db->order_by('m.data_vencimento', 'desc');
         return $this->db->get()->result();
     }
 
     public function conciliarExtratoMovimento($codConta, $idExtrato, $codMovimento){
-        $this->db->select('e.id_extrato, e.valor, e.status, m.cod_movimento_conta, m.tipo_movimento, m.valor_confirmado');
+        $this->db->select('e.id_extrato, e.valor, e.data_movimento, e.status, m.cod_movimento_conta, m.cod_conta cod_conta_movimento, m.tipo_movimento, m.confirmado, m.valor_titulo, m.valor_confirmado');
         $this->db->from('conciliacao_extrato e');
         $this->db->join('conta c', 'c.cod_conta = e.cod_conta');
-        $this->db->join('movimentos_conta m', 'm.cod_movimento_conta = ' . $this->db->escape($codMovimento) . ' AND m.cod_conta = e.cod_conta');
+        $this->db->join('movimentos_conta m', 'm.cod_movimento_conta = ' . $this->db->escape($codMovimento) . ' AND m.id_estabelecimento = c.id_estabelecimento');
         $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato OR v.cod_movimento_conta = m.cod_movimento_conta', 'left');
         $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         $this->db->where('e.cod_conta', $codConta);
         $this->db->where('e.id_extrato', $idExtrato);
-        $this->db->where('m.confirmado', 1);
+        $this->db->where('m.tipo_movimento', '(CASE WHEN e.valor >= 0 THEN 1 ELSE 2 END)', false);
+        $this->db->group_start();
+            $this->db->where('m.cod_conta', $codConta);
+            $this->db->or_group_start();
+                $this->db->where('m.confirmado', 0);
+                $this->db->where('m.cod_conta IS NULL', null, false);
+            $this->db->group_end();
+        $this->db->group_end();
         $this->db->where('v.id_vinculo IS NULL', null, false);
         $dados = $this->db->get()->row();
         if($dados === null) return false;
-        $valorMovimento = $dados->tipo_movimento == 1 ? (float)$dados->valor_confirmado : -(float)$dados->valor_confirmado;
+        $valorBase = $dados->confirmado == 1 ? (float)$dados->valor_confirmado : (float)$dados->valor_titulo;
+        $valorMovimento = $dados->tipo_movimento == 1 ? $valorBase : -$valorBase;
         if(abs((float)$dados->valor - $valorMovimento) > 0.009) return false;
 
         $this->db->trans_start();
+        $confirmadoPelaConciliacao = 0;
+        if($dados->confirmado == 0){
+            $confirmadoPelaConciliacao = 1;
+            $this->updateMovimentoConta($codMovimento, array(
+                'cod_conta' => $codConta,
+                'data_confirmacao' => $dados->data_movimento,
+                'valor_confirmado' => abs((float)$dados->valor),
+                'confirmado' => 1,
+                'usuario_liquidacao' => getDadosUsuarioLogado()['email']
+            ));
+        }
         $this->db->insert('conciliacao_vinculo', array(
             'id_extrato' => $idExtrato,
             'cod_movimento_conta' => $codMovimento,
             'valor_conciliado' => abs((float)$dados->valor),
+            'movimento_confirmado_conciliacao' => $confirmadoPelaConciliacao,
+            'cod_conta_anterior' => $dados->cod_conta_movimento,
+            'data_conciliacao' => date('Y-m-d H:i:s'),
+            'usuario_conciliacao' => getDadosUsuarioLogado()['email']
+        ));
+        $this->db->where('id_extrato', $idExtrato)->update('conciliacao_extrato', array('status' => 'conciliado'));
+        $this->db->trans_complete();
+        return $this->db->trans_status();
+    }
+
+    public function criarTituloPeloExtrato($codConta, $idExtrato, $dadosTitulo){
+        $this->db->select('e.id_extrato, e.valor, e.data_movimento, c.id_estabelecimento');
+        $this->db->from('conciliacao_extrato e');
+        $this->db->join('conta c', 'c.cod_conta = e.cod_conta');
+        $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato', 'left');
+        $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('e.cod_conta', $codConta);
+        $this->db->where('e.id_extrato', $idExtrato);
+        $this->db->where('e.status', 'pendente');
+        $this->db->where('v.id_vinculo IS NULL', null, false);
+        $extrato = $this->db->get()->row();
+        if($extrato === null || abs((float)$extrato->valor) < 0.01) return false;
+
+        $tipoMovimento = $extrato->valor >= 0 ? 1 : 2;
+        $movimento = array(
+            'id_estabelecimento' => $extrato->id_estabelecimento,
+            'cod_conta' => $codConta,
+            'cod_metodo_pagamento' => $dadosTitulo['cod_metodo_pagamento'],
+            'cod_centro_custo' => $dadosTitulo['cod_centro_custo'],
+            'cod_conta_contabil' => $dadosTitulo['cod_conta_contabil'],
+            'cod_emitente' => $dadosTitulo['cod_emitente'],
+            'data_competencia' => $dadosTitulo['data_competencia'],
+            'data_vencimento' => $dadosTitulo['data_vencimento'],
+            'data_confirmacao' => $extrato->data_movimento,
+            'tipo_movimento' => $tipoMovimento,
+            'parcela' => '1/1',
+            'desc_movimento' => $dadosTitulo['desc_movimento'],
+            'valor_titulo' => abs((float)$extrato->valor),
+            'valor_desc_taxa' => 0,
+            'valor_juros_multa' => 0,
+            'valor_confirmado' => abs((float)$extrato->valor),
+            'confirmado' => 1,
+            'usuario_criacao' => getDadosUsuarioLogado()['email'],
+            'usuario_liquidacao' => getDadosUsuarioLogado()['email']
+        );
+
+        $this->db->trans_start();
+        $codMovimento = $this->insertMovimentoConta($movimento);
+        $this->db->insert('conciliacao_vinculo', array(
+            'id_extrato' => $idExtrato,
+            'cod_movimento_conta' => $codMovimento,
+            'valor_conciliado' => abs((float)$extrato->valor),
+            'movimento_confirmado_conciliacao' => 1,
+            'cod_conta_anterior' => null,
             'data_conciliacao' => date('Y-m-d H:i:s'),
             'usuario_conciliacao' => getDadosUsuarioLogado()['email']
         ));
@@ -2396,14 +2493,25 @@ class Financeiro extends CI_Model{
     }
 
     public function desfazerConciliacaoExtrato($codConta, $idExtrato){
-        $this->db->select('e.id_extrato');
+        $this->db->select('e.id_extrato, v.cod_movimento_conta, v.movimento_confirmado_conciliacao, v.cod_conta_anterior');
         $this->db->from('conciliacao_extrato e');
         $this->db->join('conta c', 'c.cod_conta = e.cod_conta');
+        $this->db->join('conciliacao_vinculo v', 'v.id_extrato = e.id_extrato');
         $this->db->where('c.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         $this->db->where('e.cod_conta', $codConta);
         $this->db->where('e.id_extrato', $idExtrato);
-        if($this->db->get()->row() === null) return false;
+        $vinculo = $this->db->get()->row();
+        if($vinculo === null) return false;
         $this->db->trans_start();
+        if($vinculo->movimento_confirmado_conciliacao == 1){
+            $this->updateMovimentoConta($vinculo->cod_movimento_conta, array(
+                'cod_conta' => $vinculo->cod_conta_anterior,
+                'data_confirmacao' => null,
+                'valor_confirmado' => 0,
+                'confirmado' => 0,
+                'usuario_liquidacao' => null
+            ));
+        }
         $this->db->where('id_extrato', $idExtrato)->delete('conciliacao_vinculo');
         $this->db->where('id_extrato', $idExtrato)->update('conciliacao_extrato', array('status' => 'pendente'));
         $this->db->trans_complete();

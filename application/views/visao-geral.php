@@ -152,8 +152,9 @@
                                 aria-labelledby="producao-tab">
                                 <div class="row mb-4">
                                     <div class="col-md-5 text-center">
-                                        <h1 class="<?php if($custo_total->custo_total > 0) echo "text-danger"; ?> display-4 mt-4 font-weight-bold">R$
-                                            <?= number_format((float) ($custo_total->custo_total), 2, ',', '.') ?></h1>
+                                        <?php $custoTotal = (float) ($custo_total->custo_total ?? 0); ?>
+                                        <h1 class="<?php if($custoTotal > 0) echo "text-danger"; ?> display-4 mt-4 font-weight-bold">R$
+                                            <?= number_format($custoTotal, 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighterer">Custo de produção no
                                             período</p>
                                     </div>

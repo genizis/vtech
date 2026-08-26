@@ -205,6 +205,7 @@ $route['financeiro/conciliacao-bancaria']['GET'] = 'FinanceiroController/redirec
 $route['financeiro/conciliacao-bancaria/(:num)']['GET'] = 'FinanceiroController/conciliacaoBancaria/$1';
 $route['financeiro/conciliacao-bancaria/(:num)/importar']['POST'] = 'FinanceiroController/importarExtratoBancario/$1';
 $route['financeiro/conciliacao-bancaria/(:num)/conciliar']['POST'] = 'FinanceiroController/conciliarMovimento/$1';
+$route['financeiro/conciliacao-bancaria/(:num)/novo-titulo']['POST'] = 'FinanceiroController/criarTituloConciliacao/$1';
 $route['financeiro/conciliacao-bancaria/(:num)/desfazer']['POST'] = 'FinanceiroController/desfazerConciliacao/$1';
 $route['financeiro/saldo-conta/(:any)/(:any)/(:num)'] = 'FinanceiroController/listarSaldoConta';
 

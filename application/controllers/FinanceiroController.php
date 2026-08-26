@@ -2174,9 +2174,12 @@ class FinanceiroController extends CI_Controller {
             $item->sugestoes = array();
             if($item->id_vinculo !== null) continue;
             foreach($movimentos as $movimento){
-                $valorMovimento = $movimento->tipo_movimento == 1 ? (float)$movimento->valor_confirmado : -(float)$movimento->valor_confirmado;
-                $distanciaDias = abs((strtotime($item->data_movimento) - strtotime($movimento->data_confirmacao)) / 86400);
-                if(abs((float)$item->valor - $valorMovimento) < 0.009 && $distanciaDias <= 3){
+                $valorBase = $movimento->confirmado == 1 ? (float)$movimento->valor_confirmado : (float)$movimento->valor_titulo;
+                $valorMovimento = $movimento->tipo_movimento == 1 ? $valorBase : -$valorBase;
+                $dataMovimento = $movimento->confirmado == 1 ? $movimento->data_confirmacao : $movimento->data_vencimento;
+                $tipoEsperado = $item->valor >= 0 ? 1 : 2;
+                $distanciaDias = abs((strtotime($item->data_movimento) - strtotime($dataMovimento)) / 86400);
+                if($movimento->tipo_movimento == $tipoEsperado && abs((float)$item->valor - $valorMovimento) < 0.009 && $distanciaDias <= 30){
                     $item->sugestoes[] = $movimento;
                 }
             }
@@ -2198,6 +2201,13 @@ class FinanceiroController extends CI_Controller {
             'lista_conta' => $this->financeiro->getConta(),
             'lista_extrato' => $extrato,
             'lista_movimentos' => $movimentos,
+            'lista_fornecedor' => $this->fornecedor->getFornecedorAtivo(),
+            'lista_cliente' => $this->cliente->getClienteAtivo(),
+            'lista_metodo_pagamento' => $this->financeiro->getMetodoPagamentoAtivo(),
+            'lista_centro_custo_despesa' => $this->financeiro->getCentroCustoAtivoDespesa(),
+            'lista_centro_custo_receita' => $this->financeiro->getCentroCustoAtivoReceita(),
+            'lista_conta_contabil_despesa' => $this->financeiro->getContaContabilAtivoDespesa(),
+            'lista_conta_contabil_receita' => $this->financeiro->getContaContabilAtivoReceita(),
             'resumo' => $resumo,
             'dataInicio' => $dataInicio,
             'dataFim' => $dataFim,
@@ -2245,6 +2255,35 @@ class FinanceiroController extends CI_Controller {
             $this->session->set_flashdata('sucesso', 'Movimento conciliado com sucesso.');
         }else{
             $this->session->set_flashdata('erro', 'Os movimentos não puderam ser conciliados. Confira conta, valor e disponibilidade.');
+        }
+        redirect($this->urlConciliacaoComPeriodo($codConta));
+    }
+
+    public function criarTituloConciliacao($codConta){
+        $this->form_validation->set_rules('IdExtrato', 'Movimento bancário', 'required|integer');
+        $this->form_validation->set_rules('DataCompetencia', 'Data de Competência', 'required');
+        $this->form_validation->set_rules('DataVencimento', 'Data de Vencimento', 'required');
+        $this->form_validation->set_rules('Descricao', 'Descrição', 'required|max_length[100]');
+
+        if($this->form_validation->run() == false){
+            $this->session->set_flashdata('erro', validation_errors());
+            redirect($this->urlConciliacaoComPeriodo($codConta));
+        }
+
+        $dadosTitulo = array(
+            'data_competencia' => $this->normalizarDataConciliacao($this->input->post('DataCompetencia'), date('Y-m-d')),
+            'data_vencimento' => $this->normalizarDataConciliacao($this->input->post('DataVencimento'), date('Y-m-d')),
+            'desc_movimento' => $this->input->post('Descricao'),
+            'cod_emitente' => $this->input->post('CodEmitente') ?: null,
+            'cod_metodo_pagamento' => $this->input->post('CodMetodoPagamento') ?: null,
+            'cod_centro_custo' => $this->input->post('CodCentroCusto') ?: null,
+            'cod_conta_contabil' => $this->input->post('CodContaContabil') ?: null
+        );
+
+        if($this->financeiro->criarTituloPeloExtrato($codConta, (int)$this->input->post('IdExtrato'), $dadosTitulo)){
+            $this->session->set_flashdata('sucesso', 'Título criado e conciliado com sucesso.');
+        }else{
+            $this->session->set_flashdata('erro', 'Não foi possível criar o título. Verifique se o movimento bancário continua pendente.');
         }
         redirect($this->urlConciliacaoComPeriodo($codConta));
     }
