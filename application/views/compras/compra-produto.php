@@ -96,10 +96,10 @@
                                                     <?= $compra_resumida->nome_produto ?></td>
                                                 <td><?= $compra_resumida->nome_tipo_produto ?></td>
                                                 <td class="text-right text-info">
-                                                    <?= number_format($compra_resumida->quant_comprada, 3, ',', '.') ?> <?= $compra_resumida->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($compra_resumida->quant_comprada), 3, ',', '.') ?> <?= $compra_resumida->cod_unidade_medida ?>
                                                 </td>
                                                 <td class="text-right text-warning">
-                                                    R$ <?= number_format($compra_resumida->total_compra, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($compra_resumida->total_compra), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -146,10 +146,10 @@
                                                     <?= $compra_detalhada->nome_produto ?></td>
                                                 <td><?= $compra_detalhada->nome_tipo_produto ?></td>
                                                 <td class="text-right text-info">
-                                                    <?= number_format($compra_detalhada->quant_movimentada, 3, ',', '.') ?> <?= $compra_detalhada->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($compra_detalhada->quant_movimentada), 3, ',', '.') ?> <?= $compra_detalhada->cod_unidade_medida ?>
                                                 </td>
                                                 <td class="text-right text-warning">
-                                                    R$ <?= number_format($compra_detalhada->valor_movimento, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($compra_detalhada->valor_movimento), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -213,10 +213,10 @@
                     <?= $compra_resumida->nome_tipo_produto ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($compra_resumida->quant_comprada, 3, ',', '.') ?>
+                    <?= number_format((float) ($compra_resumida->quant_comprada), 3, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($compra_resumida->total_compra, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($compra_resumida->total_compra), 2, ',', '.') ?>
                 </td> 
             </tr>
             <?php } ?>
@@ -277,10 +277,10 @@
                     <?= $compra_detalhada->nome_tipo_produto ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($compra_detalhada->quant_movimentada, 3, ',', '.') ?>
+                    <?= number_format((float) ($compra_detalhada->quant_movimentada), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($compra_detalhada->valor_movimento, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($compra_detalhada->valor_movimento), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

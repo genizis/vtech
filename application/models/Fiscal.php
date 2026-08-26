@@ -329,7 +329,7 @@ class Fiscal extends CI_Model{
 
         $vendedor = $this->getVendedorPorCodigo($codVendedor);
 
-        $input = number_format($vendedor->perc_comissao, 2, ',', '.');
+        $input = number_format((float) ($vendedor->perc_comissao), 2, ',', '.');
 
         return $input;
 

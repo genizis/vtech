@@ -177,7 +177,7 @@
                                                 Quantidade pedida
                                             </td>
                                             <td class="text-right">
-                                                <span id="QuantPedida"><?= number_format(0, 3, ',', '.') ?></span> <span id="unQuanPedida"><?= "" ?></span>
+                                                <span id="QuantPedida"><?= number_format((float) (0), 3, ',', '.') ?></span> <span id="unQuanPedida"><?= "" ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -185,7 +185,7 @@
                                                 Custo médio
                                             </td>
                                             <td class="text-right">
-                                                R$ <span id="CustoMedio"><?= number_format(0, 2, ',', '.') ?></span>
+                                                R$ <span id="CustoMedio"><?= number_format((float) (0), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -202,7 +202,7 @@
                                         <strong>
                                             R$
                                             <span
-                                                id="TotalComparacao"><?= number_format(0, 2, ',', '.') ?></span>
+                                                id="TotalComparacao"><?= number_format((float) (0), 2, ',', '.') ?></span>
                                         </strong>
                                     </td>
                                 </tr>

@@ -73,11 +73,11 @@
                                                 <td><?= $pedido->cod_produto ?> - <?= $pedido->nome_produto ?></td>
                                                 <td><?= $pedido->cod_unidade_medida ?></td>
                                                 <td class="text-center">
-                                                    <?= number_format($pedido->quant_pedida, 3, ',', '.') ?></td>
+                                                    <?= number_format((float) ($pedido->quant_pedida), 3, ',', '.') ?></td>
                                                 <td class="text-center">
-                                                    <?= number_format($pedido->quant_atendida, 3, ',', '.') ?></td>
+                                                    <?= number_format((float) ($pedido->quant_atendida), 3, ',', '.') ?></td>
                                                 <td class="text-center">
-                                                    R$ <?= number_format($pedido->valor_pedido, 2, ',', '.') ?></td>
+                                                    R$ <?= number_format((float) ($pedido->valor_pedido), 2, ',', '.') ?></td>
                                                 <td class="text-center">
                                                     <?= str_replace('-', '/', date("d-m-Y", strtotime($pedido->data_entrega))) ?>
                                                 </td>

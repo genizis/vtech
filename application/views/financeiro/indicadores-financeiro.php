@@ -58,7 +58,7 @@
                                         class="display-5 mb-0 <?php if($totais->saldo_total > 0) echo "text-teal";
                                                         if($totais->saldo_total < 0) echo "text-danger"; ?> font-weight-bold">
                                         R$
-                                        <?= number_format($totais->saldo_total, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($totais->saldo_total), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                         class="display-5 mb-0 <?php if(($totais->saldo_total + $totais->entrada - $totais->saida) > 0) echo "text-teal";
                                                         if(($totais->saldo_total + $totais->entrada - $totais->saida) < 0) echo "text-danger"; ?> font-weight-bold">
                                         R$
-                                        <?= number_format($totais->saldo_total + $totais->entrada - $totais->saida, 2, ',', '.') ?>
+                                        <?= number_format((float) ($totais->saldo_total + $totais->entrada - $totais->saida), 2, ',', '.') ?>
                                     </h1>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                       else echo "<strong>SEM CONTA CONTÁBIL</strong>"; ?>
                                     </td>
                                     <td class="text-teal float-right">R$
-                                        <?= number_format($receita->valor_total, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($receita->valor_total), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="col-md-6 text-teal">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_receita, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_receita), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                                       else echo "<strong>SEM CONTA CONTÁBIL</strong>"; ?>
                                     </td>
                                     <td class="text-danger float-right">R$
-                                        <?= number_format($despesa->valor_total, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($despesa->valor_total), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-md-6 text-danger">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_despesa, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_despesa), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                                       else echo "<strong>SEM CENTRO DE CUSTO</strong>"; ?>
                                     </td>
                                     <td class="text-teal float-right">R$
-                                        <?= number_format($receita->valor_total, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($receita->valor_total), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -223,7 +223,7 @@
                             </div>
                             <div class="col-md-6 text-teal">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_receita, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_receita), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,7 @@
                                       else echo "<strong>SEM CENTRO DE CUSTO</strong>"; ?>
                                     </td>
                                     <td class="text-danger float-right">R$
-                                        <?= number_format($despesa->valor_total, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($despesa->valor_total), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -260,7 +260,7 @@
                             </div>
                             <div class="col-md-6 text-danger">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_despesa, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_despesa), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>

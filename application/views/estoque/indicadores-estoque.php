@@ -56,7 +56,7 @@
                                 <h5 class="card-title"><strong>VALOR TOTAL EM ESTOQUE</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($valor_total_estoq > 0) echo "text-danger"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($valor_total_estoq, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($valor_total_estoq), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM ENTRADAS</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($valor_entrada > 0) echo "text-info"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($valor_entrada, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($valor_entrada), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM SAÍDAS</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($valor_saida > 0) echo "text-warning"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($valor_saida, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($valor_saida), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>

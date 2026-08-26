@@ -1217,12 +1217,12 @@ class ProducaoController extends CI_Controller {
                 $spreadsheet->setActiveSheetIndex(0)->setCellValue('C'.$x, $producao_detalhada->cod_produto . ' - ' . $producao_detalhada->nome_produto);
                 $spreadsheet->setActiveSheetIndex(0)->setCellValue('D'.$x, $producao_detalhada->cod_unidade_medida);
                 $spreadsheet->setActiveSheetIndex(0)->setCellValue('E'.$x, $producao_detalhada->nome_tipo_produto);
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('F'.$x, number_format($producao_detalhada->horas_trabalhadas, 2, ',', '.'));
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('G'.$x, number_format($producao_detalhada->quant_reportada, 3, ',', '.'));
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('H'.$x, number_format($producao_detalhada->quant_perdida, 3, ',', '.'));
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('I'.$x, 'R$ ' . number_format($producao_detalhada->custo_mob, 2, ',', '.'));
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('J'.$x, 'R$ ' . number_format($producao_detalhada->custo_producao, 2, ',', '.'));
-                $spreadsheet->setActiveSheetIndex(0)->setCellValue('K'.$x, 'R$ ' . number_format($producao_detalhada->custo_producao + $producao_detalhada->custo_mob, 2, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('F'.$x, number_format((float) ($producao_detalhada->horas_trabalhadas), 2, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('G'.$x, number_format((float) ($producao_detalhada->quant_reportada), 3, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('H'.$x, number_format((float) ($producao_detalhada->quant_perdida), 3, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('I'.$x, 'R$ ' . number_format((float) ($producao_detalhada->custo_mob), 2, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('J'.$x, 'R$ ' . number_format((float) ($producao_detalhada->custo_producao), 2, ',', '.'));
+                $spreadsheet->setActiveSheetIndex(0)->setCellValue('K'.$x, 'R$ ' . number_format((float) ($producao_detalhada->custo_producao + $producao_detalhada->custo_mob), 2, ',', '.'));
 
                 $x++;
             }

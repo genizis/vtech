@@ -357,7 +357,7 @@
                                                                                         data-toggle="modal"
                                                                                         data-target="#editar-icms<?= $icms->id ?>"><?= $icms->uf ?></a></td>
                                                                                 <td class="text-center">
-                                                                                    <?= number_format($icms->aliquota, 2, ',', '.') ?>%
+                                                                                    <?= number_format((float) ($icms->aliquota), 2, ',', '.') ?>%
                                                                                 </td>
                                                                             </tr>
                                                                             <?php } ?>
@@ -417,7 +417,7 @@
                                                                                         data-toggle="modal"
                                                                                         data-target="#editar-fcp<?= $fcp->id ?>"><?= $fcp->desc_ncm ?></a></td>
                                                                                 <td class="text-center">
-                                                                                    <?= number_format($fcp->aliquota, 2, ',', '.') ?>%
+                                                                                    <?= number_format((float) ($fcp->aliquota), 2, ',', '.') ?>%
                                                                                 </td>
                                                                             </tr>
                                                                             <?php } ?>
@@ -838,7 +838,7 @@
                                                     <div class="input-group">
                                                         <input type="text" id="inputAliquotaFCPEdit" class="form-control"
                                                             data-mask="#.##0,00" data-mask-reverse="true" name="AliquotaFCPEdit"
-                                                            value="<?= number_format($fcp->aliquota, 2, ',', '.') ?>" required>
+                                                            value="<?= number_format((float) ($fcp->aliquota), 2, ',', '.') ?>" required>
                                                             <div class="input-group-append">
                                                             <span class="input-group-text">%</span>
                                                         </div>
@@ -895,7 +895,7 @@
                                                     <div class="input-group">
                                                         <input type="text" id="inputAliquotaICMSEdit" class="form-control"
                                                             data-mask="#.##0,00" data-mask-reverse="true" name="AliquotaICMSEdit"
-                                                            value="<?= number_format($icms->aliquota, 2, ',', '.') ?>" required>
+                                                            value="<?= number_format((float) ($icms->aliquota), 2, ',', '.') ?>" required>
                                                             <div class="input-group-append">
                                                             <span class="input-group-text">%</span>
                                                         </div>

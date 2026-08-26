@@ -54,7 +54,7 @@
                                                 Total autorizado
                                             </td>
                                             <td class="text-right <?php if($total_nota_fiscal->tota_emitida > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format($total_nota_fiscal->tota_emitida, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($total_nota_fiscal->tota_emitida), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -62,7 +62,7 @@
                                                 Total pendente
                                             </td>
                                             <td class="text-right <?php if($total_nota_fiscal->tota_pendente > 0) echo "text-muted"; ?>">
-                                                R$ <?= number_format($total_nota_fiscal->tota_pendente, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($total_nota_fiscal->tota_pendente), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -70,7 +70,7 @@
                                                 Total cancelado
                                             </td>
                                             <td class="text-right <?php if($total_nota_fiscal->tota_cancelado > 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format($total_nota_fiscal->tota_cancelado, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($total_nota_fiscal->tota_cancelado), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>

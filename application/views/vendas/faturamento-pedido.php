@@ -51,7 +51,7 @@
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-info"></i> Total a faturar
                                             </td>
                                             <td class="text-right <?php if($a_faturar > 0) echo "text-info"; else echo "text-muted"; ?>">
-                                                R$ <?=  number_format($a_faturar, 2, ',', '.') ?>
+                                                R$ <?=  number_format((float) ($a_faturar), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -59,7 +59,7 @@
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-teal"></i> Total faturado
                                             </td>
                                             <td class="text-right <?php if($faturado > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?=  number_format($faturado, 2, ',', '.') ?>
+                                                R$ <?=  number_format((float) ($faturado), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -230,14 +230,14 @@
                                                 <?php } ?>
                                                 </td>
                                                 <td class="text-right text-info align-middle">R$
-                                                    <?= number_format($pedido->valor_total_pedido + 
+                                                    <?= number_format((float) ($pedido->valor_total_pedido + 
                                                                           $pedido->valor_frete +
                                                                           $pedido->valor_seguro +
                                                                           $pedido->outras_despesas - 
-                                                                          $pedido->valor_desconto, 2, ',', '.') ?>
+                                                                          $pedido->valor_desconto), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right <?php if($pedido->valor_total_faturado > 0) echo "text-teal"; else echo "text-muted"; ?> align-middle">R$
-                                                    <?=  number_format($pedido->valor_total_faturado, 2, ',', '.') ?>
+                                                    <?=  number_format((float) ($pedido->valor_total_faturado), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>

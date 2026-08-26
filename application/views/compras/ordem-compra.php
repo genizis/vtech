@@ -233,7 +233,7 @@
                                                                                 <?php } ?>
                                                                             </td>
                                                                             <td class="text-right text-info align-middle">
-                                                                                <?= number_format($ordem->quant_pedida, 3, ',', '.') ?>
+                                                                                <?= number_format((float) ($ordem->quant_pedida), 3, ',', '.') ?>
                                                                                 <?= $ordem->cod_unidade_medida ?>
                                                                             </td>
                                                                         </tr>
@@ -307,7 +307,7 @@
                                                                                 ?>
                                                                             </td>
                                                                             <td class="text-right text-info align-middle">
-                                                                                <?= number_format($ordem->quant_pedida, 3, ',', '.') ?>
+                                                                                <?= number_format((float) ($ordem->quant_pedida), 3, ',', '.') ?>
                                                                                 <?= $ordem->cod_unidade_medida ?>
                                                                             </td>
                                                                         </tr>
@@ -354,7 +354,7 @@
                                                                                     class="text-dark link-load"><?= $fornecedor->cod_fornecedor ?> - <?= $fornecedor->nome_fornecedor ?></a>
                                                                             </td>     
                                                                             <td class="text-right text-info align-middle">
-                                                                                <?= number_format($fornecedor->quant_ordens, 0, ',', '.') ?>
+                                                                                <?= number_format((float) ($fornecedor->quant_ordens), 0, ',', '.') ?>
                                                                             </td>
                                                                         </tr>
                                                                         <?php } ?>

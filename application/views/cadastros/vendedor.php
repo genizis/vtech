@@ -76,7 +76,7 @@
                                                             href="<?= base_url("vendedor/editar-vendedor/{$vendedor->cod_vendedor}") ?>"><?= $vendedor->cod_vendedor ?> - <?= $vendedor->nome_vendedor ?></a>
                                                     </td>
                                                     <td><?= $vendedor->nome_usuario ?></td>
-                                                    <td><?= number_format($vendedor->perc_comissao, 1, ',', '.') ?>%</td>
+                                                    <td><?= number_format((float) ($vendedor->perc_comissao), 1, ',', '.') ?>%</td>
                                                     <td class="text-center">
                                                         <?php if($vendedor->ativo == 1) {
                                                                 echo "<span class='text-teal'>Ativo</span>";

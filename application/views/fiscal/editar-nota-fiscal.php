@@ -132,7 +132,7 @@
                                                     data-mask-reverse="true"
                                                     <?php if($nota_fiscal->status != 1) echo "readonly"; ?>
                                                     name="Seguro" id="inputSeguro"
-                                                    value="<?= number_format($nota_fiscal->valor_seguro, 2, ',', '.') ?>">
+                                                    value="<?= number_format((float) ($nota_fiscal->valor_seguro), 2, ',', '.') ?>">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -145,7 +145,7 @@
                                                     data-mask-reverse="true" id="inputOutrasDespesas"
                                                     <?php if($nota_fiscal->status != 1) echo "readonly"; ?>
                                                     name="OutrasDespesas"
-                                                    value="<?= number_format($nota_fiscal->outras_despesas, 2, ',', '.') ?>">
+                                                    value="<?= number_format((float) ($nota_fiscal->outras_despesas), 2, ',', '.') ?>">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -158,7 +158,7 @@
                                                     data-mask-reverse="true"
                                                     <?php if($nota_fiscal->status != 1) echo "readonly"; ?>
                                                     name="Desconto" id="inputValorDesconto"
-                                                    value="<?= number_format($nota_fiscal->valor_desconto, 2, ',', '.') ?>">
+                                                    value="<?= number_format((float) ($nota_fiscal->valor_desconto), 2, ',', '.') ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@
                                                 <input type="text" class="form-control" data-mask="#.##0,00"
                                                     data-mask-reverse="true" name="Frete" id="inputValorFrete"
                                                     <?php if($nota_fiscal->status != 1) echo "readonly"; ?>
-                                                    value="<?= number_format($nota_fiscal->valor_frete, 2, ',', '.') ?>">
+                                                    value="<?= number_format((float) ($nota_fiscal->valor_frete), 2, ',', '.') ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -322,13 +322,13 @@
                                                             </a>
                                                         </td>
                                                         <td class="text-right text-info">
-                                                            <?= number_format($produto->quantidade, 3, ',', '.') ?>
+                                                            <?= number_format((float) ($produto->quantidade), 3, ',', '.') ?>
                                                             <?= $produto->cod_unidade_medida ?></td>
                                                         <td class="text-right">R$
-                                                            <?= number_format($produto->valor_unitario, 2, ',', '.') ?>
+                                                            <?= number_format((float) ($produto->valor_unitario), 2, ',', '.') ?>
                                                         </td>
                                                         <td class="text-right text-teal">R$
-                                                            <?= number_format($produto->quantidade * $produto->valor_unitario, 2, ',', '.') ?>
+                                                            <?= number_format((float) ($produto->quantidade * $produto->valor_unitario), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
@@ -414,7 +414,7 @@
                                             <td class="text-right <?php if($total > 0) echo "text-teal"; ?>"
                                                 id="idTotoProduto">
                                                 R$ <span
-                                                    id="idVelorProdutos"><?= number_format($total, 2, ',', '.') ?></span>
+                                                    id="idVelorProdutos"><?= number_format((float) ($total), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -425,7 +425,7 @@
                                             <td class="text-right <?php if($nota_fiscal->valor_frete > 0) echo "text-teal"; ?>"
                                                 id="idValorFrete">
                                                 R$ <span
-                                                    id="ValorFrete"><?= number_format($nota_fiscal->valor_frete, 2, ',', '.') ?></span>
+                                                    id="ValorFrete"><?= number_format((float) ($nota_fiscal->valor_frete), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -435,7 +435,7 @@
                                             <td class="text-right <?php if($nota_fiscal->valor_seguro > 0) echo "text-teal"; ?>"
                                                 id="idValorSeguro">
                                                 R$ <span
-                                                    id="ValorSeguro"><?= number_format($nota_fiscal->valor_seguro, 2, ',', '.') ?></span>
+                                                    id="ValorSeguro"><?= number_format((float) ($nota_fiscal->valor_seguro), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -445,7 +445,7 @@
                                             <td class="text-right <?php if($nota_fiscal->outras_despesas > 0) echo "text-teal"; ?>"
                                                 id="idOutrasDespesas">
                                                 R$ <span
-                                                    id="OutrasDespesas"><?= number_format($nota_fiscal->outras_despesas, 2, ',', '.') ?></span>
+                                                    id="OutrasDespesas"><?= number_format((float) ($nota_fiscal->outras_despesas), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -455,7 +455,7 @@
                                             <td class="text-right <?php if($nota_fiscal->valor_desconto > 0) echo "text-danger"; ?>"
                                                 id="idValorDesconto">
                                                 R$ <span
-                                                    id="ValorDesconto"><?= number_format($nota_fiscal->valor_desconto, 2, ',', '.') ?></span>
+                                                    id="ValorDesconto"><?= number_format((float) ($nota_fiscal->valor_desconto), 2, ',', '.') ?></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -472,7 +472,7 @@
                                         <strong>
                                             R$
                                             <span
-                                                id="TotalPedido"><?= number_format($total + $nota_fiscal->valor_frete + $nota_fiscal->valor_seguro + $nota_fiscal->outras_despesas - $nota_fiscal->valor_desconto, 2, ',', '.') ?></span>
+                                                id="TotalPedido"><?= number_format((float) ($total + $nota_fiscal->valor_frete + $nota_fiscal->valor_seguro + $nota_fiscal->outras_despesas - $nota_fiscal->valor_desconto), 2, ',', '.') ?></span>
                                         </strong>
                                     </td>
                                 </tr>
@@ -663,7 +663,7 @@
                                                             id="inputValorUnitarioEdit<?= $produto_nf->seq_produto_nf ?>"
                                                             type="text" name="ValorUnitarioEdit" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($produto_nf->valor_unitario, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($produto_nf->valor_unitario), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -678,7 +678,7 @@
                                                             id="inputValorTotalEdit<?= $produto_nf->seq_produto_nf ?>"
                                                             type="text" name="ValorTotalEdit" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($produto_nf->valor_unitario * $produto_nf->quantidade, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($produto_nf->valor_unitario * $produto_nf->quantidade), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                             </div>

@@ -57,7 +57,7 @@
                                                 Quantidade em estoque
                                             </td>
                                             <td class="text-right align-middle <?php if($produto->quant_estoq > 0) echo "text-info"; ?>">
-                                                <?php echo number_format($produto->quant_estoq, 3, ',', '.') . " " . $produto->cod_unidade_medida; ?>
+                                                <?php echo number_format((float) ($produto->quant_estoq), 3, ',', '.') . " " . $produto->cod_unidade_medida; ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -65,7 +65,7 @@
                                                 Estoque mínimo
                                             </td>
                                             <td class="text-right align-middle">
-                                                <?php echo number_format($produto->estoq_min, 3, ',', '.') . " " . $produto->cod_unidade_medida; ?>
+                                                <?php echo number_format((float) ($produto->estoq_min), 3, ',', '.') . " " . $produto->cod_unidade_medida; ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -73,7 +73,7 @@
                                                 Tempo de abastecimento
                                             </td>
                                             <td class="text-right align-middle">
-                                                <?php echo number_format($produto->tempo_abastecimento, 0, ',', '.'); ?> dia<?php if($produto->tempo_abastecimento > 1) echo "s"; ?>
+                                                <?php echo number_format((float) ($produto->tempo_abastecimento), 0, ',', '.'); ?> dia<?php if($produto->tempo_abastecimento > 1) echo "s"; ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -81,7 +81,7 @@
                                                 Custo médio
                                             </td>
                                             <td class="text-right align-middle <?php if($produto->custo_medio > 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format($produto->custo_medio, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($produto->custo_medio), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -89,7 +89,7 @@
                                                 Preço de venda
                                             </td>
                                             <td class="text-right align-middle <?php if($produto->preco_venda > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format($produto->preco_venda, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($produto->preco_venda), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -106,7 +106,7 @@
                                         class="text-right pt-0 <?php if(($produto->quant_estoq * $produto->custo_medio) > 0) echo "text-teal"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format(($produto->quant_estoq * $produto->custo_medio), 2, ',', '.') ?>
+                                            <?= number_format((float) (($produto->quant_estoq * $produto->custo_medio)), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -312,7 +312,7 @@
                                                                     <?php } ?>
                                                                     <td class="text-right align-middle <?php if($movimento->valor_movimento > 0) echo "text-info"; ?>">
                                                                         R$
-                                                                        <?= number_format($movimento->valor_movimento, 2, ',', '.') ?>
+                                                                        <?= number_format((float) ($movimento->valor_movimento), 2, ',', '.') ?>
                                                                     </td>
                                                                     <td class="text-right align-middle <?php if($movimento->tipo_movimento == 1) echo "text-teal"; else echo "text-danger"; ?>"
                                                                         <?php if($movimento->especie_movimento == 10 || $movimento->especie_movimento == 11){ ?>
@@ -322,7 +322,7 @@
                                                                         <?php
                                                                         if($movimento->tipo_movimento == 1) echo "+"; else echo "-";
                                                                     ?>
-                                                                        <?= number_format($movimento->quant_movimentada, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
+                                                                        <?= number_format((float) ($movimento->quant_movimentada), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
                                                                     </td>                                                                    
                                                                 </tr>
                                                                 <?php } ?>
@@ -401,7 +401,7 @@
                                                                         if($produto_lote->quant_estoq > 0) echo "text-teal";
                                                                         elseif($produto_lote->quant_estoq < 0) echo "text-danger" ;  
                                                                     ?> ">
-                                                                    <?= number_format($produto_lote->quant_estoq, 3, ',', '.') ?>
+                                                                    <?= number_format((float) ($produto_lote->quant_estoq), 3, ',', '.') ?>
                                                                 </td>
                                                             </tr>
                                                             <?php } ?>
@@ -786,7 +786,7 @@
                                                         Quantidade
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        <strong class="<?php if($movimento->tipo_movimento == 1) echo "text-teal"; else echo "text-danger"; ?>"><?php if($movimento->tipo_movimento == 1) echo "+"; else echo "-"; ?><?= number_format($movimento->quant_movimentada, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></strong>
+                                                        <strong class="<?php if($movimento->tipo_movimento == 1) echo "text-teal"; else echo "text-danger"; ?>"><?php if($movimento->tipo_movimento == 1) echo "+"; else echo "-"; ?><?= number_format((float) ($movimento->quant_movimentada), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -798,7 +798,7 @@
                                                         Valor de material
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        R$ <?= number_format($movimento->custo_mat, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($movimento->custo_mat), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -806,7 +806,7 @@
                                                         Valor de mão de obra
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        R$ <?= number_format($movimento->custo_mob, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($movimento->custo_mob), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -814,7 +814,7 @@
                                                         Valor total
                                                     </td>
                                                     <td class="text-right align-middle text-info">
-                                                        <strong>R$ <?= number_format($movimento->valor_movimento, 2, ',', '.') ?></strong>
+                                                        <strong>R$ <?= number_format((float) ($movimento->valor_movimento), 2, ',', '.') ?></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>

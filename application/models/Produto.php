@@ -311,7 +311,7 @@ class Produto extends CI_Model{
             return null;
         }
 
-        $precoVenda = number_format($query->preco_venda, 2, ',', '.');
+        $precoVenda = number_format((float) ($query->preco_venda), 2, ',', '.');
 
         $input = "{$query->cod_produto}|{$query->nome_produto}|{$precoVenda}|{$query->tipo_controle}";
 
@@ -497,9 +497,9 @@ class Produto extends CI_Model{
 
         $produto = $this->buscaProduto($codProduto);
 
-        $custoMedio = number_format($produto->custo_medio, 2, ',', '.');
-        $precoVenda = number_format($produto->preco_venda, 2, ',', '.');
-        $quantEstoq = number_format($produto->quant_estoq, 3, ',', '.');
+        $custoMedio = number_format((float) ($produto->custo_medio), 2, ',', '.');
+        $precoVenda = number_format((float) ($produto->preco_venda), 2, ',', '.');
+        $quantEstoq = number_format((float) ($produto->quant_estoq), 3, ',', '.');
 
         $input = "{$produto->cod_unidade_medida}|{$produto->nome_tipo_produto}|{$custoMedio}|{$precoVenda}|{$quantEstoq}|{$produto->tipo_controle}";
 
@@ -523,7 +523,7 @@ class Produto extends CI_Model{
         $this->load->model('Engenharia', 'engenharia', true);
 
         $componente = $this->buscaComponenteProd($seqComponente);
-        $quantConsumo = number_format($componente->quant_consumo, 3, ',', '.');
+        $quantConsumo = number_format((float) ($componente->quant_consumo), 3, ',', '.');
 
         $input = "{$componente->seq_componente_producao}|{$componente->cod_produto} - {$componente->nome_produto}|{$componente->cod_unidade_medida}|{$componente->nome_tipo_produto}|{$quantConsumo}";
 
@@ -557,8 +557,8 @@ class Produto extends CI_Model{
         $this->load->model('Vendas', 'venda', true);
 
         $produto = $this->buscaProdutoVenda($seqProdutoVenda);
-        $quantPedida = number_format($produto->quant_pedida, 3, ',', '.');
-        $quantAtendida = number_format($produto->quant_atendida, 3, ',', '.');
+        $quantPedida = number_format((float) ($produto->quant_pedida), 3, ',', '.');
+        $quantAtendida = number_format((float) ($produto->quant_atendida), 3, ',', '.');
 
         $input = "{$produto->seq_produto_venda}|{$produto->cod_produto} - {$produto->nome_produto}|{$produto->cod_unidade_medida}|{$produto->nome_tipo_produto}|{$quantPedida}|{$quantAtendida}";
 

@@ -1,4 +1,18 @@
 services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vtech-php
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8080:80"
+    depends_on:
+      database:
+        condition: service_healthy
+
   database:
     image: percona:5.7.44
     container_name: vtech-percona
@@ -9,7 +23,7 @@ services:
       - "--sql-mode=NO_AUTO_VALUE_ON_ZERO,NO_ENGINE_SUBSTITUTION"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: vtech
+      MYSQL_DATABASE: ${DB_DATABASE:-vtech}
     ports:
       - "127.0.0.1:3306:3306"
     volumes:

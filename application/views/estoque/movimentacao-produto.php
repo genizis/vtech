@@ -59,7 +59,7 @@
                     <div class="card-body text-center">
                         <h1
                             class="<?php if($total_movimento->total_entrada > 0) echo "text-info"; ?> mb-0 font-weight-bold">
-                            R$ <?= number_format($total_movimento->total_entrada, 2, ',', '.') ?>
+                            R$ <?= number_format((float) ($total_movimento->total_entrada), 2, ',', '.') ?>
                         </h1>
                         <p class="lead text-muted font-weight-lighter mb-0">Total entradas</p>
                     </div>
@@ -71,7 +71,7 @@
                         <h1
                             class="<?php if($total_movimento->total_saida > 0) echo "text-warning"; ?> mb-0 font-weight-bold">
                             R$
-                            <?= number_format($total_movimento->total_saida, 2, ',', '.') ?></h1>
+                            <?= number_format((float) ($total_movimento->total_saida), 2, ',', '.') ?></h1>
                         <p class="lead text-muted font-weight-lighter mb-0">Total saídas</p>
                     </div>
                 </div>
@@ -113,16 +113,16 @@
                                             <td><?= $movimento_resumido->nome_tipo_produto ?></td>
                                             <td class="text-center"><?= $movimento_resumido->cod_unidade_medida ?></td>
                                             <td class="text-center">
-                                                <?= number_format($movimento_resumido->quant_entrada, 3, ',', '.') ?>
+                                                <?= number_format((float) ($movimento_resumido->quant_entrada), 3, ',', '.') ?>
                                             </td>
                                             <td class="text-center">
-                                                <?= number_format($movimento_resumido->quant_saida, 3, ',', '.') ?>
+                                                <?= number_format((float) ($movimento_resumido->quant_saida), 3, ',', '.') ?>
                                             </td>
                                             <td class="text-center <?php if($movimento_resumido->total_entrada > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($movimento_resumido->total_entrada, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($movimento_resumido->total_entrada), 2, ',', '.') ?>
                                             </td>
                                             <td class="text-center <?php if($movimento_resumido->total_saida > 0) echo "text-warning"; ?>">
-                                                R$ <?= number_format($movimento_resumido->total_saida, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($movimento_resumido->total_saida), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -228,12 +228,12 @@
                                         ?>
                                             </td>
                                             <td class="text-center">
-                                                <?= number_format($movimento_detalhado->quant_movimentada, 3, ',', '.') ?>
+                                                <?= number_format((float) ($movimento_detalhado->quant_movimentada), 3, ',', '.') ?>
                                             </td>
                                             <td class="text-center <?php if($movimento_detalhado->tipo_movimento == 1) echo "text-info";
                                                                  else echo "text-warning"; ?>">
                                                 R$
-                                                <?= number_format($movimento_detalhado->valor_movimento, 2, ',', '.') ?>
+                                                <?= number_format((float) ($movimento_detalhado->valor_movimento), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -377,13 +377,13 @@
                 </td>
                 <td style="border: 1px solid"><?= $movimento_detalhado->id_origem ?></td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($movimento_detalhado->custo_medio, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($movimento_detalhado->custo_medio), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    <?= number_format($movimento_detalhado->quant_movimentada, 3, ',', '.') ?>
+                    <?= number_format((float) ($movimento_detalhado->quant_movimentada), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($movimento_detalhado->valor_movimento, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($movimento_detalhado->valor_movimento), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
                     <?= $movimento_detalhado->observacao ?>

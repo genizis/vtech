@@ -41,7 +41,7 @@
                                                     <td
                                                         class="text-right <?php if($lista_conta_resumida->entrada_confirm > 0) echo "text-teal"; ?>">
                                                         R$
-                                                        <?= number_format($lista_conta_resumida->entrada_confirm, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($lista_conta_resumida->entrada_confirm), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -50,7 +50,7 @@
                                                     <td
                                                         class="text-right <?php if($lista_conta_resumida->saida_confirm > 0) echo "text-danger"; ?>">
                                                         R$
-                                                        <?= number_format($lista_conta_resumida->saida_confirm, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($lista_conta_resumida->saida_confirm), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -64,7 +64,7 @@
                                                                                     elseif(($lista_conta_resumida->entrada_confirm - $lista_conta_resumida->saida_confirm) < 0) echo "text-danger"; ?>">
                                                         <strong>
                                                             R$
-                                                            <?= number_format(($lista_conta_resumida->entrada_confirm - $lista_conta_resumida->saida_confirm), 2, ',', '.') ?>
+                                                            <?= number_format((float) (($lista_conta_resumida->entrada_confirm - $lista_conta_resumida->saida_confirm)), 2, ',', '.') ?>
                                                         </strong>
                                                     </td>
                                                 </tr>
@@ -90,7 +90,7 @@
                                                     <td
                                                         class="text-right <?php if(($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) > 0) echo "text-teal"; ?>">
                                                         R$
-                                                        <?= number_format($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -99,7 +99,7 @@
                                                     <td
                                                         class="text-right <?php if(($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj) > 0) echo "text-danger"; ?>">
                                                         R$
-                                                        <?= number_format($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -113,7 +113,7 @@
                                                                                     elseif((($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj)) < 0) echo "text-danger"; ?>">
                                                         <strong>
                                                             R$
-                                                            <?= number_format((($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj)), 2, ',', '.') ?>
+                                                            <?= number_format((float) ((($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj))), 2, ',', '.') ?>
                                                         </strong>
                                                     </td>
                                                 </tr>
@@ -202,7 +202,7 @@
                                                 </td>
                                                 <td class="text-right align-middle <?php if (round($saldo, 2) > 0) echo "text-teal";
                                                                                     elseif (round($saldo, 2) < 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -251,13 +251,13 @@
                                                         <?php if ($titulo->tipo_movimento == 2) echo "-"; ?>
                                                         <?php
                                                         if ($titulo->confirmado == 1)
-                                                            echo number_format($titulo->valor_confirmado, 2, ',', '.');
+                                                            echo number_format((float) ($titulo->valor_confirmado), 2, ',', '.');
                                                         else
-                                                            echo number_format($titulo->valor_titulo, 2, ',', '.');  ?>
+                                                            echo number_format((float) ($titulo->valor_titulo), 2, ',', '.');  ?>
                                                     </td>
                                                     <td class="text-right align-middle <?php if ($saldo > 0) echo "text-teal";
                                                                                         elseif ($saldo < 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -455,7 +455,7 @@
                                                             Valor do título
                                                         </td>
                                                         <td class="text-right align-middle <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; else echo "text-teal"; ?>">
-                                                            R$ <?php if ($titulo->tipo_movimento == 2) echo "-"; ?><?= number_format($titulo->valor_titulo, 2, ',', '.') ?>
+                                                            R$ <?php if ($titulo->tipo_movimento == 2) echo "-"; ?><?= number_format((float) ($titulo->valor_titulo), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -469,7 +469,7 @@
                                                             </td>
                                                         <?php } ?>
                                                         <td class="text-right align-middle">
-                                                            R$ <?= number_format($titulo->valor_desc_taxa, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($titulo->valor_desc_taxa), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -483,7 +483,7 @@
                                                             </td>
                                                         <?php } ?>
                                                         <td class="text-right align-middle">
-                                                            R$ <?= number_format($titulo->valor_juros_multa, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($titulo->valor_juros_multa), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -491,7 +491,7 @@
                                                             Valor confirmado
                                                         </td>
                                                         <td class="text-right align-middle <?php if ($titulo->tipo_movimento == 2 && $titulo->valor_confirmado != 0) echo "text-danger"; elseif ($titulo->tipo_movimento == 1 && $titulo->valor_confirmado != 0) echo "text-teal"; ?>">
-                                                            <strong>R$ <?= number_format($titulo->valor_confirmado, 2, ',', '.') ?></strong>
+                                                            <strong>R$ <?= number_format((float) ($titulo->valor_confirmado), 2, ',', '.') ?></strong>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -623,19 +623,19 @@
                     </td>
                     <td class="text-center <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                        <?php if ($titulo->tipo_movimento == 1) echo "text-teal"; ?>" style="border: 1px solid">
-                        R$ <?= number_format($titulo->valor_titulo, 2, ',', '.'); ?>
+                        R$ <?= number_format((float) ($titulo->valor_titulo), 2, ',', '.'); ?>
                     </td>
                     <td class="text-center <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                        <?php if ($titulo->tipo_movimento == 1) echo "text-teal"; ?>" style="border: 1px solid">
-                        R$ <?= number_format($titulo->valor_desc_taxa, 2, ',', '.'); ?>
+                        R$ <?= number_format((float) ($titulo->valor_desc_taxa), 2, ',', '.'); ?>
                     </td>
                     <td class="text-center <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                        <?php if ($titulo->tipo_movimento == 1) echo "text-teal"; ?>" style="border: 1px solid">
-                        R$ <?= number_format($titulo->valor_juros_multa, 2, ',', '.'); ?>
+                        R$ <?= number_format((float) ($titulo->valor_juros_multa), 2, ',', '.'); ?>
                     </td>
                     <td class="text-center <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                        <?php if ($titulo->tipo_movimento == 1) echo "text-teal"; ?>" style="border: 1px solid">
-                        R$ <?= number_format($titulo->valor_confirmado, 2, ',', '.'); ?>
+                        R$ <?= number_format((float) ($titulo->valor_confirmado), 2, ',', '.'); ?>
                     </td>
                 </tr>
             <?php } ?>

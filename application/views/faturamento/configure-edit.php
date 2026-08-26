@@ -79,7 +79,7 @@
                                                         Comissão
                                                     </td>
                                                     <td class="text-right align-middle <?php if($faturamento->perc_comissao > 0) echo "text-info"; else echo "text-muted"; ?>">
-                                                        <?= number_format($faturamento->perc_comissao, 2, ',', '.') ?>%
+                                                        <?= number_format((float) ($faturamento->perc_comissao), 2, ',', '.') ?>%
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -107,7 +107,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($faturamento->valor_total > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($faturamento->valor_total, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($faturamento->valor_total), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -116,7 +116,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($faturamento->valor_frete > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($faturamento->valor_frete, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($faturamento->valor_frete), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -125,7 +125,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($faturamento->valor_seguro > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($faturamento->valor_seguro, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($faturamento->valor_seguro), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -134,7 +134,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($faturamento->outras_despesas > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($faturamento->outras_despesas, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($faturamento->outras_despesas), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -143,7 +143,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($faturamento->valor_desconto > 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($faturamento->valor_desconto, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($faturamento->valor_desconto), 2, ',', '.') ?>
                                             </td>
                                         </tr>                                        
                                     </tbody>
@@ -159,8 +159,8 @@
                                     <td
                                         class="text-right pt-0 <?php if($pedido->valor_total_faturado > 0) echo "text-teal"; ?>">
                                         <strong>
-                                            R$ <?= number_format($faturamento->valor_total + $faturamento->valor_frete + $faturamento->valor_seguro + $faturamento->outras_despesas -
-                                                      $faturamento->valor_desconto, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($faturamento->valor_total + $faturamento->valor_frete + $faturamento->valor_seguro + $faturamento->outras_despesas -
+                                                      $faturamento->valor_desconto), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -346,15 +346,15 @@
                                                                 <tr>
                                                                     <td class="align-middle"><?= $produto->cod_produto ?> - <?= $produto->nome_produto ?></td>
                                                                     <td class="text-right align-middle text-info">
-                                                                        <?php echo number_format($produto->quantidade, 3, ',', '.') ?> <?php echo $produto->cod_unidade_medida ?>
+                                                                        <?php echo number_format((float) ($produto->quantidade), 3, ',', '.') ?> <?php echo $produto->cod_unidade_medida ?>
                                                                     </td>
                                                                     <td class="text-right align-middle">
                                                                         R$
-                                                                        <?php echo number_format($produto->valor_unitario, 2, ',', '.') ?>
+                                                                        <?php echo number_format((float) ($produto->valor_unitario), 2, ',', '.') ?>
                                                                     </td>
                                                                     <td class="text-right text-teal align-middle">
                                                                         R$
-                                                                        <?php echo number_format($produto->valor_total_produtos, 2, ',', '.') ?>
+                                                                        <?php echo number_format((float) ($produto->valor_total_produtos), 2, ',', '.') ?>
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
@@ -508,7 +508,7 @@
                                                                 </td>
                                                                 <td class="text-right text-teal align-middle">
                                                                     R$
-                                                                    <?= number_format($titulo->valor_titulo, 2, ',', '.') ?>
+                                                                    <?= number_format((float) ($titulo->valor_titulo), 2, ',', '.') ?>
                                                                 </td>
                                                             </tr>
                                                             <?php } ?>

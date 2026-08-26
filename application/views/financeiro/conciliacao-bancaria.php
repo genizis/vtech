@@ -37,11 +37,11 @@
                             <tbody>
                                 <tr>
                                     <td>Valor conciliado</td>
-                                    <td class="text-right text-teal">R$ <?= number_format($resumo['conciliado'], 2, ',', '.') ?></td>
+                                    <td class="text-right text-teal">R$ <?= number_format((float) ($resumo['conciliado']), 2, ',', '.') ?></td>
                                 </tr>
                                 <tr>
                                     <td>Valor não conciliado</td>
-                                    <td class="text-right text-danger">R$ <?= number_format($resumo['pendente'], 2, ',', '.') ?></td>
+                                    <td class="text-right text-danger">R$ <?= number_format((float) ($resumo['pendente']), 2, ',', '.') ?></td>
                                 </tr>
                                 <tr>
                                     <td>Itens conciliados</td>
@@ -113,7 +113,7 @@
                                             <?= html_escape($item->descricao) ?><br>
                                             <?php if($item->documento){ ?><small class="text-muted">Doc. <?= html_escape($item->documento) ?></small><?php } ?>
                                         </td>
-                                        <td class="text-right align-middle <?= $item->valor >= 0 ? 'text-teal' : 'text-danger' ?>">R$ <?= number_format($item->valor, 2, ',', '.') ?></td>
+                                        <td class="text-right align-middle <?= $item->valor >= 0 ? 'text-teal' : 'text-danger' ?>">R$ <?= number_format((float) ($item->valor), 2, ',', '.') ?></td>
                                         <td class="align-middle" style="min-width: 260px">
                                             <?php if($item->id_vinculo !== null){ ?>
                                                 <span class="badge bg-success-light text-success"><i class="fas fa-check-circle"></i> Conciliado</span><br>

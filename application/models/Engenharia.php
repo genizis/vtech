@@ -203,7 +203,7 @@ class Engenharia extends CI_Model{
     public function selectEstruturaComponente($seqEstruturaComponente = null){
 
         $componente = $this->getEstruturaComponentePorCodigo($seqEstruturaComponente);
-        $quantConsumo = number_format($componente->quant_consumo, 3, ',', '');
+        $quantConsumo = number_format((float) ($componente->quant_consumo), 3, ',', '');
 
         $input = "{$componente->seq_estrutura_componente}|{$componente->cod_produto} - {$componente->nome_produto}|{$componente->cod_unidade_medida}|{$componente->nome_tipo_produto}|{$quantConsumo}";
 

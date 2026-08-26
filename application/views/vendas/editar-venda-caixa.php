@@ -232,7 +232,7 @@
                                                         <input type="text" class="form-control" class="form-control"
                                                             id="inputSubTotal" type="text" name="SubTotal"
                                                             data-mask="#.##0,00" data-mask-reverse="true"
-                                                            value="<?= number_format($venda_caixa->sub_total, 2, ',', '.') ?>"
+                                                            value="<?= number_format((float) ($venda_caixa->sub_total), 2, ',', '.') ?>"
                                                             readonly>
                                                     </div>
                                                 </div>
@@ -248,7 +248,7 @@
                                                             <?php if($venda_caixa->status != 1) echo "readonly"; ?>
                                                             data-mask-reverse="true" name="ValorFrete"
                                                             id="inputValorFrete"
-                                                            value="<?= number_format($venda_caixa->valor_frete, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($venda_caixa->valor_frete), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -270,7 +270,7 @@
                                                             <?php if($venda_caixa->status != 1) echo "readonly"; ?>
                                                             data-mask-reverse="true" name="ValorDesconto"
                                                             id="inputValorDesconto"
-                                                            value="<?= number_format($venda_caixa->valor_desconto, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($venda_caixa->valor_desconto), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,9 +286,9 @@
                                                             id="inputValorLiquido" type="text" name="TotalPedido"
                                                             data-mask="#.##0,00" data-mask-reverse="true" value="<?php
                                                                 if($venda_caixa->tipo_desconto == 1)
-                                                                    echo number_format($venda_caixa->sub_total + $venda_caixa->valor_frete - $venda_caixa->valor_desconto, 2, ',', '.');
+                                                                    echo number_format((float) ($venda_caixa->sub_total + $venda_caixa->valor_frete - $venda_caixa->valor_desconto), 2, ',', '.');
                                                                 else{
-                                                                    echo number_format($venda_caixa->sub_total + $venda_caixa->valor_frete - ($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100)), 2, ',', '.');
+                                                                    echo number_format((float) ($venda_caixa->sub_total + $venda_caixa->valor_frete - ($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100))), 2, ',', '.');
                                                                 }
                                                             ?>" readonly>
                                                     </div>
@@ -347,7 +347,7 @@
                                                                     data-mask="#.##0,00"
                                                                     <?php if($venda_caixa->status != 1) echo "readonly"; ?>
                                                                     data-mask-reverse="true"
-                                                                    value="<?= number_format($metodo_caixa->valor_pagamento, 2, ',', '.') ?>">
+                                                                    value="<?= number_format((float) ($metodo_caixa->valor_pagamento), 2, ',', '.') ?>">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -437,7 +437,7 @@
                                                                     id="inputSubTotal" type="text" name="SubTotal"
                                                                     data-mask="#.##0,000" data-mask-reverse="true"
                                                                     value="<?= $produto_caixa->quant_venda ?>">
-                                                                <?= number_format($produto_caixa->quant_venda, 3, ',', '.') ?>
+                                                                <?= number_format((float) ($produto_caixa->quant_venda), 3, ',', '.') ?>
                                                                 <?= $produto_caixa->cod_unidade_medida ?>
                                                             </td>
                                                             <td class="text-right align-middle" width="90">
@@ -447,12 +447,12 @@
                                                                     data-mask="#.##0,00" data-mask-reverse="true"
                                                                     value="<?= $produto_caixa->valor_unit ?>">
                                                                 R$
-                                                                <?= number_format($produto_caixa->valor_unit, 2, ',', '.') ?>
+                                                                <?= number_format((float) ($produto_caixa->valor_unit), 2, ',', '.') ?>
                                                             </td>
                                                             <td class="text-right font-weight-bold align-middle"
                                                                 width="90">
                                                                 R$
-                                                                <?= number_format($produto_caixa->valor_unit * $produto_caixa->quant_venda, 2, ',', '.') ?>
+                                                                <?= number_format((float) ($produto_caixa->valor_unit * $produto_caixa->quant_venda), 2, ',', '.') ?>
                                                             </td>
                                                         </tr>
                                                         <?php } ?>
@@ -476,13 +476,13 @@
                                                                             <td>Total em produtos</td>
                                                                             <td class="text-right"><strong
                                                                                     id="totalBruto">R$
-                                                                                    <?= number_format($venda_caixa->sub_total, 2, ',', '.') ?></strong>
+                                                                                    <?= number_format((float) ($venda_caixa->sub_total), 2, ',', '.') ?></strong>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Frete</td>
                                                                             <td class="text-right" id="valorFrete">R$
-                                                                                <?= number_format($venda_caixa->valor_frete, 2, ',', '.') ?>
+                                                                                <?= number_format((float) ($venda_caixa->valor_frete), 2, ',', '.') ?>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -490,9 +490,9 @@
                                                                             <td class="text-right" id="valorDesconto">R$
                                                                                 <?php
                                                                                     if($venda_caixa->tipo_desconto == 1)
-                                                                                        echo number_format($venda_caixa->valor_desconto, 2, ',', '.');
+                                                                                        echo number_format((float) ($venda_caixa->valor_desconto), 2, ',', '.');
                                                                                     else{
-                                                                                        echo number_format(round($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100), 2), 2, ',', '.');
+                                                                                        echo number_format((float) (round($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100), 2)), 2, ',', '.');
                                                                                     }
                                                                                 ?>
                                                                             </td>
@@ -513,9 +513,9 @@
                                                                                 <strong id="valorLiquido">R$
                                                                                     <?php
                                                                                         if($venda_caixa->tipo_desconto == 1)
-                                                                                            echo number_format(($venda_caixa->sub_total - $venda_caixa->valor_desconto) + $venda_caixa->valor_frete, 2, ',', '.');
+                                                                                            echo number_format((float) (($venda_caixa->sub_total - $venda_caixa->valor_desconto) + $venda_caixa->valor_frete), 2, ',', '.');
                                                                                         else{
-                                                                                            echo number_format(($venda_caixa->sub_total - round($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100), 2)) + $venda_caixa->valor_frete, 2, ',', '.');
+                                                                                            echo number_format((float) (($venda_caixa->sub_total - round($venda_caixa->sub_total * ($venda_caixa->valor_desconto / 100), 2)) + $venda_caixa->valor_frete), 2, ',', '.');
                                                                                         }
                                                                                     ?>
                                                                                 </strong>

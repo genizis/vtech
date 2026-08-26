@@ -58,9 +58,9 @@
                             <td class="text-center"><?= $produto->cod_produto ?></td>
                             <td><?= $produto->nome_produto ?></td>
                             <td class="text-center"><?= $produto->cod_unidade_medida ?></td>  
-                            <td class="text-center">R$ <?= number_format($produto->total_compra / $produto->quant_pedida, 2, ",", ".") ?></td>                                                             
-                            <td class="text-center"><?= number_format($produto->quant_pedida, 3, ",", ".") ?></td> 
-                            <td class="text-center">R$ <?= number_format($produto->total_compra, 2, ",", ".") ?></td>                                   
+                            <td class="text-center">R$ <?= number_format((float) ($produto->total_compra / $produto->quant_pedida), 2, ",", ".") ?></td>                                                             
+                            <td class="text-center"><?= number_format((float) ($produto->quant_pedida), 3, ",", ".") ?></td> 
+                            <td class="text-center">R$ <?= number_format((float) ($produto->total_compra), 2, ",", ".") ?></td>                                   
                         </tr>
                         <?php } ?>                                                        
                     </tbody>
@@ -77,13 +77,13 @@
                             <tbody>                                                            
                                 <tr>
                                     <th class="table-light">Total</th>
-                                    <td class="text-right"><strong>R$ <?= number_format($total, 2, ",", ".") ?></strong></td>
+                                    <td class="text-right"><strong>R$ <?= number_format((float) ($total), 2, ",", ".") ?></strong></td>
                                 </tr> 
                                 <tr>
                                     <th class="table-light">Desconto</th>
                                     <td class="text-right" id="inputValorDesconto">
                                         <?php if($pedido->tipo_desconto == 1) echo "R$"; ?>
-                                        <?= number_format($pedido->valor_desconto, 2, ",", "."); ?>
+                                        <?= number_format((float) ($pedido->valor_desconto), 2, ",", "."); ?>
                                         <?php if($pedido->tipo_desconto == 2) echo "%"; ?>
                                     </td>
                                 </tr>
@@ -93,12 +93,12 @@
                                     <?php 
                                         if($pedido->valor_desconto != 0){
                                             if($pedido->tipo_desconto == 1){
-                                                echo number_format($total - $pedido->valor_desconto, 2, ",", ".");
+                                                echo number_format((float) ($total - $pedido->valor_desconto), 2, ",", ".");
                                             }elseif($pedido->tipo_desconto == 2){
-                                                echo number_format($total - ($total * ($pedido->valor_desconto / 100)), 2, ",", ".");
+                                                echo number_format((float) ($total - ($total * ($pedido->valor_desconto / 100))), 2, ",", ".");
                                             }
                                         }else{
-                                            echo number_format($total, 2, ",", ".");
+                                            echo number_format((float) ($total), 2, ",", ".");
                                         }
                                     ?>
                                     </strong></td>

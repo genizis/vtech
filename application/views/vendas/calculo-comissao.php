@@ -57,7 +57,7 @@
                                                                $venda_confirmada->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -72,7 +72,7 @@
                                                                $venda_orcamento->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-warning"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -87,7 +87,7 @@
                                                                $venda_reprovada->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -250,13 +250,13 @@
                                                         <span class='badge text-warning font-italic'>Sem Fornecedor Cadastrado</span>
                                                     </td>
                                                     <td class="align-middle text-right <?php if ($vendedor->total_vendas > 0) echo "text-teal"; ?>">
-                                                        R$ <?= number_format($vendedor->total_vendas, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($vendedor->total_vendas), 2, ',', '.') ?>
                                                     </td>
                                                     <td class="align-middle text-right">
-                                                        <?= number_format(9.9, 2, ',', '.') ?>%
+                                                        <?= number_format((float) (9.9), 2, ',', '.') ?>%
                                                     </td>
                                                     <td class="align-middle text-right">                                                                            
-                                                        R$ <?= number_format(0, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) (0), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

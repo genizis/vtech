@@ -123,7 +123,7 @@
                                             <td
                                                 class="text-right <?php if($custo_producao->custo_material > 0) echo "text-danger"; ?>">
                                                 R$
-                                                <?= number_format($custo_producao->custo_material, 2, ',', '.') ?>
+                                                <?= number_format((float) ($custo_producao->custo_material), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -132,7 +132,7 @@
                                             <td
                                                 class="text-right <?php if($custo_producao->custo_mob > 0) echo "text-danger"; ?>">
                                                 R$
-                                                <?= number_format($custo_producao->custo_mob, 2, ',', '.') ?>
+                                                <?= number_format((float) ($custo_producao->custo_mob), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -149,7 +149,7 @@
                                         class="text-right pt-0 <?php if(($custo_producao->custo_material + $custo_producao->custo_mob) > 0) echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format(($custo_producao->custo_material + $custo_producao->custo_mob), 2, ',', '.') ?>
+                                            <?= number_format((float) (($custo_producao->custo_material + $custo_producao->custo_mob)), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -180,7 +180,7 @@
                                         class="text-right pt-0 <?php if(($custo_producao->custo_material + $custo_producao->custo_mob) > 0) echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format(($custo_producao->custo_material + $custo_producao->custo_mob), 2, ',', '.') ?>
+                                            <?= number_format((float) (($custo_producao->custo_material + $custo_producao->custo_mob)), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -206,7 +206,7 @@
                                                         <?= $producao->nome_produto ?>
                                                     </td>
                                                     <td class="text-right text-teal">
-                                                        <?= number_format($producao->total_producao, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($producao->total_producao), 3, ',', '.') ?>
                                                         <?= $producao->cod_unidade_medida ?>
                                                     </td>
                                                 </tr>
@@ -248,7 +248,7 @@
                                                         <?= date("d", strtotime($hora_dia->data)) ?> de <?= $descMes ?>
                                                     </td>
                                                     <td class="text-right text-dark <?php if($hora_dia->hora_dia > 0) echo "font-weight-bold" ?>">
-                                                        <?= number_format($hora_dia->hora_dia, 2, ',', '.') ?> h
+                                                        <?= number_format((float) ($hora_dia->hora_dia), 2, ',', '.') ?> h
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -273,7 +273,7 @@
                                     <td
                                         class="text-right pt-0 <?php if(($custo_producao->custo_material + $custo_producao->custo_mob) > 0) echo "text-info"; ?>">
                                         <strong>
-                                            <?= number_format($totalHoras, 2, ',', '.') ?> h
+                                            <?= number_format((float) ($totalHoras), 2, ',', '.') ?> h
                                         </strong>
                                     </td>
                                 </tr>
@@ -307,7 +307,7 @@
                                                         <?= $consumo->nome_produto ?>
                                                     </td>
                                                     <td class="text-right text-info">
-                                                        <?= number_format($consumo->total_consumido, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($consumo->total_consumido), 3, ',', '.') ?>
                                                         <?= $consumo->cod_unidade_medida ?>
                                                     </td>
                                                 </tr>

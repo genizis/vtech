@@ -101,20 +101,20 @@
                                                     <?= $fornecedor_resumida->nome_fornecedor ?></td>
                                                 <td class="text-center align-middle"><?= $fornecedor_resumida->cnpj_cpf ?></td>
                                                 <td class="text-right align-middle <?php if($fornecedor_resumida->total_produto > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_resumida->total_produto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->total_produto), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_resumida->total_frete > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_resumida->total_frete, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->total_frete), 2, ',', '.') ?>
                                                 <td class="text-right align-middle <?php if($fornecedor_resumida->total_seguro > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_resumida->total_seguro, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->total_seguro), 2, ',', '.') ?>
                                                 <td class="text-right align-middle <?php if($fornecedor_resumida->outras_despesas > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_resumida->outras_despesas, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->outras_despesas), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_resumida->total_desconto > 0) echo "text-teal"; ?>">
-                                                    R$ <?= number_format($fornecedor_resumida->total_desconto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->total_desconto), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle text-warning font-weight-bold">
-                                                    R$ <?= number_format($fornecedor_resumida->total_produto + $fornecedor_resumida->total_frete - $fornecedor_resumida->total_desconto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_resumida->total_produto + $fornecedor_resumida->total_frete - $fornecedor_resumida->total_desconto), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -160,22 +160,22 @@
                                                     <?= $fornecedor_detalhada->nome_fornecedor ?></td>
                                                 <td class="text-center"><?= $fornecedor_detalhada->num_pedido_compra ?></td>
                                                 <td class="text-right align-middle <?php if($fornecedor_detalhada->valor_bruto > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_detalhada->valor_bruto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_bruto), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_detalhada->valor_frete > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_detalhada->valor_frete, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_frete), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_detalhada->valor_seguro > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_detalhada->valor_seguro, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_seguro), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_detalhada->outras_despesas > 0) echo "text-warning"; ?>">
-                                                    R$ <?= number_format($fornecedor_detalhada->outras_despesas, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->outras_despesas), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($fornecedor_detalhada->valor_desconto > 0) echo "text-teal"; ?>">
-                                                    R$ <?= number_format($fornecedor_detalhada->valor_desconto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_desconto), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right align-middle text-warning font-weight-bold">
-                                                    R$ <?= number_format($fornecedor_detalhada->valor_bruto + $fornecedor_detalhada->valor_frete + $fornecedor_detalhada->valor_seguro + $fornecedor_detalhada->outras_despesas - $fornecedor_detalhada->valor_desconto, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_bruto + $fornecedor_detalhada->valor_frete + $fornecedor_detalhada->valor_seguro + $fornecedor_detalhada->outras_despesas - $fornecedor_detalhada->valor_desconto), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -239,22 +239,22 @@
                     <?= $fornecedor_resumida->cnpj_cpf ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->total_produto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->total_produto), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->total_frete, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->total_frete), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->total_seguro, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->total_seguro), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->outras_despesas, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->outras_despesas), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->total_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->total_desconto), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_resumida->total_produto + $fornecedor_resumida->total_frete - $fornecedor_resumida->total_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_resumida->total_produto + $fornecedor_resumida->total_frete - $fornecedor_resumida->total_desconto), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>
@@ -307,22 +307,22 @@
                     <?= $fornecedor_detalhada->num_pedido_compra ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->valor_bruto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_bruto), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->valor_frete, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_frete), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->valor_seguro, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_seguro), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->outras_despesas, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->outras_despesas), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->valor_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_desconto), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($fornecedor_detalhada->valor_bruto + $fornecedor_detalhada->valor_frete + $fornecedor_detalhada->valor_seguro + $fornecedor_detalhada->outras_despesas - $fornecedor_detalhada->valor_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($fornecedor_detalhada->valor_bruto + $fornecedor_detalhada->valor_frete + $fornecedor_detalhada->valor_seguro + $fornecedor_detalhada->outras_despesas - $fornecedor_detalhada->valor_desconto), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

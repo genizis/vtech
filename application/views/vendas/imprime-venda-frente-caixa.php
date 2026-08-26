@@ -53,9 +53,9 @@
 			<td colspan="3"><?= $produto->cod_produto ?> - <?= $produto->nome_produto ?></td>
 		</tr>
 		<tr>
-			<td>R$ <?= number_format($produto->valor_unit, 2, ",", ".") ?></td>
-			<td><?= number_format($produto->quant_venda, 3, ",", ".") ?></td>
-			<td>R$ <?= number_format($produto->quant_venda * $produto->valor_unit, 2, ",", ".") ?></td>
+			<td>R$ <?= number_format((float) ($produto->valor_unit), 2, ",", ".") ?></td>
+			<td><?= number_format((float) ($produto->quant_venda), 3, ",", ".") ?></td>
+			<td>R$ <?= number_format((float) ($produto->quant_venda * $produto->valor_unit), 2, ",", ".") ?></td>
 		</tr>
         <?php } ?>
 	</tbody>
@@ -67,19 +67,19 @@
 		</tr>
 		<tr class="ttu">
 			<td colspan="2">Sub-total</td>
-			<td align="right">R$ <?= number_format($venda->sub_total, 2, ',', '.') ?></td>
+			<td align="right">R$ <?= number_format((float) ($venda->sub_total), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td colspan="2">Frete</td>
-			<td align="right">R$ <?= number_format($venda->valor_frete, 2, ',', '.') ?></td>
+			<td align="right">R$ <?= number_format((float) ($venda->valor_frete), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td colspan="2">Desconto</td>
 			<td align="right">R$ <?php
                                     if($venda->tipo_desconto == 1)
-                                        echo number_format($venda->valor_desconto, 2, ',', '.');
+                                        echo number_format((float) ($venda->valor_desconto), 2, ',', '.');
                                     else{
-                                        echo number_format($venda->sub_total * ($venda->valor_desconto / 100), 2, ',', '.');
+                                        echo number_format((float) ($venda->sub_total * ($venda->valor_desconto / 100)), 2, ',', '.');
                                     }
                                  ?></td>
 		</tr>
@@ -87,9 +87,9 @@
 			<td colspan="2">Total</td>
 			<td align="right">R$ <?php
                                     if($venda->tipo_desconto == 1)
-                                        echo number_format(($venda->sub_total - $venda->valor_desconto) + $venda->valor_frete, 2, ',', '.');
+                                        echo number_format((float) (($venda->sub_total - $venda->valor_desconto) + $venda->valor_frete), 2, ',', '.');
                                     else{
-                                        echo number_format(($venda->sub_total - ($venda->sub_total * ($venda->valor_desconto / 100))) + $venda->valor_frete, 2, ',', '.');
+                                        echo number_format((float) (($venda->sub_total - ($venda->sub_total * ($venda->valor_desconto / 100))) + $venda->valor_frete), 2, ',', '.');
                                    }
                                  ?></td>
 		</tr>
@@ -101,7 +101,7 @@
         <?php foreach($lista_metodo as $key_lista_metodo => $metodo_caixa) { ?>
 		<tr class="ttu">
 			<td colspan="2"><?= $metodo_caixa->nome_metodo_pagamento ?></td>
-			<td align="right">R$ <?= number_format($metodo_caixa->valor_pagamento, 2, ',', '.') ?></td>
+			<td align="right">R$ <?= number_format((float) ($metodo_caixa->valor_pagamento), 2, ',', '.') ?></td>
 		</tr>
         <?php } ?>		
 		<tr class="sup">

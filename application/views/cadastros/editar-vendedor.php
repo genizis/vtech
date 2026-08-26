@@ -69,7 +69,7 @@
                                         <label for="inputPerComissao">Percentual de Comissão</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="PerComissao" data-mask="##0,00" data-mask-reverse="true"
-                                            value="<?= number_format($vendedor->perc_comissao, 2, ',', '.') ?>">
+                                            value="<?= number_format((float) ($vendedor->perc_comissao), 2, ',', '.') ?>">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -206,7 +206,7 @@
                                                                             <?= $meta->ano ?>
                                                                         </a>
                                                                     </td>
-                                                                    <td class="text-right text-info">R$ <?= number_format($meta->total_meta, 2, ',', '.') ?></td>
+                                                                    <td class="text-right text-info">R$ <?= number_format((float) ($meta->total_meta), 2, ',', '.') ?></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>

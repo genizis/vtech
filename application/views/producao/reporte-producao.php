@@ -51,35 +51,35 @@
                                                 Produzido total
                                             </td>
                                             <td class="text-right <?php if($lista_status->produzido_total > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->produzido_total, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->produzido_total), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                                 Produzido parcial</td>
                                             <td class="text-right <?php if($lista_status->produzido_parcial > 0) echo "text-info"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->produzido_parcial, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->produzido_parcial), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                                 Pendentes</td>
                                             <td class="text-right <?php if($lista_status->pendente > 0) echo "text-muted"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->pendente, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->pendente), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                                 Atrasadas</td>
                                             <td class="text-right <?php if($lista_status->atrasado > 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->atrasado, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->atrasado), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                                 Estornadas</td>
                                             <td class="text-right <?php if($lista_status->estornado > 0) echo "text-dark"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->estornado, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->estornado), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -94,7 +94,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>Total de ordens</strong></td>
                                     <td class="text-right pt-0">
                                         <strong>
-                                            <?= number_format(($lista_status->produzido_total + $lista_status->produzido_parcial + $lista_status->pendente + $lista_status->atrasado + $lista_status->estornado), 0, ',', '.') ?>
+                                            <?= number_format((float) (($lista_status->produzido_total + $lista_status->produzido_parcial + $lista_status->pendente + $lista_status->atrasado + $lista_status->estornado)), 0, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -195,10 +195,10 @@
                                                         <?php } ?>
                                                     </td>
                                                     <td class="text-right align-middle text-info">
-                                                        <?= number_format($ordem->quant_planejada, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($ordem->quant_planejada), 3, ',', '.') ?>
                                                         <?= $ordem->cod_unidade_medida ?></td>
                                                     <td class="text-right align-middle <?php if($ordem->quant_produzida > 0) echo "text-teal"; ?>">
-                                                        <?= number_format($ordem->quant_produzida, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($ordem->quant_produzida), 3, ',', '.') ?>
                                                         <?= $ordem->cod_unidade_medida ?></td>
                                                 </tr>
                                                 <?php } ?>

@@ -98,10 +98,10 @@
                                                     <?= $vendedor_resumida->nome_vendedor ?>
                                                 </td>
                                                 <td class="text-right <?php if($vendedor_resumida->total_venda > 0) echo "text-teal"; ?>">
-                                                    R$ <?= number_format($vendedor_resumida->total_venda, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_resumida->total_venda), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right <?php if($vendedor_resumida->total_comissao > 0) echo "text-info"; ?>">
-                                                    R$ <?= number_format($vendedor_resumida->total_comissao, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_resumida->total_comissao), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -151,13 +151,13 @@
                                                 <td class="text-center"><?= $vendedor_cliente->num_pedido_venda ?></td>
                                                 <td class="text-center"><?= $vendedor_cliente->cod_faturamento_pedido ?></td>
                                                 <td class="text-right <?php if($vendedor_cliente->total_venda > 0) echo "text-teal"; ?>">
-                                                    R$ <?= number_format($vendedor_cliente->total_venda, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_cliente->total_venda), 2, ',', '.') ?>
                                                 </td>
                                                 <td class="text-right ">
-                                                    <?= number_format($vendedor_cliente->perc_comissao, 2, ',', '.') ?>%
+                                                    <?= number_format((float) ($vendedor_cliente->perc_comissao), 2, ',', '.') ?>%
                                                 </td>
                                                 <td class="text-right <?php if($vendedor_cliente->total_comissao > 0) echo "text-info"; ?>">
-                                                    R$ <?= number_format($vendedor_cliente->total_comissao, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_cliente->total_comissao), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -207,13 +207,13 @@
                                                     <?= $vendedor_produto->cod_produto ?> - <?= $vendedor_produto->nome_produto ?>
                                                 </td>
                                                 <td class="text-right <?php if($vendedor_produto->quantidade > 0) echo "text-info"; ?>">
-                                                    <?= number_format($vendedor_produto->quantidade, 3, ',', '.') ?> <?= $vendedor_produto->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($vendedor_produto->quantidade), 3, ',', '.') ?> <?= $vendedor_produto->cod_unidade_medida ?>
                                                 </td>    
                                                 <td class="text-right text-dark">
-                                                    R$ <?= number_format($vendedor_produto->valor_unitario, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_produto->valor_unitario), 2, ',', '.') ?>
                                                 </td>                                        
                                                 <td class="text-right text-teal">
-                                                    R$ <?= number_format($vendedor_produto->quantidade * $vendedor_produto->valor_unitario, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($vendedor_produto->quantidade * $vendedor_produto->valor_unitario), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -268,10 +268,10 @@
                     <?= $vendedor_resumida->cod_vendedor ?> - <?= $vendedor_resumida->nome_vendedor ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_resumida->total_venda, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_resumida->total_venda), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_resumida->total_comissao, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_resumida->total_comissao), 2, ',', '.') ?>
                 </td> 
             </tr>
             <?php } ?>
@@ -329,13 +329,13 @@
                     <?= $vendedor_cliente->cod_faturamento_pedido ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_cliente->total_venda, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_cliente->total_venda), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($vendedor_cliente->perc_comissao, 2, ',', '.') ?>%
+                    <?= number_format((float) ($vendedor_cliente->perc_comissao), 2, ',', '.') ?>%
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_cliente->total_comissao, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_cliente->total_comissao), 2, ',', '.') ?>
                 </td> 
             </tr>
             <?php } ?>
@@ -393,13 +393,13 @@
                     <?= $vendedor_produto->cod_unidade_medida ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($vendedor_produto->quantidade, 3, ',', '.') ?>
+                    <?= number_format((float) ($vendedor_produto->quantidade), 3, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_produto->valor_unitario, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_produto->valor_unitario), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($vendedor_produto->quantidade * $vendedor_produto->valor_unitario, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($vendedor_produto->quantidade * $vendedor_produto->valor_unitario), 2, ',', '.') ?>
                 </td> 
             </tr>
             <?php } ?>

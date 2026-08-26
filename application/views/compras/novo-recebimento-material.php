@@ -99,7 +99,7 @@
                                             <td class="text-right align-middle 
                                             <?php if(($pedido->valor_pedido) > 0) echo "text-info";  ?>">
                                                 R$
-                                                <?= number_format($pedido->valor_pedido, 2, ',', '.') ?>
+                                                <?= number_format((float) ($pedido->valor_pedido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -115,7 +115,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($pedido->valor_frete > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($pedido->valor_frete, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($pedido->valor_frete), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -124,7 +124,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($pedido->valor_seguro > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($pedido->valor_seguro, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($pedido->valor_seguro), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -133,7 +133,7 @@
                                             </td>
                                             <td
                                                 class="text-right align-middle <?php if($pedido->outras_despesas > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($pedido->outras_despesas, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($pedido->outras_despesas), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -146,7 +146,7 @@
                                                     if ($pedido->tipo_desconto == 1) {
                                                         echo "R$";
                                                     }
-                                                    ?> <?= number_format($pedido->valor_desconto, 2, ',', '.') ?>
+                                                    ?> <?= number_format((float) ($pedido->valor_desconto), 2, ',', '.') ?>
                                                 <?php
                                                     if ($pedido->tipo_desconto == 2) {
                                                         echo "%";
@@ -169,11 +169,11 @@
                                                                                                  $pedido->outras_despesas - 
                                                                                                  $pedido->valor_desconto_calc) > 0) echo "text-info"; ?>">
                                                 <strong>R$
-                                                <?= number_format($pedido->valor_produto + 
+                                                <?= number_format((float) ($pedido->valor_produto + 
                                                                          $pedido->valor_frete +
                                                                          $pedido->valor_seguro +
                                                                          $pedido->outras_despesas - 
-                                                                         $pedido->valor_desconto_calc, 2, ',', '.') ?></strong>
+                                                                         $pedido->valor_desconto_calc), 2, ',', '.') ?></strong>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -189,7 +189,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($pedido->valor_total > 0) echo "text-info"; else echo "text-dark"; ?>">
                                         <strong>
-                                            R$ <?= number_format($pedido->valor_total, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($pedido->valor_total), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -297,7 +297,7 @@
                                                                         <td><?= $recebimento->serie ?></td>
                                                                         <td><?= $recebimento->nota_fiscal ?></td>
                                                                         <td class="text-right text-info">R$
-                                                                            <?= number_format($recebimento->valor_bruto + $recebimento->valor_frete + $recebimento->valor_seguro + $recebimento->outras_despesas - $recebimento->valor_desconto, 2, ',', '.') ?>
+                                                                            <?= number_format((float) ($recebimento->valor_bruto + $recebimento->valor_frete + $recebimento->valor_seguro + $recebimento->outras_despesas - $recebimento->valor_desconto), 2, ',', '.') ?>
                                                                         </td>
                                                                     </tr>
                                                                     <?php } ?>
@@ -328,10 +328,10 @@
                                                             <td><?= $produto->cod_produto ?> - <?= $produto->nome_produto ?></td>
                                                             <td><?= $produto->nome_tipo_produto ?></td>
                                                             <td class="text-right text-info">
-                                                                <?= number_format($produto->quant_pedida, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
+                                                                <?= number_format((float) ($produto->quant_pedida), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
                                                             </td>
                                                             <td class="text-right text-teal">R$
-                                                                <?= number_format($produto->total_compra, 2, ',', '.') ?>
+                                                                <?= number_format((float) ($produto->total_compra), 2, ',', '.') ?>
                                                             </td>
                                                         </tr>
                                                         <?php } ?>
@@ -451,7 +451,7 @@
                                                         class="text-right align-middle 
                                                     <?php if(($pedido->valor_pedido) > 0) echo "text-info";  ?>">
                                                         R$
-                                                        <span id="idProduto"><?= number_format($pedido->valor_pedido, 2, ',', '.') ?></span>
+                                                        <span id="idProduto"><?= number_format((float) ($pedido->valor_pedido), 2, ',', '.') ?></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -460,7 +460,7 @@
                                                     </td>
                                                     <td id="idTdFrete"
                                                         class="text-right align-middle <?php if($pedido->valor_frete > 0) echo "text-info"; ?>">
-                                                        R$ <span id="idFrete"><?= number_format($pedido->valor_frete, 2, ',', '.') ?></span>
+                                                        R$ <span id="idFrete"><?= number_format((float) ($pedido->valor_frete), 2, ',', '.') ?></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -469,7 +469,7 @@
                                                     </td>
                                                     <td id="idTdSeguro"
                                                         class="text-right align-middle <?php if($pedido->valor_seguro > 0) echo "text-info"; ?>">
-                                                        R$ <span id="idSeguro"><?= number_format($pedido->valor_seguro, 2, ',', '.') ?></span>
+                                                        R$ <span id="idSeguro"><?= number_format((float) ($pedido->valor_seguro), 2, ',', '.') ?></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -478,7 +478,7 @@
                                                     </td>
                                                     <td id="idTdOutrasDespesas"
                                                         class="text-right align-middle <?php if($pedido->outras_despesas > 0) echo "text-info"; ?>">
-                                                        R$ <span id="idOutrasDespesas"><?= number_format($pedido->outras_despesas, 2, ',', '.') ?></span>
+                                                        R$ <span id="idOutrasDespesas"><?= number_format((float) ($pedido->outras_despesas), 2, ',', '.') ?></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -488,7 +488,7 @@
                                                     <td id="idTdDesconto"
                                                         class="text-right align-middle <?php if($valorDesconto> 0) echo "text-teal"; ?>">
                                                         R$
-                                                        <span id="idDesconto"><?= number_format($valorDesconto, 2, ',', '.') ?></span>
+                                                        <span id="idDesconto"><?= number_format((float) ($valorDesconto), 2, ',', '.') ?></span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -508,11 +508,11 @@
                                                                                 $pedido->outras_despesas -
                                                                                 $valorDesconto > 0) echo "text-info"; else echo "text-dark"; ?>">
                                                 <strong>
-                                                    R$ <span id="idTotalPedido"><?= number_format($pedido->valor_pedido +
+                                                    R$ <span id="idTotalPedido"><?= number_format((float) ($pedido->valor_pedido +
                                                                                                   $pedido->valor_frete +
                                                                                                   $pedido->valor_seguro +
                                                                                                   $pedido->outras_despesas -
-                                                                                                  $valorDesconto, 2, ',', '.') ?></span>
+                                                                                                  $valorDesconto), 2, ',', '.') ?></span>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -579,7 +579,7 @@
                                                                 </div>
                                                                 <input class="form-control" id="inputValorFrete" name="ValorFrete" type="text"
                                                                     data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($pedido->valor_frete, 2, ',', '.') ?>">
+                                                                    value="<?= number_format((float) ($pedido->valor_frete), 2, ',', '.') ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-3">
@@ -590,7 +590,7 @@
                                                                 </div>
                                                                 <input class="form-control" id="inputSeguro" name="Seguro" type="text"
                                                                     data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($pedido->valor_seguro, 2, ',', '.') ?>">
+                                                                    value="<?= number_format((float) ($pedido->valor_seguro), 2, ',', '.') ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-3">
@@ -601,7 +601,7 @@
                                                                 </div>
                                                                 <input class="form-control" id="inputOutrasDespesas" name="OutrasDespesas"
                                                                     type="text" data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($pedido->outras_despesas, 2, ',', '.') ?>">
+                                                                    value="<?= number_format((float) ($pedido->outras_despesas), 2, ',', '.') ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-3">
@@ -612,7 +612,7 @@
                                                                 </div>
                                                                 <input class="form-control " id="inputValorDesconto" name="ValorDesconto"
                                                                     type="text" data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($valorDesconto, 2, ',', '.') ?>">
+                                                                    value="<?= number_format((float) ($valorDesconto), 2, ',', '.') ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -625,7 +625,7 @@
                                                                 </div>
                                                                 <input class="form-control text-center" id="inputBruto" name="ValorBruto"
                                                                     type="text" data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($pedido->valor_pedido, 2, ',', '.') ?>" readonly>
+                                                                    value="<?= number_format((float) ($pedido->valor_pedido), 2, ',', '.') ?>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -636,7 +636,7 @@
                                                                 </div>
                                                                 <input class="form-control text-center text-teal" id="inputValorLiq"
                                                                     name="ValorLiq" type="text" data-mask="#.##0,00" data-mask-reverse="true"
-                                                                    value="<?= number_format($pedido->valor_pedido + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto, 2, ',', '.') ?>"
+                                                                    value="<?= number_format((float) ($pedido->valor_pedido + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto), 2, ',', '.') ?>"
                                                                     readonly>
                                                             </div>
                                                         </div>
@@ -695,7 +695,7 @@
                                                                             id="inputQuantRecebida<?= $produto->cod_produto ?>"
                                                                             name="quantRecebida[<?= $produto->cod_produto ?>]" type="text"
                                                                             data-mask="#.##0,000" data-mask-reverse="true"
-                                                                            value="<?= number_format($produto->quant_pedida, 3, ',', '.') ?>"
+                                                                            value="<?= number_format((float) ($produto->quant_pedida), 3, ',', '.') ?>"
                                                                             required>
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"
@@ -712,7 +712,7 @@
                                                                             id="inputValorCompra<?= $produto->cod_produto ?>"
                                                                             name="ValorCompra[<?= $produto->cod_produto ?>]" type="text"
                                                                             data-mask="#.##0,00" data-mask-reverse="true"
-                                                                            value="<?= number_format($produto->total_compra, 2, ',', '.') ?>"
+                                                                            value="<?= number_format((float) ($produto->total_compra), 2, ',', '.') ?>"
                                                                             required>
                                                                     </div>
                                                                 </td>
@@ -843,7 +843,7 @@
                                                                             name="ValorParcela[1]" type="text"
                                                                             data-mask="#.##0,00" inputmode="numeric"
                                                                             data-mask-reverse="true" ]
-                                                                            value="<?= number_format($pedido->valor_pedido + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto, 2, ',', '.') ?>"
+                                                                            value="<?= number_format((float) ($pedido->valor_pedido + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto), 2, ',', '.') ?>"
                                                                             required>
                                                                     </div>
                                                                 </div>
@@ -956,7 +956,7 @@
                                                     </td>
                                                     <td
                                                         class="text-right align-middle <?php if($recebimento->valor_bruto > 0) echo "text-info"; ?>">
-                                                        R$ <?= number_format($recebimento->valor_bruto, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($recebimento->valor_bruto), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -965,7 +965,7 @@
                                                     </td>
                                                     <td
                                                         class="text-right align-middle <?php if($recebimento->valor_frete > 0) echo "text-info"; ?>">
-                                                        R$ <?= number_format($recebimento->valor_frete, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($recebimento->valor_frete), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -974,7 +974,7 @@
                                                     </td>
                                                     <td
                                                         class="text-right align-middle <?php if($recebimento->valor_seguro > 0) echo "text-info"; ?>">
-                                                        R$ <?= number_format($recebimento->valor_seguro, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($recebimento->valor_seguro), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -984,7 +984,7 @@
                                                     <td
                                                         class="text-right align-middle <?php if($recebimento->outras_despesas > 0) echo "text-info"; ?>">
                                                         R$
-                                                        <?= number_format($recebimento->outras_despesas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($recebimento->outras_despesas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -994,7 +994,7 @@
                                                     <td
                                                         class="text-right align-middle <?php if($recebimento->valor_desconto > 0) echo "text-teal"; ?>">
                                                         R$
-                                                        <?= number_format($recebimento->valor_desconto, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($recebimento->valor_desconto), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>                                                
                                             </tbody>
@@ -1010,7 +1010,7 @@
                                             <td
                                                 class="text-right pt-0 <?php if($recebimento->valor_total > 0) echo "text-info"; ?>">
                                                 <strong>
-                                                    R$ <?= number_format($recebimento->valor_total, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($recebimento->valor_total), 2, ',', '.') ?>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -1053,10 +1053,10 @@
                                                                     title="<?= $recebimento_pedido->nome_produto ?>"><?= $recebimento_pedido->cod_produto ?> - <?= $recebimento_pedido->nome_produto ?></td>
                                                                 <td class="align-middle"><?= $recebimento_pedido->cod_lote ?></td>
                                                                 <td class="text-right align-middle">
-                                                                    <?= number_format($recebimento_pedido->quantidade, 3, ',', '.') ?> <?= $recebimento_pedido->cod_unidade_medida ?>
+                                                                    <?= number_format((float) ($recebimento_pedido->quantidade), 3, ',', '.') ?> <?= $recebimento_pedido->cod_unidade_medida ?>
                                                                 </td>
                                                                 <td class="text-right text-info align-middle">
-                                                                    R$ <?= number_format($recebimento_pedido->quantidade * $recebimento_pedido->valor_unitario, 2, ',', '.') ?>
+                                                                    R$ <?= number_format((float) ($recebimento_pedido->quantidade * $recebimento_pedido->valor_unitario), 2, ',', '.') ?>
                                                                 </td>
                                                             </tr>
                                                             <?php } } ?>
@@ -1116,7 +1116,7 @@
                                                                 </td>
                                                                 <td class="text-right text-danger align-middle">
                                                                     R$
-                                                                    <?= number_format($recebimento_titulo->valor_titulo, 2, ',', '.') ?>
+                                                                    <?= number_format((float) ($recebimento_titulo->valor_titulo), 2, ',', '.') ?>
                                                                 </td>
                                                             </tr>
                                                             <?php }

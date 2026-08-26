@@ -57,7 +57,7 @@
                                                                $venda_confirmada->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -72,7 +72,7 @@
                                                                $venda_orcamento->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-warning"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -87,7 +87,7 @@
                                                                $venda_reprovada->total_desconto;
                                             ?>
                                             <td class="text-right <?php if($totalStatus> 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                R$ <?= number_format($totalStatus, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totalStatus), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -299,11 +299,11 @@
                                                                                         break;
                                                                                 }
                                                                             ?> align-middle">R$
-                                                        <?= number_format($pedido->valor_total_pedido + 
+                                                        <?= number_format((float) ($pedido->valor_total_pedido + 
                                                                           $pedido->valor_frete +
                                                                           $pedido->valor_seguro +
                                                                           $pedido->outras_despesas - 
-                                                                          $pedido->valor_desconto, 2, ',', '.') ?>
+                                                                          $pedido->valor_desconto), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

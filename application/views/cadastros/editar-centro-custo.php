@@ -116,7 +116,7 @@
                                                                     </a>
                                                                 </td>
                                                                 <td><?php if ($orcamento->cod_conta_contabil != null) echo $orcamento->cod_conta_contabil . ' - ' . $orcamento->nome_conta_contabil ?></td>
-                                                                <td class="text-right text-info">R$ <?= number_format($orcamento->total_orcado, 2, ',', '.') ?></td>
+                                                                <td class="text-right text-info">R$ <?= number_format((float) ($orcamento->total_orcado), 2, ',', '.') ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>

@@ -86,7 +86,7 @@ class ToolsNFce extends CommonNFe
 
             //Envia para sefaz
             $toSend = file_get_contents($this->assDir . $fileNameNFe);
-            $lote = substr(str_replace(',', '', number_format(microtime(true) * 1000000, 0)), 0, 15);
+            $lote = substr(str_replace(',', '', number_format((float) (microtime(true) * 1000000), 0)), 0, 15);
             $sent = $tools->sefazEnviaLote([$toSend], $lote, 1);
 
             //Move para pasta enviadas

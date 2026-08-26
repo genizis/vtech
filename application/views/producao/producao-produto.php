@@ -41,7 +41,7 @@
                                                             <?= $produto->nome_produto ?>
                                                         </td>
                                                         <td class="text-right text-danger">
-                                                        R$ <?= number_format($produto->custo_total, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($produto->custo_total), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
@@ -66,7 +66,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>CUSTO TOTAL</strong></td>
                                     <td class="text-right pt-0 <?php if($total_producao->custo_total > 0) echo "text-danger"; ?>">
                                         <strong>
-                                            R$ <?= number_format($total_producao->custo_total, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($total_producao->custo_total), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -152,18 +152,18 @@
                                                         <span class="badge bg-info-light"><?= $producao_detalhada->nome_tipo_produto ?></span>
                                                         
                                                     </td>
-                                                    <td class="text-center align-middle"><?= number_format($producao_detalhada->horas_trabalhadas, 2, ',', '.') ?> h</td>
+                                                    <td class="text-center align-middle"><?= number_format((float) ($producao_detalhada->horas_trabalhadas), 2, ',', '.') ?> h</td>
                                                     <td
                                                         class="text-right align-middle <?php if($producao_detalhada->quant_reportada > 0) echo "text-info"; ?>">
-                                                        <?= number_format($producao_detalhada->quant_reportada, 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
+                                                        <?= number_format((float) ($producao_detalhada->quant_reportada), 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
                                                     </td>
                                                     <td
                                                         class="text-right align-middle <?php if($producao_detalhada->quant_perdida > 0) echo "text-warning"; ?>">
-                                                        <?= number_format($producao_detalhada->quant_perdida, 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
+                                                        <?= number_format((float) ($producao_detalhada->quant_perdida), 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
                                                     </td>
                                                     <td
                                                         class="text-right align-middle <?php if(($producao_detalhada->custo_mob + $producao_detalhada->custo_producao) > 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($producao_detalhada->custo_mob + $producao_detalhada->custo_producao, 2, ',', '.') ?><br>
+                                                        R$ <?= number_format((float) ($producao_detalhada->custo_mob + $producao_detalhada->custo_producao), 2, ',', '.') ?><br>
                                                         
                                                     </td>
                                                 </tr>
@@ -231,29 +231,29 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Quant produzida</p>
-                                        <p class="text-info"><?= number_format($produto->quant_reportada, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
+                                        <p class="text-info"><?= number_format((float) ($produto->quant_reportada), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Quant perdida</p>
-                                        <p class="text-warning"><?= number_format($produto->quant_perdida, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
+                                        <p class="text-warning"><?= number_format((float) ($produto->quant_perdida), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Horas trabalhadas</p>
-                                        <p> <?= number_format($produto->horas_trabalhadas, 2, ',', '.') ?> h</p>
+                                        <p> <?= number_format((float) ($produto->horas_trabalhadas), 2, ',', '.') ?> h</p>
                                     </div>                                    
                                 </div>
                                 <div class="row">                                    
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Custo MOB</p>
-                                        <p class="text-dark">R$ <?= number_format($produto->custo_mob, 2, ',', '.') ?></p>
+                                        <p class="text-dark">R$ <?= number_format((float) ($produto->custo_mob), 2, ',', '.') ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Custo MAT</p>
-                                        <p class="text-dark">R$ <?= number_format($produto->custo_producao, 2, ',', '.') ?></p>
+                                        <p class="text-dark">R$ <?= number_format((float) ($produto->custo_producao), 2, ',', '.') ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Custo total</p>
-                                        <p class="text-danger">R$ <?= number_format($produto->custo_mob + $produto->custo_producao, 2, ',', '.') ?></p>
+                                        <p class="text-danger">R$ <?= number_format((float) ($produto->custo_mob + $produto->custo_producao), 2, ',', '.') ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -290,11 +290,11 @@
                                                     <td class="align-middle"><?= $consumo_detalhado->nome_tipo_produto ?></td>
                                                     <td
                                                         class="align-middle text-right <?php if($consumo_detalhado->quant_movimentada > 0) echo "text-warning"; ?>">
-                                                        <?= number_format($consumo_detalhado->quant_movimentada, 3, ',', '.') ?> <?= $consumo_detalhado->cod_unidade_medida ?>
+                                                        <?= number_format((float) ($consumo_detalhado->quant_movimentada), 3, ',', '.') ?> <?= $consumo_detalhado->cod_unidade_medida ?>
                                                     </td>
                                                     <td
                                                         class="align-middle text-right <?php if($consumo_detalhado->valor_movimento > 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($consumo_detalhado->valor_movimento, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($consumo_detalhado->valor_movimento), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php }} ?>

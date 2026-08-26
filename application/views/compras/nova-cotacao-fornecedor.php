@@ -219,13 +219,13 @@
                                                                         </a>
                                                                     </td>
                                                                     <td class="text-center align-middle">
-                                                                        <?= number_format($cotacoes->dias_entrega, 0, ',', '.') ?>
+                                                                        <?= number_format((float) ($cotacoes->dias_entrega), 0, ',', '.') ?>
                                                                     </td>
                                                                     <td class="text-right align-middle">R$
-                                                                        <?= number_format($cotacoes->valor_unitario, 2, ',', '.') ?>
+                                                                        <?= number_format((float) ($cotacoes->valor_unitario), 2, ',', '.') ?>
                                                                     </td>
                                                                     <td class="text-right text-info align-middle">R$
-                                                                        <?= number_format($cotacoes->valor_unitario * $cotacoes->quant_pedida, 2, ',', '.') ?>
+                                                                        <?= number_format((float) ($cotacoes->valor_unitario * $cotacoes->quant_pedida), 2, ',', '.') ?>
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
@@ -590,7 +590,7 @@
                                                         <input type="text" class="form-control" class="form-control"
                                                             id="inputValorUnitario<?= $cotacoes->seq_cotacao_compra ?>" type="text" name="ValorUnitarioEdit"
                                                             data-mask="#.##0,00" data-mask-reverse="true"
-                                                            value="<?= number_format($cotacoes->valor_unitario, 2, ',', '.') ?>" required>
+                                                            value="<?= number_format((float) ($cotacoes->valor_unitario), 2, ',', '.') ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -601,7 +601,7 @@
                                                         </div>
                                                         <input type="text" class="form-control" id="inputTotalCompra<?= $cotacoes->seq_cotacao_compra ?>" type="text"
                                                             name="TotalCompra" data-mask="#.##0,00" data-mask-reverse="true"
-                                                            value="<?= number_format($cotacoes->valor_unitario * $cotacoes->quant_pedida, 2, ',', '.') ?>" readonly>
+                                                            value="<?= number_format((float) ($cotacoes->valor_unitario * $cotacoes->quant_pedida), 2, ',', '.') ?>" readonly>
                                                     </div>
                                                 </div>
                                             </div>

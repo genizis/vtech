@@ -2332,7 +2332,7 @@ class FinanceiroController extends CI_Controller {
 
     private function montarTransacaoConciliacao($data, $descricao, $valor, $documento, $identificador){
         $descricao = trim(strip_tags($descricao));
-        $chave = $identificador ? $identificador : $data . '|' . number_format((float)$valor, 2, '.', '') . '|' . $descricao . '|' . $documento;
+        $chave = $identificador ? $identificador : $data . '|' . number_format((float) ((float)$valor), 2, '.', '') . '|' . $descricao . '|' . $documento;
         return array(
             'data_movimento' => $data,
             'descricao' => mb_substr($descricao, 0, 255),

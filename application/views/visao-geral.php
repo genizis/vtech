@@ -153,7 +153,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-5 text-center">
                                         <h1 class="<?php if($custo_total->custo_total > 0) echo "text-danger"; ?> display-4 mt-4 font-weight-bold">R$
-                                            <?= number_format($custo_total->custo_total, 2, ',', '.') ?></h1>
+                                            <?= number_format((float) ($custo_total->custo_total), 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighterer">Custo de produção no
                                             período</p>
                                     </div>
@@ -180,7 +180,7 @@
                                                 <?= str_replace('-', '/', date("d-m-Y", strtotime($producoes->data_fim))) ?>
                                             </td>
                                             <td class="text-center">
-                                                <?= number_format($producoes->quant_planejada, 3, ',', '.') ?>
+                                                <?= number_format((float) ($producoes->quant_planejada), 3, ',', '.') ?>
                                                 <?= $producoes->cod_unidade_medida ?></td>
                                         </tr>
                                         <?php } ?>
@@ -198,7 +198,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-5 text-center">
                                         <h1 class="<?php if($venda_total->valor_total > 0) echo "text-teal"; ?> display-4 mt-4 font-weight-bold">R$
-                                            <?= number_format($venda_total->valor_total, 2, ',', '.') ?></h1>
+                                            <?= number_format((float) ($venda_total->valor_total), 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighter">Vendas efetuadas no
                                             período</p>
                                     </div>
@@ -225,7 +225,7 @@
                                                 <?= str_replace('-', '/', date("d-m-Y", strtotime($vendas->data_entrega))) ?>
                                             </td>
                                             <td class="text-center text-teal">R$
-                                                <?= number_format($vendas->valor_total_pedido, 2, ',', '.') ?></td>
+                                                <?= number_format((float) ($vendas->valor_total_pedido), 2, ',', '.') ?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -242,7 +242,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-5 text-center">
                                         <h1 class="<?php if($compra_total->valor_total > 0) echo "text-warning"; ?> display-4 mt-4 font-weight-bold">R$
-                                            <?= number_format($compra_total->valor_total, 2, ',', '.') ?></h1>
+                                            <?= number_format((float) ($compra_total->valor_total), 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighter">Compras efetuadas no
                                             período</p>
                                     </div>
@@ -269,7 +269,7 @@
                                                 <?= str_replace('-', '/', date("d-m-Y", strtotime($compras->data_entrega))) ?>
                                             </td>
                                             <td class="text-center text-warning">R$
-                                                <?= number_format($compras->valor_total_pedido, 2, ',', '.') ?>
+                                                <?= number_format((float) ($compras->valor_total_pedido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -287,7 +287,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-5 text-center">
                                         <h1 class="display-4 text-dark mt-4 font-weight-bold">R$
-                                            <?= number_format($total_estoque->total_estoq, 2, ',', '.') ?></h1>
+                                            <?= number_format((float) ($total_estoque->total_estoq), 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighter">Valor em estoque</p>
                                     </div>
                                     <div class="col-md-7">
@@ -319,11 +319,11 @@
                                             </td>
                                             <td
                                                 class="text-center <?php if($estoque->quant_estoq < 0) echo "text-danger"; else echo "text-warning"; ?>">
-                                                <?= number_format($estoque->quant_estoq, 3, ',', '.') ?>
+                                                <?= number_format((float) ($estoque->quant_estoq), 3, ',', '.') ?>
                                                 <?= $estoque->cod_unidade_medida ?>
                                             </td>
                                             <td class="text-center">
-                                                <?= number_format($estoque->estoq_min, 3, ',', '.') ?>
+                                                <?= number_format((float) ($estoque->estoq_min), 3, ',', '.') ?>
                                                 <?= $estoque->cod_unidade_medida ?>
                                             </td>
                                         </tr>
@@ -344,7 +344,7 @@
                                         <h1 class="display-4 mt-4 font-weight-bold <?php if($total_conta->total_conta > 0) echo "text-teal";
                                                                                         elseif($total_conta->total_conta < 0) echo "text-danger";
                                                                                         else echo "text-dark"; ?>">R$
-                                            <?= number_format($total_conta->total_conta, 2, ',', '.') ?></h1>
+                                            <?= number_format((float) ($total_conta->total_conta), 2, ',', '.') ?></h1>
                                         <p class="card-text lead text-muted mb-3 font-weight-lighter">Saldo disponível</p>
                                     </div>
                                     <div class="col-md-7">
@@ -385,7 +385,7 @@
                                             </td>
                                             <td
                                                 class="text-center <?php if($titulos->tipo_movimento == 1) echo "text-teal"; else echo "text-danger"; ?>">
-                                                R$ <?php if($titulos->tipo_movimento == 2) echo "-"; ?><?= number_format($titulos->valor_titulo, 2, ',', '.') ?>
+                                                R$ <?php if($titulos->tipo_movimento == 2) echo "-"; ?><?= number_format((float) ($titulos->valor_titulo), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>

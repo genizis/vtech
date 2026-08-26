@@ -58,7 +58,7 @@
                                             <td
                                                 class="text-right <?php if($conta_resumida->saldo_conta > 0) echo "text-teal";
                                                                         if($conta_resumida->saldo_conta < 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format($conta_resumida->saldo_conta, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($conta_resumida->saldo_conta), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -69,7 +69,7 @@
                                                 class="text-right <?php if(($conta_resumida->saldo_conta + $conta_resumida->entrada_proj - $conta_resumida->saida_proj) > 0) echo "text-teal";
                                                                         if(($conta_resumida->saldo_conta + $conta_resumida->entrada_proj - $conta_resumida->saida_proj) < 0) echo "text-danger"; ?>">
                                                 R$
-                                                <?= number_format($conta_resumida->saldo_conta + $conta_resumida->entrada_proj - $conta_resumida->saida_proj, 2, ',', '.') ?>
+                                                <?= number_format((float) ($conta_resumida->saldo_conta + $conta_resumida->entrada_proj - $conta_resumida->saida_proj), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -91,7 +91,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($conta->saldo_contas > 0) echo "text-teal"; else echo "text-danger"; ?>">
                                         <strong>
-                                            R$ <?= number_format($conta->saldo_contas, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($conta->saldo_contas), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -101,7 +101,7 @@
                                         class="text-right pt-0 <?php if(($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas) > 0) echo "text-teal"; else echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas, 2, ',', '.') ?>
+                                            <?= number_format((float) ($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -130,7 +130,7 @@
                                                 Receitas
                                             </td>
                                             <td class="text-right text-teal">R$
-                                                <?= number_format($total_entrada_ano, 2, ',', '.') ?>
+                                                <?= number_format((float) ($total_entrada_ano), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -138,7 +138,7 @@
                                                     style="color: #e57373"></i>
                                                 Despesas</td>
                                             <td class="text-right text-danger">R$
-                                                <?= number_format($total_saida_ano, 2, ',', '.') ?>
+                                                <?= number_format((float) ($total_saida_ano), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -155,7 +155,7 @@
                                         class="text-right pt-0 <?php if(($total_entrada_ano - $total_saida_ano) > 0) echo "text-teal"; else echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format(($total_entrada_ano - $total_saida_ano), 2, ',', '.') ?>
+                                            <?= number_format((float) (($total_entrada_ano - $total_saida_ano)), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -187,7 +187,7 @@
                                         class="text-right pt-0 <?php if(($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas) > 0) echo "text-teal"; else echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas, 2, ',', '.') ?>
+                                            <?= number_format((float) ($conta->saldo_contas + $titulos_pendente->entradas - $titulos_pendente->saidas), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -216,7 +216,7 @@
                                                         <?= $contabil->nome_conta_contabil ?>
                                                     </td>
                                                     <td class="text-right text-teal">R$
-                                                        <?= number_format($contabil->entradas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($contabil->entradas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -240,7 +240,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>Total</strong></td>
                                     <td class="text-right pt-0 text-teal">
                                         <strong>
-                                            R$ <?= number_format($totalReceitas , 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($totalReceitas ), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -269,7 +269,7 @@
                                                         <?= $contabil->nome_conta_contabil ?>
                                                     </td>
                                                     <td class="text-right text-danger">R$
-                                                        -<?= number_format($contabil->saidas, 2, ',', '.') ?>
+                                                        -<?= number_format((float) ($contabil->saidas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -293,7 +293,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>Total</strong></td>
                                     <td class="text-right pt-0 text-danger">
                                         <strong>
-                                            R$ -<?= number_format($totalDespesas, 2, ',', '.') ?>
+                                            R$ -<?= number_format((float) ($totalDespesas), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -324,7 +324,7 @@
                                                 Receitas
                                             </td>
                                             <td class="text-right text-teal">R$
-                                                <?= number_format($titulos_confirmados->entradas, 2, ',', '.') ?>
+                                                <?= number_format((float) ($titulos_confirmados->entradas), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -332,7 +332,7 @@
                                                     style="color: #e57373"></i>
                                                 Despesas</td>
                                             <td class="text-right text-danger">R$
-                                                <?= number_format($titulos_confirmados->saidas, 2, ',', '.') ?>
+                                                <?= number_format((float) ($titulos_confirmados->saidas), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -349,7 +349,7 @@
                                         class="text-right pt-0 <?php if(($titulos_confirmados->entradas - $titulos_confirmados->saidas) > 0) echo "text-teal"; else echo "text-danger"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format(($titulos_confirmados->entradas - $titulos_confirmados->saidas), 2, ',', '.') ?>
+                                            <?= number_format((float) (($titulos_confirmados->entradas - $titulos_confirmados->saidas)), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -378,7 +378,7 @@
                                                         <?= $centro->nome_centro_custo ?>
                                                     </td>
                                                     <td class="text-right text-teal">R$
-                                                        <?= number_format($centro->entradas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($centro->entradas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -402,7 +402,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>Total</strong></td>
                                     <td class="text-right pt-0 text-teal">
                                         <strong>
-                                            R$ <?= number_format($totalReceitas , 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($totalReceitas ), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -431,7 +431,7 @@
                                                         <?= $centro->nome_centro_custo ?>
                                                     </td>
                                                     <td class="text-right text-danger">R$
-                                                        -<?= number_format($centro->saidas, 2, ',', '.') ?>
+                                                        -<?= number_format((float) ($centro->saidas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -455,7 +455,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>Total</strong></td>
                                     <td class="text-right pt-0 text-danger">
                                         <strong>
-                                            R$ -<?= number_format($totalDespesas, 2, ',', '.') ?>
+                                            R$ -<?= number_format((float) ($totalDespesas), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>

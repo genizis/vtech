@@ -46,9 +46,9 @@
                                             <td class="text-right text-teal">R$
                                                 <?php 
                                                     if($frente_caixa == true)
-                                                        echo number_format($frente_caixa->saldo_inicial, 2, ',', '.');
+                                                        echo number_format((float) ($frente_caixa->saldo_inicial), 2, ',', '.');
                                                     else
-                                                        echo number_format(0, 2, ',', '.');
+                                                        echo number_format((float) (0), 2, ',', '.');
                                                 ?>
                                             </td>
                                         </tr>
@@ -57,9 +57,9 @@
                                             <td class="text-right text-danger">R$
                                                 <?php 
                                                     if($frente_caixa == true)
-                                                        echo number_format($frente_caixa->total_recolhimento, 2, ',', '.');
+                                                        echo number_format((float) ($frente_caixa->total_recolhimento), 2, ',', '.');
                                                     else
-                                                        echo number_format(0, 2, ',', '.');
+                                                        echo number_format((float) (0), 2, ',', '.');
                                                 ?>
                                             </td>
                                         </tr>
@@ -68,9 +68,9 @@
                                             <td class="text-right text-teal">R$
                                                 <?php 
                                                     if($frente_caixa == true)
-                                                        echo number_format($frente_caixa->total_incremento, 2, ',', '.');
+                                                        echo number_format((float) ($frente_caixa->total_incremento), 2, ',', '.');
                                                     else
-                                                        echo number_format(0, 2, ',', '.');
+                                                        echo number_format((float) (0), 2, ',', '.');
                                                 ?>
                                             </td>
                                         </tr>
@@ -79,9 +79,9 @@
                                             <td class="text-right text-teal">R$
                                                 <?php 
                                                     if($frente_caixa == true)
-                                                        echo number_format($frente_caixa->total_venda, 2, ',', '.');
+                                                        echo number_format((float) ($frente_caixa->total_venda), 2, ',', '.');
                                                     else
-                                                        echo number_format(0, 2, ',', '.');
+                                                        echo number_format((float) (0), 2, ',', '.');
                                                 ?>
                                             </td>
                                         </tr>
@@ -99,9 +99,9 @@
                                                 <strong>R$
                                                     <?php 
                                                     if($frente_caixa <> null)
-                                                        echo number_format($frente_caixa->saldo_inicial + $frente_caixa->total_venda + $frente_caixa->total_incremento - $frente_caixa->total_recolhimento, 2, ',', '.');
+                                                        echo number_format((float) ($frente_caixa->saldo_inicial + $frente_caixa->total_venda + $frente_caixa->total_incremento - $frente_caixa->total_recolhimento), 2, ',', '.');
                                                     else
-                                                        echo number_format(0, 2, ',', '.');
+                                                        echo number_format((float) (0), 2, ',', '.');
                                                 ?>
                                                 </strong>
                                             </td>
@@ -227,11 +227,11 @@
                                                                 </td>
                                                                 <td class="text-center" id="ValorTitulo">
                                                                     R$
-                                                                    <?= number_format($venda->valor_total_pedido, 2, ',', '.') ?>
+                                                                    <?= number_format((float) ($venda->valor_total_pedido), 2, ',', '.') ?>
                                                                 </td>
                                                                 <td class="text-center text-teal" id="ValorTitulo">
                                                                     R$
-                                                                    <?= number_format($venda->valor_dinheiro_pedido, 2, ',', '.') ?>
+                                                                    <?= number_format((float) ($venda->valor_dinheiro_pedido), 2, ',', '.') ?>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <?php if($venda->status == 1){ ?>
@@ -327,7 +327,7 @@
                                                                 <td class="text-center <?php if($movimento->tipo_movimento == 1) echo "text-teal"; else echo "text-danger"; ?>"
                                                                     id="ValorTitulo">
                                                                     R$
-                                                                    <?= number_format($movimento->valor_movimento, 2, ',', '.') ?>
+                                                                    <?= number_format((float) ($movimento->valor_movimento), 2, ',', '.') ?>
                                                                 </td>
                                                                 <td>
                                                                     <?= $movimento->observacao ?>
@@ -549,7 +549,7 @@
                                 </td>
                                 <?php } ?>
                                 <td class="text-center text-teal">R$
-                                    <?= number_format($recebimento->total_venda, 2, ',', '.') ?></td>
+                                    <?= number_format((float) ($recebimento->total_venda), 2, ',', '.') ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

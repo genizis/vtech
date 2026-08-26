@@ -68,7 +68,7 @@
                                 <h5 class="card-title"><strong>TOTAL PRODUZIDO</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($total_produzido > 0) echo "text-teal"; ?> display-5 font-weight-bold mb-0">
-                                        <?= number_format($total_produzido, 3, ',', '.') ?></h1>
+                                        <?= number_format((float) ($total_produzido), 3, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                 <h5 class="card-title"><strong>TOTAL PERDIDO</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($total_perdido > 0) echo "text-danger"; ?> display-5 font-weight-bold mb-0">
-                                        <?= number_format($total_perdido, 3, ',', '.') ?></h1>
+                                        <?= number_format((float) ($total_perdido), 3, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                         <?= $consumo_produto->cod_produto ?> - <?= $consumo_produto->nome_produto ?>
                                     </td>
                                     <td class="text-danger float-right">R$
-                                        <?= number_format($consumo_produto->custo_consumo, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($consumo_produto->custo_consumo), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="col-md-6 text-danger">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_custo->custo_total, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_custo->custo_total), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>

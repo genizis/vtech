@@ -55,7 +55,7 @@
                                                 <td class="text-right pt-0 <?php if ($total_despesa->saidas > 0) echo "text-danger"; ?>">
                                                     <strong>
                                                         R$
-                                                        <?= number_format($total_despesa->saidas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($total_despesa->saidas), 2, ',', '.') ?>
                                                     </strong>
                                                 </td>
                                             </tr>
@@ -75,7 +75,7 @@
                                                 <td class="text-right pt-0 <?php if ($total_despesa->entradas > 0) echo "text-teal"; ?>">
                                                     <strong>
                                                         R$
-                                                        <?= number_format($total_despesa->entradas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($total_despesa->entradas), 2, ',', '.') ?>
                                                     </strong>
                                                 </td>
                                             </tr>
@@ -172,14 +172,14 @@
                                                             </td>
                                                         <?php } ?>
                                                         <td class="text-right <?php if ($resultado->valor > 0) echo "text-danger"; ?>">
-                                                            R$ <?= number_format($resultado->valor, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($resultado->valor), 2, ',', '.') ?>
                                                         </td>
                                                         <td class="text-right <?php if ($resultado->orcado > 0) echo "text-info"; ?>">
-                                                            R$ <?= number_format($resultado->orcado, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($resultado->orcado), 2, ',', '.') ?>
                                                         </td>
                                                         <td class="text-right <?php if ($variacao >= 100) echo "text-danger";
                                                                                 elseif ($variacao > 0 && $variacao < 100) echo "text-muted"; ?>">
-                                                            <?= number_format($variacao, 1, ',', '.') ?>%
+                                                            <?= number_format((float) ($variacao), 1, ',', '.') ?>%
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -191,7 +191,7 @@
                                                     <i>Despesa total</i>
                                                 </td>
                                                 <td class="text-right align-middle <?php if ($total_despesa->saidas > 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($total_despesa->saidas, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($total_despesa->saidas), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -235,14 +235,14 @@
                                                             </td>
                                                         <?php } ?>
                                                         <td class="text-right <?php if ($resultado->valor > 0) echo "text-teal"; ?>">
-                                                            R$ <?= number_format($resultado->valor, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($resultado->valor), 2, ',', '.') ?>
                                                         </td>
                                                         <td class="text-right <?php if ($resultado->orcado > 0) echo "text-info"; ?>">
-                                                            R$ <?= number_format($resultado->orcado, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($resultado->orcado), 2, ',', '.') ?>
                                                         </td>
                                                         <td class="text-right <?php if ($variacao >= 100) echo "text-teal";
                                                                                 elseif ($variacao > 0 && $variacao < 100) echo "text-danger"; ?>">
-                                                            <?= number_format($variacao, 1, ',', '.') ?>%
+                                                            <?= number_format((float) ($variacao), 1, ',', '.') ?>%
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -254,7 +254,7 @@
                                                     <i>Receita total</i>
                                                 </td>
                                                 <td class="text-right align-middle <?php if ($total_despesa->entradas > 0) echo "text-teal"; ?>">
-                                                    R$ <?= number_format($total_despesa->entradas, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($total_despesa->entradas), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -327,7 +327,7 @@
                                                                         <?php } ?>
                                                                     </td>
                                                                     <td class="text-right align-middle text-danger">
-                                                                        R$ -<?= number_format($titulo->valor_confirmado, 2, ',', '.') ?>
+                                                                        R$ -<?= number_format((float) ($titulo->valor_confirmado), 2, ',', '.') ?>
                                                                     </td>
                                                                 </tr>
                                                         <?php }
@@ -411,7 +411,7 @@
                                                                         <?php } ?>
                                                                     </td>
                                                                     <td class="text-right align-middle text-teal">
-                                                                        R$ <?= number_format($titulo->valor_confirmado, 2, ',', '.') ?>
+                                                                        R$ <?= number_format((float) ($titulo->valor_confirmado), 2, ',', '.') ?>
                                                                     </td>
                                                                 </tr>
                                                         <?php }

@@ -50,7 +50,7 @@
                                                 Total em requisição pendente
                                             </td>
                                             <td class="text-right <?php if($indicador_requisicao->valor_pendente > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($indicador_requisicao->valor_pendente, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($indicador_requisicao->valor_pendente), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -58,7 +58,7 @@
                                                 Total em requisição atendida
                                             </td>
                                             <td class="text-right <?php if($indicador_requisicao->valor_atendido > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($indicador_requisicao->valor_atendido, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($indicador_requisicao->valor_atendido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -41,7 +41,7 @@
                                                             <?= $produto->nome_produto ?>
                                                         </td>
                                                         <td class="text-right text-teal">
-                                                        R$ <?= number_format($produto->valor_total, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($produto->valor_total), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
@@ -66,7 +66,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>TOTAL VENDIDO</strong></td>
                                     <td class="text-right pt-0 <?php if($lista_valores->total_produto > 0) echo "text-teal"; ?>">
                                         <strong>
-                                            R$ <?= number_format($lista_valores->total_produto, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($lista_valores->total_produto), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -154,10 +154,10 @@
                                                     <td class="text-center align-middle"><?= $venda_detalhada->pedido ?></td>
                                                     <td class="text-center align-middle"><?= $venda_detalhada->venda ?></td>
                                                     <td class="text-right text-info align-middle">
-                                                    <?= number_format($venda_detalhada->quant_venda, 3, ',', '.') ?> <?= $venda_detalhada->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($venda_detalhada->quant_venda), 3, ',', '.') ?> <?= $venda_detalhada->cod_unidade_medida ?>
                                                     </td>
                                                     <td class="text-right text-teal align-middle">
-                                                        R$ <?= number_format($venda_detalhada->valor_venda, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($venda_detalhada->valor_venda), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -233,24 +233,24 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Quantidade</p>
-                                        <p class="text-info"><?= number_format($produto->quant_venda, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
+                                        <p class="text-info"><?= number_format((float) ($produto->quant_venda), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Preço de venda</p>
-                                        <p class="text-dark">R$ <?= number_format($produto->preco_venda, 2, ',', '.') ?></p>
+                                        <p class="text-dark">R$ <?= number_format((float) ($produto->preco_venda), 2, ',', '.') ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Preço vendido</p>
                                         <p>
-                                            <span class="text-teal">R$ <?= number_format($produto->valor_unitario, 2, ',', '.') ?></span>
+                                            <span class="text-teal">R$ <?= number_format((float) ($produto->valor_unitario), 2, ',', '.') ?></span>
                                             <?php if($produto->preco_venda != 0 && $produto->valor_unitario != $produto->preco_venda){ ?>
                                                 <span class="badge <?php if(($produto->valor_unitario / $produto->preco_venda) > 1) echo "bg-teal-light"; else echo "bg-danger-light"; ?>">
                                                 <?php if($produto->valor_unitario / $produto->preco_venda > 1) echo '<i class="fa-solid fa-arrow-up"></i>'; else echo '<i class="fa-solid fa-arrow-down"></i>'; ?> 
                                                 <?php 
                                                     if($produto->valor_unitario > $produto->preco_venda)
-                                                        echo number_format(($produto->valor_unitario / $produto->preco_venda * 100) - 100, 1, ',', '.');
+                                                        echo number_format((float) (($produto->valor_unitario / $produto->preco_venda * 100) - 100), 1, ',', '.');
                                                     else
-                                                        echo number_format(100 - ($produto->valor_unitario / $produto->preco_venda * 100), 1, ',', '.');
+                                                        echo number_format((float) (100 - ($produto->valor_unitario / $produto->preco_venda * 100)), 1, ',', '.');
                                                     ?>%
                                                 </span>
                                             <?php } ?>
@@ -260,15 +260,15 @@
                                 <div class="row">                                    
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Custo médio</p>
-                                        <p class="text-dark">R$ <?= number_format($produto->custo_medio, 2, ',', '.') ?></p>
+                                        <p class="text-dark">R$ <?= number_format((float) ($produto->custo_medio), 2, ',', '.') ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Total vendido</p>
-                                        <p class="text-teal">R$ <?= number_format($produto->valor_venda, 2, ',', '.') ?></p>
+                                        <p class="text-teal">R$ <?= number_format((float) ($produto->valor_venda), 2, ',', '.') ?></p>
                                     </div>
                                     <div class="col-md-4">
                                         <p class="mb-1 font-weight-bold">Margem</p>
-                                        <p class="text-dark"><?= number_format((($produto->valor_venda - ($produto->custo_medio *  $produto->quant_venda)) / $produto->valor_venda) * 100, 0, ',', '.') ?>%</p>
+                                        <p class="text-dark"><?= number_format((float) ((($produto->valor_venda - ($produto->custo_medio *  $produto->quant_venda)) / $produto->valor_venda) * 100), 0, ',', '.') ?>%</p>
                                     </div>
                                 </div>
                             </div>
@@ -341,10 +341,10 @@
                     <?= $venda_detalhada->nome_tipo_produto ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($venda_detalhada->quant_venda, 3, ',', '.') ?>
+                    <?= number_format((float) ($venda_detalhada->quant_venda), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($venda_detalhada->valor_venda, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($venda_detalhada->valor_venda), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

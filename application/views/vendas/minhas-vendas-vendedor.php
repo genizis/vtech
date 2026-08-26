@@ -37,7 +37,7 @@
                                                     Vendas confirmadas
                                                 </td>
                                                 <td class="text-right <?php if($valor_situacao->total_confirmado > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                    R$ <?= number_format($valor_situacao->total_confirmado, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($valor_situacao->total_confirmado), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -45,7 +45,7 @@
                                                     Em orçamento
                                                 </td>
                                                 <td class="text-right <?php if($valor_situacao->total_orcamento > 0) echo "text-secondary"; else echo "text-muted"; ?>">
-                                                    R$ <?= number_format($valor_situacao->total_orcamento, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($valor_situacao->total_orcamento), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -53,7 +53,7 @@
                                                     Orçamentos reprovados
                                                 </td>
                                                 <td class="text-right <?php if($valor_situacao->total_declinado > 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                    R$ <?= number_format($valor_situacao->total_declinado, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($valor_situacao->total_declinado), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -87,7 +87,7 @@
                                                     <td
                                                     class="text-right <?php if($lista_valores->total_meta > 0) echo "text-primary"; ?>">
                                                     R$
-                                                    <?= number_format($lista_valores->total_meta, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($lista_valores->total_meta), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -97,7 +97,7 @@
                                                     <td
                                                     class="text-right <?php if($lista_valores->total_produto > 0) echo "text-teal"; ?>">
                                                     R$
-                                                    <?= number_format($lista_valores->total_produto, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($lista_valores->total_produto), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -125,8 +125,8 @@
                                                                             && ( $lista_valores->total_meta > 0 && ($lista_valores->total_produto / $lista_valores->total_meta) * 100) > 50) echo "text-warning";
                                                                         else echo "text-danger" ?>">
                                             <strong>
-                                                <?php if($lista_valores->total_meta > 0) echo number_format(($lista_valores->total_produto / $lista_valores->total_meta) * 100, 1, ',', '.');
-                                                        else echo number_format(0, 1, ',', '.'); ?>%
+                                                <?php if($lista_valores->total_meta > 0) echo number_format((float) (($lista_valores->total_produto / $lista_valores->total_meta) * 100), 1, ',', '.');
+                                                        else echo number_format((float) (0), 1, ',', '.'); ?>%
                                             </strong>
                                             </td>
                                         </tr>
@@ -162,9 +162,9 @@
                                                                 <?= $cliente->nome_cliente ?>
                                                             </td>
                                                             <td class="text-right text-teal">
-                                                            R$ <?= number_format($cliente->total_vendas + $cliente->total_frete +
+                                                            R$ <?= number_format((float) ($cliente->total_vendas + $cliente->total_frete +
                                                                                 $cliente->total_seguro + $cliente->outras_despesas - 
-                                                                                $cliente->total_desconto, 2, ',', '.') ?>
+                                                                                $cliente->total_desconto), 2, ',', '.') ?>
                                                             </td>
                                                         </tr>
                                                         <?php } ?>
@@ -207,7 +207,7 @@
                                                             Total em quantidade
                                                         </td>
                                                         <td class="text-right text-info">
-                                                        <?= number_format($produto->quant_vendido, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
+                                                        <?= number_format((float) ($produto->quant_vendido), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -215,7 +215,7 @@
                                                             Total em valor
                                                         </td>
                                                         <td class="text-right text-teal">
-                                                        R$ <?= number_format($produto->valor_total, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($produto->valor_total), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>

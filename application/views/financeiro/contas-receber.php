@@ -47,7 +47,7 @@
                                                 A pagar
                                             </td>
                                             <td class="text-right <?php if (($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj) > 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format(($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -55,7 +55,7 @@
                                                 A receber
                                             </td>
                                             <td class="text-right <?php if (($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format(($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -64,7 +64,7 @@
                                             </td>
                                             <td class="text-right <?php if (($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj) > 0) echo "text-teal";
                                                                     if (($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj) < 0) echo "text-danger"; ?>">
-                                                <strong>R$ <?= number_format(($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj), 2, ',', '.') ?></strong>
+                                                <strong>R$ <?= number_format((float) (($lista_conta_resumida->entrada_confirm + $lista_conta_resumida->entrada_proj) - ($lista_conta_resumida->saida_confirm + $lista_conta_resumida->saida_proj)), 2, ',', '.') ?></strong>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -93,7 +93,7 @@
                                                             <small class="text-muted"><?= html_escape($conta->nome_estabelecimento) ?></small>
                                                         </td>
                                                         <td class="text-right <?php if ($conta->entrada_proj_total > 0) echo "text-teal"; ?>">
-                                                            R$ <?= number_format($conta->entrada_proj_total, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($conta->entrada_proj_total), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                             <?php }
@@ -334,7 +334,7 @@
                                                         <td class="text-center align-middle"><?= $contas_receber->parcela ?>
                                                         </td>
                                                         <td class="text-right text-teal align-middle" id="ValorTitulo<?= $contas_receber->cod_movimento_conta ?>">
-                                                            R$ <?= number_format($contas_receber->valor_titulo, 2, ',', '.') ?>
+                                                            R$ <?= number_format((float) ($contas_receber->valor_titulo), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

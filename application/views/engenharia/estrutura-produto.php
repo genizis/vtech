@@ -77,7 +77,7 @@
                                                         href="<?= base_url("estrutura-produto/editar-estrutura-produto/{$estrutura->cod_produto}") ?>"><?= $estrutura->cod_produto ?> - <?= $estrutura->nome_produto ?></a>
                                                     </td>                                           
                                                     <td><?= $estrutura->nome_tipo_produto ?></td>
-                                                    <td class="text-right text-info"><?= number_format($estrutura->quant_producao, 3, ',', '.') ?> <?= $estrutura->cod_unidade_medida ?></td>
+                                                    <td class="text-right text-info"><?= number_format((float) ($estrutura->quant_producao), 3, ',', '.') ?> <?= $estrutura->cod_unidade_medida ?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

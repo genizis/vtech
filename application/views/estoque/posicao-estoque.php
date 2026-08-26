@@ -58,7 +58,7 @@
                                             <td 
                                                 class="text-right align-middle <?php if($tipo->valor_estoque > 0) echo "text-teal"; ?>">
                                                 R$
-                                                <?= number_format(($tipo->valor_estoque), 2, ',', '.') ?>
+                                                <?= number_format((float) (($tipo->valor_estoque)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -81,7 +81,7 @@
                                         class="text-right pt-0 <?php if($totalEstoq > 0) echo "text-teal"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format($totalEstoq, 2, ',', '.') ?>
+                                            <?= number_format((float) ($totalEstoq), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -206,11 +206,11 @@
                                                 <td class="align-middle"><?= $produto->nome_tipo_produto ?></td>
                                                 <td
                                                     class="text-right align-middle <?php if($quantEstoq < 0) echo "text-danger"; else echo "text-info"; ?>">
-                                                    <?= number_format($quantEstoq, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($quantEstoq), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?>
                                                 </td>
                                                 <td class="text-right align-middle <?php if($quantEstoq > 0) echo "text-teal"; ?>">
                                                     R$
-                                                    <?php if($quantEstoq > 0) echo number_format($produto->custo_medio * $quantEstoq, 2, ',', '.'); else echo 0; ?>
+                                                    <?php if($quantEstoq > 0) echo number_format((float) ($produto->custo_medio * $quantEstoq), 2, ',', '.'); else echo 0; ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>

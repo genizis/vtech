@@ -147,7 +147,7 @@
                                                         <?= $ativo->dias_ult_venda ?> dias
                                                     </td>
                                                     <td class="text-right align-middle text-teal">
-                                                        R$ <?= number_format($ativo->total_vendido, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($ativo->total_vendido), 2, ',', '.') ?>
                                                 </td>
                                                 </tr>
                                             <?php } ?>
@@ -199,7 +199,7 @@
                                                         <?= $recente->dias_ult_venda ?> dias
                                                     </td>
                                                     <td class="text-right align-middle text-teal">
-                                                        R$ <?= number_format($recente->total_vendido, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($recente->total_vendido), 2, ',', '.') ?>
                                                 </td>
                                                 </tr>
                                             <?php } ?>
@@ -251,7 +251,7 @@
                                                         <?= $inativo->dias_ult_venda ?> dias
                                                     </td>
                                                     <td class="text-right align-middle text-teal">
-                                                        R$ <?= number_format($inativo->total_vendido, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($inativo->total_vendido), 2, ',', '.') ?>
                                                 </td>
                                                 </tr>
                                             <?php } ?>
@@ -303,7 +303,7 @@
                                                         nunca comprou
                                                     </td>
                                                     <td class="text-right align-middle text-muted">
-                                                        R$ <?= number_format($compra->total_vendido, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($compra->total_vendido), 2, ',', '.') ?>
                                                 </td>
                                                 </tr>
                                             <?php } ?>
@@ -376,22 +376,22 @@
                     <?= $cliente_detalhada->num_venda ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->valor_bruto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->valor_bruto), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->valor_frete, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->valor_frete), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->valor_seguro, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->valor_seguro), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->outras_despesas, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->outras_despesas), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->valor_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->valor_desconto), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($cliente_detalhada->valor_bruto + $cliente_detalhada->valor_frete + $cliente_detalhada->valor_seguro + $cliente_detalhada->outras_despesas - $cliente_detalhada->valor_desconto, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($cliente_detalhada->valor_bruto + $cliente_detalhada->valor_frete + $cliente_detalhada->valor_seguro + $cliente_detalhada->outras_despesas - $cliente_detalhada->valor_desconto), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

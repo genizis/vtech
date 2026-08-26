@@ -5,7 +5,7 @@ Este pacote contém o sistema, as dependências PHP instaladas, os arquivos envi
 ## Requisitos
 
 - Apache com `mod_rewrite` (recomendado) ou outro servidor web configurado para direcionar as rotas ao `index.php`
-- PHP 7.4 ou compatível, com as extensões `mysqli`, `mbstring`, `xml`, `zip`, `gd`, `curl` e `intl`
+- PHP 8.1, com as extensões `mysqli`, `mbstring`, `xml`, `zip`, `gd`, `curl`, `intl`, `soap` e `bcmath`
 - MySQL/Percona 5.7 ou versão compatível
 
 ## Instalação
@@ -39,12 +39,11 @@ Sem essas variáveis, o sistema usa automaticamente a URL acessada e tenta conec
 
 ## Desenvolvimento local
 
-O arquivo `compose.yaml` inicia o Percona/MySQL local. Depois de subir o banco, importe o dump:
+O arquivo `compose.yaml` inicia a aplicação em PHP 8.1 e o Percona/MySQL local. Depois de subir os serviços, importe o dump:
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 docker exec -i vtech-percona mysql -uroot < vtech_completo.sql
-php -S 0.0.0.0:8080 router.php
 ```
 
 Abra `http://localhost:8080`.

@@ -55,7 +55,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM VENDAS</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($total_venda > 0) echo "text-teal"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($total_venda, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($total_venda), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM DESCONTO</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($total_desconto > 0) echo "text-warning"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($total_desconto, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($total_desconto), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                             style="color: <?= $cor_venda[$key_venda_produto] ?>"></i>
                                         <?= $venda_produto->cod_produto ?> - <?= $venda_produto->nome_produto ?></td>
                                     <td class="text-teal float-right">R$
-                                        <?= number_format($venda_produto->valor_vendido, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($venda_produto->valor_vendido), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -105,7 +105,7 @@
                                 <strong>Total</strong>
                             </div>
                             <div class="col-md-6 text-teal">
-                                <strong class="float-right">R$ <?= number_format($total_venda, 2, ',', '.') ?></strong>
+                                <strong class="float-right">R$ <?= number_format((float) ($total_venda), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                                             style="color: <?= $cor_cliente[$key_venda_cliente] ?>"></i>
                                         <?= $venda_cliente->cod_cliente ?> - <?php if($venda_cliente->cod_cliente == 0) echo "Consumidor Final"; else echo $venda_cliente->nome_cliente ?></td>
                                     <td class="text-teal float-right">R$
-                                        <?= number_format($venda_cliente->total_venda, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($venda_cliente->total_venda), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -162,7 +162,7 @@
                                 <strong>Total</strong>
                             </div>
                             <div class="col-md-6 text-teal">
-                                <strong class="float-right">R$ <?= number_format($total_venda, 2, ',', '.') ?></strong>
+                                <strong class="float-right">R$ <?= number_format((float) ($total_venda), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>

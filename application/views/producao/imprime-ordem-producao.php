@@ -59,7 +59,7 @@
                 <tbody>
                     <tr>
                         <td><span class="text-black-50"><?= $ordem->cod_produto ?></span> - <?= $ordem->nome_produto ?></td>
-                        <td class="text-center"><?= number_format($ordem->quant_planejada, 3, ",", ".") ?> <?= $ordem->cod_unidade_medida ?></td>
+                        <td class="text-center"><?= number_format((float) ($ordem->quant_planejada), 3, ",", ".") ?> <?= $ordem->cod_unidade_medida ?></td>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
                     </tr>
@@ -98,7 +98,7 @@
                     <tr>
                         <td><span class="text-black-50"><?= $produto->cod_produto ?></span> - <?= $produto->nome_produto ?></td>
                         <td class="text-center"></td>
-                        <td class="text-center"><?= number_format($produto->quant_consumo, 3, ",", ".") ?> <?= $produto->cod_unidade_medida ?></td>
+                        <td class="text-center"><?= number_format((float) ($produto->quant_consumo), 3, ",", ".") ?> <?= $produto->cod_unidade_medida ?></td>
                         <td class="text-center"></td>
                     </tr>
                     <?php } ?>

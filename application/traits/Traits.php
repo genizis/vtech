@@ -30,7 +30,7 @@ trait Traits
     {
         $decimals = explode(',', $value);
         $floatValue = (float)str_replace(['.', ','], ['', '.'], $value);
-        return number_format($floatValue, strlen(end($decimals)), '.', '');
+        return number_format((float) ($floatValue), strlen(end($decimals)), '.', '');
     }
 
     /**
@@ -43,17 +43,17 @@ trait Traits
         if (null === $value){
             $value = 0;
         }
-        return number_format($value, $decimals, ',', '.');
+        return number_format((float) ($value), $decimals, ',', '.');
     }
 
     public static function toWeight($value, int $decimals = 3)
     {
-        return number_format($value, $decimals, '.', '.');
+        return number_format((float) ($value), $decimals, '.', '.');
     }
 
     public static function toSefaz($value, int $decimals = 2)
     {
-        return number_format((float)$value, $decimals, '.', '');
+        return number_format((float) ((float)$value), $decimals, '.', '');
     }
 
     public static function toSefazOrNull($value, int $decimals = 2)
@@ -61,7 +61,7 @@ trait Traits
         if ((float)$value <= 0) {
             return null;
         }
-        return number_format((float)$value, $decimals, '.', '');
+        return number_format((float) ((float)$value), $decimals, '.', '');
     }
 
     public static function reaisToFloat($valor)
@@ -98,13 +98,13 @@ trait Traits
 
     public static function noDecimals($value)
     {
-        $numero = number_format((float)$value, 0);
+        $numero = number_format((float) ((float)$value), 0);
         return preg_replace("/[^0-9]/", "", $numero);
     }
 
     public static function twoDecimals($value)
     {
-        return number_format((float)$value, 2, '.', '');
+        return number_format((float) ((float)$value), 2, '.', '');
     }
 
     /**

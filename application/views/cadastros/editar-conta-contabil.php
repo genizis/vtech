@@ -138,7 +138,7 @@
                                                                     </a>
                                                                 </td>
                                                                 <td><?php if ($orcamento->cod_centro_custo != null) echo $orcamento->cod_centro_custo . ' - ' . $orcamento->nome_centro_custo ?></td>
-                                                                <td class="text-right text-info">R$ <?= number_format($orcamento->total_orcado, 2, ',', '.') ?></td>
+                                                                <td class="text-right text-info">R$ <?= number_format((float) ($orcamento->total_orcado), 2, ',', '.') ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>

@@ -61,7 +61,7 @@
                                     <div class="form-group col-md-2">
                                         <label class="control-label" for="inputPedidoVenda">Valor do Pedido</label>
                                         <input class="form-control" id="inputPedidoVenda" type="text" readonly=""
-                                            value="R$ <?= number_format($produto->valor_pedido, 2, ',', '.') ?>" readonly>
+                                            value="R$ <?= number_format((float) ($produto->valor_pedido), 2, ',', '.') ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -81,13 +81,13 @@
                                         <label class="control-label" for="inputQuantPedido">Quantidade
                                             Pedida</label>
                                         <input class="form-control" id="inputQuantPedido" type="text"
-                                            value="<?= number_format($produto->quant_pedida, 3, ',', '.') ?>" readonly>
+                                            value="<?= number_format((float) ($produto->quant_pedida), 3, ',', '.') ?>" readonly>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label class="control-label" for="inputQuantAtendida">Quantidade
                                             Atendida</label>
                                         <input class="form-control" id="inputQuantAtendida" type="text" readonly=""
-                                            value="<?= number_format($produto->quant_atendida, 3, ',', '.') ?>" readonly>
+                                            value="<?= number_format((float) ($produto->quant_atendida), 3, ',', '.') ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -142,10 +142,10 @@
                                                         <td class="text-center"><?= $movimento->serie ?></td>
                                                         <td class="text-center"><?= $movimento->nota_fiscal ?></td>                                                        
                                                         <td class="text-center">
-                                                            <?= number_format($movimento->quant_saida, 3, ',', '') ?>
+                                                            <?= number_format((float) ($movimento->quant_saida), 3, ',', '') ?>
                                                         </td>
                                                         <td class="text-center">R$
-                                                            <?= number_format($movimento->valor_venda, 2, ',', '.') ?>
+                                                            <?= number_format((float) ($movimento->valor_venda), 2, ',', '.') ?>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>

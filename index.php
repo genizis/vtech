@@ -1,4 +1,11 @@
 <?php
+
+/*
+ * Load local environment variables before CodeIgniter reads its configuration.
+ * Variables provided by Apache, Docker or the operating system take precedence.
+ */
+require_once __DIR__.'/application/config/environment.php';
+load_environment(__DIR__.'/.env');
 /**
  * CodeIgniter
  *

@@ -323,9 +323,9 @@ class NotaFiscalController extends CI_Controller
 
         }
 
-        $InfIBPT = "Voce pagou aproximadamente: R$ " . number_format($IBPTFederal, 2, ',', '.') .  
-                   " de tributos federais R$ " . number_format($IBPTEstadual, 2, ',', '.') .  
-                   " de tributos estaduais R$ " . number_format($fatProduto, 2, ',', '.') . " pelos produtos Fonte: IBPT";
+        $InfIBPT = "Voce pagou aproximadamente: R$ " . number_format((float) ($IBPTFederal), 2, ',', '.') .  
+                   " de tributos federais R$ " . number_format((float) ($IBPTEstadual), 2, ',', '.') .  
+                   " de tributos estaduais R$ " . number_format((float) ($fatProduto), 2, ',', '.') . " pelos produtos Fonte: IBPT";
 
         $informacaoComplementar = $InfIBPT . " | " . $informacaoComplementar;
 
@@ -333,15 +333,15 @@ class NotaFiscalController extends CI_Controller
 
         // [ALIQUOTA_CREDITO_ICMS] - Alíquota de Crédito ICMS Simples Nacional
         if(strpos($informacaoComplementar, '[ALIQUOTA_CREDITO_ICMS]') !== false)
-            $infCompProcessada = str_replace("[ALIQUOTA_CREDITO_ICMS]", number_format($aCredICMSSN, 2, ',', '.'), $infCompProcessada);
+            $infCompProcessada = str_replace("[ALIQUOTA_CREDITO_ICMS]", number_format((float) ($aCredICMSSN), 2, ',', '.'), $infCompProcessada);
 
         // [VALOR_CREDITO_ICMS] - Valor calculado de Crédito ICMS Simples Nacional
         if(strpos($informacaoComplementar, '[VALOR_CREDITO_ICMS]') !== false)
-            $infCompProcessada = str_replace("[VALOR_CREDITO_ICMS]", number_format($vCredICMSSN, 2, ',', '.'), $infCompProcessada);
+            $infCompProcessada = str_replace("[VALOR_CREDITO_ICMS]", number_format((float) ($vCredICMSSN), 2, ',', '.'), $infCompProcessada);
 
         // [VALOR_FCP] - Valor total do FCP
         if(strpos($informacaoComplementar, '[VALOR_FCP]') !== false)
-            $infCompProcessada = str_replace("[VALOR_FCP]", number_format($vFCP, 2, ',', '.'), $infCompProcessada);
+            $infCompProcessada = str_replace("[VALOR_FCP]", number_format((float) ($vFCP), 2, ',', '.'), $infCompProcessada);
 
         return $infCompProcessada;
 

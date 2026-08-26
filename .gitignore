@@ -2,3 +2,7 @@
 /shopfl06_shop.sql
 /vtech_portatil_*.zip
 
+# Configuracao local e credenciais
+/.env
+/.env.*
+!/.env.example

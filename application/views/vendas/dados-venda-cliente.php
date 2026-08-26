@@ -324,9 +324,9 @@
                             <div class="col-md-4">
                                 <div class="card text-left">
                                     <div class="card-body">
-                                        <h4 class="mb-0 text-dark"><strong><?= number_format($valores->quant_pedido_aprov, 0, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-0 text-dark"><strong><?= number_format((float) ($valores->quant_pedido_aprov), 0, ',', '.') ?></strong></h4>
                                         <p class=" text-muted"><i>aprovados</i></p>
-                                        <h4 class="mb-0 text-teal"><strong>R$ <?= number_format($valores->total_pedido_aprov, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-0 text-teal"><strong>R$ <?= number_format((float) ($valores->total_pedido_aprov), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-muted"><i>total vendido</i></p>
                                     </div>
                                 </div>
@@ -336,7 +336,7 @@
                                     <div class="card-body">
                                         <h4 class="mb-0 text-dark"><strong>2</strong></h4>
                                         <p class="text-muted"><i>reprovados</i></p>
-                                        <h4 class="mb-0 text-danger"><strong>R$ <?= number_format(0, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-0 text-danger"><strong>R$ <?= number_format((float) (0), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-muted"><i>total perdido</i></p>
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@
                                     <div class="card-body">
                                         <h4 class="mb-0 text-dark"><strong>2</strong></h4>
                                         <p class="text-muted"><i>em orçamento</i></p>
-                                        <h4 class="mb-0 text-muted"><strong>R$ <?= number_format(0, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-0 text-muted"><strong>R$ <?= number_format((float) (0), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-muted"><i>total previsto</i></p>
                                     </div>
                                 </div>
@@ -425,14 +425,14 @@
                                                                 <?= $pedido->nome_vendedor ?>
                                                             </td>
                                                             <td class="text-right align-middle text-teal">
-                                                                R$ <?= number_format($pedido->valor_total_pedido + 
+                                                                R$ <?= number_format((float) ($pedido->valor_total_pedido + 
                                                                           $pedido->valor_frete +
                                                                           $pedido->valor_seguro +
                                                                           $pedido->outras_despesas - 
-                                                                          $pedido->valor_desconto, 2, ',', '.') ?>
+                                                                          $pedido->valor_desconto), 2, ',', '.') ?>
                                                             </td>
                                                             <td class="text-right align-middle <?php if($pedido->valor_total_faturado > 0) echo "text-teal"; else echo "text-muted" ?>">
-                                                                R$ <?= number_format($pedido->valor_total_faturado, 2, ',', '.') ?>
+                                                                R$ <?= number_format((float) ($pedido->valor_total_faturado), 2, ',', '.') ?>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>                                                    
@@ -455,7 +455,7 @@
                             <div class="col-md-3">
                                 <div class="card text-center">
                                     <div class="card-body">
-                                        <h4 class="mb-1 text-teal"><strong>R$ <?= number_format($valores->valor_total_pedido, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-1 text-teal"><strong>R$ <?= number_format((float) ($valores->valor_total_pedido), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-secondary"><i>total produtos</i></p>
                                     </div>
                                 </div>
@@ -463,7 +463,7 @@
                             <div class="col-md-3">
                                 <div class="card text-center">
                                     <div class="card-body">
-                                        <h4 class="mb-1 text-teal"><strong>R$ <?= number_format($valores->valor_total_faturado, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-1 text-teal"><strong>R$ <?= number_format((float) ($valores->valor_total_faturado), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-secondary"><i>total frete</i></p>
                                     </div>
                                 </div>
@@ -471,7 +471,7 @@
                             <div class="col-md-3">
                                 <div class="card text-center">
                                     <div class="card-body">
-                                        <h4 class="mb-1 text-info"><strong>R$ <?= number_format($valores->valor_total_titulo, 2, ',', '.') ?></strong></h4>
+                                        <h4 class="mb-1 text-info"><strong>R$ <?= number_format((float) ($valores->valor_total_titulo), 2, ',', '.') ?></strong></h4>
                                         <p class="mb-0 text-secondary"><i>desconto</i></p>
                                     </div>
                                 </div>

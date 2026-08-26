@@ -116,8 +116,8 @@
                                                             </td>
                                                             <td><?= $produto->cod_lote ?></td>  
                                                             <td><?= $produto->nome_tipo_produto ?></td>                                                             
-                                                            <td class="text-right"><?= number_format($produto->quant_contagem, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td> 
-                                                            <td class="text-right"><?= number_format($quantEstoq, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td> 
+                                                            <td class="text-right"><?= number_format((float) ($produto->quant_contagem), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td> 
+                                                            <td class="text-right"><?= number_format((float) ($quantEstoq), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td> 
                                                             <td class="text-right  
                                                                 <?php
                                                                     if($quantEstoq > $produto->quant_contagem){
@@ -129,11 +129,11 @@
                                                             ">
                                                                 <?php
                                                                     if($quantEstoq > $produto->quant_contagem){
-                                                                        echo "-" . number_format($quantEstoq - $produto->quant_contagem, 3, ',', '.');
+                                                                        echo "-" . number_format((float) ($quantEstoq - $produto->quant_contagem), 3, ',', '.');
                                                                     }elseif($quantEstoq < $produto->quant_contagem){
-                                                                        echo "+" . number_format($produto->quant_contagem - $quantEstoq, 3, ',', '.');
+                                                                        echo "+" . number_format((float) ($produto->quant_contagem - $quantEstoq), 3, ',', '.');
                                                                     }elseif($quantEstoq == $produto->quant_contagem){
-                                                                        echo number_format(0, 3, ',', '.');
+                                                                        echo number_format((float) (0), 3, ',', '.');
                                                                     }
                                                                 ?> <?= $produto->cod_unidade_medida ?>
                                                             </td>                                   

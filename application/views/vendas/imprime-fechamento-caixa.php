@@ -22,19 +22,19 @@
 		</tr>
         <tr class="ttu">
 			<td>Total Porduto</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_produto, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_produto), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td>Total Frete</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_frete, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_frete), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td>Total Desconto</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_desconto, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_desconto), 2, ',', '.') ?></td>
 		</tr>		
 		<tr class="ttu">
 			<td>Total Líquido</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_produto + $frente_caixa->total_frete - $frente_caixa->total_desconto, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_produto + $frente_caixa->total_frete - $frente_caixa->total_desconto), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="sup ttu p--0">
 			<td colspan="3">
@@ -43,23 +43,23 @@
 		</tr>
 		<tr class="ttu">
 			<td>Saldo Inicial Caixa</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->saldo_inicial, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->saldo_inicial), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td>Total Recolhimento</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_recolhimento, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_recolhimento), 2, ',', '.') ?></td>
 		</tr>
 		<tr class="ttu">
 			<td>Total Incremento</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_incremento, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_incremento), 2, ',', '.') ?></td>
 		</tr>        
         <tr class="ttu">
 			<td>Total Vendas Caixa</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->total_venda, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->total_venda), 2, ',', '.') ?></td>
 		</tr>
         <tr class="ttu">
 			<td>Saldo Final Caixa</td>
-			<td align="right" colspan="2">R$ <?= number_format($frente_caixa->saldo_inicial + $frente_caixa->total_venda + $frente_caixa->total_incremento - $frente_caixa->total_recolhimento, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($frente_caixa->saldo_inicial + $frente_caixa->total_venda + $frente_caixa->total_incremento - $frente_caixa->total_recolhimento), 2, ',', '.') ?></td>
 		</tr>        
 		<tr class="sup ttu p--0">
 			<td colspan="3">
@@ -69,7 +69,7 @@
         <?php foreach($recebeimento_metodo as $key_recebeimento_metodo => $recebimento) { ?>
 		<tr class="ttu">
 			<td><?= $recebimento->nome_metodo_pagamento ?></td>
-			<td align="right" colspan="2">R$ <?= number_format($recebimento->total_venda, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($recebimento->total_venda), 2, ',', '.') ?></td>
 		</tr>
         <?php if($recebeimento_metodo == false) { ?>	
         <tr class="nreg">
@@ -90,7 +90,7 @@
                                 else
                                     echo "Recolhimento";
                             ?></td>
-			<td align="right" colspan="2">R$ <?= number_format($movimento->valor_movimento, 2, ',', '.') ?></td>
+			<td align="right" colspan="2">R$ <?= number_format((float) ($movimento->valor_movimento), 2, ',', '.') ?></td>
 		</tr>
         <?php } ?>
         <?php if($movimento_caixa == false) { ?>	

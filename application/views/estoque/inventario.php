@@ -51,7 +51,7 @@
                                             </td>
                                             <td class="text-right <?php    if($indicador_inventario->perc_variacao > 0) echo "text-teal";
                                                                        elseif($indicador_inventario->perc_variacao < 0) echo "text-danger" ?>">
-                                            <?= number_format($indicador_inventario->perc_variacao, 1, ',', '.') ?> %
+                                            <?= number_format((float) ($indicador_inventario->perc_variacao), 1, ',', '.') ?> %
                                             </td>
                                         </tr>
                                         <tr>
@@ -60,7 +60,7 @@
                                             </td>
                                             <td class="text-right <?php    if($indicador_inventario->valor_variacao > 0) echo "text-teal";
                                                                        elseif($indicador_inventario->valor_variacao < 0) echo "text-danger" ?>">
-                                                R$ <?= number_format($indicador_inventario->valor_variacao, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($indicador_inventario->valor_variacao), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>

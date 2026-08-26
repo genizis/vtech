@@ -100,10 +100,10 @@
                     <tr>
                         <td><span class="text-black-50"><?= $produto->cod_produto ?></span> - <?= $produto->nome_produto ?></td>
                         <td class="text-center"><?= $produto->cod_unidade_medida ?></td>
-                        <td class="text-center">R$ <?= number_format($produto->total_compra / $produto->quant_pedida, 2, ",", ".") ?></td>
-                        <td class="text-center"><?= number_format($produto->quant_pedida, 3, ",", ".") ?></td>
+                        <td class="text-center">R$ <?= number_format((float) ($produto->total_compra / $produto->quant_pedida), 2, ",", ".") ?></td>
+                        <td class="text-center"><?= number_format((float) ($produto->quant_pedida), 3, ",", ".") ?></td>
                         <td class="text-right">R$
-                            <?= number_format($produto->total_compra, 2, ",", ".") ?></td>
+                            <?= number_format((float) ($produto->total_compra), 2, ",", ".") ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -120,24 +120,24 @@
                         <tbody>
                             <tr>
                                 <th class="text-black-50 text-right">TOTAL PRODUTOS</th>
-                                <td class="text-right"><strong>R$ <?= number_format($total, 2, ",", ".") ?></strong></td>
+                                <td class="text-right"><strong>R$ <?= number_format((float) ($total), 2, ",", ".") ?></strong></td>
                             </tr>
                             <?php if($pedido->valor_frete > 0){ ?>
                             <tr>
                                 <th class="text-black-50 text-right">FRETE</th>
-                                <td class="text-right"><strong>R$ <?= number_format($pedido->valor_frete, 2, ',', '.') ?></strong></td>
+                                <td class="text-right"><strong>R$ <?= number_format((float) ($pedido->valor_frete), 2, ',', '.') ?></strong></td>
                             </tr>
                             <?php } ?>
                             <?php if($pedido->valor_seguro > 0){ ?>
                             <tr>
                                 <th class="text-black-50 text-right">SEGURO</th>
-                                <td class="text-right"><strong>R$ <?= number_format($pedido->valor_seguro, 2, ',', '.') ?></strong></td>
+                                <td class="text-right"><strong>R$ <?= number_format((float) ($pedido->valor_seguro), 2, ',', '.') ?></strong></td>
                             </tr>
                             <?php } ?>
                             <?php if($pedido->outras_despesas > 0){ ?>
                             <tr>
                                 <th class="text-black-50 text-right">OUTRAS DESPESAS</th>
-                                <td class="text-right"><strong>R$ <?= number_format($pedido->outras_despesas, 2, ',', '.') ?></strong></td>
+                                <td class="text-right"><strong>R$ <?= number_format((float) ($pedido->outras_despesas), 2, ',', '.') ?></strong></td>
                             </tr>
                             <?php } ?>
                             <?php $valorDesconto = 0;
@@ -152,7 +152,7 @@
                                     }elseif($pedido->tipo_desconto == 2){
                                         $valorDesconto = $total * ($pedido->valor_desconto / 100);
                                     }
-                                    echo number_format($valorDesconto, 2, ',', '.'); 
+                                    echo number_format((float) ($valorDesconto), 2, ',', '.'); 
                                 ?>
                                 </strong></td>
                             </tr>
@@ -160,7 +160,7 @@
                             <tr class="h3">
                                 <td class="text-right"><strong>TOTAL PEDIDO</strong></td>
                                 <td class="text-right text-teal"><strong id="inputValorLiq">R$
-                                        <?= number_format($total + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto, 2, ',', '.') ?>
+                                        <?= number_format((float) ($total + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto), 2, ',', '.') ?>
                                     </strong></td>
                             </tr>
                         </tbody>

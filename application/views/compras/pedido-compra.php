@@ -51,7 +51,7 @@
                                                 Compras emitidas
                                             </td>
                                             <td class="text-right <?php if($totais_pedido->total_pedido > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_pedido, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_pedido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -59,7 +59,7 @@
                                                 Compras realizadas
                                             </td>
                                             <td class="text-right <?php if($totais_pedido->total_recebido > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_recebido, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_recebido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -67,7 +67,7 @@
                                                 Compras pendentes
                                             </td>
                                             <td class="text-right <?php if($totais_pedido->total_pendente > 0) echo "text-muted"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_pendente, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_pendente), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -170,11 +170,11 @@
                                                                                                  $pedido->valor_seguro +
                                                                                                  $pedido->outras_despesas - 
                                                                                                  $pedido->valor_desconto) > 0) echo "text-info"; ?>">
-                                                        R$ <?= number_format($pedido->valor_produto + 
+                                                        R$ <?= number_format((float) ($pedido->valor_produto + 
                                                                              $pedido->valor_frete +
                                                                              $pedido->valor_seguro +
                                                                              $pedido->outras_despesas - 
-                                                                             $pedido->valor_desconto, 2, ',', '.') ?></td>
+                                                                             $pedido->valor_desconto), 2, ',', '.') ?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

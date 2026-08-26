@@ -141,7 +141,7 @@
                                                                     </a>
                                                             </td>
                                                             <td><?= $componente->nome_tipo_produto ?></td>
-                                                            <td class="text-right text-info"><?= number_format($componente->quant_consumo, 3, ',', '.') ?> <?= $componente->cod_unidade_medida ?></td>
+                                                            <td class="text-right text-info"><?= number_format((float) ($componente->quant_consumo), 3, ',', '.') ?> <?= $componente->cod_unidade_medida ?></td>
                                                         </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -200,7 +200,7 @@
                                                                     </a>
                                                             </td>
                                                             <td><?= $coproduto->nome_tipo_produto ?></td>
-                                                            <td class="text-right text-info"><?= number_format($coproduto->quant_coproduto, 3, ',', '.') ?> <?= $coproduto->cod_unidade_medida ?></td>
+                                                            <td class="text-right text-info"><?= number_format((float) ($coproduto->quant_coproduto), 3, ',', '.') ?> <?= $coproduto->cod_unidade_medida ?></td>
                                                         </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -443,7 +443,7 @@
                                                     <label for="inputQuantConsumoEdit">Quantidade de Consumo <span class="text-danger">*</span></label>
                                                     <div class="input-group">
                                                         <input type="text" id="inputQuantConsumoEdit" class="form-control" data-mask="#.##0,000" data-mask-reverse="true"
-                                                        name="QuantConsumoEdit" value="<?= number_format($componente->quant_consumo, 3, ',', '.') ?>" required>
+                                                        name="QuantConsumoEdit" value="<?= number_format((float) ($componente->quant_consumo), 3, ',', '.') ?>" required>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"
                                                                 style="width: 40px;"><?= $componente->cod_unidade_medida ?></span>
@@ -505,7 +505,7 @@
                                                     <label for="inputQuantCoprodutoEdit">Quantidade do Coproduto <span class="text-danger">*</span></label>
                                                     <div class="input-group">
                                                         <input type="text" id="inputQuantCoprodutoEdit" class="form-control" data-mask="#.##0,000" data-mask-reverse="true"
-                                                        name="QuantCoprodutoEdit" value="<?= number_format($coproduto->quant_coproduto, 3, ',', '.') ?>" required>
+                                                        name="QuantCoprodutoEdit" value="<?= number_format((float) ($coproduto->quant_coproduto), 3, ',', '.') ?>" required>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"
                                                                 style="width: 40px;"><?= $coproduto->cod_unidade_medida ?></span>

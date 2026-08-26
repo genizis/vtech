@@ -106,7 +106,7 @@
                                                             </td>
                                                             <td><?= $produto->cod_lote ?></td>  
                                                             <td><?= $produto->nome_tipo_produto ?></td>                                                              
-                                                            <td class="text-right"><?= number_format($produto->quant_requisicao, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td>                                   
+                                                            <td class="text-right"><?= number_format((float) ($produto->quant_requisicao), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td>                                   
                                                         </tr>
                                                         <?php } ?>                                                    
                                                     </tbody>

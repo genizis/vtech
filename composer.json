@@ -11,11 +11,11 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=7.4",
+		"php": "^8.1",
 		"nfephp-org/sped-nfe": "^5.0",
 		"nfephp-org/sped-da": "dev-master",
 		"nfephp-org/sped-ibpt": "^2.0",
-		"mpdf/mpdf": "8.0.10",
+		"mpdf/mpdf": "^8.1.1",
 		"phpoffice/phpspreadsheet": "^1.29"
 	},
 	"suggest": {
@@ -24,9 +24,5 @@
 	"require-dev": {
 		"mikey179/vfsstream": "1.1.*",
 		"phpunit/phpunit": "4.* || 5.*"
-	},
-	"config": {
-
-		"platform-check": false
 	}
 }

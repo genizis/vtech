@@ -203,7 +203,7 @@
                                                                     <?= $producao->cod_unidade_medida ?>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <?= number_format($producao->quant_necessidade, 3, ',', '.') ?>
+                                                                    <?= number_format((float) ($producao->quant_necessidade), 3, ',', '.') ?>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <?= str_replace('-', '/', date("d-m-Y", strtotime($producao->data_necessidade))) ?>
@@ -269,7 +269,7 @@
                                                                     <?= $compra->cod_unidade_medida ?>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <?= number_format($compra->quant_necessidade, 3, ',', '.') ?>
+                                                                    <?= number_format((float) ($compra->quant_necessidade), 3, ',', '.') ?>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <?= str_replace('-', '/', date("d-m-Y", strtotime($compra->data_necessidade))) ?>
@@ -379,10 +379,10 @@
                                     <td><?= $produto_venda->nome_tipo_produto ?></td>
                                     <td class="text-center"><?= $produto_venda->cod_unidade_medida ?></td>
                                     <td class="text-center">
-                                        <?= number_format($produto_venda->quant_pedida, 3, ',', '.') ?>
+                                        <?= number_format((float) ($produto_venda->quant_pedida), 3, ',', '.') ?>
                                     </td>
                                     <td class="text-center">
-                                        <?= number_format($produto_venda->quant_atendida, 3, ',', '.') ?>
+                                        <?= number_format((float) ($produto_venda->quant_atendida), 3, ',', '.') ?>
                                     </td>
                                     <td class="text-center">
                                         <?php

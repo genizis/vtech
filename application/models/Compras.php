@@ -523,9 +523,9 @@ class Compras extends CI_Model{
         $ordem_compra = $this->getOrdemCompraPorCodigo($NumOrdem);
 
         $dataNecessidade = str_replace('-', '/', date("d-m-Y", strtotime($ordem_compra->data_necessidade)));
-        $quantPedida = number_format($ordem_compra->quant_pedida, 3, ',', '.');
-        $valorUnitario = number_format($ordem_compra->custo_medio, 2, ',', '.');
-        $valorTotal = number_format($ordem_compra->quant_pedida * $ordem_compra->custo_medio, 2, ',', '.');
+        $quantPedida = number_format((float) ($ordem_compra->quant_pedida), 3, ',', '.');
+        $valorUnitario = number_format((float) ($ordem_compra->custo_medio), 2, ',', '.');
+        $valorTotal = number_format((float) ($ordem_compra->quant_pedida * $ordem_compra->custo_medio), 2, ',', '.');
 
         $input = "{$ordem_compra->nome_tipo_produto}|{$ordem_compra->cod_unidade_medida}|{$dataNecessidade}|{$quantPedida}|{$valorUnitario}|{$valorTotal}|{$ordem_compra->observacoes}";
 

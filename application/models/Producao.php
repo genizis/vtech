@@ -655,8 +655,8 @@ class Producao extends CI_Model{
                     break;
             } 
 
-            $quantMovimentada = number_format($movimentos->quant_movimentada, 3, ',', '.');
-            $valorMovimento = number_format($movimentos->valor_movimento, 2, ',', '.');
+            $quantMovimentada = number_format((float) ($movimentos->quant_movimentada), 3, ',', '.');
+            $valorMovimento = number_format((float) ($movimentos->valor_movimento), 2, ',', '.');
 
             if($movimentos->tipo_movimento == 2){
                 $classeNegativo = "text-danger";

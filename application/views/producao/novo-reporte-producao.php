@@ -113,7 +113,7 @@
                                                 Quantidade planejada
                                             </td>
                                             <td class="text-right align-middle text-info">
-                                                <?php echo number_format($ordem->quant_planejada, 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
+                                                <?php echo number_format((float) ($ordem->quant_planejada), 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -129,7 +129,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($ordem->quant_produzida > 0) echo "text-teal"; ?>">
                                         <strong>
-                                            <?php echo number_format($ordem->quant_produzida, 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
+                                            <?php echo number_format((float) ($ordem->quant_produzida), 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -240,16 +240,16 @@
                                                                                     data-target="#movimentos-reporte<?= $reporte->cod_reporte_producao ?>"><?= str_replace('-', '/', date("d-m-Y", strtotime($reporte->data_reporte))) ?></a>
                                                                             </td>
                                                                             <td class="text-center">
-                                                                                <?= number_format($reporte->horas_trabalhadas, 2, ',', '.') ?>
+                                                                                <?= number_format((float) ($reporte->horas_trabalhadas), 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="text-right">
-                                                                                <?= number_format($reporte->quant_reportada, 3, ',', '.') ?>
+                                                                                <?= number_format((float) ($reporte->quant_reportada), 3, ',', '.') ?>
                                                                                 <?= $ordem->cod_unidade_medida ?>
                                                                             </td>
                                                                             <td
                                                                                 class="text-right <?php if(($reporte->custo_producao + $reporte->custo_mob) > 0) echo "text-danger"; ?>">
                                                                                 R$
-                                                                                <?= number_format($reporte->custo_producao + $reporte->custo_mob, 2, ',', '.') ?>
+                                                                                <?= number_format((float) ($reporte->custo_producao + $reporte->custo_mob), 2, ',', '.') ?>
                                                                             </td>
                                                                             <td class="text-center">
                                                                                 <a href="#" data-value="<?= $reporte->cod_reporte_producao ?>"
@@ -297,7 +297,7 @@
                                                                 <?= $componente->nome_tipo_produto ?>
                                                             </td>
                                                             <td class="text-right align-middle text-info">
-                                                                <?= number_format($componente->quant_consumo, 3, ',', '.') ?>
+                                                                <?= number_format((float) ($componente->quant_consumo), 3, ',', '.') ?>
                                                                 <?= $componente->cod_unidade_medida ?>
                                                             </td>
                                                         </tr>
@@ -414,7 +414,7 @@
                                                         Quantidade planejada
                                                     </td>
                                                     <td class="text-right align-middle text-info">
-                                                        <?php echo number_format($ordem->quant_planejada, 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
+                                                        <?php echo number_format((float) ($ordem->quant_planejada), 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -431,7 +431,7 @@
                                             <td
                                                 class="text-right pt-0 <?php if($ordem->quant_produzida > 0) echo "text-teal"; ?>">
                                                 <strong>
-                                                    <?php echo number_format($ordem->quant_produzida, 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
+                                                    <?php echo number_format((float) ($ordem->quant_produzida), 3, ',', '.') . " " . $ordem->cod_unidade_medida; ?>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -764,12 +764,12 @@
                                                 </td>
                                                 <td
                                                     class="text-center <?php if($movimento_ordem->tipo_movimento == 2) echo "text-danger"; else echo "text-teal"; ?>">
-                                                    <?= number_format($movimento_ordem->quant_movimentada, 3, ',', '.') ?>
+                                                    <?= number_format((float) ($movimento_ordem->quant_movimentada), 3, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-center <?php if($movimento_ordem->tipo_movimento == 2) echo "text-danger"; else echo "text-teal"; ?>">
                                                     R$
-                                                    <?= number_format($movimento_ordem->valor_movimento, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($movimento_ordem->valor_movimento), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -843,7 +843,7 @@
                                                         Quantidade perdida
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        <?= number_format($reporte->quant_perdida, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($reporte->quant_perdida), 3, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -851,7 +851,7 @@
                                                         Quantidade produzida
                                                     </td>
                                                     <td class="text-right align-middle font-weight-bold text-teal">
-                                                        <?= number_format($reporte->quant_reportada, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($reporte->quant_reportada), 3, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -879,7 +879,7 @@
                                                         Horas trabalhadas
                                                     </td>
                                                     <td class="text-right align-middle font-weight-bold">
-                                                        <?= number_format($reporte->horas_trabalhadas, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($reporte->horas_trabalhadas), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -891,7 +891,7 @@
                                                         Custo de material
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        R$ <?= number_format($reporte->custo_producao, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($reporte->custo_producao), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -899,7 +899,7 @@
                                                         Custo de mão de obra
                                                     </td>
                                                     <td class="text-right align-middle">
-                                                        R$ <?= number_format($reporte->custo_mob, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($reporte->custo_mob), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -908,7 +908,7 @@
                                                     </td>
                                                     <td class="text-right align-middle text-danger font-weight-bold">
                                                         R$
-                                                        <?= number_format($reporte->custo_producao + $reporte->custo_mob, 2, ',', '.') ?>
+                                                        <?= number_format((float) ($reporte->custo_producao + $reporte->custo_mob), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -975,7 +975,7 @@
                                                                     <?php
                                                                         if($movimento_ordem->tipo_movimento == 1) echo "+"; else echo "-";
                                                                     ?>
-                                                                    <?= number_format($movimento_ordem->quant_movimentada, 3, ',', '.') ?>
+                                                                    <?= number_format((float) ($movimento_ordem->quant_movimentada), 3, ',', '.') ?>
                                                                     <?= $movimento_ordem->cod_unidade_medida ?>
                                                                 </td>
                                                             </tr>

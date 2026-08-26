@@ -114,16 +114,16 @@
                                                     <?= $consumo_resumida->nome_producao ?></td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_resumida->quant_reportada > 0) echo "text-teal"; ?>">
-                                                    <?= number_format($consumo_resumida->quant_reportada, 3, ',', '.') ?> <?= $consumo_resumida->un_producao ?>
+                                                    <?= number_format((float) ($consumo_resumida->quant_reportada), 3, ',', '.') ?> <?= $consumo_resumida->un_producao ?>
                                                 </td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_resumida->quant_consumo > 0) echo "text-warning"; ?>">
-                                                    <?= number_format($consumo_resumida->quant_consumo, 3, ',', '.') ?> <?= $consumo_resumida->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($consumo_resumida->quant_consumo), 3, ',', '.') ?> <?= $consumo_resumida->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_resumida->custo_consumo > 0) echo "text-danger"; ?>">
                                                     R$
-                                                    <?= number_format($consumo_resumida->custo_consumo, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($consumo_resumida->custo_consumo), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -175,15 +175,15 @@
                                                     <?= $consumo_detalhado->nome_acabado ?></td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_detalhado->quant_reportada > 0) echo "text-teal"; ?>">
-                                                    <?= number_format($consumo_detalhado->quant_reportada, 3, ',', '.') ?> <?= $consumo_detalhado->un_producao ?>
+                                                    <?= number_format((float) ($consumo_detalhado->quant_reportada), 3, ',', '.') ?> <?= $consumo_detalhado->un_producao ?>
                                                 </td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_detalhado->quant_movimentada > 0) echo "text-warning"; ?>">
-                                                    <?= number_format($consumo_detalhado->quant_movimentada, 3, ',', '.') ?> <?= $consumo_detalhado->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($consumo_detalhado->quant_movimentada), 3, ',', '.') ?> <?= $consumo_detalhado->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="align-middle text-right <?php if($consumo_detalhado->valor_movimento > 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($consumo_detalhado->valor_movimento, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($consumo_detalhado->valor_movimento), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -256,13 +256,13 @@
                     <?= $consumo_resumida->un_producao ?>
                 </td>
                 <td style="border: 1px solid">
-                    <?= number_format($consumo_resumida->quant_reportada, 3, ',', '.') ?>
+                    <?= number_format((float) ($consumo_resumida->quant_reportada), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    <?= number_format($consumo_resumida->quant_consumo, 3, ',', '.') ?> 
+                    <?= number_format((float) ($consumo_resumida->quant_consumo), 3, ',', '.') ?> 
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($consumo_resumida->custo_consumo, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($consumo_resumida->custo_consumo), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>
@@ -332,13 +332,13 @@
                     <?= $consumo_detalhado->un_producao ?>
                 </td>
                 <td style="border: 1px solid">
-                    <?= number_format($consumo_detalhado->quant_reportada, 3, ',', '.') ?>
+                    <?= number_format((float) ($consumo_detalhado->quant_reportada), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    <?= number_format($consumo_detalhado->quant_movimentada, 3, ',', '.') ?> 
+                    <?= number_format((float) ($consumo_detalhado->quant_movimentada), 3, ',', '.') ?> 
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($consumo_detalhado->valor_movimento, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($consumo_detalhado->valor_movimento), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

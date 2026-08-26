@@ -146,7 +146,7 @@
                                                             </td>
                                                             <td><?= $componente->nome_tipo_produto ?></a></td>
                                                             <td class="text-right text-info">
-                                                                <?= number_format($componente->quant_consumo, 3, ',', '.') ?>
+                                                                <?= number_format((float) ($componente->quant_consumo), 3, ',', '.') ?>
                                                                 <?= $componente->cod_unidade_medida ?>
                                                             </td>
                                                         </tr>
@@ -218,7 +218,7 @@
                                             </td>
                                             <td class="text-right <?php if($ordem->quant_planejada > 0) echo "text-info"; else echo "text-muted"; ?>">
                                                 <span
-                                                    id="PlanTot"><?= number_format($ordem->quant_planejada, 3, ',', '.') ?></span>
+                                                    id="PlanTot"><?= number_format((float) ($ordem->quant_planejada), 3, ',', '.') ?></span>
                                                 <?= $ordem->cod_unidade_medida ?>
                                             </td>
                                         </tr>
@@ -227,7 +227,7 @@
                                                 Produzido
                                             </td>
                                             <td class="text-right <?php if($ordem->quant_produzida > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                <?= number_format($ordem->quant_produzida, 3, ',', '.') ?>
+                                                <?= number_format((float) ($ordem->quant_produzida), 3, ',', '.') ?>
                                                 <?= $ordem->cod_unidade_medida ?>
                                             </td>
                                         </tr>
@@ -244,7 +244,7 @@
                                     <td class="text-right pt-0 <?php if($ordem->quant_produzida < $ordem->quant_planejada) echo "text-warning"; else echo "text-muted"; ?>">
                                         <strong>
                                             <span
-                                                id="TotTot"><?= number_format($ordem->quant_planejada - $ordem->quant_produzida, 3, ',', '.') ?></span>
+                                                id="TotTot"><?= number_format((float) ($ordem->quant_planejada - $ordem->quant_produzida), 3, ',', '.') ?></span>
                                             <?= $ordem->cod_unidade_medida ?>
                                         </strong>
                                     </td>
@@ -396,7 +396,7 @@
                                                     <div class="input-group">
                                                         <input type="text" id="inputQuantConsumoEdit" class="form-control"
                                                             data-mask="#.##0,000" data-mask-reverse="true" name="QuantConsumoEdit"
-                                                            value="<?= number_format($componente->quant_consumo, 3, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($componente->quant_consumo), 3, ',', '.') ?>">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"
                                                                 style="width: 40px;"><?= $componente->cod_unidade_medida ?></span>

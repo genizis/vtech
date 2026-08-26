@@ -78,7 +78,7 @@
 
                                                 $valor_pedido = $pedido->valor_total_pedido + $pedido->valor_frete + $pedido->valor_seguro + $pedido->outras_despesas - $valorDesconto;
 
-                                                echo number_format($valor_pedido, 2, ',', '.');
+                                                echo number_format((float) ($valor_pedido), 2, ',', '.');
 
                                            ?></span>
                                 </h6>

@@ -43,7 +43,7 @@
                                             <td class="text-right align-middle 
                                               <?php if(($conta->saldo_conta) > 0) echo "text-teal";
                                                     if(($conta->saldo_conta) < 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format(($conta->saldo_conta), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($conta->saldo_conta)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -52,7 +52,7 @@
                                             </td>
                                             <td class="text-right align-middle 
                                               <?php if(($conta->proj_entrada) > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format(($conta->proj_entrada), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($conta->proj_entrada)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -61,7 +61,7 @@
                                             </td>
                                             <td class="text-right align-middle 
                                               <?php if(($conta->proj_saida) > 0) echo "text-danger"; ?>">
-                                                R$ <?= number_format(($conta->proj_saida), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($conta->proj_saida)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -84,7 +84,7 @@
                                               <?php if(($conta->saldo_conta + $conta->proj_entrada - $conta->proj_saida) > 0) echo "text-teal";
                                                     if(($conta->saldo_conta + $conta->proj_entrada - $conta->proj_saida) < 0) echo "text-danger"; ?>">
                                         <strong>R$
-                                            <?= number_format(($conta->saldo_conta + $conta->proj_entrada - $conta->proj_saida), 2, ',', '.') ?></strong>
+                                            <?= number_format((float) (($conta->saldo_conta + $conta->proj_entrada - $conta->proj_saida)), 2, ',', '.') ?></strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -226,8 +226,8 @@
                                                             <td
                                                                 class="text-right align-middle <?php if($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                                                                 <?php if($titulo->tipo_movimento == 1) echo "text-teal"; ?>">
-                                                                R$ <?php if($titulo->tipo_movimento == 2) echo "-"; else echo "+"; ?><?php if($titulo->confirmado == 1) echo number_format($titulo->valor_confirmado, 2, ',', '.');
-                                                                     else echo number_format($titulo->valor_titulo, 2, ',', '.');
+                                                                R$ <?php if($titulo->tipo_movimento == 2) echo "-"; else echo "+"; ?><?php if($titulo->confirmado == 1) echo number_format((float) ($titulo->valor_confirmado), 2, ',', '.');
+                                                                     else echo number_format((float) ($titulo->valor_titulo), 2, ',', '.');
                                                               ?>
                                                             </td>
                                                         </tr>
@@ -840,7 +840,7 @@
                                                             id="inputValorTituloEdit<?= $titulo->cod_movimento_conta ?>"
                                                             type="text" name="ValorTitulo" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($titulo->valor_titulo, 2, ',', '.') ?>"
+                                                            value="<?= number_format((float) ($titulo->valor_titulo), 2, ',', '.') ?>"
                                                             <?php if($titulo->confirmado == 1) echo "readonly"; ?>
                                                             required>
                                                     </div>
@@ -975,7 +975,7 @@
                                                             id="inputValorDescontoTaxas<?= $titulo->cod_movimento_conta ?>"
                                                             type="text" name="ValorDescontoTaxas" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($titulo->valor_desc_taxa, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($titulo->valor_desc_taxa), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-3">
@@ -992,7 +992,7 @@
                                                             id="inputValorMultasJustos<?= $titulo->cod_movimento_conta ?>"
                                                             type="text" name="ValorMultasJustos" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($titulo->valor_juros_multa, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($titulo->valor_juros_multa), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-3">
@@ -1008,7 +1008,7 @@
                                                             id="inputValorConfirmado<?= $titulo->cod_movimento_conta ?>"
                                                             type="text" name="ValorConfirmado" data-mask="#.##0,00"
                                                             data-mask-reverse="true"
-                                                            value="<?= number_format($titulo->valor_confirmado, 2, ',', '.') ?>">
+                                                            value="<?= number_format((float) ($titulo->valor_confirmado), 2, ',', '.') ?>">
                                                     </div>
                                                 </div>
                                             </div>

@@ -50,35 +50,35 @@
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-teal"></i>  Produzido total
                                             </td>
                                             <td class="text-right <?php if($lista_status->produzido_total > 0) echo "text-teal"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->produzido_total, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->produzido_total), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-info"></i> Produzido parcial</td>
                                             <td class="text-right <?php if($lista_status->produzido_parcial > 0) echo "text-info"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->produzido_parcial, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->produzido_parcial), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-warning"></i> Pendentes</td>
                                             <td class="text-right <?php if($lista_status->pendente > 0) echo "text-warning"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->pendente, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->pendente), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-danger"></i> Atrasadas</td>
                                             <td class="text-right <?php if($lista_status->atrasado > 0) echo "text-danger"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->atrasado, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->atrasado), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">
                                             <i class="fa-duotone fa-solid fa-circle-small pr-2 text-dark"></i> Estornadas</td>
                                             <td class="text-right <?php if($lista_status->estornado > 0) echo "text-dark"; else echo "text-muted"; ?>">
-                                                <?= number_format($lista_status->estornado, 0, ',', '.') ?>
+                                                <?= number_format((float) ($lista_status->estornado), 0, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -93,7 +93,7 @@
                                     <td class="text-left pt-0 text-dark"><strong>TOTAL ORDENS</strong></td>
                                     <td class="text-right pt-0">
                                         <strong>
-                                            <?= number_format(($lista_status->produzido_total + $lista_status->produzido_parcial + $lista_status->pendente + $lista_status->atrasado + $lista_status->estornado), 0, ',', '.') ?>
+                                            <?= number_format((float) (($lista_status->produzido_total + $lista_status->produzido_parcial + $lista_status->pendente + $lista_status->atrasado + $lista_status->estornado)), 0, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -285,7 +285,7 @@
                                                         <?php } ?>
                                                     </td>
                                                     <td class="text-right align-middle text-info">
-                                                        <?= number_format($ordem->quant_planejada, 3, ',', '.') ?>
+                                                        <?= number_format((float) ($ordem->quant_planejada), 3, ',', '.') ?>
                                                         <span class="small2"><?= $ordem->cod_unidade_medida ?></span></td>
                                                 </tr>
                                                 <?php } ?>

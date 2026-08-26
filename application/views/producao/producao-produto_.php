@@ -104,27 +104,27 @@
                                                 <td><?= $producao_resumida->nome_tipo_produto ?></td>
                                                 <td
                                                     class="text-center align-middle">
-                                                    <?= number_format($producao_resumida->horas_trabalhadas, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($producao_resumida->horas_trabalhadas), 2, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_resumida->quant_reportada > 0) echo "text-teal"; ?>">
-                                                    <?= number_format($producao_resumida->quant_reportada, 3, ',', '.') ?> <?= $producao_resumida->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($producao_resumida->quant_reportada), 3, ',', '.') ?> <?= $producao_resumida->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_resumida->quant_perdida > 0) echo "text-warning"; ?>">
-                                                    <?= number_format($producao_resumida->quant_perdida, 3, ',', '.') ?> <?= $producao_resumida->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($producao_resumida->quant_perdida), 3, ',', '.') ?> <?= $producao_resumida->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_resumida->custo_mob > 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($producao_resumida->custo_mob, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($producao_resumida->custo_mob), 2, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_resumida->custo_producao > 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($producao_resumida->custo_producao, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($producao_resumida->custo_producao), 2, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if(($producao_resumida->custo_producao + $producao_resumida->custo_mob) > 0) echo "text-danger"; ?>">
-                                                    <strong>R$ <?= number_format($producao_resumida->custo_producao + $producao_resumida->custo_mob, 2, ',', '.') ?></strong>
+                                                    <strong>R$ <?= number_format((float) ($producao_resumida->custo_producao + $producao_resumida->custo_mob), 2, ',', '.') ?></strong>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -171,29 +171,29 @@
                                                 <td scope="row" class="align-middle"><?= $producao_detalhada->cod_produto ?> -
                                                     <?= $producao_detalhada->nome_produto ?></td>
                                                 <td class="align-middle"><?= $producao_detalhada->nome_tipo_produto ?></td>
-                                                <td class="text-center align-middle"><?= number_format($producao_detalhada->horas_trabalhadas, 2, ',', '.') ?></td>
+                                                <td class="text-center align-middle"><?= number_format((float) ($producao_detalhada->horas_trabalhadas), 2, ',', '.') ?></td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_detalhada->quant_reportada > 0) echo "text-teal"; ?>">
-                                                    <?= number_format($producao_detalhada->quant_reportada, 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($producao_detalhada->quant_reportada), 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_detalhada->quant_perdida > 0) echo "text-warning"; ?>">
-                                                    <?= number_format($producao_detalhada->quant_perdida, 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
+                                                    <?= number_format((float) ($producao_detalhada->quant_perdida), 3, ',', '.') ?> <?= $producao_detalhada->cod_unidade_medida ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_detalhada->custo_mob > 0) echo "text-danger"; ?>">
                                                     R$
-                                                    <?= number_format($producao_detalhada->custo_mob, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($producao_detalhada->custo_mob), 2, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if($producao_detalhada->custo_producao > 0) echo "text-danger"; ?>">
                                                     R$
-                                                    <?= number_format($producao_detalhada->custo_producao, 2, ',', '.') ?>
+                                                    <?= number_format((float) ($producao_detalhada->custo_producao), 2, ',', '.') ?>
                                                 </td>
                                                 <td
                                                     class="text-right align-middle <?php if(($producao_detalhada->custo_mob + $producao_detalhada->custo_producao) > 0) echo "text-danger"; ?>">
                                                     <strong>R$
-                                                    <?= number_format($producao_detalhada->custo_mob + $producao_detalhada->custo_producao, 2, ',', '.') ?></strong>
+                                                    <?= number_format((float) ($producao_detalhada->custo_mob + $producao_detalhada->custo_producao), 2, ',', '.') ?></strong>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -262,22 +262,22 @@
                     <?= $producao_resumida->nome_tipo_produto ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_resumida->horas_trabalhadas, 2, ',', '.') ?>
+                    <?= number_format((float) ($producao_resumida->horas_trabalhadas), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_resumida->quant_reportada, 3, ',', '.') ?>
+                    <?= number_format((float) ($producao_resumida->quant_reportada), 3, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_resumida->quant_perdida, 3, ',', '.') ?>
+                    <?= number_format((float) ($producao_resumida->quant_perdida), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_resumida->custo_mob, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_resumida->custo_mob), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_resumida->custo_producao, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_resumida->custo_producao), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_resumida->custo_producao + $producao_resumida->custo_mob, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_resumida->custo_producao + $producao_resumida->custo_mob), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>
@@ -336,22 +336,22 @@
                     <?= $producao_detalhada->nome_tipo_produto ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_detalhada->horas_trabalhadas, 2, ',', '.') ?>
+                    <?= number_format((float) ($producao_detalhada->horas_trabalhadas), 2, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_detalhada->quant_reportada, 3, ',', '.') ?>
+                    <?= number_format((float) ($producao_detalhada->quant_reportada), 3, ',', '.') ?>
                 </td> 
                 <td style="border: 1px solid">
-                    <?= number_format($producao_detalhada->quant_perdida, 3, ',', '.') ?>
+                    <?= number_format((float) ($producao_detalhada->quant_perdida), 3, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_detalhada->custo_mob, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_detalhada->custo_mob), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_detalhada->custo_producao, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_detalhada->custo_producao), 2, ',', '.') ?>
                 </td>
                 <td style="border: 1px solid">
-                    R$ <?= number_format($producao_detalhada->custo_producao + $producao_detalhada->custo_mob, 2, ',', '.') ?>
+                    R$ <?= number_format((float) ($producao_detalhada->custo_producao + $producao_detalhada->custo_mob), 2, ',', '.') ?>
                 </td>
             </tr>
             <?php } ?>

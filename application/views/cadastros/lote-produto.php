@@ -73,10 +73,10 @@
                                                     <td><?= $produto->nome_tipo_produto ?></td>
                                                     <td
                                                         class="text-right <?php if($produto->custo_medio > 0) echo "text-info" ?>">
-                                                        R$ <?= number_format($produto->custo_medio, 2, ',', '.') ?></td>
+                                                        R$ <?= number_format((float) ($produto->custo_medio), 2, ',', '.') ?></td>
                                                     <td
                                                         class="text-right <?php if($produto->quant_estoq < 0) echo "text-danger" ?>">
-                                                        <?= number_format($produto->quant_estoq, 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td>
+                                                        <?= number_format((float) ($produto->quant_estoq), 3, ',', '.') ?> <?= $produto->cod_unidade_medida ?></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

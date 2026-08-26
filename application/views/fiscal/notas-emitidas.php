@@ -110,7 +110,7 @@
                                         <td class="text-center align-middle"><?= $nota_detalhada->c_stat ?></td>
                                         <td class="text-center align-middle"><?= $nota_detalhada->x_motivo ?></td>
                                         <td class="text-right align-middle text-teal">
-                                            R$ <?= number_format($nota_detalhada->total_nota, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($nota_detalhada->total_nota), 2, ',', '.') ?>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -186,7 +186,7 @@
                 </td>
                 <td class="text-center <?php if($nota_detalhada->total_nota) echo "text-teal"; ?>"
                     style="border: 1px solid; background-color: rgb(245,245,245)">
-                    R$ <?= number_format($nota_detalhada->total_nota, 2, ',', '.'); ?>
+                    R$ <?= number_format((float) ($nota_detalhada->total_nota), 2, ',', '.'); ?>
                 </td>
             </tr>
             <?php } ?>

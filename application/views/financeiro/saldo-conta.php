@@ -56,7 +56,7 @@
                                                 </td>
                                                 <td class="text-right <?php if ($conta->saldo_conta > 0) echo "text-teal";
                                                                         if ($conta->saldo_conta < 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($conta->saldo_conta, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($conta->saldo_conta), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -111,7 +111,7 @@
                                                 </td>
                                                 <td class="text-right align-middle <?php if (round($saldo, 2) > 0) echo "text-teal";
                                                                                     elseif (round($saldo, 2) < 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -138,13 +138,13 @@
                                                     <td class="text-right align-middle <?php if ($titulo->tipo_movimento == 2) echo "text-danger"; ?>
                                                                     <?php if ($titulo->tipo_movimento == 1) echo "text-teal"; ?>">
                                                         R$ <?php if ($titulo->tipo_movimento == 2) echo "-";
-                                                            else echo "+"; ?><?php if ($titulo->confirmado == 1) echo number_format($titulo->valor_confirmado, 2, ',', '.');
-                                                                                else echo number_format($titulo->valor_titulo, 2, ',', '.');
+                                                            else echo "+"; ?><?php if ($titulo->confirmado == 1) echo number_format((float) ($titulo->valor_confirmado), 2, ',', '.');
+                                                                                else echo number_format((float) ($titulo->valor_titulo), 2, ',', '.');
                                                                                 ?>
                                                     </td>
                                                     <td class="text-right align-middle <?php if ($saldo > 0) echo "text-teal";
                                                                                         elseif ($saldo < 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

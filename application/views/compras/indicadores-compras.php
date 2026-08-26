@@ -55,7 +55,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM COMPRAS</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($total_comprado > 0) echo "text-warning"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($total_comprado, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($total_comprado), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 <h5 class="card-title"><strong>TOTAL EM COMPRAS PENDENTES</strong></h5>
                                 <div class="card-table text-center">
                                     <h1 class="<?php if($compra_pendente->valor_pendente > 0) echo "text-warning"; ?> display-5 font-weight-bold mb-0">R$
-                                        <?= number_format($compra_pendente->valor_pendente, 2, ',', '.') ?></h1>
+                                        <?= number_format((float) ($compra_pendente->valor_pendente), 2, ',', '.') ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                             style="color: <?= $cor_compra[$key_compra_produto] ?>"></i>
                                         <?= $compra_produto->cod_produto ?> - <?= $compra_produto->nome_produto ?></td>
                                     <td class="text-danger float-right">R$
-                                        <?= number_format($compra_produto->valor_comprado, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($compra_produto->valor_comprado), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="col-md-6 text-danger">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_comprado, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_comprado), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                                         <?= $compra_fornecedor->cod_fornecedor ?> -
                                         <?= $compra_fornecedor->nome_fornecedor ?></td>
                                     <td class="text-danger float-right">R$
-                                        <?= number_format($compra_fornecedor->total_compra, 2, ',', '.') ?></td>
+                                        <?= number_format((float) ($compra_fornecedor->total_compra), 2, ',', '.') ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -151,7 +151,7 @@
                             </div>
                             <div class="col-md-6 text-danger">
                                 <strong class="float-right">R$
-                                    <?= number_format($total_comprado, 2, ',', '.') ?></strong>
+                                    <?= number_format((float) ($total_comprado), 2, ',', '.') ?></strong>
                             </div>
                         </div>
                     </div>

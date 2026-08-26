@@ -64,7 +64,7 @@
                                                                                     elseif($saldoFinalPeriodo < 0) echo "text-danger"; ?>">
                                                         <strong>
                                                             R$
-                                                            <?= number_format($saldoFinalPeriodo, 2, ',', '.') ?>
+                                                            <?= number_format((float) ($saldoFinalPeriodo), 2, ',', '.') ?>
                                                         </strong>
                                                     </td>
                                                 </tr>
@@ -136,7 +136,7 @@
                                                 </td>
                                                 <td class="text-right align-middle <?php if (round($saldo, 2) > 0) echo "text-teal";
                                                                                     elseif (round($saldo, 2) < 0) echo "text-danger"; ?>">
-                                                    R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                    R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -161,18 +161,18 @@
                                                         <a href="#" data-toggle="modal" class="text-dark" data-target="#visualizar-dia<?= $fluxo->data ?>"><?= str_replace('-', '/', date("d-m-Y", strtotime($fluxo->data))) ?></a>
                                                     </td>
                                                     <td class="text-right align-middle <?php if ($fluxo->entradas > 0) echo "text-teal"; ?>">
-                                                        R$ <?= number_format($fluxo->entradas, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($fluxo->entradas), 2, ',', '.') ?>
                                                     </td>
                                                     <td class="text-right align-middle <?php if ($fluxo->saidas > 0) echo "text-danger"; ?>">
-                                                        R$ <?php if ($fluxo->saidas > 0) echo "-"; ?><?= number_format($fluxo->saidas, 2, ',', '.') ?>
+                                                        R$ <?php if ($fluxo->saidas > 0) echo "-"; ?><?= number_format((float) ($fluxo->saidas), 2, ',', '.') ?>
                                                     </td>
                                                     <td class="text-right align-middle <?php if (($fluxo->entradas - $fluxo->saidas) > 0) echo "text-teal";
                                                                                         elseif (($fluxo->entradas - $fluxo->saidas) < 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($fluxo->entradas - $fluxo->saidas, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($fluxo->entradas - $fluxo->saidas), 2, ',', '.') ?>
                                                     </td>
                                                     <td class="text-right align-middle <?php if ($saldo > 0) echo "text-teal";
                                                                                         elseif ($saldo < 0) echo "text-danger"; ?>">
-                                                        R$ <?= number_format($saldo, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($saldo), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -261,9 +261,9 @@
                                                                         <?php if ($titulo->tipo_movimento == 2) echo "-"; ?>
                                                                         <?php
                                                                         if ($titulo->confirmado == 1)
-                                                                            echo number_format($titulo->valor_confirmado, 2, ',', '.');
+                                                                            echo number_format((float) ($titulo->valor_confirmado), 2, ',', '.');
                                                                         else
-                                                                            echo number_format($titulo->valor_titulo, 2, ',', '.');  ?>
+                                                                            echo number_format((float) ($titulo->valor_titulo), 2, ',', '.');  ?>
                                                                     </td>
                                                                 </tr>
                                                         <?php }

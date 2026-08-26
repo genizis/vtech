@@ -92,9 +92,9 @@
                                                     <?= $estrutura->cod_produto ?> - <?= $estrutura->nome_produto ?>
                                                 </td>
                                                 <td class="align-middle <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>"><?= $estrutura->tipo_produto ?></td>
-                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>"><?= number_format($estrutura->quantidade, 3, ',', '.') ?> <?= $estrutura->cod_unidade_medida ?></td>
-                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>">R$ <?= number_format($estrutura->custo_unit, 2, ',', '.') ?></td>
-                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>">R$ <?= number_format($estrutura->custo_total, 2, ',', '.') ?></td>
+                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>"><?= number_format((float) ($estrutura->quantidade), 3, ',', '.') ?> <?= $estrutura->cod_unidade_medida ?></td>
+                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>">R$ <?= number_format((float) ($estrutura->custo_unit), 2, ',', '.') ?></td>
+                                                <td class="align-middle text-right <?php if($estrutura->est_pai == 1) echo "reg-bold"; ?>">R$ <?= number_format((float) ($estrutura->custo_total), 2, ',', '.') ?></td>
                                             </tr>
                                             <?php }} ?>
                                         </tbody>

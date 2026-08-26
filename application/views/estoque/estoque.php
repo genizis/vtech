@@ -65,7 +65,7 @@
                                             </td>
                                             <td
                                                 class="text-right <?php if($tipo->valor_estoque > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format(($tipo->valor_estoque), 2, ',', '.') ?>
+                                                R$ <?= number_format((float) (($tipo->valor_estoque)), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -82,7 +82,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($total_tipo_produto > 0) echo "text-teal"; ?>">
                                         <strong>
-                                            R$ <?= number_format($total_tipo_produto, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($total_tipo_produto), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -114,7 +114,7 @@
                                         class="text-right pt-0 <?php if($total_ano > 0) echo "text-info"; ?>">
                                         <strong>
                                             R$
-                                            <?= number_format($total_ano, 2, ',', '.') ?>
+                                            <?= number_format((float) ($total_ano), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -147,7 +147,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($lista_recebimento->total_compras > 0) echo "text-info"; ?>">
                                         <strong>
-                                            R$ <?= number_format($lista_recebimento->total_compras, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($lista_recebimento->total_compras), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -185,9 +185,9 @@
                                                         <?= $fornecedor->nome_fornecedor ?>
                                                     </td>
                                                     <td class="text-right text-info">
-                                                        R$ <?= number_format($fornecedor->total_compra + $fornecedor->total_frete +
+                                                        R$ <?= number_format((float) ($fornecedor->total_compra + $fornecedor->total_frete +
                                                                          $fornecedor->total_seguro + $fornecedor->outras_despesas - 
-                                                                         $fornecedor->total_desconto, 2, ',', '.') ?>
+                                                                         $fornecedor->total_desconto), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -212,7 +212,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($lista_recebimento->total_compras > 0) echo "text-info"; ?>">
                                         <strong>
-                                            R$ <?= number_format($lista_recebimento->total_compras, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($lista_recebimento->total_compras), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
@@ -241,7 +241,7 @@
                                             </td>
                                             <td
                                                 class="text-right <?php if($totais_pedido->total_pedido > 0) echo "text-info"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_pedido, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_pedido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -250,7 +250,7 @@
                                             </td>
                                             <td
                                                 class="text-right <?php if($totais_pedido->total_recebido > 0) echo "text-teal"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_recebido, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_recebido), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -259,7 +259,7 @@
                                             </td>
                                             <td
                                                 class="text-right <?php if($totais_pedido->total_pendente > 0) echo "text-muted"; ?>">
-                                                R$ <?= number_format($totais_pedido->total_pendente, 2, ',', '.') ?>
+                                                R$ <?= number_format((float) ($totais_pedido->total_pendente), 2, ',', '.') ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -298,7 +298,7 @@
                                                         <?= $produto->nome_produto ?>
                                                     </td>
                                                     <td class="text-right text-info">
-                                                        R$ <?= number_format($produto->valor_total, 2, ',', '.') ?>
+                                                        R$ <?= number_format((float) ($produto->valor_total), 2, ',', '.') ?>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -323,7 +323,7 @@
                                     <td
                                         class="text-right pt-0 <?php if($lista_recebimento->total_produto > 0) echo "text-info"; ?>">
                                         <strong>
-                                            R$ <?= number_format($lista_recebimento->total_produto, 2, ',', '.') ?>
+                                            R$ <?= number_format((float) ($lista_recebimento->total_produto), 2, ',', '.') ?>
                                         </strong>
                                     </td>
                                 </tr>
