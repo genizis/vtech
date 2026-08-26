@@ -102,7 +102,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive"> 
                         <table class="table table-bordered">
                             <thead class="thead-light"><tr><th class="text-center">Data</th><th>Movimento bancário</th><th class="text-right">Valor</th><th>Conciliação</th></tr></thead>
                             <tbody class="table-sm">
