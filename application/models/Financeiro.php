@@ -890,6 +890,18 @@ class Financeiro extends CI_Model{
 
     }
 
+    public function getTotaisTitulosPendentesHoje(){
+        $this->db->select('COALESCE(SUM(CASE WHEN movimentos_conta.tipo_movimento = 1 THEN movimentos_conta.valor_titulo ELSE 0 END), 0) AS total_receber,
+                           COALESCE(SUM(CASE WHEN movimentos_conta.tipo_movimento = 2 THEN movimentos_conta.valor_titulo ELSE 0 END), 0) AS total_pagar', false);
+        $this->db->from('movimentos_conta');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('movimentos_conta.confirmado', '0');
+        $this->db->where('movimentos_conta.data_vencimento', date('Y-m-d'));
+
+        return $this->db->get()->row();
+    }
+
     public function getTotalConta(){
         $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
