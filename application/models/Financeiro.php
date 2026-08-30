@@ -1610,9 +1610,8 @@ class Financeiro extends CI_Model{
 
         $this->db->select('sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas');
         $this->db->select('sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas');
-        $this->db->select('time_dimension.db_date as data, time_dimension.month_name as nome_mes');
+        $this->db->select('movimentos_conta.data_confirmacao as data');
         $this->db->from('movimentos_conta');
-        $this->db->join('time_dimension', 'time_dimension.db_date = movimentos_conta.data_confirmacao');   
         $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');      
         $this->db->where("movimentos_conta.data_confirmacao >= ", $dataInicio);
         $this->db->where("movimentos_conta.data_confirmacao <= ", $dataFim);
@@ -1622,76 +1621,103 @@ class Financeiro extends CI_Model{
         $this->db->group_by('movimentos_conta.data_confirmacao', 'asc');
         $this->db->order_by('movimentos_conta.data_confirmacao', 'asc');
 
-        return $query = $this->db->get()->result();   
+        $resultado = $this->db->get()->result();
+        foreach ($resultado as $movimento) {
+            $movimento->nome_mes = $this->nomeMesFinanceiro(date('n', strtotime($movimento->data)));
+        }
+
+        return $resultado;
     }
 
     public function getTitulosDia($dataInicio, $dataFim){
+        $resultado = array();
+        for ($data = $dataInicio; $data <= $dataFim; $data = date('Y-m-d', strtotime($data . ' +1 day'))) {
+            $resultado[$data] = (object) array(
+                'data' => $data,
+                'nome_mes' => $this->nomeMesFinanceiro(date('n', strtotime($data))),
+                'entradas_confirmadas' => 0,
+                'saidas_confirmadas' => 0,
+                'entradas_pendentes' => 0,
+                'saidas_pendentes' => 0
+            );
+        }
 
-        $this->db->select('tim.db_date as data,
-                            tim.month_name as nome_mes,
-                            IFNULL(movimento_confirmado.entradas, 0) as entradas_confirmadas,
-                            IFNULL(movimento_confirmado.saidas, 0) as saidas_confirmadas,   
-                            IFNULL(movimento_pendente.entradas, 0) as entradas_pendentes,
-                            IFNULL(movimento_pendente.saidas, 0) as saidas_pendentes                            
-                        from time_dimension tim');
-        $this->db->join('(
-                            SELECT movimentos_conta.data_vencimento, 
-                                sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_titulo, 0)) entradas,
-                                sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_titulo, 0)) saidas                                
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            where conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                              and movimentos_conta.confirmado = 0
-                              and conta.ativo = 1
-                            GROUP BY movimentos_conta.data_vencimento 
-                        ) as movimento_pendente', 'movimento_pendente on movimento_pendente.data_vencimento = tim.db_date ', 'left');
-        $this->db->join('(
-                            SELECT movimentos_conta.data_confirmacao, 
-                                sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas,
-                                sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas                                
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            where conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                              and movimentos_conta.confirmado = 1
-                              and conta.ativo = 1
-                            GROUP BY movimentos_conta.data_confirmacao 
-                        ) as movimento_confirmado', 'movimento_confirmado on movimento_confirmado.data_confirmacao = tim.db_date ', 'left');
-        $this->db->order_by('tim.db_date', 'asc');
+        $this->db->select('movimentos_conta.data_confirmacao as data');
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas');
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas');
+        $this->db->from('movimentos_conta');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('conta.ativo', 1);
+        $this->db->where('movimentos_conta.confirmado', 1);
+        $this->db->where('movimentos_conta.data_confirmacao >=', $dataInicio);
+        $this->db->where('movimentos_conta.data_confirmacao <=', $dataFim);
+        $this->db->group_by('movimentos_conta.data_confirmacao');
+        foreach ($this->db->get()->result() as $movimento) {
+            $resultado[$movimento->data]->entradas_confirmadas = (float) $movimento->entradas;
+            $resultado[$movimento->data]->saidas_confirmadas = (float) $movimento->saidas;
+        }
 
-        $this->db->where("tim.db_date >= ", $dataInicio);
-        $this->db->where("tim.db_date <= ", $dataFim);
+        $this->db->select('movimentos_conta.data_vencimento as data');
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_titulo, 0)) entradas');
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_titulo, 0)) saidas');
+        $this->db->from('movimentos_conta');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('conta.ativo', 1);
+        $this->db->where('movimentos_conta.confirmado', 0);
+        $this->db->where('movimentos_conta.data_vencimento >=', $dataInicio);
+        $this->db->where('movimentos_conta.data_vencimento <=', $dataFim);
+        $this->db->group_by('movimentos_conta.data_vencimento');
+        foreach ($this->db->get()->result() as $movimento) {
+            $resultado[$movimento->data]->entradas_pendentes = (float) $movimento->entradas;
+            $resultado[$movimento->data]->saidas_pendentes = (float) $movimento->saidas;
+        }
 
-        return $query = $this->db->get()->result();   
+        return array_values($resultado);
     }
 
     public function getResultadoAno($dataInicio, $dataFim){
+        $resultado = array();
+        for ($data = date('Y-m-01', strtotime($dataInicio)); $data <= $dataFim; $data = date('Y-m-01', strtotime($data . ' +1 month'))) {
+            $chave = date('Y-m', strtotime($data));
+            $resultado[$chave] = (object) array(
+                'ano' => date('Y', strtotime($data)),
+                'mes' => date('n', strtotime($data)),
+                'nome_mes' => $this->nomeMesFinanceiro(date('n', strtotime($data))),
+                'entradas_confirmadas' => 0,
+                'saidas_confirmadas' => 0
+            );
+        }
 
-        $this->db->select('tim.year as ano,
-                           tim.month as mes,
-                           tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento_confirmado.entradas, 0)) as entradas_confirmadas,
-                           SUM(IFNULL(movimento_confirmado.saidas, 0)) as saidas_confirmadas                          
-                        from time_dimension tim');
-        $this->db->join('(
-                            SELECT movimentos_conta.data_confirmacao, 
-                                sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas,
-                                sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas                                
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            where conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                              and movimentos_conta.confirmado = 1
-                              and movimentos_conta.especie_movimento != 2
-                              and conta.ativo = 1
-                            GROUP BY movimentos_conta.data_confirmacao 
-                        ) as movimento_confirmado', 'movimento_confirmado on movimento_confirmado.data_confirmacao = tim.db_date ', 'left');
-        $this->db->where('tim.db_date <= CURRENT_DATE()');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.month', 'asc');
+        $this->db->select('YEAR(movimentos_conta.data_confirmacao) as ano, MONTH(movimentos_conta.data_confirmacao) as mes', false);
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas');
+        $this->db->select('sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas');
+        $this->db->from('movimentos_conta');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('conta.ativo', 1);
+        $this->db->where('movimentos_conta.confirmado', 1);
+        $this->db->where('movimentos_conta.especie_movimento !=', 2);
+        $this->db->where('movimentos_conta.data_confirmacao >=', $dataInicio);
+        $this->db->where('movimentos_conta.data_confirmacao <=', $dataFim);
+        $this->db->where('movimentos_conta.data_confirmacao <= CURRENT_DATE()', null, false);
+        $this->db->group_by(array('YEAR(movimentos_conta.data_confirmacao)', 'MONTH(movimentos_conta.data_confirmacao)'));
+        foreach ($this->db->get()->result() as $movimento) {
+            $chave = sprintf('%04d-%02d', $movimento->ano, $movimento->mes);
+            if (isset($resultado[$chave])) {
+                $resultado[$chave]->entradas_confirmadas = (float) $movimento->entradas;
+                $resultado[$chave]->saidas_confirmadas = (float) $movimento->saidas;
+            }
+        }
 
-        $this->db->where("tim.db_date >= ", $dataInicio);
-        $this->db->where("tim.db_date <= ", $dataFim);
+        return array_values($resultado);
+    }
 
-        return $query = $this->db->get()->result();   
+    private function nomeMesFinanceiro($mes){
+        $meses = array(1 => 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+        return $meses[(int) $mes];
     }
 
     public function getContasAtivasSaldos(){
@@ -1943,171 +1969,68 @@ class Financeiro extends CI_Model{
     }
 
     public function getReceita($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 1
-                            AND movimentos_conta.tipo_movimento = 1
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 1, 1);
     }
 
     public function getDeducoes($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 2
-                            AND movimentos_conta.tipo_movimento = 2
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 2, 2);
     }
 
     public function getCustos($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 3
-                            AND movimentos_conta.tipo_movimento = 2
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 3, 2);
     }
 
     public function getDespesasOper($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 4
-                            AND movimentos_conta.tipo_movimento = 2
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 4, 2);
     }
 
     public function getOutrasRecNaoOper($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 5
-                            AND movimentos_conta.tipo_movimento = 1
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 5, 1);
     }
 
     public function getOutrasDespNaoOper($ano){
-
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 6
-                            AND movimentos_conta.tipo_movimento = 2
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
-
-        $this->db->where("tim.year", $ano);
-
-        return $query = $this->db->get()->result();
-
+        return $this->getDreMensal($ano, 6, 2);
     }
 
     public function getInvestimentos($ano){
+        return $this->getDreMensal($ano, 7, 2, 1);
+    }
 
-        $this->db->select('tim.month_name as nome_mes,
-                           SUM(IFNULL(movimento.total, 0)) as total                          
-                          FROM time_dimension tim');
-        $this->db->join('(SELECT movimentos_conta.data_competencia, 
-                                SUM(movimentos_conta.valor_titulo) total
-                            FROM movimentos_conta 
-                            JOIN conta ON conta.cod_conta = movimentos_conta.cod_conta
-                            JOIN conta_contabil ON conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil
-                            WHERE conta.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.id_empresa = ' . getDadosUsuarioLogado()['id_empresa'] . '
-                            AND conta_contabil.demons_result = 7
-                            AND movimentos_conta.confirmado = 1
-                            AND movimentos_conta.tipo_movimento = 2
-                        GROUP BY movimentos_conta.data_competencia) AS movimento', 'movimento on movimento.data_competencia = tim.db_date ', 'left');
-        $this->db->group_by('tim.month');
-        $this->db->order_by('tim.db_date', 'asc');
+    private function getDreMensal($ano, $demonstracao, $tipoMovimento, $confirmado = null){
+        $nomesMeses = array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+        $resultado = array();
 
-        $this->db->where("tim.year", $ano);
+        foreach ($nomesMeses as $nomeMes) {
+            $resultado[] = (object) array('nome_mes' => $nomeMes, 'total' => 0);
+        }
 
-        return $query = $this->db->get()->result();
+        $this->db->select('MONTH(movimentos_conta.data_competencia) as mes', false);
+        $this->db->select('SUM(movimentos_conta.valor_titulo) as total', false);
+        $this->db->from('movimentos_conta');
+        $this->db->join('conta', 'conta.cod_conta = movimentos_conta.cod_conta');
+        $this->db->join('conta_contabil', 'conta_contabil.cod_conta_contabil = movimentos_conta.cod_conta_contabil');
+        $this->db->where('conta.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('conta_contabil.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->where('conta_contabil.demons_result', $demonstracao);
+        $this->db->where('movimentos_conta.tipo_movimento', $tipoMovimento);
+        $this->db->where('movimentos_conta.data_competencia >=', $ano . '-01-01');
+        $this->db->where('movimentos_conta.data_competencia <=', $ano . '-12-31');
+
+        if ($confirmado !== null) {
+            $this->db->where('movimentos_conta.confirmado', $confirmado);
+        }
+
+        $this->db->group_by('MONTH(movimentos_conta.data_competencia)');
+
+        foreach ($this->db->get()->result() as $movimento) {
+            $indiceMes = (int) $movimento->mes - 1;
+            if ($indiceMes >= 0 && $indiceMes < 12) {
+                $resultado[$indiceMes]->total = (float) $movimento->total;
+            }
+        }
+
+        return $resultado;
 
     }
 
@@ -2153,12 +2076,11 @@ class Financeiro extends CI_Model{
             $condicao = $condicao . ")";
         }
 
-        $this->db->select('tim.db_date as data,
-                            tim.month_name as nome_mes,
-                            SUM(IFNULL(movimento.entradas, 0)) as entradas,
-                            SUM(IFNULL(movimento.saidas, 0)) as saidas                           
-                        from time_dimension tim');
-        $this->db->join('(
+        $this->db->select('movimento.data_fluxo as data,
+                            MONTHNAME(movimento.data_fluxo) as nome_mes,
+                            SUM(movimento.entradas) as entradas,
+                            SUM(movimento.saidas) as saidas');
+        $this->db->from('(
                             SELECT movimentos_conta.data_confirmacao as data_fluxo, 
                                 sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_confirmado, 0)) entradas,
                                 sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_confirmado, 0)) saidas
@@ -2169,7 +2091,7 @@ class Financeiro extends CI_Model{
                               and movimentos_conta.confirmado = 1 '
                               . $condicao .
                               ' GROUP BY movimentos_conta.data_confirmacao                            
-                            UNION 
+                            UNION ALL
                             SELECT if(movimentos_conta.data_vencimento < CURRENT_DATE(), CURRENT_DATE(), movimentos_conta.data_vencimento) as data_fluxo, 
                                 sum(if(movimentos_conta.tipo_movimento = 1, movimentos_conta.valor_titulo, 0)) entradas,
                                 sum(if(movimentos_conta.tipo_movimento = 2, movimentos_conta.valor_titulo, 0)) saidas
@@ -2180,12 +2102,12 @@ class Financeiro extends CI_Model{
                               and movimentos_conta.confirmado = 0 '
                               . $condicao .
                             ' GROUP BY if(movimentos_conta.data_vencimento < CURRENT_DATE(), CURRENT_DATE(), movimentos_conta.data_vencimento)
-                        ) as movimento', 'movimento on movimento.data_fluxo = tim.db_date ', 'left');
-        $this->db->order_by('tim.db_date');
-        $this->db->group_by('tim.db_date', 'asc');
+                        ) as movimento');
+        $this->db->order_by('movimento.data_fluxo');
+        $this->db->group_by(array('movimento.data_fluxo', 'MONTHNAME(movimento.data_fluxo)'));
 
-        $this->db->where("tim.db_date >= ", $dataInicio);
-        $this->db->where("tim.db_date <= ", $dataFim);
+        $this->db->where("movimento.data_fluxo >= ", $dataInicio);
+        $this->db->where("movimento.data_fluxo <= ", $dataFim);
 
         return $query = $this->db->get()->result();   
     }
