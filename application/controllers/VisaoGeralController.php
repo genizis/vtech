@@ -142,21 +142,13 @@ class VisaoGeralController extends CI_Controller {
         $listaStatus = $this->venda->defineStatusPedido($listaPedidoVenda);
         $listaProdutoCompra = $this->compra->getOrdemPorQuantPedida();
         $listaOCPendentes = $this->compra->getOrdemCompraPendente();
-        $numProduto = $this->produto->countAll();
-        $numEngenharia = $this->engenharia->countAll();
-
         $labelProduto = array();
         $labelNome = array();
         $quantPedida = array();
         $quantRecebida = array();
 
-        $fimPeriodo = $this->dateDifference($empresa->data_validade, date('Y-m-d'));
-
         $dados = array(
-            'dias_periodo' => $fimPeriodo,
             'empresa' => $empresa,
-            'num_produto' => $numProduto,
-            'num_engenharia' => $numEngenharia,
 
             'lista_producoes' => $lista_producoes,
             'custo_total' => $custo_total,

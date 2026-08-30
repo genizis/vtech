@@ -3,51 +3,6 @@
 
 <section>
     <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-        <div style="position: absolute; top: 20; right: 20;">
-
-            <?php if($dias_periodo <= 5) { ?>
-            <div class="toast" data-autohide="false" id="myToast">
-                <div class="toast-header">
-                    <strong class="mr-auto"><i class="fas fa-bell text-danger"></i> Período de validade próximo do
-                        fim!</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                </div>
-                <div class="toast-body">
-                    Seu acesso ao VTech expirará em <strong><?= $dias_periodo ?> dia(s)</strong>,
-                    entre em contato conosco através do telefone (42) 9 8819 2794 ou pelo e-mail
-                    contato@shopfloor.com.br para renovação</a>
-                </div>
-            </div>
-            <?php } ?>
-
-            <?php if($num_produto == 0) { ?>
-            <div class="toast" data-autohide="false" id="myToast1">
-                <div class="toast-header">
-                    <strong class="mr-auto"><i class="fas fa-bell text-info"></i> Seja bem-vindo ao VTech!</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                </div>
-                <div class="toast-body">
-                    Comece cadastrando seus produtos vendidos e comprados clicando <a
-                        href="<?= base_url('produto/novo-produto') ?>">aqui!</a>
-                </div>
-            </div>
-            <?php } ?>
-
-            <?php if($num_produto == 0) { ?>
-            <div class="toast" data-autohide="false" id="myToast2">
-                <div class="toast-header">
-                    <strong class="mr-auto"><i class="fas fa-bell text-info"></i> Não se esqueça da estrutura de
-                        produto!</strong>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                </div>
-                <div class="toast-body">
-                    Crie a lista de materiais dos seus produtos produzidos clicando <a
-                        href="<?= base_url('estrutura-produto/nova-estrutura-produto') ?>">aqui!</a>
-                </div>
-            </div>
-            <?php } ?>
-
-        </div>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">     
                 <div class="row">
@@ -692,21 +647,6 @@ new Chart(document.getElementById("graph-financeiro"), {
 });
 
 
-$(document).ready(function() {
-    $("#myToast").toast('show');
-});
-$(document).ready(function() {
-    $("#myToast1").toast('show');
-});
-$(document).ready(function() {
-    $("#myToast2").toast('show');
-});
-$(document).ready(function() {
-    $("#myToast3").toast('show');
-});
-$(document).ready(function() {
-    $("#myToast4").toast('show');
-});
 </script>
 
 </script>
