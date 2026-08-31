@@ -96,12 +96,12 @@ class UsuariosController extends CI_Controller {
                 'tipo_acesso' => $this->input->post('TipoAcesso'),
                 'ativo' => $this->input->post('Ativo'),  
                 'senha' => sha1($this->input->post('Senha1')),
-                'producao' => $this->input->post('Producao'),
-                'vendas' => $this->input->post('Vendas'),
-                'compras' => $this->input->post('Compras'),
-                'estoque' => $this->input->post('Estoque'),
-                'fiscal' => $this->input->post('Fiscal'),
-                'financeiro' => $this->input->post('Financeiro'),
+                'producao' => $this->input->post('Producao') ? 1 : 0,
+                'vendas' => $this->input->post('Vendas') ? 1 : 0,
+                'compras' => $this->input->post('Compras') ? 1 : 0,
+                'estoque' => $this->input->post('Estoque') ? 1 : 0,
+                'fiscal' => $this->input->post('Fiscal') ? 1 : 0,
+                'financeiro' => $this->input->post('Financeiro') ? 1 : 0,
             ];
 
             $this->usuario->insertUsuario($data);
@@ -148,12 +148,12 @@ class UsuariosController extends CI_Controller {
                     'senha' => sha1($this->input->post('Senha1')),
                     'tipo_acesso' => $this->input->post('TipoAcesso'),
                     'ativo' => $this->input->post('Ativo'),  
-                    'producao' => $this->input->post('Producao'),
-                    'vendas' => $this->input->post('Vendas'),
-                    'compras' => $this->input->post('Compras'),
-                    'estoque' => $this->input->post('Estoque'),
-                    'fiscal' => $this->input->post('Fiscal'),
-                    'financeiro' => $this->input->post('Financeiro'),              
+                    'producao' => $this->input->post('Producao') ? 1 : 0,
+                    'vendas' => $this->input->post('Vendas') ? 1 : 0,
+                    'compras' => $this->input->post('Compras') ? 1 : 0,
+                    'estoque' => $this->input->post('Estoque') ? 1 : 0,
+                    'fiscal' => $this->input->post('Fiscal') ? 1 : 0,
+                    'financeiro' => $this->input->post('Financeiro') ? 1 : 0,
                 ];
 
             }else{
@@ -162,12 +162,12 @@ class UsuariosController extends CI_Controller {
                     'nome_usuario' => $this->input->post('NomeUsuario'),
                     'tipo_acesso' => $this->input->post('TipoAcesso'),
                     'ativo' => $this->input->post('Ativo'),   
-                    'producao' => $this->input->post('Producao'),
-                    'vendas' => $this->input->post('Vendas'),
-                    'compras' => $this->input->post('Compras'),
-                    'estoque' => $this->input->post('Estoque'),
-                    'fiscal' => $this->input->post('Fiscal'),
-                    'financeiro' => $this->input->post('Financeiro'),                
+                    'producao' => $this->input->post('Producao') ? 1 : 0,
+                    'vendas' => $this->input->post('Vendas') ? 1 : 0,
+                    'compras' => $this->input->post('Compras') ? 1 : 0,
+                    'estoque' => $this->input->post('Estoque') ? 1 : 0,
+                    'fiscal' => $this->input->post('Fiscal') ? 1 : 0,
+                    'financeiro' => $this->input->post('Financeiro') ? 1 : 0,
                 ];
 
             }            
