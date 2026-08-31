@@ -31,16 +31,16 @@
             <p class="text-muted mb-0 mt-2 mt-sm-0"><?= date('d/m/Y') ?></p>
         </div>
 
-        <ul class="nav nav-tabs" id="visao-geral-abas" role="tablist">
+        <ul class="nav nav-tabs mb-3" id="visao-geral-abas" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active text-dark" id="financeiro-tab" data-toggle="tab" href="#financeiro"
-                    role="tab" aria-controls="financeiro" aria-selected="true"><strong>FINANCEIRO</strong></a>
+                <a class="nav-link active" id="financeiro-tab" data-toggle="tab" href="#financeiro"
+                    role="tab" aria-controls="financeiro" aria-selected="true">Financeiro</a>
             </li>
         </ul>
 
         <div class="tab-content" id="visao-geral-conteudo">
             <div class="tab-pane fade show active" id="financeiro" role="tabpanel" aria-labelledby="financeiro-tab">
-                <div class="card border-top-0 rounded-0 mb-5">
+                <div class="card mb-3">
                     <div class="card-body p-3 p-md-4">
                         <div class="row mb-4">
                             <div class="col-md-6 mb-3 mb-md-0">
