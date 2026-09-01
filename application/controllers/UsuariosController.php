@@ -27,12 +27,6 @@ class UsuariosController extends CI_Controller {
     }
 
     public function formUsuario(){ 
-
-        $empresa = $this->empresa->getParametrosEmpresa(getDadosUsuarioLogado()['id_empresa']);
-        if($empresa->num_usuario >= $empresa->quant_usuarios){
-            redirect(base_url("usuario"), "home", "refresh");
-        }
-
         $dados = array(
             'menu' => 'Admin'
         );

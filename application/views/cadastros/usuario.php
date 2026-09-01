@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <a href="<?php echo base_url() ?>usuario/novo-usuario" type="button"
-                                    class="btn btn-info <?php if($empresa->num_usuario >= $empresa->quant_usuarios) echo "disabled"; ?> link-load"><i class="fas fa-plus-circle"></i> Novo Usuário</a>
+                                    class="btn btn-info link-load"><i class="fas fa-plus-circle"></i> Novo Usuário</a>
                             </div>
                             <div class="col-md-4">
                                 <form action="<?= base_url('usuario') ?>" method="GET" class="needs-validation" novalidate>
