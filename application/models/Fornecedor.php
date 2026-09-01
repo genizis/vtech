@@ -34,7 +34,7 @@ class Fornecedor extends CI_Model{
     }
 
     public function getFornecedor($filter = "", $limit = null, $offset = null){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('fornecedor.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         if($limit){
             $this->db->limit($limit, $offset);
@@ -50,13 +50,13 @@ class Fornecedor extends CI_Model{
                              where movimentos_conta.cod_emitente   = fornecedor.cod_fornecedor
                                and movimentos_conta.tipo_movimento = 2) count_titulo');
         $this->db->from('fornecedor');
-        $this->db->join('segmento', 'segmento.cod_segmento = fornecedor.cod_segmento');        
+        $this->db->join('segmento', 'segmento.cod_segmento = fornecedor.cod_segmento', 'left');
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_fornecedor' ,$filter);
-            $this->db->or_like('nome_fornecedor' ,$filter);
-            $this->db->or_like('cnpj_cpf' ,$filter);
+            $this->db->or_like('fornecedor.cod_fornecedor' ,$filter);
+            $this->db->or_like('fornecedor.nome_fornecedor' ,$filter);
+            $this->db->or_like('fornecedor.cnpj_cpf' ,$filter);
             $this->db->group_end();
             
         }
@@ -127,14 +127,14 @@ class Fornecedor extends CI_Model{
     }
 
     public function countAll($filter){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
-        $this->db->join('segmento', 'segmento.cod_segmento = fornecedor.cod_segmento');  
+        $this->db->where('fornecedor.id_empresa', getDadosUsuarioLogado()['id_empresa']);
+        $this->db->join('segmento', 'segmento.cod_segmento = fornecedor.cod_segmento', 'left');
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_fornecedor' ,$filter);
-            $this->db->or_like('nome_fornecedor' ,$filter);
-            $this->db->or_like('cnpj_cpf' ,$filter);
+            $this->db->or_like('fornecedor.cod_fornecedor' ,$filter);
+            $this->db->or_like('fornecedor.nome_fornecedor' ,$filter);
+            $this->db->or_like('fornecedor.cnpj_cpf' ,$filter);
             $this->db->group_end();
             
         }

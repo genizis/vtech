@@ -60,7 +60,7 @@ class Cliente extends CI_Model{
     }
 
     public function getCliente($filter = "", $limit = null, $offset = null){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('cliente.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         if($limit){
             $this->db->limit($limit, $offset);
@@ -76,13 +76,13 @@ class Cliente extends CI_Model{
                              where movimentos_conta.cod_emitente   = cliente.cod_cliente
                                and movimentos_conta.tipo_movimento = 1) count_titulo');
         $this->db->from('cliente');
-        $this->db->join('segmento', 'segmento.cod_segmento = cliente.cod_segmento');        
+        $this->db->join('segmento', 'segmento.cod_segmento = cliente.cod_segmento', 'left');
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_cliente' ,$filter);
-            $this->db->or_like('nome_cliente' ,$filter);
-            $this->db->or_like('cnpj_cpf' ,$filter);
+            $this->db->or_like('cliente.cod_cliente' ,$filter);
+            $this->db->or_like('cliente.nome_cliente' ,$filter);
+            $this->db->or_like('cliente.cnpj_cpf' ,$filter);
             $this->db->group_end();
             
         }
@@ -197,7 +197,7 @@ class Cliente extends CI_Model{
     }
 
     public function getClienteContaAzulPorCodigo($idContaAzul){
-        $this->db->where('cliente.id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('cliente.id_empresa', getDadosUsuarioLogado()['id_empresa']);
 
         $this->db->from('cliente');
         $this->db->where('cliente.id_conta_azul', $idContaAzul);
@@ -206,15 +206,15 @@ class Cliente extends CI_Model{
     } 
 
     public function countAll($filter){
-        $this->db->where('id_empresa', getDadosUsuarioLogado()['id_empresa']); 
+        $this->db->where('cliente.id_empresa', getDadosUsuarioLogado()['id_empresa']);
         //Join para pegar o segmento        
-        $this->db->join('segmento', 'segmento.cod_segmento = cliente.cod_segmento');        
+        $this->db->join('segmento', 'segmento.cod_segmento = cliente.cod_segmento', 'left');
 
         if($filter <> ""){
             $this->db->group_start();
-            $this->db->or_like('cod_cliente' ,$filter);
-            $this->db->or_like('nome_cliente' ,$filter);
-            $this->db->or_like('cnpj_cpf' ,$filter);
+            $this->db->or_like('cliente.cod_cliente' ,$filter);
+            $this->db->or_like('cliente.nome_cliente' ,$filter);
+            $this->db->or_like('cliente.cnpj_cpf' ,$filter);
             $this->db->group_end();
             
         }
