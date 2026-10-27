@@ -109,7 +109,7 @@
                     </li>
                     <?php } ?>
                     <?php if(getDadosUsuarioLogado()['estoque'] == 1) { ?>
-                    <li class="nav-item dropdown show-on-hover dropdown-cols-2" hidden>
+                    <li class="nav-item dropdown show-on-hover dropdown-cols-2">
                         <a class="link-load nav-link <?php if($menu == 'Estoque') echo "active"; ?> dropdown-toggle" href="#" onclick="window.location='<?= base_url('estoque') ?>'"
                             id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Estoque</a>

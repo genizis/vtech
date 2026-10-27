@@ -6,3 +6,10 @@
 /.env
 /.env.*
 !/.env.example
+
+# Arquivos mantidos por ambiente, fora do versionamento e do deploy
+/system/libraries/Session/drivers/Session_files_driver.php
+/system/libraries/Javascript.php
+/application/config/database.php
+/application/config/local/database.php
+/application/config/online/database.php

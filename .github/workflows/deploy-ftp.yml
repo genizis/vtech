@@ -46,3 +46,8 @@ jobs:
             img/imagem_usuario/**
             img/imagem_empresa/**
             application/logs/**
+            system/libraries/Session/drivers/Session_files_driver.php
+            system/libraries/Javascript.php
+            application/config/database.php
+            application/config/local/database.php
+            application/config/online/database.php
