@@ -395,7 +395,7 @@ class Danfe extends DaCommon
             $vTotTrib = $this->getTagValue($this->ICMSTot, 'vTotTrib');
             if ($vTotTrib != '' && !$flagVTT) {
                 $this->textoAdic .= "\n Valor Aproximado dos Tributos : R$ "
-                    . number_format($vTotTrib, 2, ",", ".");
+                    . number_format((float) ($vTotTrib), 2, ",", ".");
             }
         }
         //fim da alteração NT 2013.003 Lei da Transparência
@@ -602,7 +602,7 @@ class Danfe extends DaCommon
             $mostrarUnidadeTributavel = (!$this->ocultarUnidadeTributavel
                 && !empty($uTrib)
                 && !empty($qTrib)
-                && number_format($vUnCom, 2, ',', '') !== number_format($vUnTrib, 2, ',', '')
+                && number_format((float) ($vUnCom), 2, ',', '') !== number_format((float) ($vUnTrib), 2, ',', '')
             );
             $hUsado += $this->calculeHeight($itemProd, $mostrarUnidadeTributavel);
             // Tag somente é gerada para veiculo 0k, e só é permitido um veiculo por NF-e por conta do detran
@@ -1978,7 +1978,7 @@ class Danfe extends DaCommon
                     : '';
                 $vDup  = !empty($this->dup->item($k)->getElementsByTagName('vDup')->item(0)->nodeValue)
                     ? 'R$ ' . number_format(
-                        $this->dup->item($k)->getElementsByTagName('vDup')->item(0)->nodeValue,
+                        (float) ($this->dup->item($k)->getElementsByTagName('vDup')->item(0)->nodeValue),
                         2,
                         ",",
                         "."
@@ -2114,7 +2114,7 @@ class Danfe extends DaCommon
                     : '0';
                 $vPag  = !empty($this->detPag->item($k)->getElementsByTagName('vPag')->item(0)->nodeValue)
                     ? 'R$ ' . number_format(
-                        $this->detPag->item($k)->getElementsByTagName('vPag')->item(0)->nodeValue,
+                        (float) ($this->detPag->item($k)->getElementsByTagName('vPag')->item(0)->nodeValue),
                         2,
                         ",",
                         "."
@@ -2188,7 +2188,7 @@ class Danfe extends DaCommon
         if (isset($the_field)) {
             $the_value = $the_field->nodeValue;
             if (!empty($the_value)) {
-                $valorImposto = number_format($the_value, 2, ",", ".");
+                $valorImposto = number_format((float) ($the_value), 2, ",", ".");
             }
         }
 
@@ -2580,7 +2580,7 @@ class Danfe extends DaCommon
         $aFont = ['font' => $this->fontePadrao, 'size' => 6, 'style' => ''];
         $this->pdf->textBox($x, $y, $w3, $h, $texto, $aFont, 'T', 'L', 1, '');
         if (is_numeric($pesoBruto) && $pesoBruto > 0) {
-            $texto = number_format($pesoBruto, 3, ",", ".");
+            $texto = number_format((float) ($pesoBruto), 3, ",", ".");
         } else {
             $texto = '';
         }
@@ -2593,7 +2593,7 @@ class Danfe extends DaCommon
         $aFont = ['font' => $this->fontePadrao, 'size' => 6, 'style' => ''];
         $this->pdf->textBox($x, $y, $w, $h, $texto, $aFont, 'T', 'L', 1, '');
         if (is_numeric($pesoLiquido) && $pesoLiquido > 0) {
-            $texto = number_format($pesoLiquido, 3, ",", ".");
+            $texto = number_format((float) ($pesoLiquido), 3, ",", ".");
         } else {
             $texto = '';
         }
@@ -2611,7 +2611,7 @@ class Danfe extends DaCommon
             return "";
         }
         $valor_original = $valor_original->nodeValue;
-        $valor          = !empty($valor_original) ? number_format($valor_original, 2, ",", ".") : '';
+        $valor          = !empty($valor_original) ? number_format((float) ($valor_original), 2, ",", ".") : '';
 
         if ($valor != "") {
             return sprintf($formato, $valor);
@@ -3070,7 +3070,7 @@ class Danfe extends DaCommon
                 $mostrarUnidadeTributavel = (!$this->ocultarUnidadeTributavel
                     && !empty($uTrib)
                     && !empty($qTrib)
-                    && number_format($vUnCom, 2, ',', '') !== number_format($vUnTrib, 2, ',', '')
+                    && number_format((float) ($vUnCom), 2, ',', '') !== number_format((float) ($vUnTrib), 2, ',', '')
                 );
 
                 // Informação sobre unidade de medida tributavel.
@@ -3144,26 +3144,26 @@ class Danfe extends DaCommon
                 }
                 // QTDADE
                 $qCom  = $prod->getElementsByTagName("qCom")->item(0);
-                $texto = number_format($qCom->nodeValue, $this->qComCasasDec, ",", ".");
+                $texto = number_format((float) ($qCom->nodeValue), $this->qComCasasDec, ",", ".");
                 $this->pdf->textBox($x, $y, $w7, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                 // QTDADE Tributável
                 if ($mostrarUnidadeTributavel) {
                     $qTrib = $prod->getElementsByTagName("qTrib")->item(0);
                     if (!empty($qTrib)) {
-                        $texto = number_format($qTrib->nodeValue, $this->qComCasasDec, ",", ".");
+                        $texto = number_format((float) ($qTrib->nodeValue), $this->qComCasasDec, ",", ".");
                         $this->pdf->textBox($x, $yTrib, $w7, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                     }
                 }
                 $x += $w7;
                 // Valor Unitário
                 $vUnCom = $prod->getElementsByTagName("vUnCom")->item(0);
-                $texto  = number_format($vUnCom->nodeValue, $this->vUnComCasasDec, ",", ".");
+                $texto  = number_format((float) ($vUnCom->nodeValue), $this->vUnComCasasDec, ",", ".");
                 $this->pdf->textBox($x, $y, $w8, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                 // Valor Unitário Tributável
                 if ($mostrarUnidadeTributavel) {
                     $vUnTrib = $prod->getElementsByTagName("vUnTrib")->item(0);
                     if (!empty($vUnTrib)) {
-                        $texto = number_format($vUnTrib->nodeValue, $this->vUnComCasasDec, ",", ".");
+                        $texto = number_format((float) ($vUnTrib->nodeValue), $this->vUnComCasasDec, ",", ".");
                         $this->pdf->textBox($x, $yTrib, $w8, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                     }
                 }
@@ -3171,7 +3171,7 @@ class Danfe extends DaCommon
                 // Valor do Produto
                 $texto = "";
                 if (is_numeric($prod->getElementsByTagName("vProd")->item(0)->nodeValue)) {
-                    $texto = number_format($prod->getElementsByTagName("vProd")->item(0)->nodeValue, 2, ",", ".");
+                    $texto = number_format((float) ($prod->getElementsByTagName("vProd")->item(0)->nodeValue), 2, ",", ".");
                 }
                 $this->pdf->textBox($x, $y, $w9, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                 $x += $w9;
@@ -3179,14 +3179,14 @@ class Danfe extends DaCommon
                 $vdesc = !empty($prod->getElementsByTagName("vDesc")->item(0)->nodeValue)
                     ? $prod->getElementsByTagName("vDesc")->item(0)->nodeValue : 0;
 
-                $texto = number_format($vdesc, 2, ",", ".");
+                $texto = number_format((float) ($vdesc), 2, ",", ".");
                 $this->pdf->textBox($x, $y, $w10, $h, $texto, $aFont, 'T', $alinhamento, 0, '');
                 //Valor da Base de calculo
                 $x += $w10;
                 if (isset($ICMS)) {
                     $texto = !empty($ICMS->getElementsByTagName("vBC")->item(0)->nodeValue)
                         ? number_format(
-                            $ICMS->getElementsByTagName("vBC")->item(0)->nodeValue,
+                            (float) ($ICMS->getElementsByTagName("vBC")->item(0)->nodeValue),
                             2,
                             ",",
                             "."
@@ -3199,7 +3199,7 @@ class Danfe extends DaCommon
                 if (isset($ICMS)) {
                     $texto = !empty($ICMS->getElementsByTagName("vICMS")->item(0)->nodeValue)
                         ? number_format(
-                            $ICMS->getElementsByTagName("vICMS")->item(0)->nodeValue,
+                            (float) ($ICMS->getElementsByTagName("vICMS")->item(0)->nodeValue),
                             2,
                             ",",
                             "."
@@ -3212,7 +3212,7 @@ class Danfe extends DaCommon
                 if (isset($IPI)) {
                     $texto = !empty($IPI->getElementsByTagName("vIPI")->item(0)->nodeValue)
                         ? number_format(
-                            $IPI->getElementsByTagName("vIPI")->item(0)->nodeValue,
+                            (float) ($IPI->getElementsByTagName("vIPI")->item(0)->nodeValue),
                             2,
                             ",",
                             "."
@@ -3227,7 +3227,7 @@ class Danfe extends DaCommon
                 if (isset($ICMS)) {
                     $texto = !empty($ICMS->getElementsByTagName("pICMS")->item(0)->nodeValue)
                         ? number_format(
-                            $ICMS->getElementsByTagName("pICMS")->item(0)->nodeValue,
+                            (float) ($ICMS->getElementsByTagName("pICMS")->item(0)->nodeValue),
                             2,
                             ",",
                             "."
@@ -3240,7 +3240,7 @@ class Danfe extends DaCommon
                 if (isset($IPI)) {
                     $texto = !empty($IPI->getElementsByTagName("pIPI")->item(0)->nodeValue)
                         ? number_format(
-                            $IPI->getElementsByTagName("pIPI")->item(0)->nodeValue,
+                            (float) ($IPI->getElementsByTagName("pIPI")->item(0)->nodeValue),
                             2,
                             ",",
                             "."
@@ -3496,7 +3496,7 @@ class Danfe extends DaCommon
         if (isset($this->ISSQNtot)) {
             $texto = !empty($this->ISSQNtot->getElementsByTagName("vServ")->item(0)->nodeValue) ?
                 $this->ISSQNtot->getElementsByTagName("vServ")->item(0)->nodeValue : '';
-            $texto = number_format($texto, 2, ",", ".");
+            $texto = number_format((float) ($texto), 2, ",", ".");
         } else {
             $texto = '';
         }
@@ -3510,7 +3510,7 @@ class Danfe extends DaCommon
         if (isset($this->ISSQNtot)) {
             $texto = !empty($this->ISSQNtot->getElementsByTagName("vBC")->item(0)->nodeValue) ?
                 $this->ISSQNtot->getElementsByTagName("vBC")->item(0)->nodeValue : '';
-            $texto = !empty($texto) ? number_format($texto, 2, ",", ".") : '';
+            $texto = !empty($texto) ? number_format((float) ($texto), 2, ",", ".") : '';
         } else {
             $texto = '';
         }
@@ -3529,7 +3529,7 @@ class Danfe extends DaCommon
         if (isset($this->ISSQNtot)) {
             $texto = !empty($this->ISSQNtot->getElementsByTagName("vISS")->item(0)->nodeValue) ?
                 $this->ISSQNtot->getElementsByTagName("vISS")->item(0)->nodeValue : '';
-            $texto = !empty($texto) ? number_format($texto, 2, ",", ".") : '';
+            $texto = !empty($texto) ? number_format((float) ($texto), 2, ",", ".") : '';
         } else {
             $texto = '';
         }
@@ -3737,7 +3737,7 @@ class Danfe extends DaCommon
         }
         $texto .= $this->ymdTodmy($dEmi) . " ";
         $texto .= "VALOR TOTAL: R$ ";
-        $texto .= number_format($this->ICMSTot->getElementsByTagName("vNF")->item(0)->nodeValue, 2, ",", ".") . " ";
+        $texto .= number_format((float) ($this->ICMSTot->getElementsByTagName("vNF")->item(0)->nodeValue), 2, ",", ".") . " ";
         $texto .= "DESTINATÁRIO: ";
         $texto .= $destinatario;
         if ($this->orientacao == 'P') {

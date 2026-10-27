@@ -501,8 +501,8 @@ class DanfeSimples extends DaCommon
             }
         }
 
-        $pesoL = number_format($pesoL, 3, ',', '.');
-        $pesoB = number_format($pesoB, 3, ',', '.');
+        $pesoL = number_format((float) ($pesoL), 3, ',', '.');
+        $pesoB = number_format((float) ($pesoB), 3, ',', '.');
 
         $this->pdf->cell(
             ($c1 * 4),
@@ -517,7 +517,7 @@ class DanfeSimples extends DaCommon
         $this->pdf->setFont('Arial', 'B', $pequeno ? 10 : 12);
         $this->pdf->cell(($c1 * 2), $pequeno ? 5 : 6, "TOTAL DA NF-e", 1, 0, 'C', 1);
         $this->pdf->setFont('Arial', '', $pequeno ? 8 : 10);
-        $vNF = number_format($this->nfeArray['NFe']['infNFe']['total']['ICMSTot']['vNF'], 2, ',', '.');
+        $vNF = number_format((float) ($this->nfeArray['NFe']['infNFe']['total']['ICMSTot']['vNF']), 2, ',', '.');
         $this->pdf->cell(($c1 * 2), $pequeno ? 5 : 6, "R$ {$vNF}", 1, 1, 'C', 1);
 
         if (isset($this->nfeArray['NFe']['infNFe']['infAdic'])) {

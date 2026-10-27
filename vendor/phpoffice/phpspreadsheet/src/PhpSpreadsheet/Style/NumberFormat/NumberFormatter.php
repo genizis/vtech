@@ -153,7 +153,7 @@ class NumberFormatter
         $minWidth = strlen($left) + strlen($dec) + strlen($right);
         if ($useThousands) {
             $value = number_format(
-                $valueFloat,
+                (float) ($valueFloat),
                 strlen($right),
                 StringHelper::getDecimalSeparator(),
                 StringHelper::getThousandsSeparator()

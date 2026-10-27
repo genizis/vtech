@@ -109,7 +109,7 @@ class CI_Benchmark {
 			$this->marker[$point2] = microtime(TRUE);
 		}
 
-		return number_format($this->marker[$point2] - $this->marker[$point1], $decimals);
+		return number_format((float) ($this->marker[$point2] - $this->marker[$point1]), $decimals);
 	}
 
 	// --------------------------------------------------------------------

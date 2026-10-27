@@ -153,7 +153,7 @@ class Dacte extends DaCommon
             $this->ICMSOutraUF = $this->dom->getElementsByTagName("ICMSOutraUF")->item(0);
             $this->imp = $this->dom->getElementsByTagName("imp")->item(0);
             if (!empty($this->getTagValue($this->imp, "vTotTrib"))) {
-                $textoAdic = number_format($this->getTagValue($this->imp, "vTotTrib"), 2, ",", ".");
+                $textoAdic = number_format((float) ($this->getTagValue($this->imp, "vTotTrib")), 2, ",", ".");
                 $this->textoAdic = "o valor aproximado de tributos incidentes sobre o preço deste serviço é de R$"
                     . $textoAdic;
             }
@@ -1545,7 +1545,7 @@ class Dacte extends DaCommon
         $this->pdf->textBox($x + 1, $y, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
         $texto = $this->getTagValue($this->infCarga, "vCarga") == "" ?
             $this->getTagValue($this->infCarga, "vMerc") : $this->getTagValue($this->infCarga, "vCarga");
-        $texto = number_format($texto, 2, ",", ".");
+        $texto = number_format((float) ($texto), 2, ",", ".");
         $aFont = $this->formatNegrito;
         $this->pdf->textBox($x + 1, $y + 3, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
         $y += 8;
@@ -1566,7 +1566,7 @@ class Dacte extends DaCommon
             'size' => 5,
             'style' => '');
         $this->pdf->textBox($x + 8, $y, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
-        $texto = number_format($qCarga, 3, ",", ".");
+        $texto = number_format((float) ($qCarga), 3, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 7,
@@ -1580,7 +1580,7 @@ class Dacte extends DaCommon
             'size' => 5,
             'style' => '');
         $this->pdf->textBox($x + 20, $y, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
-        $texto = number_format($qCarga, 3, ",", ".");
+        $texto = number_format((float) ($qCarga), 3, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 7,
@@ -1594,7 +1594,7 @@ class Dacte extends DaCommon
             'size' => 5,
             'style' => '');
         $this->pdf->textBox($x + 35, $y, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
-        $texto = number_format($qCarga, 3, ",", ".");
+        $texto = number_format((float) ($qCarga), 3, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 7,
@@ -1611,7 +1611,7 @@ class Dacte extends DaCommon
                 $qCarga += (float)$this->getTagValue($infQ, "qCarga");
             }
         }
-        $texto = !empty($qCarga) ? number_format($qCarga, 3, ",", ".") : '';
+        $texto = !empty($qCarga) ? number_format((float) ($qCarga), 3, ",", ".") : '';
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 7,
@@ -1628,7 +1628,7 @@ class Dacte extends DaCommon
                 $qCarga += (float)$this->getTagValue($infQ, "qCarga");
             }
         }
-        $texto = !empty($qCarga) ? number_format($qCarga, 3, ",", ".") : '';
+        $texto = !empty($qCarga) ? number_format((float) ($qCarga), 3, ",", ".") : '';
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 7,
@@ -1736,7 +1736,7 @@ class Dacte extends DaCommon
         $texto = 'VALOR TOTAL DO SERVIÇO';
         $aFont = $this->formatPadrao;
         $this->pdf->textBox($x, $y, $w * 0.14, $h, $texto, $aFont, 'T', 'C', 0, '');
-        $texto = number_format($this->getTagValue($this->vPrest, "vTPrest"), 2, ",", ".");
+        $texto = number_format((float) ($this->getTagValue($this->vPrest, "vTPrest")), 2, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 9,
@@ -1748,7 +1748,7 @@ class Dacte extends DaCommon
         $texto = 'VALOR A RECEBER';
         $aFont = $this->formatPadrao;
         $this->pdf->textBox($x, $y, $w * 0.14, $h, $texto, $aFont, 'T', 'C', 0, '');
-        $texto = number_format($this->getTagValue($this->vPrest, "vRec"), 2, ",", ".");
+        $texto = number_format((float) ($this->getTagValue($this->vPrest, "vRec")), 2, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 9,
@@ -1759,7 +1759,7 @@ class Dacte extends DaCommon
         foreach ($this->Comp as $k => $d) {
             $nome = $this->Comp->item($k)->getElementsByTagName('xNome')->item(0)->nodeValue;
             $valor = number_format(
-                $this->Comp->item($k)->getElementsByTagName('vComp')->item(0)->nodeValue,
+                (float) ($this->Comp->item($k)->getElementsByTagName('vComp')->item(0)->nodeValue),
                 2,
                 ",",
                 "."
@@ -1873,39 +1873,39 @@ class Dacte extends DaCommon
             $this->pdf->textBox($x, $y, $w * 0.26, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * 0.26;
             $texto = !empty($this->ICMS->getElementsByTagName("vBCSTRet")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vBCSTRet"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "vBCSTRet")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("vBCOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "vBCOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "vBCOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("pICMSSTRet")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "pICMSSTRet"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "pICMSSTRet")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("pICMSOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "pICMSOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "pICMSOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("vICMS")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vICMS"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "vICMS")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("vICMSOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "vICMSOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "vICMSOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("pRedBC")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "pRedBC"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "pRedBC")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("pRedBCOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "pRedBCOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "pRedBCOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("vICMSSTRet")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vICMSSTRet"), 2, ",", ".") : '';
+                number_format((float) ($this->getTagValue($this->ICMS, "vICMSSTRet")), 2, ",", ".") : '';
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
         } else {
@@ -1914,39 +1914,39 @@ class Dacte extends DaCommon
             $this->pdf->textBox($x, $y, $w * 0.26, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * 0.26;
             $texto = !empty($this->ICMS->getElementsByTagName("vBC")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vBC"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "vBC")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("vBCOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "vBCOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "vBCOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("pICMS")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "pICMS"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "pICMS")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("pICMSOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "pICMSOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "pICMSOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("vICMS")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vICMS"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "vICMS")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("vICMSOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "vICMSOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "vICMSOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("pRedBC")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "pRedBC"), 2, ",", ".") : (
+                number_format((float) ($this->getTagValue($this->ICMS, "pRedBC")), 2, ",", ".") : (
                 !empty($this->ICMS->getElementsByTagName("pRedBCOutraUF")->item(0)->nodeValue) ?
-                    number_format($this->getTagValue($this->ICMS, "pRedBCOutraUF"), 2, ",", ".") : ''
+                    number_format((float) ($this->getTagValue($this->ICMS, "pRedBCOutraUF")), 2, ",", ".") : ''
                 );
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
             $x += $w * $wCol02;
             $texto = !empty($this->ICMS->getElementsByTagName("vICMSSTRet")->item(0)->nodeValue) ?
-                number_format($this->getTagValue($this->ICMS, "vICMSSTRet"), 2, ",", ".") : '';
+                number_format((float) ($this->getTagValue($this->ICMS, "vICMSSTRet")), 2, ",", ".") : '';
             $aFont = $this->formatNegrito;
             $this->pdf->textBox($x, $y, $w * $wCol02, $h, $texto, $aFont, 'T', 'L', 0, '');
         }
@@ -1969,7 +1969,7 @@ class Dacte extends DaCommon
         $cUF = $this->ide->getElementsByTagName('cUF')->item(0)->nodeValue;
         $CNPJ = "00000000000000" . $this->emit->getElementsByTagName('CNPJ')->item(0)->nodeValue;
         $CNPJ = substr($CNPJ, -14);
-        $vCT = number_format($this->getTagValue($this->vPrest, "vRec"), 2, "", "") * 100;
+        $vCT = number_format((float) ($this->getTagValue($this->vPrest, "vRec")), 2, "", "") * 100;
         $ICMS_CST = $this->getTagValue($this->ICMS, "CST");
         switch ($ICMS_CST) {
             case '00':
@@ -2817,7 +2817,7 @@ class Dacte extends DaCommon
             'size' => 8,
             'style' => '');
         $this->pdf->textBox($auxX, $yIniDados, $w, $h, $texto, $aFont, 'T', 'L', 0, '');
-        $texto = number_format($this->getTagValue($this->vPrest, "vTPrest"), 2, ",", ".");
+        $texto = number_format((float) ($this->getTagValue($this->vPrest, "vTPrest")), 2, ",", ".");
         $aFont = array(
             'font' => $this->fontePadrao,
             'size' => 8,
@@ -3217,7 +3217,7 @@ class Dacte extends DaCommon
         $texto = 'VALOR DO AFRMM';
         $aFont = $this->formatPadrao;
         $this->pdf->textBox($x, $y, $w * 0.23, $h, $texto, $aFont, 'T', 'L', 0, '');
-        $texto = number_format($this->getTagValue($this->aquav, "vAFRMM"), 2, ",", ".");
+        $texto = number_format((float) ($this->getTagValue($this->aquav, "vAFRMM")), 2, ",", ".");
         $aFont = $this->formatNegrito;
         $this->pdf->textBox($x, $y + 3, $w * 0.50, $h, $texto, $aFont, 'T', 'L', 0, '');
         $x = $oldX;

@@ -97,7 +97,7 @@
                                             </span>
                                             <?php } ?>
                                         </td>
-                                        <td class="text-right align-middle <?= $aReceber ? 'text-success' : 'text-danger' ?>">R$ <?= number_format((float) $titulo->valor_titulo, 2, ',', '.') ?></td>
+                                        <td class="text-right align-middle <?= $aReceber ? 'text-success' : 'text-danger' ?>">R$ <?= number_format((float) ($titulo->valor_titulo ?? 0), 2, ',', '.') ?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

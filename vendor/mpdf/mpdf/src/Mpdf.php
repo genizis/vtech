@@ -9488,8 +9488,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		}
 
 		$this->logger->debug(sprintf('Compiled in %.6F seconds', microtime(true) - $this->time0), ['context' => LogContext::STATISTICS]);
-		$this->logger->debug(sprintf('Peak Memory usage %s MB', number_format(memory_get_peak_usage(true) / (1024 * 1024), 2)), ['context' => LogContext::STATISTICS]);
-		$this->logger->debug(sprintf('PDF file size %s kB', number_format(strlen($this->buffer) / 1024)), ['context' => LogContext::STATISTICS]);
+		$this->logger->debug(sprintf('Peak Memory usage %s MB', number_format((float) (memory_get_peak_usage(true) / (1024 * 1024)), 2)), ['context' => LogContext::STATISTICS]);
+		$this->logger->debug(sprintf('PDF file size %s kB', number_format((float) (strlen($this->buffer) / 1024))), ['context' => LogContext::STATISTICS]);
 		$this->logger->debug(sprintf('%d fonts used', count($this->fonts)), ['context' => LogContext::STATISTICS]);
 
 		if (is_bool($dest)) {

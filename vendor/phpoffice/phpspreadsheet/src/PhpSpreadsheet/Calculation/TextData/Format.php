@@ -97,7 +97,7 @@ class Format
         }
         if ($noCommas === false) {
             $valueResult = number_format(
-                $valueResult,
+                (float) ($valueResult),
                 $decimals,
                 StringHelper::getDecimalSeparator(),
                 StringHelper::getThousandsSeparator()

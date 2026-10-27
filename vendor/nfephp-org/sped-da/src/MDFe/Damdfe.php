@@ -763,7 +763,7 @@ class Damdfe extends DaCommon
             }
             $aFont = array('font' => $this->fontePadrao, 'size' => 8, 'style' => '');
             $this->pdf->textBox($x1, $y, $x2, 8, $texto, $aFont, 'T', 'L', 0, '', false);
-            $texto = number_format($this->qCarga, 4, ',', '.');
+            $texto = number_format((float) ($this->qCarga), 4, ',', '.');
             $aFont = array('font' => $this->fontePadrao, 'size' => 10, 'style' => 'B');
             $this->pdf->textBox($x1, $y + 4, $x2, 4, $texto, $aFont, 'T', 'L', 0, '', false);
         }
@@ -786,7 +786,7 @@ class Damdfe extends DaCommon
                 $texto = 'Peso Total (Ton)';
             }
             $this->pdf->textBox($x, $ya, $maxW / 2, 8, $texto, $aFont, 'T', 'L', 0, '');
-            $texto = number_format($this->qCarga, 4, ',', '.');
+            $texto = number_format((float) ($this->qCarga), 4, ',', '.');
             $aFont = array('font' => $this->fontePadrao, 'size' => 10, 'style' => 'B');
             $this->pdf->textBox($x, $ya + 4, $x2, 10, $texto, $aFont, 'T', 'L', 0, '', false);
         }

@@ -1058,7 +1058,7 @@ abstract class CI_DB_driver {
 	 */
 	public function elapsed_time($decimals = 6)
 	{
-		return number_format($this->benchmark, $decimals);
+		return number_format((float) ($this->benchmark), $decimals);
 	}
 
 	// --------------------------------------------------------------------

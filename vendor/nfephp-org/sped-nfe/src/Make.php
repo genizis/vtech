@@ -5717,16 +5717,16 @@ class Make
         $vICMSUFRemet = !empty($std->vICMSUFRemet) ? $std->vICMSUFRemet : $this->stdTot->vICMSUFRemet;
 
         //campos opcionais incluir se maior que zero
-        $vFCPUFDest = ($vFCPUFDest > 0) ? number_format($vFCPUFDest, 2, '.', '') : null;
-        $vICMSUFDest = ($vICMSUFDest > 0) ? number_format($vICMSUFDest, 2, '.', '') : null;
-        $vICMSUFRemet = ($vICMSUFRemet > 0) ? number_format($vICMSUFRemet, 2, '.', '') : null;
-        $vTotTrib = ($vTotTrib > 0) ? number_format($vTotTrib, 2, '.', '') : null;
+        $vFCPUFDest = ($vFCPUFDest > 0) ? number_format((float) ($vFCPUFDest), 2, '.', '') : null;
+        $vICMSUFDest = ($vICMSUFDest > 0) ? number_format((float) ($vICMSUFDest), 2, '.', '') : null;
+        $vICMSUFRemet = ($vICMSUFRemet > 0) ? number_format((float) ($vICMSUFRemet), 2, '.', '') : null;
+        $vTotTrib = ($vTotTrib > 0) ? number_format((float) ($vTotTrib), 2, '.', '') : null;
 
         //campos obrigatórios para 4.00
-        $vFCP = number_format($vFCP, 2, '.', '');
-        $vFCPST = number_format($vFCPST, 2, '.', '');
-        $vFCPSTRet = number_format($vFCPSTRet, 2, '.', '');
-        $vIPIDevol = number_format($vIPIDevol, 2, '.', '');
+        $vFCP = number_format((float) ($vFCP), 2, '.', '');
+        $vFCPST = number_format((float) ($vFCPST), 2, '.', '');
+        $vFCPSTRet = number_format((float) ($vFCPSTRet), 2, '.', '');
+        $vIPIDevol = number_format((float) ($vIPIDevol), 2, '.', '');
 
         $ICMSTot = $this->dom->createElement("ICMSTot");
         $this->dom->addChild(
@@ -5947,16 +5947,16 @@ class Make
         $cRegTrib = $std->cRegTrib ?? $this->stdISSQNTot->cRegTrib;
 
         //nulificar caso seja menor ou igual a ZERO
-        $vServ = ($vServ > 0) ? number_format($vServ, 2, '.', '') : null;
-        $vBC = ($vBC > 0) ? number_format($vBC, 2, '.', '') : null;
-        $vISS = ($vISS > 0) ? number_format($vISS, 2, '.', '') : null;
-        $vPIS = ($vPIS > 0) ? number_format($vPIS, 2, '.', '') : null;
-        $vCOFINS = ($vCOFINS > 0) ? number_format($vCOFINS, 2, '.', '') : null;
-        $vDeducao = ($vDeducao > 0) ? number_format($vDeducao, 2, '.', '') : null;
-        $vOutro = ($vOutro > 0) ? number_format($vOutro, 2, '.', '') : null;
-        $vDescIncond = ($vDescIncond > 0) ? number_format($vDescIncond, 2, '.', '') : null;
-        $vDescCond = ($vDescCond > 0) ? number_format($vDescCond, 2, '.', '') : null;
-        $vISSRet = ($vISSRet > 0) ? number_format($vISSRet, 2, '.', '') : null;
+        $vServ = ($vServ > 0) ? number_format((float) ($vServ), 2, '.', '') : null;
+        $vBC = ($vBC > 0) ? number_format((float) ($vBC), 2, '.', '') : null;
+        $vISS = ($vISS > 0) ? number_format((float) ($vISS), 2, '.', '') : null;
+        $vPIS = ($vPIS > 0) ? number_format((float) ($vPIS), 2, '.', '') : null;
+        $vCOFINS = ($vCOFINS > 0) ? number_format((float) ($vCOFINS), 2, '.', '') : null;
+        $vDeducao = ($vDeducao > 0) ? number_format((float) ($vDeducao), 2, '.', '') : null;
+        $vOutro = ($vOutro > 0) ? number_format((float) ($vOutro), 2, '.', '') : null;
+        $vDescIncond = ($vDescIncond > 0) ? number_format((float) ($vDescIncond), 2, '.', '') : null;
+        $vDescCond = ($vDescCond > 0) ? number_format((float) ($vDescCond), 2, '.', '') : null;
+        $vISSRet = ($vISSRet > 0) ? number_format((float) ($vISSRet), 2, '.', '') : null;
 
         $ISSQNTot = $this->dom->createElement("ISSQNtot");
         $this->dom->addChild(
@@ -7693,7 +7693,7 @@ class Make
     protected function conditionalNumberFormatting($value = null, int $decimal = 2): ?string
     {
         if (is_numeric($value)) {
-            return number_format($value, $decimal, '.', '');
+            return number_format((float) ($value), $decimal, '.', '');
         }
 
         return null;

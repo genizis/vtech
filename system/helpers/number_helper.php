@@ -87,9 +87,9 @@ if ( ! function_exists('byte_format'))
 		else
 		{
 			$unit = $CI->lang->line('bytes');
-			return number_format($num).' '.$unit;
+			return number_format((float) ($num)).' '.$unit;
 		}
 
-		return number_format($num, $precision).' '.$unit;
+		return number_format((float) ($num), $precision).' '.$unit;
 	}
 }
